@@ -22,7 +22,7 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment(), IBaseFragment, ToolB
         get() = activity as? BaseActivity<*>
 
     override val toolbar: ToolBarBinding
-        get() = baseBinding.toolBar
+        get() = baseBinding.layoutToolBar
 
     private lateinit var baseBinding: FragmentBaseBinding
 

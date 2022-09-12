@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<!--    <com.google.android.material.imageview.ShapeableImageView-->
+<!--        android:id="@+id/frame"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="180dp"-->
+<!--        android:src="@color/green_4caf50"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:shapeAppearanceOverlay="@style/CustomShapeOVerlay">-->
+
+<!--    </com.google.android.material.imageview.ShapeableImageView>-->
+
+<!--    <androidx.core.widget.NestedScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:background="@color/black"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/ctlAvatar">-->
+
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/txtUsername"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:text="@string/username_label"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/tilUsername"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+<!--                android:layout_marginTop="@dimen/margin_6dp"-->
+<!--                app:hintEnabled="false"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/txtUsername">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/tieUsername"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/bg_grey_2d2d2d_corner_8dp"-->
+<!--                    android:drawableStart="@drawable/ic_person"-->
+<!--                    android:drawablePadding="10dp"-->
+<!--                    android:hint="@string/username_label"-->
+<!--                    android:imeOptions="actionNext"-->
+<!--                    android:inputType="text"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:textColorHint="@color/grey_8d8c8c" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/lnlName"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:baselineAligned="false"-->
+<!--                android:orientation="horizontal"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/tilUsername">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginEnd="10dp"-->
+<!--                    android:layout_weight="0.5"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/txtFirstName"-->
+<!--                        -->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:text="@string/first_name_label" />-->
+
+<!--                    <com.google.android.material.textfield.TextInputLayout-->
+<!--                        android:id="@+id/tilFirstName"-->
+<!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="6dp"-->
+<!--                        app:hintEnabled="false">-->
+
+<!--                        <com.google.android.material.textfield.TextInputEditText-->
+<!--                            android:id="@+id/tieFirstName"-->
+<!--                            -->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:background="@drawable/bg_grey_2d2d2d_corner_8dp"-->
+<!--                            android:drawableStart="@drawable/ic_person"-->
+<!--                            android:drawablePadding="10dp"-->
+<!--                            android:hint="@string/first_name_label"-->
+<!--                            android:imeOptions="actionNext"-->
+<!--                            android:inputType="text"-->
+<!--                            android:maxLines="1"-->
+<!--                            android:textColorHint="@color/grey_8d8c8c" />-->
+<!--                    </com.google.android.material.textfield.TextInputLayout>-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="10dp"-->
+<!--                    android:layout_weight="0.5"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/txtLastName"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:text="@string/last_name_label" />-->
+
+<!--                    <com.google.android.material.textfield.TextInputLayout-->
+<!--                        android:id="@+id/tilLastName"-->
+<!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="6dp"-->
+<!--                        app:hintEnabled="false">-->
+
+<!--                        <com.google.android.material.textfield.TextInputEditText-->
+<!--                            android:id="@+id/tieLastName"-->
+<!--                            -->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:background="@drawable/bg_grey_2d2d2d_corner_8dp"-->
+<!--                            android:drawableStart="@drawable/ic_person"-->
+<!--                            android:drawablePadding="10dp"-->
+<!--                            android:hint="@string/last_name_label"-->
+<!--                            android:imeOptions="actionNext"-->
+<!--                            android:inputType="text"-->
+<!--                            android:maxLines="1"-->
+<!--                            android:textColorHint="@color/grey_8d8c8c" />-->
+<!--                    </com.google.android.material.textfield.TextInputLayout>-->
+<!--                </LinearLayout>-->
+
+<!--            </LinearLayout>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/txtEmail"-->
+<!--                -->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:text="@string/email_label"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/lnlName" />-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/tilEmail"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+<!--                android:layout_marginTop="@dimen/margin_6dp"-->
+<!--                app:hintEnabled="false"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/txtEmail">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/tieEmail"-->
+<!--                    -->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/bg_grey_2d2d2d_corner_8dp"-->
+<!--                    android:drawableStart="@drawable/ic_email"-->
+<!--                    android:drawablePadding="10dp"-->
+<!--                    android:enabled="false"-->
+<!--                    android:hint="@string/email_label"-->
+<!--                    android:imeOptions="actionNext"-->
+<!--                    android:inputType="text"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:textColorHint="@color/grey_8d8c8c" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/txtPhone"-->
+<!--                -->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:text="@string/phone_number_label"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/tilEmail" />-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/tilPhone"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+<!--                android:layout_marginTop="@dimen/margin_6dp"-->
+<!--                app:hintEnabled="false"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/txtPhone">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/tiePhone"-->
+<!--                    -->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/bg_grey_2d2d2d_corner_8dp"-->
+<!--                    android:drawableStart="@drawable/ic_call"-->
+<!--                    android:drawablePadding="10dp"-->
+<!--                    android:hint="@string/phone_number_label"-->
+<!--                    android:imeOptions="actionDone"-->
+<!--                    android:inputType="textPassword"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:textColorHint="@color/grey_8d8c8c" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/txtAddress"-->
+<!--                -->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:text="@string/address_label"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/tilPhone" />-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/tilAddress"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+<!--                android:layout_marginTop="@dimen/margin_6dp"-->
+<!--                app:hintEnabled="false"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/txtAddress">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/tieAddress"-->
+<!--                    -->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/bg_grey_2d2d2d_corner_8dp"-->
+<!--                    android:drawableStart="@drawable/ic_address"-->
+<!--                    android:drawablePadding="10dp"-->
+<!--                    android:hint="@string/address_label"-->
+<!--                    android:imeOptions="actionDone"-->
+<!--                    android:inputType="textPassword"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:textColorHint="@color/grey_8d8c8c" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/txtGender"-->
+<!--                -->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:text="@string/gender_label"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/tilAddress" />-->
+
+<!--            <RadioGroup-->
+<!--                android:id="@+id/radioGroup"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:layout_marginBottom="20dp"-->
+<!--                android:orientation="horizontal"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/txtGender">-->
+
+<!--                <RadioButton-->
+<!--                    android:id="@+id/rbMale"-->
+<!--                    style="@style/Text16whiteStyle"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:paddingStart="6dp"-->
+<!--                    android:paddingEnd="0dp"-->
+<!--                    android:text="@string/male_label"-->
+<!--                    android:theme="@style/RadioButtonTheme" />-->
+
+<!--                <RadioButton-->
+<!--                    android:id="@+id/rbFemale"-->
+<!--                    style="@style/Text16whiteStyle"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="16dp"-->
+<!--                    android:paddingStart="6dp"-->
+<!--                    android:paddingEnd="0dp"-->
+<!--                    android:text="@string/female_male"-->
+<!--                    android:theme="@style/RadioButtonTheme" />-->
+
+<!--                <RadioButton-->
+<!--                    android:id="@+id/rbOther"-->
+<!--                    style="@style/Text16whiteStyle"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="16dp"-->
+<!--                    android:paddingStart="6dp"-->
+<!--                    android:paddingEnd="0dp"-->
+<!--                    android:text="@string/other_label"-->
+<!--                    android:theme="@style/RadioButtonTheme" />-->
+<!--            </RadioGroup>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/btnConfirm"-->
+<!--                style="@style/Text18WhiteBoldStyle"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+<!--                android:layout_marginTop="@dimen/margin_28dp"-->
+<!--                android:background="@drawable/bg_button_login"-->
+<!--                android:enabled="true"-->
+<!--                android:gravity="center"-->
+<!--                android:paddingVertical="@dimen/padding_14dp"-->
+<!--                android:text="@string/confirm_btn"-->
+<!--                android:textAllCaps="true"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/radioGroup" />-->
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--    </androidx.core.widget.NestedScrollView>-->
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/ctlAvatar"-->
+<!--        android:layout_width="150dp"-->
+<!--        android:layout_height="150dp"-->
+<!--        android:layout_marginTop="-75dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/frame">-->
+
+<!--        <dacnpm.salonbooking.commonui.avatar.CircleImageView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:src="@color/white"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--        <com.google.android.material.imageview.ShapeableImageView-->
+<!--            android:id="@+id/imgAvatar"-->
+<!--            android:layout_width="140dp"-->
+<!--            android:layout_height="140dp"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:shapeAppearanceOverlay="@style/CustomShapeOVerlay70"-->
+<!--            tools:src="@drawable/icon" />-->
+
+<!--        <dacnpm.salonbooking.commonui.avatar.CircleImageView-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:src="@color/white"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent" />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/imgCam"-->
+<!--            android:layout_width="26dp"-->
+<!--            android:layout_height="26dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:src="@drawable/ic_camera"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            tools:ignore="ContentDescription" />-->
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

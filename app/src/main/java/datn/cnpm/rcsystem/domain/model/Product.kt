@@ -1,6 +1,6 @@
 package datn.cnpm.rcsystem.domain.model
 
-import datn.cnpm.rcsystem.data.authentication.entitiy.Product
+import datn.cnpm.rcsystem.data.entitiy.Product
 
 /*
  * Created by ADMIN on 7/24/2022.

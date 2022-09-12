@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
+import datn.cnpm.rcsystem.common.extension.createSpannableString
 import datn.cnpm.rcsystem.databinding.FragmentLoginBinding
 
 /**
@@ -26,8 +29,22 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     }
 
     override fun initActions() {
-        binding.buttonFirst.setOnClickListener {
-            viewModel.login()
+        binding.apply {
+            btnLogin.setOnClickListener {
+//                viewModel.login(tieUsername.text.toString(), tieUsername.text.toString())
+                findNavController().navigate(R.id.registerFragment)
+            }
+            tvForgetPassword.setOnClickListener {
+                findNavController().navigate(R.id.forgotPasswordFragment)
+            }
+
+            tvRegister.createSpannableString(
+                19,
+                40,
+                true
+            ) {
+                findNavController().navigate(R.id.registerFragment)
+            }
         }
     }
 
@@ -44,13 +61,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             }
         )
 
-//        liveEvent.observe(viewLifecycleOwner) { event ->
-//            when (event) {
+        viewModel.liveEvent.observe(viewLifecycleOwner) { event ->
+            when (event) {
 //                is LoginEvent.LoginSuccess -> {
 //                    event.user?.let { navigateToHomeScreen(it) }
 //                }
 //                is LoginEvent.LoginFailed -> {
-//                    Toast.makeText(requireContext(), event.error, Toast.LENGTH_SHORT).show()
 //                }
 //
 //                is LoginEvent.ErrorEmail -> {
@@ -60,11 +76,18 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 //                is LoginEvent.ErrorPassword -> {
 //                    binding.tilPassword.error = event.error
 //                }
-//
-//                else -> {}
-//
-//            }
-//        }
+                is LoginEvent.UserLoginSuccess -> {
+//                    val intent = Intent(this.activity, UserActivity::class.java)
+//                    activity?.startActivity(intent)
+                }
+                is LoginEvent.DealerLoginSuccess -> {
+//                    val intent = Intent(this.activity, DealerActivity::class.java)
+//                    activity?.startActivity(intent)
+                }
+                else -> {}
+
+            }
+        }
     }
 
 }

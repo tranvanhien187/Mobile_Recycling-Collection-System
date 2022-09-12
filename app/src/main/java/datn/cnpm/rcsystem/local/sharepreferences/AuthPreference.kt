@@ -31,7 +31,9 @@ interface AuthPreference {
 
     suspend fun deleteLoginErrorPreference()
 
-    var userId: String
+    var uuid: String
+
+    var role: String
 }
 
 class AuthPreferenceImpl @Inject constructor(
@@ -47,7 +49,8 @@ class AuthPreferenceImpl @Inject constructor(
         private const val LAST_LOGGED_IN_AVATAR_KEY = "LAST_LOGGED_IN_AVATAR_KEY"
         private const val LAST_LOGGED_PHONE_NUMBER = "LAST_LOGGED_PHONE_NUMBER"
         private const val LAST_LOGGED_AUTH_METHOD = "LAST_LOGGED_AUTH_METHOD"
-        private const val USER_ID_KEY = "USER_ID_KEY"
+        private const val UUID_KEY = "UUID"
+        private const val ROLE_KEY = "ROLE"
         private const val DEVICE_ID = "DEVICE_ID"
         private const val LAST_LOGGED_IN_ERROR_KEY = "LAST_LOGGED_IN_ERROR_KEY"
     }
@@ -56,7 +59,9 @@ class AuthPreferenceImpl @Inject constructor(
 
     override var accessToken: String by StringPreferenceDelegate(sharedPreferences, ACCESS_TOKEN_KEY)
 
-    override var userId: String by StringPreferenceDelegate(sharedPreferences, USER_ID_KEY)
+    override var uuid: String by StringPreferenceDelegate(sharedPreferences, UUID_KEY)
+
+    override var role: String by StringPreferenceDelegate(sharedPreferences, ROLE_KEY)
 
     override var lastLoggedInUsername: String by StringPreferenceDelegate(
         sharedPreferences,

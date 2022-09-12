@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_user"
+    app:startDestination="@id/homeUserFragment">
+
+    <fragment
+        android:id="@+id/homeUserFragment"
+        android:name="datn.cnpm.rcsystem.feature.home.user.HomeUserFragment"
+        android:label="HomeUserFragment" />
+</navigation>

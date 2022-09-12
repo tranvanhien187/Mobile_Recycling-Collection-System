@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<EditText xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/edt_otp"
+    android:textSize="20sp"
+    android:layout_width="48dp"
+    android:layout_height="56dp"
+    android:layout_marginStart="8dp"
+    android:background="@drawable/background_input_field_otp"
+    android:importantForAutofill="no"
+    android:inputType="number"
+    android:maxLength="2"
+    android:textAlignment="center"
+    android:textCursorDrawable="@drawable/custom_text_cursor"
+    tools:ignore="LabelFor" />

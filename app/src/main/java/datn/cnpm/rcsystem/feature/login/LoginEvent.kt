@@ -8,4 +8,7 @@ sealed interface LoginEvent {
     data class ErrorPassword(
         val error: String?
     ) : LoginEvent
+
+    object UserLoginSuccess : LoginEvent
+    object DealerLoginSuccess : LoginEvent
 }

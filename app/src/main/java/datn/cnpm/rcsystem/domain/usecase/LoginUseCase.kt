@@ -2,9 +2,9 @@ package datn.cnpm.rcsystem.domain.usecase
 
 import datn.cnpm.rcsystem.core.Result
 import datn.cnpm.rcsystem.core.di.IoDispatcher
-import datn.cnpm.rcsystem.data.authentication.repository.AuthenticationRepository
-import datn.cnpm.rcsystem.domain.model.Product
-import datn.cnpm.rcsystem.domain.model.toProduct
+import datn.cnpm.rcsystem.data.repository.AuthenticationRepository
+import datn.cnpm.rcsystem.data.entitiy.LoginRequest
+import datn.cnpm.rcsystem.data.entitiy.LoginResponse
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
@@ -18,20 +18,20 @@ interface LoginUseCase {
         val email: String, val password: String
     )
 
-    suspend fun login(parameters: Parameters): Result<List<Product>>
+    suspend fun login(parameters: Parameters): Result<LoginResponse>
 }
 
 class LoginUseCaseImpl @Inject constructor(
     @IoDispatcher ioDispatcher: CoroutineDispatcher,
     private val authenticationRepository: AuthenticationRepository,
-) : BaseUseCase<LoginUseCase.Parameters, List<Product>>(ioDispatcher),
+) : BaseUseCase<LoginUseCase.Parameters, LoginResponse>(ioDispatcher),
     LoginUseCase {
 
-    override suspend fun execute(parameters: LoginUseCase.Parameters): List<Product> {
-        return authenticationRepository.login().map { it.toProduct() }
+    override suspend fun execute(parameters: LoginUseCase.Parameters): LoginResponse {
+        return authenticationRepository.login(LoginRequest(parameters.email, parameters.password))
     }
 
-    override suspend fun login(parameters: LoginUseCase.Parameters): Result<List<Product>> {
+    override suspend fun login(parameters: LoginUseCase.Parameters): Result<LoginResponse> {
         return invoke(parameters)
     }
 }

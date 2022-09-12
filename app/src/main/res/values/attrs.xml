@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomInputFieldOtp">
+        <attr name="otpType" format="integer">
+            <enum name="otp" value="0" />
+            <enum name="pin" value="1" />
+        </attr>
+    </declare-styleable>
+</resources>

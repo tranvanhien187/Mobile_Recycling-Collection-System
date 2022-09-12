@@ -1,11 +1,10 @@
 package datn.cnpm.rcsystem.domain.di
 
-import datn.cnpm.rcsystem.domain.usecase.LoginUseCase
-import datn.cnpm.rcsystem.domain.usecase.LoginUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import datn.cnpm.rcsystem.domain.usecase.*
 import javax.inject.Singleton
 
 /*
@@ -20,6 +19,31 @@ abstract class UseCaseModule {
     @Binds
     @Singleton
     abstract fun provideLoginUseCase(
-        useCase: LoginUseCaseImpl,
+        useCase: LoginUseCaseImpl
     ): LoginUseCase
+
+    @Binds
+    @Singleton
+    abstract fun provideResetPasswordUseCase(
+        useCase: ChangePasswordUseCaseImpl
+    ): ChangePasswordUseCase
+
+    @Binds
+    @Singleton
+    abstract fun provideRegisterUseCase(
+        useCase: RegisterUseCaseImpl
+    ): RegisterUseCase
+
+    @Binds
+    @Singleton
+    abstract fun provideGenOTPUseCase(
+        useCase: GenOTPUseCaseImpl
+    ): GenOTPUseCase
+
+    @Binds
+    @Singleton
+    abstract fun provideValidateOTPUseCase(
+        useCase: ValidateOTPUseCaseImpl
+    ): ValidateOTPUseCase
+
 }

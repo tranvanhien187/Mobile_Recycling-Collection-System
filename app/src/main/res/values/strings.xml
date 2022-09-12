@@ -11,4 +11,27 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="login_to_your_account">Login to your account</string>
+    <string name="username_label">Username</string>
+    <string name="password_label">Password</string>
+    <string name="forgot_your_password_label_line"><u>Forgot your password ?</u></string>
+    <string name="sign_in_btn">Login</string>
+    <string name="welcome_back">Welcome back!</string>
+    <string name="send_btn">Send</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="email_label">Email</string>
+    <string name="please_enter_your_email_we_will_send_otp_to_change_password_in_your_email">Please enter your email. We will send OTP to change password in your email.</string>
+    <string name="verification_code">Verification Code</string>
+    <string name="please_type_the_verification_code_sent_to_your_email">Please type the verification code sent to your email.</string>
+    <string name="resend_otp"><u>Resend OTP</u></string>
+    <string name="verify_btn">Verify</string>
+    <string name="change_password">Change password</string>
+    <string name="retype_password">Retype password</string>
+    <string name="save_btn">Save</string>
+    <string name="remember_me">Remember me</string>
+    <string name="don_t_have_account_create_a_new_account">Don’t have account? Create a new account</string>
+    <string name="create_account">Create Account</string>
+    <string name="create_new_account">Create new Account</string>
+    <string name="already_have_account_login">Already have account? Login</string>
+    <string name="become_an_environmentalist">Become an environmentalist</string>
 </resources>
