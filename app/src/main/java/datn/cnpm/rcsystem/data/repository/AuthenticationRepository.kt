@@ -8,7 +8,7 @@ import datn.cnpm.rcsystem.data.entitiy.*
  */
 
 interface AuthenticationRepository {
-    suspend fun login(request: LoginRequest) : LoginResponse
+    suspend fun login(request: LoginRequest, isRemember: Boolean) : LoginResponse
     suspend fun register(request: RegisterRequest): String
     suspend fun changePassword(request: ChangePasswordRequest): String
     suspend fun genOTP(request: GenOTPRequest): String

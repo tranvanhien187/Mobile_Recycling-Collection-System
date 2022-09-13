@@ -33,6 +33,8 @@ interface AuthPreference {
 
     var uuid: String
 
+    var isRememberMe: Boolean
+
     var role: String
 }
 
@@ -49,6 +51,7 @@ class AuthPreferenceImpl @Inject constructor(
         private const val LAST_LOGGED_IN_AVATAR_KEY = "LAST_LOGGED_IN_AVATAR_KEY"
         private const val LAST_LOGGED_PHONE_NUMBER = "LAST_LOGGED_PHONE_NUMBER"
         private const val LAST_LOGGED_AUTH_METHOD = "LAST_LOGGED_AUTH_METHOD"
+        private const val REMEMBER_ME_KEY = "REMEMBER_ME_KEY"
         private const val UUID_KEY = "UUID"
         private const val ROLE_KEY = "ROLE"
         private const val DEVICE_ID = "DEVICE_ID"
@@ -62,6 +65,8 @@ class AuthPreferenceImpl @Inject constructor(
     override var uuid: String by StringPreferenceDelegate(sharedPreferences, UUID_KEY)
 
     override var role: String by StringPreferenceDelegate(sharedPreferences, ROLE_KEY)
+
+    override var isRememberMe: Boolean by BooleanPreferenceDelegate(sharedPreferences, REMEMBER_ME_KEY)
 
     override var lastLoggedInUsername: String by StringPreferenceDelegate(
         sharedPreferences,

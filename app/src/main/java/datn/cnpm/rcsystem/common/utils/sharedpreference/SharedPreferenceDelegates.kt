@@ -1,4 +1,4 @@
-package com.example.basesource.common.utils.sharedpreference
+package datn.cnpm.rcsystem.common.utils.sharedpreference
 
 import android.content.SharedPreferences
 import androidx.core.content.edit

@@ -17,13 +17,13 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
     BaseViewModel<LoginState, LoginEvent>() {
     override fun initState() = LoginState()
 
-    fun login(email: String, password: String) {
+    fun login(email: String, password: String, isRemember: Boolean) {
 //        if(email.validateEmail() != Constant.EMAIL_VALID) {
 //
 //        }
         dispatchState(currentState.copy(loading = true))
         viewModelScope.launch {
-            val response = loginUseCase.login(LoginUseCase.Parameters(email, password))
+            val response = loginUseCase.login(LoginUseCase.Parameters(email, password, isRemember))
             if (response.succeeded) {
                 when (response.requireData.role) {
                     Role.USER.toString() -> {

@@ -31,7 +31,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     override fun initActions() {
         binding.apply {
             btnLogin.setOnClickListener {
-//                viewModel.login(tieUsername.text.toString(), tieUsername.text.toString())
+                viewModel.login(tieUsername.text.toString(), tieUsername.text.toString(), cbRememberMe.isChecked)
                 findNavController().navigate(R.id.registerFragment)
             }
             tvForgetPassword.setOnClickListener {

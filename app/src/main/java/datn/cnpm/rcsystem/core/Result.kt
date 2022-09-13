@@ -51,8 +51,8 @@ val <T> Result<T>.errorCode: String?
 val <T> Result<T>.requireData: T
     get() = (this as Result.Success).data
 
-val <T> Result<T>.requireError: Exception
-    get() = (this as Result.Error).errorMessage.exception
+val <T> Result<T>.requireError: ErrorMessage
+    get() = (this as Result.Error).errorMessage
 
 fun <T> Flow<Result<T>>.doOnSuccess(
     scope: CoroutineScope = CoroutineScope(Dispatchers.IO),

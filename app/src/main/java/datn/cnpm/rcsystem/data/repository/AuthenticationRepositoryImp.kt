@@ -1,5 +1,7 @@
 package datn.cnpm.rcsystem.data.repository
 
+import datn.cnpm.rcsystem.common.ErrorCode
+import datn.cnpm.rcsystem.common.exception.BadRequestException
 import datn.cnpm.rcsystem.data.datastore.AuthenticationDataSource
 import datn.cnpm.rcsystem.data.entitiy.*
 import datn.cnpm.rcsystem.local.sharepreferences.AuthPreference
@@ -13,14 +15,14 @@ import javax.inject.Inject
 class AuthenticationRepositoryImp @Inject constructor(private val authenticationDataSource: AuthenticationDataSource, private val authPre : AuthPreference) :
     AuthenticationRepository {
 
-    override suspend fun login(request: LoginRequest): LoginResponse {
+    override suspend fun login(request: LoginRequest, isRemember: Boolean): LoginResponse {
         val response = authenticationDataSource.login(request)
         if (response.isSuccess) {
             authPre.role = response.requireData.role
             authPre.uuid = response.requireData.uuid
             return response.requireData
         } else {
-            throw Exception(response.requireError)
+            throw Exception(response.requireError.toString())
         }
     }
 
@@ -28,8 +30,14 @@ class AuthenticationRepositoryImp @Inject constructor(private val authentication
         val response = authenticationDataSource.register(request)
         if (response.isSuccess) {
             return response.requireData
+        } else if(response.isFailure) {
+            if(response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
         } else {
-            throw Exception(response.requireError)
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
         }
     }
 
@@ -38,7 +46,7 @@ class AuthenticationRepositoryImp @Inject constructor(private val authentication
         if (response.isSuccess) {
             return response.requireData
         } else {
-            throw Exception(response.requireError)
+            throw Exception(response.requireError.toString())
         }
     }
 
@@ -47,7 +55,7 @@ class AuthenticationRepositoryImp @Inject constructor(private val authentication
         if (response.isSuccess) {
             return response.requireData
         } else {
-            throw Exception(response.requireError)
+            throw Exception(response.requireError.toString())
         }
     }
 
@@ -56,7 +64,7 @@ class AuthenticationRepositoryImp @Inject constructor(private val authentication
         if (response.isSuccess) {
             return response.requireData
         } else {
-            throw Exception(response.requireError)
+            throw Exception(response.requireError.toString())
         }
     }
 }

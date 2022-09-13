@@ -1,5 +1,6 @@
 package datn.cnpm.rcsystem.domain.usecase
 
+import datn.cnpm.rcsystem.common.exception.BadRequestException
 import datn.cnpm.rcsystem.core.ErrorMessage
 import datn.cnpm.rcsystem.core.Result
 import kotlinx.coroutines.CoroutineDispatcher
@@ -14,6 +15,8 @@ abstract class BaseUseCase<P, R>(private val coroutineDispatcher: CoroutineDispa
                     Result.Success(it)
                 }
             }
+        } catch (e: BadRequestException) {
+            Result.Error(ErrorMessage(errorCode = e.error.name, message = e.error.value, exception = e))
         } catch (e: Exception) {
             Result.Error(ErrorMessage(exception = e))
         }

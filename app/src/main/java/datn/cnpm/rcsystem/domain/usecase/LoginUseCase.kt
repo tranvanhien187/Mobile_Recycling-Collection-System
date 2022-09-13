@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 interface LoginUseCase {
     data class Parameters(
-        val email: String, val password: String
+        val email: String, val password: String, val isRemember: Boolean
     )
 
     suspend fun login(parameters: Parameters): Result<LoginResponse>
@@ -28,7 +28,7 @@ class LoginUseCaseImpl @Inject constructor(
     LoginUseCase {
 
     override suspend fun execute(parameters: LoginUseCase.Parameters): LoginResponse {
-        return authenticationRepository.login(LoginRequest(parameters.email, parameters.password))
+        return authenticationRepository.login(LoginRequest(parameters.email, parameters.password), parameters.isRemember)
     }
 
     override suspend fun login(parameters: LoginUseCase.Parameters): Result<LoginResponse> {
