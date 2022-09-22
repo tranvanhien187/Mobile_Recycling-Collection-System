@@ -16,43 +16,5 @@ class AuthenticationActivity : BaseActivity<ActivityAuthenticationBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.makeStatusBarTransparent()
-        Log.d("TAGAA", "onCreate: ")
-
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.d("TAGAA", "onStart: ")
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-
-        Log.d("TAGAA", "onRestart: ")
-
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("TAGAA", "onPause: ")
-
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d("TAGAA", "onResume: ")
-
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d("TAGAA", "onStop: ")
-
-    }
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("TAGAA", "onDestroy: ")
-
     }
 }

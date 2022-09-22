@@ -32,7 +32,7 @@ class RegisterUseCaseImpl @Inject constructor(
                 parameters.password,
                 parameters.role
             )
-        )
+        ).uuid
     }
 
     override suspend fun register(parameters: RegisterUseCase.Parameters): Result<String> {

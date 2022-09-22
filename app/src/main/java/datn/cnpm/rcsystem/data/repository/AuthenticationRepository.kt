@@ -1,5 +1,6 @@
 package datn.cnpm.rcsystem.data.repository
 
+import datn.cnpm.rcsystem.core.SBResponse
 import datn.cnpm.rcsystem.data.entitiy.*
 
 /*
@@ -9,8 +10,12 @@ import datn.cnpm.rcsystem.data.entitiy.*
 
 interface AuthenticationRepository {
     suspend fun login(request: LoginRequest, isRemember: Boolean) : LoginResponse
-    suspend fun register(request: RegisterRequest): String
+    suspend fun register(request: RegisterRequest): RegisterResponse
     suspend fun changePassword(request: ChangePasswordRequest): String
+    suspend fun updateUserInfo(request: UpdateUserInfoRequest): UpdateUserInfoResponse
+    suspend fun getTPlaceForUser(criteria: String): List<GetTPPlaceForUserResponse>
     suspend fun genOTP(request: GenOTPRequest): String
     suspend fun validateOTP(request: ValidateOTPRequest): String
+    suspend fun getUserInfo(): GetUserInfoResponse
+    suspend fun getTPlaceRandom6(): List<GetTPPlaceForUserResponse>
 }

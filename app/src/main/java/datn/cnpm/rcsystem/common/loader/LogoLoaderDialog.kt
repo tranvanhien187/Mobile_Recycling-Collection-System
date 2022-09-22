@@ -1,4 +1,4 @@
-package com.example.basesource.common.loader
+package datn.cnpm.rcsystem.common.loader
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable

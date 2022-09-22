@@ -12,26 +12,36 @@ import javax.inject.Inject
  * Project : Base
  */
 
-class AuthenticationRepositoryImp @Inject constructor(private val authenticationDataSource: AuthenticationDataSource, private val authPre : AuthPreference) :
+class AuthenticationRepositoryImp @Inject constructor(
+    private val authenticationDataSource: AuthenticationDataSource,
+    private val authPre: AuthPreference
+) :
     AuthenticationRepository {
 
     override suspend fun login(request: LoginRequest, isRemember: Boolean): LoginResponse {
         val response = authenticationDataSource.login(request)
         if (response.isSuccess) {
             authPre.role = response.requireData.role
+            authPre.accessToken = response.requireData.accessToken
             authPre.uuid = response.requireData.uuid
             return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw BadRequestException(ErrorCode.UNKNOWN_ERROR)
+            } else {
+                throw Exception()
+            }
         } else {
-            throw Exception(response.requireError.toString())
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
         }
     }
 
-    override suspend fun register(request: RegisterRequest): String {
+    override suspend fun register(request: RegisterRequest): RegisterResponse {
         val response = authenticationDataSource.register(request)
         if (response.isSuccess) {
             return response.requireData
-        } else if(response.isFailure) {
-            if(response.requireError == ErrorCode.UNKNOWN_ERROR) {
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
                 throw Exception(ErrorCode.UNKNOWN_ERROR.value)
             } else {
                 throw BadRequestException(response.requireError)
@@ -50,6 +60,36 @@ class AuthenticationRepositoryImp @Inject constructor(private val authentication
         }
     }
 
+    override suspend fun updateUserInfo(request: UpdateUserInfoRequest): UpdateUserInfoResponse {
+        val response = authenticationDataSource.updateUserInfo(request)
+        if (response.isSuccess) {
+            return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
+        } else {
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+        }
+    }
+
+    override suspend fun getTPlaceForUser(criteria: String): List<GetTPPlaceForUserResponse> {
+        val response = authenticationDataSource.getTPlaceForUser(authPre.uuid, criteria)
+        if (response.isSuccess) {
+            return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
+        } else {
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+        }
+    }
+
     override suspend fun genOTP(request: GenOTPRequest): String {
         val response = authenticationDataSource.genOTP(request)
         if (response.isSuccess) {
@@ -65,6 +105,36 @@ class AuthenticationRepositoryImp @Inject constructor(private val authentication
             return response.requireData
         } else {
             throw Exception(response.requireError.toString())
+        }
+    }
+
+    override suspend fun getUserInfo(): GetUserInfoResponse {
+        val response = authenticationDataSource.getUserInfo(authPre.uuid)
+        if (response.isSuccess) {
+            return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
+        } else {
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+        }
+    }
+
+    override suspend fun getTPlaceRandom6(): List<GetTPPlaceForUserResponse> {
+        val response = authenticationDataSource.getTPlaceRandom6(authPre.uuid)
+        if (response.isSuccess) {
+            return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
+        } else {
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
         }
     }
 }

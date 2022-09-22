@@ -38,10 +38,17 @@
             android:id="@+id/action_loadingFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/changePasswordFragment"
         android:name="datn.cnpm.rcsystem.feature.changepassword.ChangePasswordFragment"
         android:label="ChangePasswordFragment"
         tools:layout="@layout/fragment_change_password"/>
+
+    <fragment
+        android:id="@+id/updateAccountInfoFragment"
+        android:name="datn.cnpm.rcsystem.feature.updateaccountifo.UpdateAccountInfoFragment"
+        android:label="UpdateAccountInfoFragment"
+        tools:layout="@layout/fragment_update_account_info"/>
 
 </navigation>

@@ -1,14 +1,15 @@
 package datn.cnpm.rcsystem.feature.login
 
-sealed interface LoginEvent {
-    data class ErrorEmail(
-        val error: String?
-    ) : LoginEvent
+import datn.cnpm.rcsystem.common.ErrorCode
 
-    data class ErrorPassword(
-        val error: String?
+sealed interface LoginEvent {
+    data class ValidateField(
+        val errorUsername: ErrorCode? = null,
+        val errorPassword: ErrorCode? = null,
     ) : LoginEvent
 
     object UserLoginSuccess : LoginEvent
+    data class UserUpdatedYet(val uuid: String) : LoginEvent
     object DealerLoginSuccess : LoginEvent
+    data class LoginFailure(val message: String) : LoginEvent
 }

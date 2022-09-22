@@ -6,3 +6,7 @@ data class RegisterRequest(
     val password: String,
     val role: String,
 )
+
+data class RegisterResponse(
+    val uuid: String,
+)

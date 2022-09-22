@@ -52,6 +52,16 @@ interface IBaseFragment : DialogCommonView {
     fun hideLoading()
 
     /**
+     * Called to show error view.
+     */
+    fun showError(errorString: String)
+
+    /**
+     * Called to hide error view.
+     */
+    fun hideError()
+
+    /**
      * Request grants permissions.
      * Please aware that to use this method, the activity hold this fragment have to extend from @see [BaseActivity].
      *

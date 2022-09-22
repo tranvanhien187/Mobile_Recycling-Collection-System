@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -11,6 +12,7 @@ import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.common.extension.createSpannableString
 import datn.cnpm.rcsystem.databinding.FragmentRegisterBinding
+import datn.cnpm.rcsystem.feature.updateaccountifo.UpdateAccountInfoFragment
 
 /**
  * [RegisterFragment]
@@ -76,10 +78,16 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
                     }
                 }
                 is RegisterEvent.RegisterSuccess -> {
-                    Toast.makeText(requireContext(), "success", Toast.LENGTH_LONG).show()
+                    findNavController().navigate(
+                        R.id.updateAccountInfoFragment,
+                        bundleOf(
+                            Pair(UpdateAccountInfoFragment.IS_UPDATED_KEY, false),
+                            Pair(UpdateAccountInfoFragment.UUID_KEY, event.uuid)
+                        )
+                    )
                 }
                 is RegisterEvent.RegisterFailure -> {
-                    Toast.makeText(requireContext(), event.error, Toast.LENGTH_LONG).show()
+                    showError(event.error)
                 }
                 else -> {}
 

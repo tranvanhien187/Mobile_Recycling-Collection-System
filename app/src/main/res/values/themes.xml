@@ -20,4 +20,18 @@
         <item name="colorAccent">@color/green_00ad31</item>
         <item name="colorControlNormal">#F2F4F6</item>
     </style>
+
+    <style name="Theme.App" parent="Theme.MaterialComponents">
+        ...
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+    </style>
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorPrimary">@color/grey_858e9c</item>
+        <item name="colorOnPrimary">@color/green_00ad31</item>
+    </style>
 </resources>

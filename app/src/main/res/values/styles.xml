@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="T10M_10Regular_Subtext">
+        <item name="android:textColor">@color/grey_d1d0d9</item>
+        <item name="fontWeight">500</item>
+        <item name="android:fontFamily">@font/proximanova_reg</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="T10M_10Medium">
+        <item name="android:textColor">@color/green_00ad31</item>
+        <item name="fontWeight">500</item>
+        <item name="android:fontFamily">@font/proximanova_reg</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="CustomShapeOVerlay">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeBottomRight">30dp</item>
+        <item name="cornerSizeBottomLeft">30dp</item>
+    </style>
+
+    <style name="CustomShapeOverlay10">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
+    </style>
+
+    <style name="CustomShapeOVerlay50P">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+
+    </style>
+
+    <style name="CustomShapeOVerlay70">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">70dp</item>
+    </style>
+</resources>

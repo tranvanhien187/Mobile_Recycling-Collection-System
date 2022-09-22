@@ -1,14 +1,10 @@
 package datn.cnpm.rcsystem.core.di
 
-import com.example.basesource.common.loader.LogoLoaderDialog
+import datn.cnpm.rcsystem.common.loader.LogoLoaderDialog
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import datn.cnpm.rcsystem.core.di.DefaultDispatcher
-import datn.cnpm.rcsystem.core.di.IoDispatcher
-import datn.cnpm.rcsystem.core.di.MainDispatcher
-import datn.cnpm.rcsystem.core.di.MainImmediateDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 

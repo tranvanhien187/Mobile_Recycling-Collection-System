@@ -9,9 +9,11 @@ sealed interface RegisterEvent {
         val errorPassword: ErrorCode? = null,
         val errorRetypePassword: ErrorCode? = null
     ) : RegisterEvent
-    object RegisterSuccess : RegisterEvent
     data class RegisterFailure(
         val error: String
+    ) : RegisterEvent
+    data class RegisterSuccess(
+        val uuid: String
     )  : RegisterEvent
 }
 

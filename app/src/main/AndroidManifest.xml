@@ -5,10 +5,12 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".BaseApplication"
         android:allowBackup="true"
+        android:usesCleartextTraffic="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -29,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".feature.home.HomeActivity"
+            android:name=".feature.home.user.HomeUserActivity"
             android:exported="true" />
     </application>
 

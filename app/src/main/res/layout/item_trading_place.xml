@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutItemDeal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivBanner"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/empty_value"
+        app:shapeAppearanceOverlay="@style/CustomShapeOverlay10"
+        app:layout_constraintBottom_toBottomOf="@id/vLine"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        tools:src="@color/green_00ad31" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="6dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/montserrat_regular"
+        android:lines="1"
+        android:text="@{privilegesItem.merchant.brand}"
+        android:textAlignment="textStart"
+        android:textColor="@color/black_354052"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivBanner"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Bouler Movement Bouler Movement Bouler Movement" />
+
+    <TextView
+        android:id="@+id/tvDealer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="24dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="@{privilegesItem.title}"
+        android:textAlignment="textStart"
+        android:textColor="@color/black_354052"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivBanner"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        tools:text="Lorem ipsum dolor sit amet consLorem ipsum dolor sit amet consectetur adipiscing elit Lorem ipsum dolor sit amet consectetur adipiscing elitectetur adipiscing elit " />
+
+    <ImageView
+        android:id="@+id/imgMapPin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_pin"
+        app:layout_constraintStart_toEndOf="@id/ivBanner"
+        app:layout_constraintTop_toBottomOf="@id/tvDealer"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/montserrat_bold"
+        android:maxLines="2"
+        android:text="@{privilegesItem.merchant.countryIncorporation}"
+        android:textColor="@color/black_516173"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/imgMapPin"
+        app:layout_constraintTop_toBottomOf="@id/tvDealer"
+        app:layout_constraintVertical_bias="0"
+        tools:text="United States of America,a Los Angeles" />
+
+    <View
+        android:id="@+id/vLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black_dfe3e9"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

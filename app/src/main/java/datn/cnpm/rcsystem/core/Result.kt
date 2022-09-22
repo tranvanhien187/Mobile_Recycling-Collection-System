@@ -1,5 +1,6 @@
 package datn.cnpm.rcsystem.core
 
+import datn.cnpm.rcsystem.common.ErrorCode
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -45,8 +46,8 @@ val <T> Result<T>.error: Exception?
 val <T> Result<T>.errorMessage: ErrorMessage?
     get() = (this as? Result.Error)?.errorMessage
 
-val <T> Result<T>.errorCode: String?
-    get() = (this as? Result.Error)?.errorMessage?.errorCode
+val <T> Result<T>.errorCode: ErrorCode
+    get() = (this as? Result.Error)?.errorMessage?.errorCode!!
 
 val <T> Result<T>.requireData: T
     get() = (this as Result.Success).data
@@ -72,8 +73,7 @@ fun <T> Flow<Result<T>>.onError(
 ): Flow<Result<T>> =
     transform { result ->
         if (result is Result.Error) {
-            result.errorMessage?.let { action(it) }
+            action(result.errorMessage)
         }
         return@transform emit(result)
     }
-

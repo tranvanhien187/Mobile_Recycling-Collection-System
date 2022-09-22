@@ -1,8 +1,11 @@
 package datn.cnpm.rcsystem.feature.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -10,6 +13,8 @@ import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.common.extension.createSpannableString
 import datn.cnpm.rcsystem.databinding.FragmentLoginBinding
+import datn.cnpm.rcsystem.feature.home.user.HomeUserActivity
+import datn.cnpm.rcsystem.feature.updateaccountifo.UpdateAccountInfoFragment
 
 /**
  * A simple [LoginFragment] subclass as the default destination in the navigation.
@@ -31,8 +36,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     override fun initActions() {
         binding.apply {
             btnLogin.setOnClickListener {
-                viewModel.login(tieUsername.text.toString(), tieUsername.text.toString(), cbRememberMe.isChecked)
-                findNavController().navigate(R.id.registerFragment)
+                viewModel.login(
+                    tieUsername.text.toString(),
+                    tiePassword.text.toString(),
+                    cbRememberMe.isChecked
+                )
             }
             tvForgetPassword.setOnClickListener {
                 findNavController().navigate(R.id.forgotPasswordFragment)
@@ -63,31 +71,37 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
         viewModel.liveEvent.observe(viewLifecycleOwner) { event ->
             when (event) {
-//                is LoginEvent.LoginSuccess -> {
-//                    event.user?.let { navigateToHomeScreen(it) }
-//                }
-//                is LoginEvent.LoginFailed -> {
-//                }
-//
-//                is LoginEvent.ErrorEmail -> {
-//                    binding.tilEmail.error = event.error
-//                }
-//
-//                is LoginEvent.ErrorPassword -> {
-//                    binding.tilPassword.error = event.error
-//                }
+                is LoginEvent.ValidateField -> {
+                    binding.apply {
+                        tieUsername.error =
+                            if (event.errorUsername == null) null else event.errorUsername.value
+                        tilPassword.error =
+                            if (event.errorPassword == null) null else event.errorPassword.value
+                    }
+                }
                 is LoginEvent.UserLoginSuccess -> {
-//                    val intent = Intent(this.activity, UserActivity::class.java)
-//                    activity?.startActivity(intent)
+                    val intent = Intent(this.activity, HomeUserActivity::class.java)
+                    activity?.startActivity(intent)
+                }
+                is LoginEvent.LoginFailure -> {
+                    showError(event.message)
+                }
+                is LoginEvent.UserUpdatedYet -> {
+                    findNavController().navigate(
+                        R.id.updateAccountInfoFragment,
+                        bundleOf(
+                            Pair(UpdateAccountInfoFragment.IS_UPDATED_KEY, false),
+                            Pair(UpdateAccountInfoFragment.UUID_KEY, event.uuid)
+                        )
+                    )
                 }
                 is LoginEvent.DealerLoginSuccess -> {
-//                    val intent = Intent(this.activity, DealerActivity::class.java)
-//                    activity?.startActivity(intent)
+                    val intent = Intent(this.activity, HomeUserActivity::class.java)
+                    activity?.startActivity(intent)
                 }
                 else -> {}
 
             }
         }
     }
-
 }

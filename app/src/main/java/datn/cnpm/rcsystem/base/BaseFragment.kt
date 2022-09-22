@@ -83,6 +83,14 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment(), IBaseFragment, ToolB
         baseActivity?.hideLoading()
     }
 
+    override fun showError(errorString: String) {
+        baseActivity?.showError(errorString)
+    }
+
+    override fun hideError() {
+        baseActivity?.hideError()
+    }
+
     override fun onBackPressed() {
         if (!findNavController().popBackStack()) {
             requireActivity().finish()

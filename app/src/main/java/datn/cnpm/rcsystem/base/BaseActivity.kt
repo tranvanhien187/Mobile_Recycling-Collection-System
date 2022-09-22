@@ -14,18 +14,21 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.viewbinding.ViewBinding
-import com.example.basesource.common.loader.LogoLoaderDialog
+import datn.cnpm.rcsystem.common.loader.LogoLoaderDialog
 import com.example.basesource.common.utils.permission.Permission
 import com.example.basesource.common.utils.permission.PermissionUtil
 import datn.cnpm.rcsystem.common.extension.adjustFontScale
 import datn.cnpm.rcsystem.common.extension.hideKeyboard
 import com.google.android.material.textfield.TextInputEditText
+import datn.cnpm.rcsystem.common.dialog.ErrorDialog
+import datn.cnpm.rcsystem.common.extension.makeStatusBarTransparent
 
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity(), DialogCommonView
 //    ConnectionListener {
 {
     companion object {
         private const val LOADING_TAG = "LOADING_TAG"
+        private const val ERROR_TAG = "ERROR_TAG"
         private const val FIVE_MINUTE_IN_MILLISECOND = (5 * 60 * 1000).toLong()
     }
 
@@ -34,8 +37,6 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity(), DialogCommo
     lateinit var binding: VB
         private set
     abstract val bindingInflater: (LayoutInflater) -> VB
-
-    var loader = LogoLoaderDialog()
 
 //    private var dialogTokenUnAuthenticator: DialogCustom? = null
 //
@@ -51,6 +52,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity(), DialogCommo
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        this.makeStatusBarTransparent()
         binding = bindingInflater.invoke(layoutInflater)
 
         setContentView(binding.root)
@@ -203,6 +205,20 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity(), DialogCommo
 
     fun hideLoading() {
         supportFragmentManager.fragments.filter { it.tag == LOADING_TAG }.forEach {
+            (it as DialogFragment).dismissAllowingStateLoss()
+        }
+    }
+
+    fun showError(error: String) {
+        val loading = supportFragmentManager.findFragmentByTag(ERROR_TAG)
+        if (loading != null && loading.isVisible) return
+
+        ErrorDialog(error).show(supportFragmentManager, ERROR_TAG)
+
+    }
+
+    fun hideError() {
+        supportFragmentManager.fragments.filter { it.tag == ERROR_TAG }.forEach {
             (it as DialogFragment).dismissAllowingStateLoss()
         }
     }

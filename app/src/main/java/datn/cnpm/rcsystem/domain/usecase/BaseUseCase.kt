@@ -16,7 +16,7 @@ abstract class BaseUseCase<P, R>(private val coroutineDispatcher: CoroutineDispa
                 }
             }
         } catch (e: BadRequestException) {
-            Result.Error(ErrorMessage(errorCode = e.error.name, message = e.error.value, exception = e))
+            Result.Error(ErrorMessage(errorCode = e.error, message = e.error.value, exception = e))
         } catch (e: Exception) {
             Result.Error(ErrorMessage(exception = e))
         }

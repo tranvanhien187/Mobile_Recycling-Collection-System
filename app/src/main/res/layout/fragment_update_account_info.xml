@@ -1,375 +1,341 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-<!--    <com.google.android.material.imageview.ShapeableImageView-->
-<!--        android:id="@+id/frame"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="180dp"-->
-<!--        android:src="@color/green_4caf50"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:shapeAppearanceOverlay="@style/CustomShapeOVerlay">-->
+    <ImageView
+        android:id="@+id/ivHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/empty_value"
+        android:src="@drawable/ic_header"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<!--    </com.google.android.material.imageview.ShapeableImageView>-->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivAvatar"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="60dp"
+        android:background="#E5E5E5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivHeader"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/CustomShapeOVerlay50P"
+        tools:src="@drawable/ic_person" />
 
-<!--    <androidx.core.widget.NestedScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:background="@color/black"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/ctlAvatar">-->
+    <ImageView
+        android:id="@+id/ivCam"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:contentDescription="@string/empty_value"
+        android:src="@drawable/ic_cam"
+        app:layout_constraintBottom_toBottomOf="@id/ivAvatar"
+        app:layout_constraintEnd_toEndOf="@id/ivAvatar" />
 
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent">-->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@id/btnSave"
+        app:layout_constraintTop_toBottomOf="@id/ivAvatar">
 
-<!--            <TextView-->
-<!--                android:id="@+id/txtUsername"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginHorizontal="20dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:text="@string/username_label"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-<!--            <com.google.android.material.textfield.TextInputLayout-->
-<!--                android:id="@+id/tilUsername"-->
-<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginHorizontal="20dp"-->
-<!--                android:layout_marginTop="@dimen/margin_6dp"-->
-<!--                app:hintEnabled="false"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/txtUsername">-->
+            <TextView
+                android:id="@+id/tvLabelFullName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="28dp"
+                android:text="@string/full_name_require"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-<!--                <com.google.android.material.textfield.TextInputEditText-->
-<!--                    android:id="@+id/tieUsername"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:background="@drawable/bg_grey_2d2d2d_corner_8dp"-->
-<!--                    android:drawableStart="@drawable/ic_person"-->
-<!--                    android:drawablePadding="10dp"-->
-<!--                    android:hint="@string/username_label"-->
-<!--                    android:imeOptions="actionNext"-->
-<!--                    android:inputType="text"-->
-<!--                    android:maxLines="1"-->
-<!--                    android:textColorHint="@color/grey_8d8c8c" />-->
-<!--            </com.google.android.material.textfield.TextInputLayout>-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilFullName"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="8dp"
+                app:hintEnabled="false"
+                app:layout_constraintTop_toBottomOf="@+id/tvLabelFullName">
 
-<!--            <LinearLayout-->
-<!--                android:id="@+id/lnlName"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginHorizontal="20dp"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:baselineAligned="false"-->
-<!--                android:orientation="horizontal"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/tilUsername">-->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tieFullName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_corner_8_grey_f2f4f6"
+                    android:gravity="center_vertical"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="10dp"-->
-<!--                    android:layout_weight="0.5"-->
-<!--                    android:orientation="vertical">-->
+            <TextView
+                android:id="@+id/tvLabelDOB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/date_of_birth_label"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tilFullName" />
 
-<!--                    <TextView-->
-<!--                        android:id="@+id/txtFirstName"-->
-<!--                        -->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:text="@string/first_name_label" />-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDOB"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="10dp"
+                app:hintEnabled="false"
+                app:layout_constraintTop_toBottomOf="@+id/tvLabelDOB">
 
-<!--                    <com.google.android.material.textfield.TextInputLayout-->
-<!--                        android:id="@+id/tilFirstName"-->
-<!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="6dp"-->
-<!--                        app:hintEnabled="false">-->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tieDOB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_corner_8_grey_f2f4f6"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:text="18/07/2000"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-<!--                        <com.google.android.material.textfield.TextInputEditText-->
-<!--                            android:id="@+id/tieFirstName"-->
-<!--                            -->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:background="@drawable/bg_grey_2d2d2d_corner_8dp"-->
-<!--                            android:drawableStart="@drawable/ic_person"-->
-<!--                            android:drawablePadding="10dp"-->
-<!--                            android:hint="@string/first_name_label"-->
-<!--                            android:imeOptions="actionNext"-->
-<!--                            android:inputType="text"-->
-<!--                            android:maxLines="1"-->
-<!--                            android:textColorHint="@color/grey_8d8c8c" />-->
-<!--                    </com.google.android.material.textfield.TextInputLayout>-->
-<!--                </LinearLayout>-->
+            <TextView
+                android:id="@+id/tvLabelCMND"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/identity_number_label"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tilDOB" />
 
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_weight="0.5"-->
-<!--                    android:orientation="vertical">-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilIN"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="10dp"
+                app:hintEnabled="false"
+                app:layout_constraintTop_toBottomOf="@+id/tvLabelCMND">
 
-<!--                    <TextView-->
-<!--                        android:id="@+id/txtLastName"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:text="@string/last_name_label" />-->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tieIN"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_corner_8_grey_f2f4f6"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:text="Tran Van Hien"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-<!--                    <com.google.android.material.textfield.TextInputLayout-->
-<!--                        android:id="@+id/tilLastName"-->
-<!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="6dp"-->
-<!--                        app:hintEnabled="false">-->
+            <TextView
+                android:id="@+id/tvLabelPN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/phone_number_require"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tilIN" />
 
-<!--                        <com.google.android.material.textfield.TextInputEditText-->
-<!--                            android:id="@+id/tieLastName"-->
-<!--                            -->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:background="@drawable/bg_grey_2d2d2d_corner_8dp"-->
-<!--                            android:drawableStart="@drawable/ic_person"-->
-<!--                            android:drawablePadding="10dp"-->
-<!--                            android:hint="@string/last_name_label"-->
-<!--                            android:imeOptions="actionNext"-->
-<!--                            android:inputType="text"-->
-<!--                            android:maxLines="1"-->
-<!--                            android:textColorHint="@color/grey_8d8c8c" />-->
-<!--                    </com.google.android.material.textfield.TextInputLayout>-->
-<!--                </LinearLayout>-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPN"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="10dp"
+                app:hintEnabled="false"
+                app:layout_constraintTop_toBottomOf="@+id/tvLabelPN">
 
-<!--            </LinearLayout>-->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiePN"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_corner_8_grey_f2f4f6"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:text="0899871914"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-<!--            <TextView-->
-<!--                android:id="@+id/txtEmail"-->
-<!--                -->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_marginHorizontal="20dp"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:text="@string/email_label"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/lnlName" />-->
+            <TextView
+                android:id="@+id/tvLabelPOC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/city_province_label"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tilPN" />
 
-<!--            <com.google.android.material.textfield.TextInputLayout-->
-<!--                android:id="@+id/tilEmail"-->
-<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginHorizontal="20dp"-->
-<!--                android:layout_marginTop="@dimen/margin_6dp"-->
-<!--                app:hintEnabled="false"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/txtEmail">-->
+            <TextView
+                android:id="@+id/tvPOC"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_corner_8_grey_f2f4f6"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@+id/tvLabelPOC" />
 
-<!--                <com.google.android.material.textfield.TextInputEditText-->
-<!--                    android:id="@+id/tieEmail"-->
-<!--                    -->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:background="@drawable/bg_grey_2d2d2d_corner_8dp"-->
-<!--                    android:drawableStart="@drawable/ic_email"-->
-<!--                    android:drawablePadding="10dp"-->
-<!--                    android:enabled="false"-->
-<!--                    android:hint="@string/email_label"-->
-<!--                    android:imeOptions="actionNext"-->
-<!--                    android:inputType="text"-->
-<!--                    android:maxLines="1"-->
-<!--                    android:textColorHint="@color/grey_8d8c8c" />-->
-<!--            </com.google.android.material.textfield.TextInputLayout>-->
+            <TextView
+                android:id="@+id/tvLabelDistrict"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/district_label"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPOC" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/txtPhone"-->
-<!--                -->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_marginHorizontal="20dp"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:text="@string/phone_number_label"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/tilEmail" />-->
+            <TextView
+                android:id="@+id/tvDistrict"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_corner_8_grey_f2f4f6"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@+id/tvLabelDistrict" />
 
-<!--            <com.google.android.material.textfield.TextInputLayout-->
-<!--                android:id="@+id/tilPhone"-->
-<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginHorizontal="20dp"-->
-<!--                android:layout_marginTop="@dimen/margin_6dp"-->
-<!--                app:hintEnabled="false"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/txtPhone">-->
+            <TextView
+                android:id="@+id/tvStreet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/street_label"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDistrict" />
 
-<!--                <com.google.android.material.textfield.TextInputEditText-->
-<!--                    android:id="@+id/tiePhone"-->
-<!--                    -->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:background="@drawable/bg_grey_2d2d2d_corner_8dp"-->
-<!--                    android:drawableStart="@drawable/ic_call"-->
-<!--                    android:drawablePadding="10dp"-->
-<!--                    android:hint="@string/phone_number_label"-->
-<!--                    android:imeOptions="actionDone"-->
-<!--                    android:inputType="textPassword"-->
-<!--                    android:maxLines="1"-->
-<!--                    android:textColorHint="@color/grey_8d8c8c" />-->
-<!--            </com.google.android.material.textfield.TextInputLayout>-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilStreet"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="10dp"
+                app:hintEnabled="false"
+                app:layout_constraintTop_toBottomOf="@+id/tvStreet">
 
-<!--            <TextView-->
-<!--                android:id="@+id/txtAddress"-->
-<!--                -->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_marginHorizontal="20dp"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:text="@string/address_label"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/tilPhone" />-->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tieStreet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_corner_8_grey_f2f4f6"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:text="K90/27 Đống Đa"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
-<!--            <com.google.android.material.textfield.TextInputLayout-->
-<!--                android:id="@+id/tilAddress"-->
-<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginHorizontal="20dp"-->
-<!--                android:layout_marginTop="@dimen/margin_6dp"-->
-<!--                app:hintEnabled="false"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/txtAddress">-->
+    <TextView
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_solid_8dp_green_00ad31"
+        android:enabled="true"
+        android:fontFamily="@font/proximanova_bold"
+        android:gravity="center"
+        android:paddingVertical="14dp"
+        android:text="@string/save_btn"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-<!--                <com.google.android.material.textfield.TextInputEditText-->
-<!--                    android:id="@+id/tieAddress"-->
-<!--                    -->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:background="@drawable/bg_grey_2d2d2d_corner_8dp"-->
-<!--                    android:drawableStart="@drawable/ic_address"-->
-<!--                    android:drawablePadding="10dp"-->
-<!--                    android:hint="@string/address_label"-->
-<!--                    android:imeOptions="actionDone"-->
-<!--                    android:inputType="textPassword"-->
-<!--                    android:maxLines="1"-->
-<!--                    android:textColorHint="@color/grey_8d8c8c" />-->
-<!--            </com.google.android.material.textfield.TextInputLayout>-->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:visibility="gone">
 
-<!--            <TextView-->
-<!--                android:id="@+id/txtGender"-->
-<!--                -->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_marginHorizontal="20dp"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:text="@string/gender_label"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/tilAddress" />-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottomSheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_corner_top_16"
+            app:behavior_hideable="true"
+            app:behavior_skipCollapsed="true"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-<!--            <RadioGroup-->
-<!--                android:id="@+id/radioGroup"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginHorizontal="20dp"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:layout_marginBottom="20dp"-->
-<!--                android:orientation="horizontal"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/txtGender">-->
+            <TextView
+                android:id="@+id/tvLabel1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/proximanova_bold"
+                android:text="@string/choose_your_current_city_or_province"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@id/rvDistrictAndPOC"
+                app:layout_constraintEnd_toStartOf="@id/ivClose"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-<!--                <RadioButton-->
-<!--                    android:id="@+id/rbMale"-->
-<!--                    style="@style/Text16whiteStyle"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:paddingStart="6dp"-->
-<!--                    android:paddingEnd="0dp"-->
-<!--                    android:text="@string/male_label"-->
-<!--                    android:theme="@style/RadioButtonTheme" />-->
+            <ImageView
+                android:id="@+id/ivClose"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="24dp"
+                android:contentDescription="@string/empty_value"
+                android:src="@drawable/ic_close"
+                app:layout_constraintBottom_toBottomOf="@id/tvLabel1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvLabel1" />
 
-<!--                <RadioButton-->
-<!--                    android:id="@+id/rbFemale"-->
-<!--                    style="@style/Text16whiteStyle"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="16dp"-->
-<!--                    android:paddingStart="6dp"-->
-<!--                    android:paddingEnd="0dp"-->
-<!--                    android:text="@string/female_male"-->
-<!--                    android:theme="@style/RadioButtonTheme" />-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvDistrictAndPOC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:listitem="@layout/item_district_and_poc" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--                <RadioButton-->
-<!--                    android:id="@+id/rbOther"-->
-<!--                    style="@style/Text16whiteStyle"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="16dp"-->
-<!--                    android:paddingStart="6dp"-->
-<!--                    android:paddingEnd="0dp"-->
-<!--                    android:text="@string/other_label"-->
-<!--                    android:theme="@style/RadioButtonTheme" />-->
-<!--            </RadioGroup>-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/btnConfirm"-->
-<!--                style="@style/Text18WhiteBoldStyle"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginHorizontal="20dp"-->
-<!--                android:layout_marginTop="@dimen/margin_28dp"-->
-<!--                android:background="@drawable/bg_button_login"-->
-<!--                android:enabled="true"-->
-<!--                android:gravity="center"-->
-<!--                android:paddingVertical="@dimen/padding_14dp"-->
-<!--                android:text="@string/confirm_btn"-->
-<!--                android:textAllCaps="true"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/radioGroup" />-->
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-<!--    </androidx.core.widget.NestedScrollView>-->
-
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:id="@+id/ctlAvatar"-->
-<!--        android:layout_width="150dp"-->
-<!--        android:layout_height="150dp"-->
-<!--        android:layout_marginTop="-75dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/frame">-->
-
-<!--        <dacnpm.salonbooking.commonui.avatar.CircleImageView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:src="@color/white"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintLeft_toLeftOf="parent"-->
-<!--            app:layout_constraintRight_toRightOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--        <com.google.android.material.imageview.ShapeableImageView-->
-<!--            android:id="@+id/imgAvatar"-->
-<!--            android:layout_width="140dp"-->
-<!--            android:layout_height="140dp"-->
-<!--            android:scaleType="centerCrop"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintLeft_toLeftOf="parent"-->
-<!--            app:layout_constraintRight_toRightOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:shapeAppearanceOverlay="@style/CustomShapeOVerlay70"-->
-<!--            tools:src="@drawable/icon" />-->
-
-<!--        <dacnpm.salonbooking.commonui.avatar.CircleImageView-->
-<!--            android:layout_width="40dp"-->
-<!--            android:layout_height="40dp"-->
-<!--            android:layout_marginEnd="10dp"-->
-<!--            android:layout_marginBottom="10dp"-->
-<!--            android:src="@color/white"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintRight_toRightOf="parent" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/imgCam"-->
-<!--            android:layout_width="26dp"-->
-<!--            android:layout_height="26dp"-->
-<!--            android:layout_marginEnd="16dp"-->
-<!--            android:layout_marginBottom="16dp"-->
-<!--            android:src="@drawable/ic_camera"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintRight_toRightOf="parent"-->
-<!--            tools:ignore="ContentDescription" />-->
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+

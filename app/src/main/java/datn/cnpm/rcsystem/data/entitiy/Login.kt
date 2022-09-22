@@ -4,7 +4,8 @@ data class LoginResponse(
     val tokenType: String = "Bearer",
     val accessToken: String,
     val uuid: String,
-    val role: String
+    val role: String,
+    val updatedInfo: Boolean
 )
 
 data class LoginRequest(

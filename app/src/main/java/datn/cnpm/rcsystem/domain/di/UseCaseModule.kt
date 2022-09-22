@@ -46,4 +46,27 @@ abstract class UseCaseModule {
         useCase: ValidateOTPUseCaseImpl
     ): ValidateOTPUseCase
 
+    @Binds
+    @Singleton
+    abstract fun provideUpdateUserInfoUseCase(
+        useCase: UpdateUserInfoUseCaseImpl
+    ): UpdateUserInfoUseCase
+
+    @Binds
+    @Singleton
+    abstract fun provideGetUserInfoUseCase(
+        useCase: GetUserInfoUseCaseImpl
+    ): GetUserInfoUseCase
+
+    @Binds
+    @Singleton
+    abstract fun provideGetTPlaceForUserUseCase(
+        useCase: GetTPlaceForUserUseCaseImpl
+    ): GetTPlaceForUserUseCase
+
+    @Binds
+    @Singleton
+    abstract fun provideGetTPlaceRandom6UseCase(
+        useCase: GetTPlaceRandom6UseCaseImpl
+    ): GetTPlaceRandom6UseCase
 }
