@@ -58,4 +58,12 @@ class AuthenticationDataSource @Inject constructor(private val authenticationApi
     suspend fun getTPlaceRandom6(uuid: String): SBResponse<List<GetTPPlaceForUserResponse>> {
         return authenticationApiService.getTPlaceRandom6(uuid)
     }
+
+    suspend fun getGiftUserHistory(uuid: String): SBResponse<List<GiftUserHistoryResponse>> {
+        return authenticationApiService.getGiftUserHistory(uuid)
+    }
+
+    suspend fun getGarbageUserHistory(uuid: String): SBResponse<List<GarbageUserHistoryResponse>> {
+        return authenticationApiService.getGarbageUserHistory(uuid)
+    }
 }

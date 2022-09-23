@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <style name="T10M_10Regular_Subtext">
         <item name="android:textColor">@color/grey_d1d0d9</item>
         <item name="fontWeight">500</item>
@@ -35,5 +34,16 @@
     <style name="CustomShapeOVerlay70">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">70dp</item>
+    </style>
+
+    <style name="Theme.RecyclingCollectionSystem.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="tabBarDiscover" parent="Theme.RecyclingCollectionSystem.NoActionBar">
+        <item name="android:fontFamily">@font/proximanova_sbold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/grey_7e7e7e</item>
     </style>
 </resources>

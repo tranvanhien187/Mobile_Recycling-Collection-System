@@ -6,7 +6,7 @@
     android:id="@+id/appBarLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="#FAFAFA"
     android:visibility="gone"
     tools:visibility="visible">
 
@@ -43,18 +43,20 @@
 
             <TextView
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:id="@+id/tvContentCenter"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="40dp"
                 android:ellipsize="end"
                 android:gravity="center"
+                android:fontFamily="@font/proximanova_sbold"
                 android:maxLines="1"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 tools:text="Tool bar"
                 tools:visibility="visible" />
 

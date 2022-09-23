@@ -30,7 +30,7 @@ class HomeUserActivity : BaseActivity<ActivityHomeUserBinding>() {
                     navHostFragment.navController.navigate(R.id.dashboardFragment)
                 }
                 R.id.menu_history -> {
-
+                    navHostFragment.navController.navigate(R.id.historyFragment)
                 }
                 R.id.menu_place -> {
                     navHostFragment.navController.navigate(R.id.tradingPlaceFragment)

@@ -54,6 +54,10 @@
     <string name="where_i_can_recycle_label">Where I can recycle?</string>
     <string name="view_all_label"><![CDATA[View all >]]></string>
     <string name="label_total_weight">Equivalents to %s kilograms trash has been recycle, congrats!</string>
+    <string name="garbage_label">Garbage</string>
+    <string name="register_label">Register</string>
+    <string name="received_label">Received</string>
+    <string name="redemption_point">%d points</string>
 
     <string-array name="City">
         <item>Thành phố Đà Nẵng</item>

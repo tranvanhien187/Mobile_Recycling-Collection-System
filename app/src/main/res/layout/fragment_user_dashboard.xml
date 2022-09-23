@@ -149,20 +149,66 @@
             app:layout_constraintTop_toBottomOf="@id/llLabel1"
             tools:listitem="@layout/item_recycling_garbage" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+        <RelativeLayout
             android:id="@+id/llLabel2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_recycling"
+            android:layout_marginHorizontal="24dp"
             android:layout_marginTop="16dp"
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@id/rvGarbageTrade">
 
             <TextView
+                android:id="@+id/tvLabel3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:fontFamily="@font/proximanova_sbold"
+                android:gravity="center"
+                android:text="Gift you may be like"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvLabel4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/proximanova_reg"
+                android:text="@string/view_all_label"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvGift"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/llLabel2"
+            tools:listitem="@layout/item_recycling_garbage" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/llLabel3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_recycling"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/rvGift">
+
+            <TextView
                 android:layout_marginStart="24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:id="@+id/tvLabel3"
+                android:id="@+id/tvLabel5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/proximanova_sbold"
@@ -173,7 +219,7 @@
 
             <TextView
                 android:layout_marginEnd="24dp"
-                android:id="@+id/tvLabel4"
+                android:id="@+id/tvLabel6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -193,11 +239,8 @@
                 android:orientation="horizontal"
                 android:paddingLeft="24dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@id/tvLabel3"
+                app:layout_constraintTop_toBottomOf="@id/tvLabel5"
                 tools:listitem="@layout/item_trading_place_home" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.core.widget.NestedScrollView>

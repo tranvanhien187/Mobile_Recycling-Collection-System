@@ -137,4 +137,34 @@ class AuthenticationRepositoryImp @Inject constructor(
             throw Exception(ErrorCode.UNKNOWN_ERROR.value)
         }
     }
+
+    override suspend fun getGiftUserHistory(): List<GiftUserHistoryResponse> {
+        val response = authenticationDataSource.getGiftUserHistory(authPre.uuid)
+        if (response.isSuccess) {
+            return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
+        } else {
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+        }
+    }
+
+    override suspend fun getGarbageUserHistory(): List<GarbageUserHistoryResponse> {
+        val response = authenticationDataSource.getGarbageUserHistory(authPre.uuid)
+        if (response.isSuccess) {
+            return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
+        } else {
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+        }
+    }
 }

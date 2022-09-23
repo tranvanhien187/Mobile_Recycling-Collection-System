@@ -69,4 +69,16 @@ abstract class UseCaseModule {
     abstract fun provideGetTPlaceRandom6UseCase(
         useCase: GetTPlaceRandom6UseCaseImpl
     ): GetTPlaceRandom6UseCase
+
+    @Binds
+    @Singleton
+    abstract fun provideGetGiftUserHistoryUseCase(
+        useCase: GetGiftUserHistoryUseCaseImpl
+    ): GetGiftUserHistoryUseCase
+
+    @Binds
+    @Singleton
+    abstract fun provideGetGarbageUserHistoryUseCase(
+        useCase: GetGarbageUserHistoryUseCaseImpl
+    ): GetGarbageUserHistoryUseCase
 }
