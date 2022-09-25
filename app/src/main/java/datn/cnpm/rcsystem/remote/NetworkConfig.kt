@@ -14,5 +14,5 @@ object NetworkConfig {
 
     const val NETWORK_READ_TIMEOUT = 90
 
-    const val BASE_URL = "https://2176-2402-800-629c-acbb-ba-558b-3541-8986.ap.ngrok.io/"
+    const val BASE_URL = "https://729f-2402-800-629c-acbb-b172-a344-1b6f-3438.ap.ngrok.io/"
 }

@@ -10,6 +10,6 @@ sealed interface GarbageHistoryEvent {
 
     object UserLoginSuccess : GarbageHistoryEvent
     data class UserUpdatedYet(val uuid: String) : GarbageHistoryEvent
-    object DealerLoginSuccess : GarbageHistoryEvent
+    object UnKnowError : GarbageHistoryEvent
     data class LoginFailure(val message: String) : GarbageHistoryEvent
 }

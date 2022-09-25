@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/clGarbage"
@@ -22,37 +21,37 @@
         app:shapeAppearanceOverlay="@style/CustomShapeOverlay10"
         tools:src="@color/green_00ad31" />
 
-    <TextView
-        android:id="@+id/tvRegister"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_register_type_bottom_8"
-        android:fontFamily="@font/proximanova_bold"
-        android:gravity="center"
-        android:paddingVertical="4dp"
-        android:text="@string/register_label"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/ivTPlace"
-        app:layout_constraintEnd_toEndOf="@id/ivTPlace"
-        app:layout_constraintStart_toStartOf="@id/ivTPlace"
-        tools:visibility="gone" />
+<!--    <TextView-->
+<!--        android:id="@+id/tvRegister"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/bg_register_type_bottom_8"-->
+<!--        android:fontFamily="@font/proximanova_bold"-->
+<!--        android:gravity="center"-->
+<!--        android:paddingVertical="4dp"-->
+<!--        android:text="@string/register_label"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="12sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/ivTPlace"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/ivTPlace"-->
+<!--        app:layout_constraintStart_toStartOf="@id/ivTPlace"-->
+<!--        tools:visibility="gone" />-->
 
-    <TextView
-        android:id="@+id/tvReceive"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_received_type_bottom_8"
-        android:fontFamily="@font/proximanova_bold"
-        android:gravity="center"
-        android:paddingVertical="4dp"
-        android:text="@string/received_label"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/ivTPlace"
-        app:layout_constraintEnd_toEndOf="@id/ivTPlace"
-        app:layout_constraintStart_toStartOf="@id/ivTPlace"
-        tools:visibility="gone" />
+<!--    <TextView-->
+<!--        android:id="@+id/tvReceive"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/bg_received_type_bottom_8"-->
+<!--        android:fontFamily="@font/proximanova_bold"-->
+<!--        android:gravity="center"-->
+<!--        android:paddingVertical="4dp"-->
+<!--        android:text="@string/received_label"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="12sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/ivTPlace"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/ivTPlace"-->
+<!--        app:layout_constraintStart_toStartOf="@id/ivTPlace"-->
+<!--        tools:visibility="gone" />-->
 
     <TextView
         android:id="@+id/tvTPlaceName"
@@ -83,56 +82,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ivTPlace"
         app:layout_constraintTop_toBottomOf="@id/tvTPlaceName"
-        tools:text="Coca cola company" />
+        tools:text="Minatozaki Sana" />
 
     <TextView
-        android:id="@+id/tvPoint"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:fontFamily="@font/proximanova_sbold"
-        android:textColor="@color/orange_f05a30"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toEndOf="@id/ivTPlace"
-        app:layout_constraintTop_toBottomOf="@id/tvDealerName"
-        tools:text="8.000 points" />
-
-    <TextView
-        android:id="@+id/tvGarbageWeight"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="24dp"
-        android:fontFamily="@font/proximanova_sbold"
-        android:paddingStart="0dp"
-        android:paddingEnd="16dp"
-        android:textColor="@color/orange_f05a30"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toEndOf="@id/ivTPlace"
-        app:layout_constraintTop_toBottomOf="@+id/tvPoint"
-        tools:text="or 8kg" />
-
-    <TextView
-        android:id="@+id/tvDealerNamea"
+        android:id="@+id/tvWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:drawableStart="@drawable/ic_weight"
+        android:drawablePadding="4dp"
         android:fontFamily="@font/proximanova_sbold"
-        android:textColor="@color/grey_7e7e7e"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/orange_f05a30"
+        android:textSize="16sp"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@id/ivTPlace"
-        app:layout_constraintTop_toBottomOf="@+id/tvGarbageWeight"
-        tools:text="Minatozaki Sana" />
+        app:layout_constraintTop_toBottomOf="@id/tvDealerName"
+        tools:text="0.9kg" />
 
     <ImageView
         android:id="@+id/ivDate"
@@ -143,7 +110,7 @@
         android:layout_marginTop="10dp"
         android:src="@drawable/ic_date"
         app:layout_constraintStart_toEndOf="@id/ivTPlace"
-        app:layout_constraintTop_toBottomOf="@id/tvDealerNamea"
+        app:layout_constraintTop_toBottomOf="@id/tvWeight"
         tools:ignore="ContentDescription" />
 
     <TextView
@@ -163,7 +130,7 @@
         app:layout_constraintBottom_toTopOf="@id/vLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/imgMapPin"
-        app:layout_constraintTop_toBottomOf="@id/tvDealerNamea"
+        app:layout_constraintTop_toBottomOf="@id/tvWeight"
         app:layout_constraintVertical_bias="0"
         tools:text="11/07/2022" />
 
