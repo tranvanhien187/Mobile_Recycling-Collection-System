@@ -26,7 +26,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
     }
 
     override fun initViews() {
-        showToolbar(getString(R.string.history_label))
+        showToolbar(getString(R.string.history_label), R.drawable.ic_back)
         historyAdapter = HistoryAdapter(this)
         binding.apply {
             pager.adapter = historyAdapter
@@ -42,6 +42,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
                     tab.position.let { position ->
                     }
                 }
+
                 override fun onTabReselected(tab: TabLayout.Tab?) {}
                 override fun onTabUnselected(tab: TabLayout.Tab?) {}
             })

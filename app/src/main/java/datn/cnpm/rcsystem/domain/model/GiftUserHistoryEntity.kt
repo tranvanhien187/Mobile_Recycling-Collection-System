@@ -1,12 +1,15 @@
 package datn.cnpm.rcsystem.domain.model
 
+import android.os.Parcelable
 import datn.cnpm.rcsystem.data.entitiy.GiftUserHistoryResponse
+import kotlinx.parcelize.Parcelize
 import java.util.*
 
-
+@Parcelize
 data class GiftUserHistoryEntity(
     val id: Int = 0,
     val name: String? = null,
+    val type: String? = null,
     val imageUrl: String? = null,
     val brand: String? = null,
     val contributor: String? = null,
@@ -21,12 +24,13 @@ data class GiftUserHistoryEntity(
     val street: String? = null,
     val district: String? = null,
     val provinceOrCity: String? = null,
-)
+) : Parcelable
 
 fun GiftUserHistoryResponse.mapToEntity(): GiftUserHistoryEntity {
     return GiftUserHistoryEntity(
         id,
         name,
+        type,
         imageUrl,
         brand,
         contributor,
@@ -46,4 +50,8 @@ fun GiftUserHistoryResponse.mapToEntity(): GiftUserHistoryEntity {
 
 enum class GiftStatus {
     AVAILABLE, REGISTER, RECEIVED
+}
+
+enum class GiftType {
+    Beverage, Electronic, Houseware
 }

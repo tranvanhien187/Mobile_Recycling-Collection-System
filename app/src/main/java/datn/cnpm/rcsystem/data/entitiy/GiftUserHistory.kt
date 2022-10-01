@@ -2,10 +2,10 @@ package datn.cnpm.rcsystem.data.entitiy
 
 import java.util.*
 
-
 class GiftUserHistoryResponse(
     val id: Int = 0,
     val name: String? = null,
+    val type: String? = null,
     val imageUrl: String? = null,
     val brand: String? = null,
     val contributor: String? = null,

@@ -203,4 +203,8 @@ object CommonUtils {
         return if (matcherEmailFormat.matches()) Constant.EMAIL_NOT_VALID
         else Constant.EMAIL_VALID
     }
+
+    fun Int?.toPoint(): String {
+        return NumberFormat.getNumberInstance(Locale.US).format(this ?: 0) + " points"
+    }
 }

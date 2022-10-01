@@ -4,10 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.databinding.FragmentGiftHistoryBinding
+import datn.cnpm.rcsystem.feature.history.garbage.GarbageHistoryFragment
 
 /**
  * A simple [GiftHistoryFragment] subclass as the default destination in the navigation.
@@ -32,8 +36,10 @@ class GiftHistoryFragment : BaseFragment<FragmentGiftHistoryBinding>() {
 
     override fun initActions() {
         giftAdapter.onItemClick = { gift ->
-            Toast.makeText(requireContext(), gift.name.toString(), Toast.LENGTH_SHORT).show()
-        }
+            findNavController().navigate(
+                R.id.giftHistoryDetailFragment,
+                bundleOf(Pair(GIFT_HISTORY_KEY, gift))
+            )        }
         binding.apply {
         }
     }
@@ -60,5 +66,9 @@ class GiftHistoryFragment : BaseFragment<FragmentGiftHistoryBinding>() {
                 }
             }
         )
+    }
+
+    companion object {
+        const val GIFT_HISTORY_KEY = "GIFT_HISTORY_KEY"
     }
 }

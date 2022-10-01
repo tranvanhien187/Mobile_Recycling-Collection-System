@@ -1,9 +1,11 @@
 package datn.cnpm.rcsystem.domain.model
 
+import android.os.Parcelable
 import datn.cnpm.rcsystem.data.entitiy.GarbageUserHistoryResponse
+import kotlinx.parcelize.Parcelize
 import java.util.*
 
-
+@Parcelize
 class GarbageUserHistoryEntity(
     val id: Int = 0,
     val dealerId: String? = null,
@@ -18,7 +20,7 @@ class GarbageUserHistoryEntity(
     val street: String? = null,
     val district: String? = null,
     val provinceOrCity: String? = null
-)
+) : Parcelable
 
 fun GarbageUserHistoryResponse.mapToEntity(): GarbageUserHistoryEntity {
     return GarbageUserHistoryEntity(

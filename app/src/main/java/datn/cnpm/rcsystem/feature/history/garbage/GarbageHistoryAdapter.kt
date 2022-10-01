@@ -11,7 +11,7 @@ import datn.cnpm.rcsystem.domain.model.GarbageUserHistoryEntity
 import java.text.SimpleDateFormat
 
 
-class GarbageAdapter : BaseListAdapter<GarbageUserHistoryEntity>(GarbageDiffUntil()) {
+class GarbageHistoryAdapter : BaseListAdapter<GarbageUserHistoryEntity>(GarbageDiffUntil()) {
     class GarbageDiffUntil : BaseDiffUtilItemCallback<GarbageUserHistoryEntity>()
 
     var onItemClick: (gift: GarbageUserHistoryEntity) -> Unit = {}

@@ -22,4 +22,20 @@
         android:name="datn.cnpm.rcsystem.feature.history.HistoryFragment"
         android:label="HistoryFragment"
         tools:layout="@layout/fragment_history"/>
+    <fragment
+        android:id="@+id/garbageHistoryDetailFragment"
+        android:name="datn.cnpm.rcsystem.feature.history.garbagedetail.GarbageHistoryDetailFragment"
+        android:label="GarbageHistoryDetailFragment"
+        tools:layout="@layout/fragment_garbage_history_detail"/>
+    <fragment
+        android:id="@+id/giftHistoryDetailFragment"
+        android:name="datn.cnpm.rcsystem.feature.history.giftdetail.GiftHistoryDetailFragment"
+        android:label="GiftHistoryDetailFragment"
+        tools:layout="@layout/fragment_gift_history_detail"/>
+
+    <fragment
+        android:id="@+id/personalFragment"
+        android:name="datn.cnpm.rcsystem.feature.personal.PersonalFragment"
+        android:label="GiftHistoryDetailFragment"
+        tools:layout="@layout/fragment_personal"/>
 </navigation>

@@ -3,14 +3,13 @@ package datn.cnpm.rcsystem.feature.history.garbage
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.databinding.FragmentGarbageHistoryBinding
-import datn.cnpm.rcsystem.feature.history.HistoryAdapter
-import datn.cnpm.rcsystem.feature.history.gift.GiftAdapter
-import datn.cnpm.rcsystem.feature.history.gift.GiftHistoryViewModel
 
 /**
  * A simple [GarbageHistoryFragment] subclass as the default destination in the navigation.
@@ -22,19 +21,22 @@ class GarbageHistoryFragment : BaseFragment<FragmentGarbageHistoryBinding>() {
         get() = FragmentGarbageHistoryBinding::inflate
 
     private val viewModel: GarbageHistoryViewModel by viewModels()
-    private lateinit var garbageAdapter: GarbageAdapter
+    private lateinit var garbageAdapter: GarbageHistoryAdapter
     override fun initData(data: Bundle?) {
         viewModel.fetchGiftHistory()
     }
 
     override fun initViews() {
-        garbageAdapter = GarbageAdapter()
+        garbageAdapter = GarbageHistoryAdapter()
         binding.rvGarbageHistory.adapter = garbageAdapter
     }
 
     override fun initActions() {
         garbageAdapter.onItemClick = { garbage ->
-            Toast.makeText(requireContext(), garbage.weight.toString(), Toast.LENGTH_SHORT).show()
+            findNavController().navigate(
+                R.id.garbageHistoryDetailFragment,
+                bundleOf(Pair(GARBAGE_HISTORY_KEY, garbage))
+            )
         }
         binding.apply {
         }
@@ -62,5 +64,9 @@ class GarbageHistoryFragment : BaseFragment<FragmentGarbageHistoryBinding>() {
                 }
             }
         )
+    }
+
+    companion object {
+        const val GARBAGE_HISTORY_KEY = "GARBAGE_HISTORY_KEY"
     }
 }

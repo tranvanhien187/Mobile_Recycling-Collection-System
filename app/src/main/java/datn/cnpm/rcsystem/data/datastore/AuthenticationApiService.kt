@@ -45,6 +45,9 @@ interface AuthenticationApiService {
     @GET("api/v1/tplace/get/random/{id}")
     suspend fun getTPlaceRandom6(@Path("id") id: String): SBResponse<List<GetTPPlaceForUserResponse>>
 
+    @GET("api/v1/gift/get/random/{id}")
+    suspend fun getGiftRandom6(@Path("id") id: String): SBResponse<List<GiftResponse>>
+
     @GET("/api/v1/gift/userhistory/{id}")
     suspend fun getGiftUserHistory(@Path("id") uuid: String): SBResponse<List<GiftUserHistoryResponse>>
 

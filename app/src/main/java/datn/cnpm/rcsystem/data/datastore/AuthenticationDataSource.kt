@@ -9,27 +9,27 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import javax.inject.Inject
 
 class AuthenticationDataSource @Inject constructor(private val authenticationApiService: AuthenticationApiService) {
-    suspend fun login(request: LoginRequest) : SBResponse<LoginResponse> {
+    suspend fun login(request: LoginRequest): SBResponse<LoginResponse> {
         return authenticationApiService.login(request)
     }
 
-    suspend fun register(request: RegisterRequest) : SBResponse<RegisterResponse>{
+    suspend fun register(request: RegisterRequest): SBResponse<RegisterResponse> {
         return authenticationApiService.register(request)
     }
 
-    suspend fun changePassword(request: ChangePasswordRequest) : SBResponse<String>{
+    suspend fun changePassword(request: ChangePasswordRequest): SBResponse<String> {
         return authenticationApiService.changePassword(request)
     }
 
-    suspend fun genOTP(request: GenOTPRequest) : SBResponse<String>{
+    suspend fun genOTP(request: GenOTPRequest): SBResponse<String> {
         return authenticationApiService.genOTP(request)
     }
 
-    suspend fun validateOTP(request: ValidateOTPRequest) : SBResponse<String>{
+    suspend fun validateOTP(request: ValidateOTPRequest): SBResponse<String> {
         return authenticationApiService.validateOTP(request)
     }
 
-    suspend fun updateUserInfo(request: UpdateUserInfoRequest) : SBResponse<UpdateUserInfoResponse>{
+    suspend fun updateUserInfo(request: UpdateUserInfoRequest): SBResponse<UpdateUserInfoResponse> {
         val name = request.name.toRequestBody("text/plain".toMediaTypeOrNull())
         val uuid = request.uuid.toRequestBody("text/plain".toMediaTypeOrNull())
         val phoneNumber = request.phoneNumber.toRequestBody("text/plain".toMediaTypeOrNull())
@@ -44,19 +44,36 @@ class AuthenticationDataSource @Inject constructor(private val authenticationApi
             request.avatar.name,
             request.avatar.asRequestBody("image/*".toMediaTypeOrNull())
         )
-        return authenticationApiService.updateUserInfo(avatar, uuid, name,phoneNumber,ICN,dOB,street,district, provinceOrCity)
+        return authenticationApiService.updateUserInfo(
+            avatar,
+            uuid,
+            name,
+            phoneNumber,
+            ICN,
+            dOB,
+            street,
+            district,
+            provinceOrCity
+        )
     }
 
     suspend fun getUserInfo(uuid: String): SBResponse<GetUserInfoResponse> {
         return authenticationApiService.getUserInfo(uuid)
     }
 
-    suspend fun getTPlaceForUser(uuid: String, criteria: String): SBResponse<List<GetTPPlaceForUserResponse>> {
+    suspend fun getTPlaceForUser(
+        uuid: String,
+        criteria: String
+    ): SBResponse<List<GetTPPlaceForUserResponse>> {
         return authenticationApiService.getTPlaceForUser(uuid, criteria)
     }
 
     suspend fun getTPlaceRandom6(uuid: String): SBResponse<List<GetTPPlaceForUserResponse>> {
         return authenticationApiService.getTPlaceRandom6(uuid)
+    }
+
+    suspend fun getGiftRandom6(uuid: String): SBResponse<List<GiftResponse>> {
+        return authenticationApiService.getGiftRandom6(uuid)
     }
 
     suspend fun getGiftUserHistory(uuid: String): SBResponse<List<GiftUserHistoryResponse>> {

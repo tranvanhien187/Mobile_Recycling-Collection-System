@@ -7,10 +7,7 @@ import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseActivity
-import datn.cnpm.rcsystem.data.entitiy.Role
 import datn.cnpm.rcsystem.databinding.ActivityHomeUserBinding
-import datn.cnpm.rcsystem.feature.dashboard.DashboardFragment
-import datn.cnpm.rcsystem.feature.tradingplace.TradingPlaceFragment
 
 @AndroidEntryPoint
 class HomeUserActivity : BaseActivity<ActivityHomeUserBinding>() {
@@ -20,7 +17,8 @@ class HomeUserActivity : BaseActivity<ActivityHomeUserBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         binding.bottomNavigation.setupWithNavController(navController)
 
@@ -35,7 +33,9 @@ class HomeUserActivity : BaseActivity<ActivityHomeUserBinding>() {
                 R.id.menu_place -> {
                     navHostFragment.navController.navigate(R.id.tradingPlaceFragment)
                 }
-                R.id.menu_personal -> {}
+                R.id.menu_personal -> {
+                    navHostFragment.navController.navigate(R.id.personalFragment)
+                }
             }
             true
         }

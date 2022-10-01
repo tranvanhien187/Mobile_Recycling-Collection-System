@@ -16,7 +16,6 @@
     <string name="password_label">Password</string>
     <string name="forgot_your_password_label_line"><u>Forgot your password ?</u></string>
     <string name="sign_in_btn">Login</string>
-    <string name="welcome_back">Welcome back!</string>
     <string name="send_btn">Send</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="email_label">Email</string>
@@ -36,6 +35,7 @@
     <string name="become_an_environmentalist">Become an environmentalist</string>
     <string name="gift_label">Gift</string>
     <string name="place_label">Place</string>
+    <string name="trading_place_label">Trading Place</string>
     <string name="home_label">Home</string>
     <string name="history_label">History</string>
     <string name="personal_label">Personal</string>
@@ -58,6 +58,12 @@
     <string name="register_label">Register</string>
     <string name="received_label">Received</string>
     <string name="redemption_point">%d points</string>
+
+    <string-array name="filter">
+        <item>Rank</item>
+        <item>District</item>
+        <item>City</item>
+    </string-array>
 
     <string-array name="City">
         <item>Thành phố Đà Nẵng</item>

@@ -16,11 +16,7 @@ data class UserEntity(
     val address: AddressResponse? = null,
     val garbage: GarbageManagementResponse? = null,
     val point: PointResponse? = null
-) {
-    fun getPoint(): String {
-        return NumberFormat.getNumberInstance(Locale.US).format(point?.remainPoint ?: 0) + " points"
-    }
-}
+)
 
 fun GetUserInfoResponse.mapToUserEntity(): UserEntity = UserEntity(
     id = id,

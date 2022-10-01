@@ -18,6 +18,7 @@ interface AuthenticationRepository {
     suspend fun validateOTP(request: ValidateOTPRequest): String
     suspend fun getUserInfo(): GetUserInfoResponse
     suspend fun getTPlaceRandom6(): List<GetTPPlaceForUserResponse>
+    suspend fun getGiftRandom6(): List<GiftResponse>
     suspend fun getGiftUserHistory(): List<GiftUserHistoryResponse>
     suspend fun getGarbageUserHistory(): List<GarbageUserHistoryResponse>
 }
