@@ -34,4 +34,8 @@
         <item name="colorPrimary">@color/grey_858e9c</item>
         <item name="colorOnPrimary">@color/green_00ad31</item>
     </style>
+    <style name="TabLayoutTradingPlace">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">14dp</item>
+    </style>
 </resources>
