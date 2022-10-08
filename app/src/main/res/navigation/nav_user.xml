@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_user"
-    app:startDestination="@id/tradingPlaceFragment">
+    app:startDestination="@id/dashboardFragment">
 
 
     <fragment
@@ -37,4 +37,9 @@
         android:name="datn.cnpm.rcsystem.feature.personal.PersonalFragment"
         android:label="GiftHistoryDetailFragment"
         tools:layout="@layout/fragment_personal"/>
+    <fragment
+        android:id="@+id/placeDetailFragment"
+        android:name="datn.cnpm.rcsystem.feature.tradingplace.detail.PlaceDetailFragment"
+        android:label="PlaceDetailFragment"
+        tools:layout="@layout/fragment_place_detail"/>
 </navigation>
