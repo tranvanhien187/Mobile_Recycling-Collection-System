@@ -24,15 +24,17 @@
             android:name=".feature.authentication.AuthenticationActivity"
             android:exported="true"
             android:noHistory="true" >
+
+        </activity>
+        <activity
+            android:name=".feature.home.user.HomeUserActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".feature.home.user.HomeUserActivity"
-            android:exported="true" />
     </application>
 
 </manifest>
