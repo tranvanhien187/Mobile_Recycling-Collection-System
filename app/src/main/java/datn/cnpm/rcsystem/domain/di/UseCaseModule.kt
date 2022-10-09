@@ -87,4 +87,11 @@ abstract class UseCaseModule {
     abstract fun provideGetGiftRandom6UserCase(
         useCase: GetGiftRandom6UserCaseImpl
     ): GetGiftRandom6UserCase
+
+
+    @Binds
+    @Singleton
+    abstract fun provideReceiveTransportFormUseCase(
+        useCase: ReceiveTransportFormUseCaseImpl
+    ): ReceiveTransportFormUseCase
 }

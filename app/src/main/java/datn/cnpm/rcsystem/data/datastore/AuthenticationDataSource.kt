@@ -83,4 +83,8 @@ class AuthenticationDataSource @Inject constructor(private val authenticationApi
     suspend fun getGarbageUserHistory(uuid: String): SBResponse<List<GarbageUserHistoryResponse>> {
         return authenticationApiService.getGarbageUserHistory(uuid)
     }
+
+    suspend fun receiveTransportForm(request: ReceiveFormRequest): SBResponse<String> {
+        return authenticationApiService.receiveTransportForm(request)
+    }
 }

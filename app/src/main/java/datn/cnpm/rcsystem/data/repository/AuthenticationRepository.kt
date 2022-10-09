@@ -1,6 +1,5 @@
 package datn.cnpm.rcsystem.data.repository
 
-import datn.cnpm.rcsystem.core.SBResponse
 import datn.cnpm.rcsystem.data.entitiy.*
 
 /*
@@ -9,7 +8,7 @@ import datn.cnpm.rcsystem.data.entitiy.*
  */
 
 interface AuthenticationRepository {
-    suspend fun login(request: LoginRequest, isRemember: Boolean) : LoginResponse
+    suspend fun login(request: LoginRequest, isRemember: Boolean): LoginResponse
     suspend fun register(request: RegisterRequest): RegisterResponse
     suspend fun changePassword(request: ChangePasswordRequest): String
     suspend fun updateUserInfo(request: UpdateUserInfoRequest): UpdateUserInfoResponse
@@ -21,4 +20,9 @@ interface AuthenticationRepository {
     suspend fun getGiftRandom6(): List<GiftResponse>
     suspend fun getGiftUserHistory(): List<GiftUserHistoryResponse>
     suspend fun getGarbageUserHistory(): List<GarbageUserHistoryResponse>
+    suspend fun receiveTransportForm(
+        historyGarbageId: String,
+        customerName: String,
+        customerPhoneNumber: String
+    ): String
 }

@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -13,6 +12,7 @@ import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.common.extension.createSpannableString
 import datn.cnpm.rcsystem.databinding.FragmentLoginBinding
+import datn.cnpm.rcsystem.feature.home.staff.HomeStaffActivity
 import datn.cnpm.rcsystem.feature.home.user.HomeUserActivity
 import datn.cnpm.rcsystem.feature.updateaccountifo.UpdateAccountInfoFragment
 
@@ -95,8 +95,13 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                         )
                     )
                 }
-                is LoginEvent.DealerLoginSuccess -> {
+                is LoginEvent.AgentLoginSuccess -> {
                     val intent = Intent(this.activity, HomeUserActivity::class.java)
+                    activity?.startActivity(intent)
+                }
+
+                is LoginEvent.StaffLoginSuccess -> {
+                    val intent = Intent(this.activity, HomeStaffActivity::class.java)
                     activity?.startActivity(intent)
                 }
                 else -> {}

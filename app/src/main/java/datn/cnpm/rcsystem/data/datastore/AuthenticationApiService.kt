@@ -53,4 +53,14 @@ interface AuthenticationApiService {
 
     @GET("/api/v1/garbage/userhistory/{id}")
     suspend fun getGarbageUserHistory(@Path("id") uuid: String): SBResponse<List<GarbageUserHistoryResponse>>
+
+
+    // Get Transport Form Garbage Detail
+    @GET("/api/v1/transport/details/{id}")
+    suspend fun getTransportFormGarbageDetails(@Path("id") historyId: String): SBResponse<TransportFormGarbageDetailResponse>
+
+
+    // STAFF
+    @POST("/api/v1/transport/receiveForm")
+    suspend fun receiveTransportForm(@Body request: ReceiveFormRequest): SBResponse<String>
 }

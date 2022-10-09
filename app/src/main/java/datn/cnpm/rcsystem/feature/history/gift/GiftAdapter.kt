@@ -11,7 +11,9 @@ import datn.cnpm.rcsystem.common.extension.visible
 import datn.cnpm.rcsystem.databinding.ItemGiftHistoryBinding
 import datn.cnpm.rcsystem.domain.model.GiftStatus
 import datn.cnpm.rcsystem.domain.model.GiftUserHistoryEntity
+import java.text.DateFormat
 import java.text.SimpleDateFormat
+import java.util.*
 
 class GiftAdapter : BaseListAdapter<GiftUserHistoryEntity>(GiftDiffUntil()) {
     class GiftDiffUntil : BaseDiffUtilItemCallback<GiftUserHistoryEntity>()

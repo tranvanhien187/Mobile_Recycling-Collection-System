@@ -1,4 +1,4 @@
-package datn.cnpm.rcsystem.feature.home.dealer
+package datn.cnpm.rcsystem.feature.home.agent
 
 import androidx.lifecycle.viewModelScope
 import datn.cnpm.rcsystem.base.BaseViewModel

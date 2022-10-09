@@ -182,4 +182,29 @@ class AuthenticationRepositoryImp @Inject constructor(
             throw Exception(ErrorCode.UNKNOWN_ERROR.value)
         }
     }
+
+    override suspend fun receiveTransportForm(
+        historyGarbageId: String,
+        customerName: String,
+        customerPhoneNumber: String
+    ): String {
+        val response = authenticationDataSource.receiveTransportForm(
+            ReceiveFormRequest(
+                authPre.uuid, historyGarbageId,
+                customerName,
+                customerPhoneNumber
+            )
+        )
+        if (response.isSuccess) {
+            return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
+        } else {
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+        }
+    }
 }
