@@ -26,11 +26,12 @@ class GiftHistoryFragment : BaseFragment<FragmentGiftHistoryBinding>() {
     private lateinit var giftAdapter: GiftAdapter
 
     override fun initData(data: Bundle?) {
-        viewModel.fetchGiftHistory()
+//        viewModel.fetchGiftHistory()
     }
 
     override fun initViews() {
         giftAdapter = GiftAdapter()
+        giftAdapter.submitList(viewModel.getData())
         binding.rvGiftHistory.adapter = giftAdapter
     }
 

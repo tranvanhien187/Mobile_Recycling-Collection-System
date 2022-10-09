@@ -21,7 +21,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
         get() = FragmentHistoryBinding::inflate
 
     private val viewModel: HistoryViewModel by viewModels()
-    private lateinit var historyAdapter: HistoryAdapter
+    private var historyAdapter: HistoryAdapter? = null
     override fun initData(data: Bundle?) {
     }
 
@@ -29,6 +29,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
         showToolbar(getString(R.string.history_label), R.drawable.ic_back)
         historyAdapter = HistoryAdapter(this)
         binding.apply {
+            pager.isSaveEnabled = false
             pager.adapter = historyAdapter
             TabLayoutMediator(tabLayout, pager) { tab, position ->
                 when (position) {
@@ -66,6 +67,11 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
                 }
             }
         )
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        historyAdapter = null
     }
 }
 

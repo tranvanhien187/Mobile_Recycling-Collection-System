@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.RecyclingCollectionSystem" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.RecyclingCollectionSystem" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -16,6 +16,10 @@
     </style>
 
     <style name="CheckboxTheme" parent="Theme.AppCompat" />
+
+    <style name="CircleImage">
+        <item name="cornerSize">10dp</item>
+    </style>
 
     <style name="CheckboxTheme.GREEN_00ad31">
         <item name="colorAccent">@color/green_00ad31</item>

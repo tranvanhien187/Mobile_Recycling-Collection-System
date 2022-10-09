@@ -1,6 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgStatus"
+        android:layout_width="132dp"
+        android:layout_height="132dp"
+        android:layout_marginTop="37dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_status_succes" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgStatus"
+        tools:text="Success" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        app:layout_constraintBottom_toTopOf="@id/btnExport"
+        app:layout_constraintTop_toBottomOf="@id/tvStatus">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideLineBoundary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.3" />
+
+        <TextView
+            android:id="@+id/tvPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="6dp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            app:drawableStartCompat="@drawable/ic_leaf_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1.200.000" />
+
+        <TextView
+            android:id="@+id/tvIdTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="Id"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPoint" />
+
+        <TextView
+            android:id="@+id/tvId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat_semibold"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tvIdTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideLineBoundary"
+            app:layout_constraintTop_toTopOf="@id/tvIdTitle"
+            tools:text="5em23daw323dc" />
+
+        <TextView
+            android:id="@+id/tvTypeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="Type"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvIdTitle" />
+
+        <TextView
+            android:id="@+id/tvType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat_semibold"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/tvTypeTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideLineBoundary"
+            app:layout_constraintTop_toTopOf="@id/tvTypeTitle"
+            tools:text="Gift Exchange" />
+
+        <TextView
+            android:id="@+id/tvFromTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="From Agent"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTypeTitle" />
+
+        <TextView
+            android:id="@+id/tvFrom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat_semibold"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/tvFromTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideLineBoundary"
+            app:layout_constraintTop_toTopOf="@id/tvFromTitle"
+            tools:text="Agent name" />
+
+        <TextView
+            android:id="@+id/tvGiftNameTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="Gift name"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvFromTitle" />
+
+        <TextView
+            android:id="@+id/tvGiftName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat_semibold"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/tvGiftNameTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideLineBoundary"
+            app:layout_constraintTop_toTopOf="@id/tvGiftNameTitle"
+            tools:text="Iphone XX Promax UltraView" />
+
+        <TextView
+            android:id="@+id/tvEvidenceTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="From Agent"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvGiftNameTitle" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgEvidence"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="9dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="H, 366:208"
+            app:layout_constraintTop_toBottomOf="@id/tvEvidenceTitle"
+            app:shapeAppearanceOverlay="@style/CircleImage" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <datn.cnpm.rcsystem.common.widget.PrimaryButton
+        android:id="@+id/btnExport"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="44dp"
+        android:text="Export"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

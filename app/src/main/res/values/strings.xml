@@ -72,6 +72,9 @@
     <string name="place_detail_level_title">Level</string>
     <string name="place_detail_schedule_btn">Schedule</string>
     <string name="transport_id_label">Transport Id</string>
+    <string name="from_agent_name">From: %s</string>
+
+
     <string name="customer_name_label">Customer Name</string>
     <string name="address_label">Address</string>
     <string name="receive_btn">Receive</string>

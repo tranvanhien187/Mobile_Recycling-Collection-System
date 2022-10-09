@@ -23,7 +23,7 @@ class GarbageHistoryFragment : BaseFragment<FragmentGarbageHistoryBinding>() {
     private val viewModel: GarbageHistoryViewModel by viewModels()
     private lateinit var garbageAdapter: GarbageHistoryAdapter
     override fun initData(data: Bundle?) {
-        viewModel.fetchGiftHistory()
+//        viewModel.fetchGiftHistory()
     }
 
     override fun initViews() {

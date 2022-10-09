@@ -1,8 +1,8 @@
 package datn.cnpm.rcsystem.feature.history.gift
 
-import datn.cnpm.rcsystem.domain.model.GiftUserHistoryEntity
+import datn.cnpm.rcsystem.data.entitiy.GiftExchangeHistory
 
 data class GiftHistoryState(
     val loading: Boolean = false,
-    val giftList: List<GiftUserHistoryEntity>? = null
+    val giftList: List<GiftExchangeHistory>? = null
 )
