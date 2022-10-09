@@ -27,15 +27,20 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
                 loginUseCase.login(LoginUseCase.Parameters(username, password, isRemember))
             if (response.succeeded) {
                 when (response.requireData.role) {
-                    Role.USER.toString() -> {
+                    Role.CUSTOMER.toString() -> {
                         if (response.requireData.updatedInfo) {
                             dispatchEvent(LoginEvent.UserLoginSuccess)
                         } else {
                             dispatchEvent(LoginEvent.UserUpdatedYet(response.requireData.uuid))
                         }
                     }
-                    Role.DEALER.toString() -> {
-                        dispatchEvent(LoginEvent.DealerLoginSuccess)
+
+                    Role.AGENT.toString() -> {
+                        dispatchEvent(LoginEvent.AgentLoginSuccess)
+                    }
+
+                    Role.AGENT.toString() -> {
+                        dispatchEvent(LoginEvent.StaffLoginSuccess)
                     }
                     else -> {}
                 }

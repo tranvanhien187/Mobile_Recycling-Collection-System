@@ -15,6 +15,7 @@ data class LoginRequest(
 
 enum class Role {
     ADMIN,
-    USER,
-    DEALER
+    CUSTOMER,
+    AGENT,
+    STAFF
 }

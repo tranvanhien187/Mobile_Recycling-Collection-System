@@ -14,6 +14,9 @@ enum class ErrorCode(val value: String) {
     EMPTY_DISTRICT("District cannot be blank!"),
     EMPTY_PROVINCE_CITY("Province/City cannot be blank!"),
     CAN_NOT_UPDATE_WITH_ID_USER("Can not update information with this id!"),
+    NOT_FIND_STAFF_ID("Can not find this staff id!"),
+    FORM_RESOLVED("This form was resolved by another staff!"),
+    NOT_FIND_FORM("Can not find this form id!"),
     UNKNOWN_ERROR("We don't find this error");
 
 

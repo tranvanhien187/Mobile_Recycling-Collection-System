@@ -27,14 +27,14 @@ class HistoryViewModel @Inject constructor(private val loginUseCase: LoginUseCas
                 loginUseCase.login(LoginUseCase.Parameters(username, password, isRemember))
             if (response.succeeded) {
                 when (response.requireData.role) {
-                    Role.USER.toString() -> {
+                    Role.CUSTOMER.toString() -> {
                         if (response.requireData.updatedInfo) {
                             dispatchEvent(HistoryEvent.UserLoginSuccess)
                         } else {
                             dispatchEvent(HistoryEvent.UserUpdatedYet(response.requireData.uuid))
                         }
                     }
-                    Role.DEALER.toString() -> {
+                    Role.AGENT.toString() -> {
                         dispatchEvent(HistoryEvent.DealerLoginSuccess)
                     }
                     else -> {}

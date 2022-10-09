@@ -1,4 +1,4 @@
-package datn.cnpm.rcsystem.feature.home.dealer
+package datn.cnpm.rcsystem.feature.home.agent
 
 import android.view.LayoutInflater
 import datn.cnpm.rcsystem.base.BaseActivity
