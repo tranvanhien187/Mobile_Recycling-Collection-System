@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_staff"
+    app:startDestination="@id/dashboardStaffFragment">
+
+    <fragment
+        android:id="@+id/dashboardStaffFragment"
+        android:name="datn.cnpm.rcsystem.feature.dashboard.staff.DashboardStaffFragment"
+        android:label="DashboardStaffFragment"
+        tools:layout="@layout/fragment_staff_dashboard" />
+    <fragment
+        android:id="@+id/transportFormFragment"
+        android:name="datn.cnpm.rcsystem.feature.transportform.list.TransportFormFragment"
+        android:label="TransportFormFragment"
+        tools:layout="@layout/fragment_transport_form" />
+
+    <fragment
+        android:id="@+id/transportFormDetailFragment"
+        android:name="datn.cnpm.rcsystem.feature.transportform.detail.TransportFormDetailFragment"
+        android:label="TransportFormDetailFragment"
+        tools:layout="@layout/fragment_transport_form_detail" />
+
+
+</navigation>

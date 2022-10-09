@@ -38,7 +38,7 @@ class RegisterViewModel @Inject constructor(private val registerUseCase: Registe
                         username,
                         email,
                         password,
-                        Role.USER.toString()
+                        Role.CUSTOMER.toString()
                     )
                 )
                 withContext(Dispatchers.Main) {

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_dashboard">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dashboard">
+
+        <TextView
+            android:id="@+id/tvLabelWellcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/proximanova_sbold"
+            android:text="@string/welcome_back_label"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="24dp"
+            android:contentDescription="@string/empty_value"
+            android:src="@drawable/ic_setting"
+            app:layout_constraintBottom_toBottomOf="@id/tvLabelWellcome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvLabelWellcome" />
+
+        <TextView
+            android:id="@+id/tvGarbageWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/proximanova_sbold"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvUsername"
+            tools:text="Equivalents to 150 kilograms trash has been recycle, congrats!" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivBorderStroke"
+            android:layout_width="105dp"
+            android:layout_height="105dp"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/bg_border_3_orange_ffddad"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:shapeAppearanceOverlay="@style/CustomShapeOVerlay50P" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivBorderStroke"
+            app:layout_constraintEnd_toEndOf="@+id/ivBorderStroke"
+            app:layout_constraintStart_toStartOf="@+id/ivBorderStroke"
+            app:layout_constraintTop_toTopOf="@id/ivBorderStroke"
+            app:shapeAppearanceOverlay="@style/CustomShapeOVerlay50P"
+            tools:background="#E5E5E5"
+            tools:src="@drawable/ic_person" />
+
+        <TextView
+            android:id="@+id/tvUsername"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivBorderStroke"
+            tools:text="Tran Van Hien" />
+
+        <ImageView
+            android:id="@+id/ivForm"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:contentDescription="@string/empty_value"
+            android:src="@drawable/ic_trophy_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />
+
+        <ImageView
+            android:id="@+id/ivTrophy"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="24dp"
+            android:contentDescription="@string/empty_value"
+            android:src="@drawable/ic_trophy_24"
+            app:layout_constraintEnd_toStartOf="@id/ivHistory"
+            app:layout_constraintStart_toEndOf="@id/ivForm"
+            app:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />
+
+        <ImageView
+            android:id="@+id/ivHistory"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="24dp"
+            android:contentDescription="@string/empty_value"
+            android:src="@drawable/ic_history_green"
+            app:layout_constraintEnd_toStartOf="@id/ivPersonal"
+            app:layout_constraintStart_toEndOf="@id/ivTrophy"
+            app:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />
+
+        <ImageView
+            android:id="@+id/ivPersonal"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:contentDescription="@string/empty_value"
+            android:src="@drawable/ic_user_green"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

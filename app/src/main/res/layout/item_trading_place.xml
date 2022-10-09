@@ -98,6 +98,6 @@
         android:id="@+id/vLine"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/black_dfe3e9"
+        android:background="@color/grey_dfe3e9"
         app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

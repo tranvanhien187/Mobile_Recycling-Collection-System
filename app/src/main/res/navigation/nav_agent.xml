@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/homeDealerFragment"
-        android:name="datn.cnpm.rcsystem.feature.home.dealer.HomeDealerFragment"
+        android:name="datn.cnpm.rcsystem.feature.home.agent.HomeDealerFragment"
         android:label="HomeDealerFragment" />
 </navigation>

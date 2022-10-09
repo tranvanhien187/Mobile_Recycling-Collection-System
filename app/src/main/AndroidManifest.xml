@@ -29,6 +29,10 @@
         <activity
             android:name=".feature.home.user.HomeUserActivity"
             android:exported="true" >
+        </activity>
+        <activity
+            android:name=".feature.home.staff.HomeStaffActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
