@@ -4,6 +4,7 @@ import datn.cnpm.rcsystem.common.ErrorCode
 import datn.cnpm.rcsystem.common.exception.BadRequestException
 import datn.cnpm.rcsystem.data.datastore.AuthenticationDataSource
 import datn.cnpm.rcsystem.data.entitiy.*
+import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
 import datn.cnpm.rcsystem.local.sharepreferences.AuthPreference
 import javax.inject.Inject
 
@@ -195,6 +196,21 @@ class AuthenticationRepositoryImp @Inject constructor(
                 customerPhoneNumber
             )
         )
+        if (response.isSuccess) {
+            return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
+        } else {
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+        }
+    }
+
+    override suspend fun getStaffInfo(): StaffInfoResponse {
+        val response = authenticationDataSource.getStaffInfo(authPre.uuid)
         if (response.isSuccess) {
             return response.requireData
         } else if (response.isFailure) {

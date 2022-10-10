@@ -2,6 +2,7 @@ package datn.cnpm.rcsystem.data.datastore
 
 import datn.cnpm.rcsystem.core.SBResponse
 import datn.cnpm.rcsystem.data.entitiy.*
+import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
@@ -40,7 +41,10 @@ interface AuthenticationApiService {
     suspend fun getUserInfo(@Path("id") uuid: String): SBResponse<GetUserInfoResponse>
 
     @GET("api/v1/tplace/get/{id}")
-    suspend fun getTPlaceForUser(@Path("id") id: String, @Query("criteria") criteria: String): SBResponse<List<GetTPPlaceForUserResponse>>
+    suspend fun getTPlaceForUser(
+        @Path("id") id: String,
+        @Query("criteria") criteria: String
+    ): SBResponse<List<GetTPPlaceForUserResponse>>
 
     @GET("api/v1/tplace/get/random/{id}")
     suspend fun getTPlaceRandom6(@Path("id") id: String): SBResponse<List<GetTPPlaceForUserResponse>>
@@ -63,4 +67,7 @@ interface AuthenticationApiService {
     // STAFF
     @POST("/api/v1/transport/receiveForm")
     suspend fun receiveTransportForm(@Body request: ReceiveFormRequest): SBResponse<String>
+
+    @GET("/api/v1/staff/{id}")
+    suspend fun getStaffInfo(@Path("id") id: String): SBResponse<StaffInfoResponse>
 }
