@@ -34,40 +34,33 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment(), IBaseFragment, ToolB
     protected var mRootView: View? = null
     private var mViewInitializedFlg = false
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (savedInstanceState == null) {
+            initData(arguments)
+        }
+    }
+
     @CallSuper
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        DebugLog.i("screen: ${this.javaClass.simpleName}")
-        if (mRootView == null) {
-            baseBinding = FragmentBaseBinding.inflate(inflater, container, false)
-            binding = bindingInflater.invoke(inflater, baseBinding.contentContainer, true)
-            mRootView = baseBinding.root
-            mViewInitializedFlg = true
-        } else {
-            mViewInitializedFlg = false
-            // Remove view on the child's parent first.
-            val parent = mRootView?.parent
-            if (parent != null) {
-                parent as ViewGroup
-                parent.removeView(mRootView)
-            }
-        }
-        return mRootView
+        baseBinding = FragmentBaseBinding.inflate(inflater, container, false)
+        binding = bindingInflater.invoke(inflater, baseBinding.contentContainer, true)
+        initViews()
+        initActions()
+
+        return baseBinding.root
     }
 
     @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initObservers()
         mNavController = NavHostFragment.findNavController(this)
-        if (mViewInitializedFlg) {
-            initViews()
-            initActions()
-            initData(arguments)
-            initObservers()
-        }
+
         (requireActivity() as OnBackPressedDispatcherOwner)
             .onBackPressedDispatcher
             .addCallback(viewLifecycleOwner) {

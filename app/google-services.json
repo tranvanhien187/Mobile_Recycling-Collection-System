@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "76079332897",
+    "firebase_url": "https://recycling-garbage-system-default-rtdb.firebaseio.com",
+    "project_id": "recycling-garbage-system",
+    "storage_bucket": "recycling-garbage-system.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76079332897:android:03a7bfb0954a2431ae2d60",
+        "android_client_info": {
+          "package_name": "datn.cnpm.rcsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "76079332897-231u0b24hvf7jp6sr7ku35dq871fg9d6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "datn.cnpm.rcsystem",
+            "certificate_hash": "84bb1b30078288c276723560483956df818d99ca"
+          }
+        },
+        {
+          "client_id": "76079332897-t22dkqcsj2ceugfn05ihm6hb3t4go1ik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOz006PPOSw-sd2f6Fz22OBiLw9UmrFcE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "76079332897-t22dkqcsj2ceugfn05ihm6hb3t4go1ik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
