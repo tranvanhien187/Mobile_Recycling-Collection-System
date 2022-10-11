@@ -6,7 +6,7 @@ import datn.cnpm.rcsystem.feature.history.garbage.GarbageHistoryFragment
 import datn.cnpm.rcsystem.feature.history.gift.GiftHistoryFragment
 
 
-class HistoryAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+class HistoryScreenAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
     override fun getItemCount(): Int = 2
 

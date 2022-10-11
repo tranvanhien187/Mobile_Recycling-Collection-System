@@ -2,7 +2,7 @@ package datn.cnpm.rcsystem.domain.usecase
 
 import datn.cnpm.rcsystem.core.Result
 import datn.cnpm.rcsystem.core.di.IoDispatcher
-import datn.cnpm.rcsystem.data.repository.AuthenticationRepository
+import datn.cnpm.rcsystem.data.repository.CRGSRepository
 import datn.cnpm.rcsystem.data.entitiy.RegisterRequest
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
@@ -20,12 +20,12 @@ interface RegisterUseCase {
 
 class RegisterUseCaseImpl @Inject constructor(
     @IoDispatcher ioDispatcher: CoroutineDispatcher,
-    private val authenticationRepository: AuthenticationRepository,
+    private val CRGSRepository: CRGSRepository,
 ) : BaseUseCase<RegisterUseCase.Parameters, String>(ioDispatcher),
     RegisterUseCase {
 
     override suspend fun execute(parameters: RegisterUseCase.Parameters): String {
-        return authenticationRepository.register(
+        return CRGSRepository.register(
             RegisterRequest(
                 parameters.username,
                 parameters.email,

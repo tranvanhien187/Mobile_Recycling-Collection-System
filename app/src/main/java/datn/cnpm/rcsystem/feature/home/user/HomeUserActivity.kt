@@ -7,15 +7,22 @@ import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseActivity
+import datn.cnpm.rcsystem.data.entitiy.Role
 import datn.cnpm.rcsystem.databinding.ActivityHomeUserBinding
+import datn.cnpm.rcsystem.local.sharepreferences.AuthPreference
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeUserActivity : BaseActivity<ActivityHomeUserBinding>() {
     override val bindingInflater: (LayoutInflater) -> ActivityHomeUserBinding
         get() = ActivityHomeUserBinding::inflate
+    @Inject
+    lateinit var authPreference: AuthPreference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        authPreference.role = Role.CUSTOMER.name
+        authPreference.uuid = "78c07e6325ae24f04392b2d28f327d7709b07e4036ade21d2e6a3aced44fc7c3"
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment

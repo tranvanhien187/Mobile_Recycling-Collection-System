@@ -7,10 +7,8 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import datn.cnpm.rcsystem.base.BaseViewModel
-import datn.cnpm.rcsystem.domain.model.GarbageHistoryStatus
-import datn.cnpm.rcsystem.domain.model.GiftStatus
+import datn.cnpm.rcsystem.domain.model.history.HistoryStatus
 import datn.cnpm.rcsystem.domain.model.TransportForm
-import datn.cnpm.rcsystem.feature.history.HistoryState
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,7 +20,7 @@ class TransportFormViewModel @Inject constructor() :
     val formList = mutableListOf<TransportForm>()
 
     fun listener() {
-        database.getReference(TRANSPORT_FORM).child(GARBAGE).child(GarbageHistoryStatus.CREATE.name).addChildEventListener(object :
+        database.getReference(TRANSPORT_FORM).child(GARBAGE).child(HistoryStatus.CREATE.name).addChildEventListener(object :
             ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 snapshot.getValue(TransportForm::class.java)?.let {

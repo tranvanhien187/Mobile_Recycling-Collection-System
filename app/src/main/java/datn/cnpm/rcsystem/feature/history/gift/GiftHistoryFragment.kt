@@ -11,6 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.databinding.FragmentGiftHistoryBinding
+import datn.cnpm.rcsystem.feature.history.HistoryItemAdapter
 import datn.cnpm.rcsystem.feature.history.garbage.GarbageHistoryFragment
 
 /**
@@ -23,24 +24,24 @@ class GiftHistoryFragment : BaseFragment<FragmentGiftHistoryBinding>() {
         get() = FragmentGiftHistoryBinding::inflate
 
     private val viewModel: GiftHistoryViewModel by viewModels()
-    private lateinit var giftAdapter: GiftAdapter
+    private lateinit var giftAdapter: HistoryItemAdapter
 
     override fun initData(data: Bundle?) {
-//        viewModel.fetchGiftHistory()
+        viewModel.fetchGiftHistory()
     }
 
     override fun initViews() {
-        giftAdapter = GiftAdapter()
-        giftAdapter.submitList(viewModel.getData())
+        giftAdapter = HistoryItemAdapter()
         binding.rvGiftHistory.adapter = giftAdapter
     }
 
     override fun initActions() {
         giftAdapter.onItemClick = { gift ->
-            findNavController().navigate(
-                R.id.giftHistoryDetailFragment,
-                bundleOf(Pair(GIFT_HISTORY_KEY, gift))
-            )        }
+//            findNavController().navigate(
+//                R.id.giftHistoryDetailFragment,
+//                bundleOf(Pair(GIFT_HISTORY_KEY, gift))
+//            )
+        }
         binding.apply {
         }
     }
@@ -60,7 +61,7 @@ class GiftHistoryFragment : BaseFragment<FragmentGiftHistoryBinding>() {
 
         viewModel.observe(
             owner = viewLifecycleOwner,
-            selector = { state -> state.giftList },
+            selector = { state -> state.giftHistoryList },
             observer = { giftList ->
                 giftList?.let {
                     giftAdapter.submitList(it)

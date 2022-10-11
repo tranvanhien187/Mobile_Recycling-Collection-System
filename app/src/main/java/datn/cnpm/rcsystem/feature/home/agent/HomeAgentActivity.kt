@@ -1,24 +1,24 @@
-package datn.cnpm.rcsystem.feature.home.staff
+package datn.cnpm.rcsystem.feature.home.agent
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.base.BaseActivity
 import datn.cnpm.rcsystem.data.entitiy.Role
-import datn.cnpm.rcsystem.databinding.ActivityHomeStaffBinding
+import datn.cnpm.rcsystem.databinding.ActivityHomeDealerBinding
 import datn.cnpm.rcsystem.local.sharepreferences.AuthPreference
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeStaffActivity : BaseActivity<ActivityHomeStaffBinding>() {
-    override val bindingInflater: (LayoutInflater) -> ActivityHomeStaffBinding
-        get() = ActivityHomeStaffBinding::inflate
+class HomeAgentActivity : BaseActivity<ActivityHomeDealerBinding>() {
+    override val bindingInflater: (LayoutInflater) -> ActivityHomeDealerBinding
+        get() = ActivityHomeDealerBinding::inflate
 
     @Inject
     lateinit var authPreference: AuthPreference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        authPreference.role = Role.STAFF.name
-        authPreference.uuid = "661bb2ae9a41faea9e1eff6196997292b3d248adc5fa140069b7ce5444ecb2f0"
+        authPreference.role = Role.AGENT.name
+        authPreference.uuid = "ef5143a2551ff782569090fcf72206a1d393ebc523a892b3142f0729bc5f6985"
     }
 }

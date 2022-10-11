@@ -76,12 +76,12 @@ fun TextView.setStyle(resId: Int) {
 }
 
 fun TextView.createSpannableString(
-    startIndex: Int,
-    endIndex: Int,
+    content : String = "",
+    startIndex: Int = 0,
+    endIndex: Int = content.length,
     isBoldClickableContent: Boolean = false,
     click: () -> Unit = {},
     color: Int = R.color.green_00ad31,
-    content : String = "",
     ) {
     val spannable: SpannableString = if (content.isNotEmpty()) {
         SpannableString(content)

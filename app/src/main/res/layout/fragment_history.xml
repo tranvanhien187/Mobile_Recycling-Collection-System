@@ -12,8 +12,6 @@
         android:layout_marginHorizontal="24dp"
         android:background="@null"
         android:clipToPadding="false"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
         app:tabGravity="fill"
         app:tabIndicatorColor="@color/green_00ad31"
         app:tabIndicatorFullWidth="true"

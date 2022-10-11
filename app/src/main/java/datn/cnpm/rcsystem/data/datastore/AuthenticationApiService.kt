@@ -3,6 +3,7 @@ package datn.cnpm.rcsystem.data.datastore
 import datn.cnpm.rcsystem.core.SBResponse
 import datn.cnpm.rcsystem.data.entitiy.*
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
+import datn.cnpm.rcsystem.domain.model.history.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
@@ -64,10 +65,29 @@ interface AuthenticationApiService {
     suspend fun getTransportFormGarbageDetails(@Path("id") historyId: String): SBResponse<TransportFormGarbageDetailResponse>
 
 
-    // STAFF
+    /***        STAFF      ***/
     @POST("/api/v1/transport/receiveForm")
     suspend fun receiveTransportForm(@Body request: ReceiveFormRequest): SBResponse<String>
 
     @GET("/api/v1/staff/{id}")
     suspend fun getStaffInfo(@Path("id") id: String): SBResponse<StaffInfoResponse>
+
+    @GET("/api/v1/history/garbage/{id}")
+    suspend fun getListGarbageHistoryByStaff(@Path("id") id: String): SBResponse<List<ItemGarbageHistoryByStaffEntity>>
+
+    @GET("/api/v1/history/gift/{id}")
+    suspend fun getListGiftHistoryByStaff(@Path("id") id: String): SBResponse<List<ItemGiftHistoryByStaffEntity>>
+    /******/
+
+    @GET("/api/v1/history/garbage/{id}")
+    suspend fun getListGarbageHistoryByCustomer(@Path("id") id: String): SBResponse<List<ItemGarbageHistoryByCustomerEntity>>
+
+    @GET("/api/v1/history/garbage/{id}")
+    suspend fun getListGarbageHistoryByAgent(@Path("id") id: String): SBResponse<List<ItemGarbageHistoryByAgentEntity>>
+
+    @GET("/api/v1/history/gift/{id}")
+    suspend fun getListGiftHistoryByCustomer(@Path("id") id: String): SBResponse<List<ItemGiftHistoryByCustomerEntity>>
+
+    @GET("/api/v1/history/gift/{id}")
+    suspend fun getListGiftHistoryByAgent(@Path("id") id: String): SBResponse<List<ItemGiftHistoryByAgentEntity>>
 }

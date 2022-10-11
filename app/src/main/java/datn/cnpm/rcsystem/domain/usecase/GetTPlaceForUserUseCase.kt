@@ -2,9 +2,8 @@ package datn.cnpm.rcsystem.domain.usecase
 
 import datn.cnpm.rcsystem.core.Result
 import datn.cnpm.rcsystem.core.di.IoDispatcher
-import datn.cnpm.rcsystem.data.entitiy.GetTPPlaceForUserRequest
 import datn.cnpm.rcsystem.data.entitiy.GetTradingPlaceCriteria
-import datn.cnpm.rcsystem.data.repository.AuthenticationRepository
+import datn.cnpm.rcsystem.data.repository.CRGSRepository
 import datn.cnpm.rcsystem.domain.model.TradingPlaceForUserEntity
 import datn.cnpm.rcsystem.domain.model.mapToTPlaceForUserEntity
 import kotlinx.coroutines.CoroutineDispatcher
@@ -20,12 +19,12 @@ interface GetTPlaceForUserUseCase {
 
 class GetTPlaceForUserUseCaseImpl @Inject constructor(
     @IoDispatcher ioDispatcher: CoroutineDispatcher,
-    private val authenticationRepository: AuthenticationRepository,
+    private val CRGSRepository: CRGSRepository,
 ) : BaseUseCase<GetTPlaceForUserUseCase.Parameters, List<TradingPlaceForUserEntity>>(ioDispatcher),
     GetTPlaceForUserUseCase {
 
     override suspend fun execute(parameters: GetTPlaceForUserUseCase.Parameters): List<TradingPlaceForUserEntity> {
-        return authenticationRepository.getTPlaceForUser(
+        return CRGSRepository.getTPlaceForUser(
             parameters.criteria.toString()
 
         ).map { it.mapToTPlaceForUserEntity() }

@@ -1,8 +1,11 @@
 package datn.cnpm.rcsystem.data.datastore
 
+import datn.cnpm.rcsystem.common.ErrorCode
+import datn.cnpm.rcsystem.common.exception.BadRequestException
 import datn.cnpm.rcsystem.core.SBResponse
 import datn.cnpm.rcsystem.data.entitiy.*
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
+import datn.cnpm.rcsystem.domain.model.history.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -91,5 +94,29 @@ class AuthenticationDataSource @Inject constructor(private val authenticationApi
 
     suspend fun getStaffInfo(id: String): SBResponse<StaffInfoResponse> {
         return authenticationApiService.getStaffInfo(id)
+    }
+
+    suspend fun getListGarbageHistoryByCustomer(id: String): SBResponse<List<ItemGarbageHistoryByCustomerEntity>> {
+        return authenticationApiService.getListGarbageHistoryByCustomer(id)
+    }
+
+    suspend fun getListGarbageHistoryByStaff(id: String): SBResponse<List<ItemGarbageHistoryByStaffEntity>> {
+        return authenticationApiService.getListGarbageHistoryByStaff(id)
+    }
+
+    suspend fun getListGarbageHistoryByAgent(id: String): SBResponse<List<ItemGarbageHistoryByAgentEntity>> {
+        return authenticationApiService.getListGarbageHistoryByAgent(id)
+    }
+    
+    suspend fun getListGiftHistoryByCustomer(id: String): SBResponse<List<ItemGiftHistoryByCustomerEntity>> {
+        return authenticationApiService.getListGiftHistoryByCustomer(id)
+    }
+
+    suspend fun getListGiftHistoryByStaff(id: String): SBResponse<List<ItemGiftHistoryByStaffEntity>> {
+        return authenticationApiService.getListGiftHistoryByStaff(id)
+    }
+
+    suspend fun getListGiftHistoryByAgent(id: String): SBResponse<List<ItemGiftHistoryByAgentEntity>> {
+        return authenticationApiService.getListGiftHistoryByAgent(id)
     }
 }

@@ -5,6 +5,7 @@ import datn.cnpm.rcsystem.common.exception.BadRequestException
 import datn.cnpm.rcsystem.data.datastore.AuthenticationDataSource
 import datn.cnpm.rcsystem.data.entitiy.*
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
+import datn.cnpm.rcsystem.domain.model.history.BaseItemHistory
 import datn.cnpm.rcsystem.local.sharepreferences.AuthPreference
 import javax.inject.Inject
 
@@ -13,11 +14,11 @@ import javax.inject.Inject
  * Project : Base
  */
 
-class AuthenticationRepositoryImp @Inject constructor(
+class CRGSRepositoryImp @Inject constructor(
     private val authenticationDataSource: AuthenticationDataSource,
     private val authPre: AuthPreference
 ) :
-    AuthenticationRepository {
+    CRGSRepository {
 
     override suspend fun login(request: LoginRequest, isRemember: Boolean): LoginResponse {
         val response = authenticationDataSource.login(request)
@@ -211,6 +212,64 @@ class AuthenticationRepositoryImp @Inject constructor(
 
     override suspend fun getStaffInfo(): StaffInfoResponse {
         val response = authenticationDataSource.getStaffInfo(authPre.uuid)
+        if (response.isSuccess) {
+            return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
+        } else {
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+        }
+    }
+
+    override suspend fun getListGarbageHistory(): List<BaseItemHistory> {
+        val response = when(authPre.role) {
+            Role.CUSTOMER.name -> {
+                authenticationDataSource.getListGarbageHistoryByCustomer(authPre.uuid)
+            }
+            Role.AGENT.name -> {
+                authenticationDataSource.getListGarbageHistoryByAgent(authPre.uuid)
+            }
+            Role.STAFF.name -> {
+                authenticationDataSource.getListGarbageHistoryByStaff(authPre.uuid)
+            }
+            else -> {
+                throw BadRequestException(ErrorCode.NOT_FIND_ROLE)
+            }
+        }
+
+        if (response.isSuccess) {
+            return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
+        } else {
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+        }
+    }
+    
+    override suspend fun getListGiftHistory(): List<BaseItemHistory> {
+        val response = when(authPre.role) {
+            Role.CUSTOMER.name -> {
+                authenticationDataSource.getListGiftHistoryByCustomer(authPre.uuid)
+            }
+            Role.AGENT.name -> {
+                authenticationDataSource.getListGiftHistoryByAgent(authPre.uuid)
+            }
+            Role.STAFF.name -> {
+                authenticationDataSource.getListGiftHistoryByStaff(authPre.uuid)
+            }
+            else -> {
+                throw BadRequestException(ErrorCode.NOT_FIND_ROLE)
+            }
+        }
+
         if (response.isSuccess) {
             return response.requireData
         } else if (response.isFailure) {

@@ -2,7 +2,7 @@ package datn.cnpm.rcsystem.domain.usecase
 
 import datn.cnpm.rcsystem.core.Result
 import datn.cnpm.rcsystem.core.di.IoDispatcher
-import datn.cnpm.rcsystem.data.repository.AuthenticationRepository
+import datn.cnpm.rcsystem.data.repository.CRGSRepository
 import datn.cnpm.rcsystem.domain.model.UserEntity
 import datn.cnpm.rcsystem.domain.model.mapToUserEntity
 import kotlinx.coroutines.CoroutineDispatcher
@@ -17,12 +17,12 @@ interface GetUserInfoUseCase {
 
 class GetUserInfoUseCaseImpl @Inject constructor(
     @IoDispatcher ioDispatcher: CoroutineDispatcher,
-    private val authenticationRepository: AuthenticationRepository,
+    private val CRGSRepository: CRGSRepository,
 ) : BaseUseCase<GetUserInfoUseCase.Parameters, UserEntity>(ioDispatcher),
     GetUserInfoUseCase {
 
     override suspend fun execute(parameters: GetUserInfoUseCase.Parameters): UserEntity {
-        return authenticationRepository.getUserInfo().mapToUserEntity()
+        return CRGSRepository.getUserInfo().mapToUserEntity()
     }
 
     override suspend fun getUserInfo(parameters: GetUserInfoUseCase.Parameters): Result<UserEntity> {

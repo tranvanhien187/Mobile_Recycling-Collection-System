@@ -22,5 +22,11 @@
         android:label="TransportFormDetailFragment"
         tools:layout="@layout/fragment_transport_form_detail" />
 
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="datn.cnpm.rcsystem.feature.history.HistoryFragment"
+        android:label="HistoryFragment"
+        tools:layout="@layout/fragment_history" />
+
 
 </navigation>

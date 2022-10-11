@@ -11,7 +11,7 @@ import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.common.ErrorCode
 import datn.cnpm.rcsystem.databinding.FragmentTransportFormDetailBinding
-import datn.cnpm.rcsystem.domain.model.GarbageHistoryStatus
+import datn.cnpm.rcsystem.domain.model.history.HistoryStatus
 import datn.cnpm.rcsystem.feature.transportform.list.TransportFormFragment
 import java.text.SimpleDateFormat
 import java.util.*
@@ -74,7 +74,7 @@ class TransportFormDetailFragment : BaseFragment<FragmentTransportFormDetailBind
                         tvCustomerName.text = form.customerName
                         tvPhoneNumber.text = form.customerPhoneNumber
                         tvAddress.text = "${form.street}, ${form.district}, ${form.cityOrProvince}"
-                        btnReceive.isEnabled = GarbageHistoryStatus.CREATE.name == form.status
+                        btnReceive.isEnabled = HistoryStatus.CREATE.name == form.status
                     }
                 }
             }

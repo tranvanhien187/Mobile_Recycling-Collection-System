@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:paddingHorizontal="24dp">
 
     <TextView
@@ -22,9 +22,10 @@
         tools:text="- 1.200" />
 
     <TextView
-        android:id="@+id/tvGiftName"
+        android:id="@+id/tvArtifact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/proximanova_sbold"
         android:layout_marginTop="8dp"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,16 +37,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
+        android:fontFamily="@font/proximanova_bold"
         android:textColor="@color/grey_9c9d9f"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvGiftName"
+        app:layout_constraintTop_toBottomOf="@id/tvArtifact"
         tools:text="From: Agent name" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
-        android:background="@color/grey_9c9d9f"
+        android:background="@color/grey_dfe3e9"
         app:layout_constraintTop_toBottomOf="@id/tvFrom" />
 
     <TextView
@@ -54,13 +56,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textSize="14dp"
+        android:fontFamily="@font/proximanova_reg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Success"
         tools:textColor="@color/green_00ad31" />
 
     <TextView
-        android:id="@+id/tvCreateDate"
+        android:fontFamily="@font/proximanova_reg"
+        android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"

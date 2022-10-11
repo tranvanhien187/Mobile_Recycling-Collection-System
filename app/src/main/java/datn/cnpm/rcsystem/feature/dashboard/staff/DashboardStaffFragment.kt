@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.basesource.common.utils.glide.GlideHelper
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.common.extension.createSpannableString
+import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.databinding.FragmentStaffDashboardBinding
 
 /**
@@ -33,6 +33,9 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
         binding.apply {
             ivForm.setOnClickListener {
                 findNavController().navigate(R.id.transportFormFragment)
+            }
+            ivHistory.setOnClickListener {
+                findNavController().navigate(R.id.historyFragment)
             }
         }
     }
@@ -69,16 +72,16 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
                             garbageCount, giftCount
                         )
                         binding.tvGarbageWeight.createSpannableString(
-                            16,
-                            16 + garbageCount.length,
-                            false,
+                            startIndex = 16,
+                            endIndex = 16 + garbageCount.length,
+                            isBoldClickableContent = false,
                             color = R.color.orange_f05a30,
                             content = count
                         )
                         binding.tvGarbageWeight.createSpannableString(
-                            33 + garbageCount.length,
-                            33 + giftCount.length + garbageCount.length,
-                            false,
+                            startIndex = 33 + garbageCount.length,
+                            endIndex = 33 + giftCount.length + garbageCount.length,
+                            isBoldClickableContent = false,
                             color = R.color.green_00ad31
                         )
                         binding.tvUsername.text = staff.name

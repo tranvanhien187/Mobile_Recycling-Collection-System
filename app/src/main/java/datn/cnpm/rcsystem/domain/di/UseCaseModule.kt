@@ -100,4 +100,16 @@ abstract class UseCaseModule {
     abstract fun provideGetStaffInfoUseCase(
         useCase: GetStaffInfoUseCaseImpl
     ): GetStaffInfoUseCase
+
+    @Binds
+    @Singleton
+    abstract fun provideGetListGarbageHistoryUseCase(
+        useCase: GetListGarbageHistoryUseCaseImpl
+    ): GetListGarbageHistoryUseCase
+    
+    @Binds
+    @Singleton
+    abstract fun provideGetListGiftHistoryUseCase(
+        useCase: GetListGiftHistoryUseCaseImpl
+    ): GetListGiftHistoryUseCase
 }

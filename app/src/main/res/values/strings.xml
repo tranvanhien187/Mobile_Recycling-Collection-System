@@ -78,4 +78,12 @@
     <string name="customer_name_label">Customer Name</string>
     <string name="address_label">Address</string>
     <string name="receive_btn">Receive</string>
+
+
+    <!-- Item history -->
+    <string name="equivalent_weight">Equivalents to %s</string>
+    <string name="agent_name">Agent : %s</string>
+    <string name="staff_name">Staff %s</string>
+    <string name="latest_update">Latest update %s</string>
+
 </resources>
