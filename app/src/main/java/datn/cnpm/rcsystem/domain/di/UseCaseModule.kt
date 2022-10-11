@@ -94,4 +94,10 @@ abstract class UseCaseModule {
     abstract fun provideReceiveTransportFormUseCase(
         useCase: ReceiveTransportFormUseCaseImpl
     ): ReceiveTransportFormUseCase
+
+    @Binds
+    @Singleton
+    abstract fun provideGetStaffInfoUseCase(
+        useCase: GetStaffInfoUseCaseImpl
+    ): GetStaffInfoUseCase
 }

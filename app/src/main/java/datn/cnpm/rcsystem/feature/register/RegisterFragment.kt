@@ -3,7 +3,6 @@ package datn.cnpm.rcsystem.feature.register
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -34,10 +33,10 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
             tvLogin.createSpannableString(
                 22,
                 27,
-                true
-            ) {
-                findNavController().navigate(R.id.loginFragment)
-            }
+                true,
+                click = {
+                    findNavController().navigate(R.id.loginFragment)
+                })
             btnRegister.setOnClickListener {
                 viewModel.register(
                     tieEmail.text.toString(),

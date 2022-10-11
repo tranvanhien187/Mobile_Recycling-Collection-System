@@ -2,6 +2,7 @@ package datn.cnpm.rcsystem.data.datastore
 
 import datn.cnpm.rcsystem.core.SBResponse
 import datn.cnpm.rcsystem.data.entitiy.*
+import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -86,5 +87,9 @@ class AuthenticationDataSource @Inject constructor(private val authenticationApi
 
     suspend fun receiveTransportForm(request: ReceiveFormRequest): SBResponse<String> {
         return authenticationApiService.receiveTransportForm(request)
+    }
+
+    suspend fun getStaffInfo(id: String): SBResponse<StaffInfoResponse> {
+        return authenticationApiService.getStaffInfo(id)
     }
 }

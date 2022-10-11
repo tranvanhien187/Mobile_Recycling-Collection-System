@@ -1,6 +1,7 @@
 package datn.cnpm.rcsystem.data.repository
 
 import datn.cnpm.rcsystem.data.entitiy.*
+import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
 
 /*
  * Created by ADMIN on 7/24/2022.
@@ -20,9 +21,14 @@ interface AuthenticationRepository {
     suspend fun getGiftRandom6(): List<GiftResponse>
     suspend fun getGiftUserHistory(): List<GiftUserHistoryResponse>
     suspend fun getGarbageUserHistory(): List<GarbageUserHistoryResponse>
+
+    // STAFF
     suspend fun receiveTransportForm(
         historyGarbageId: String,
         customerName: String,
         customerPhoneNumber: String
     ): String
+
+    suspend fun getStaffInfo(): StaffInfoResponse
+
 }

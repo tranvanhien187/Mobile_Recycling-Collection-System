@@ -49,10 +49,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             tvRegister.createSpannableString(
                 19,
                 40,
-                true
-            ) {
-                findNavController().navigate(R.id.registerFragment)
-            }
+                true, click = {
+                    findNavController().navigate(R.id.registerFragment)
+                })
         }
     }
 

@@ -9,6 +9,7 @@ import com.example.basesource.common.utils.glide.GlideHelper
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
+import datn.cnpm.rcsystem.common.extension.createSpannableString
 import datn.cnpm.rcsystem.databinding.FragmentStaffDashboardBinding
 
 /**
@@ -21,6 +22,7 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
 
     private val viewModel: DashboardStaffViewModel by viewModels()
     override fun initData(data: Bundle?) {
+        viewModel.fetchStaffInfo()
     }
 
     override fun initViews() {
@@ -51,22 +53,36 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
             )
             observe(
                 owner = viewLifecycleOwner,
-                selector = { state -> state.userEntity },
-                observer = { user ->
-                    user?.let {
+                selector = { state -> state.staff },
+                observer = { staff ->
+                    staff?.let {
                         GlideHelper.loadImage(
-                            user.avatar.orEmpty(),
+                            staff.avatar,
                             binding.ivAvatar,
                             R.drawable.ic_person
                         )
 
-                        binding.tvGarbageWeight.text = getString(
-                            R.string.label_total_weight,
-                            it.garbage?.exchange ?: 0.0
+                        val garbageCount = "${it.weightTotal} kgs"
+                        val giftCount = "${it.giftCount} gift"
+                        val count = getString(
+                            R.string.label_total_weight_and_gift,
+                            garbageCount, giftCount
                         )
-                        binding.tvUsername.text = it.name
+                        binding.tvGarbageWeight.createSpannableString(
+                            16,
+                            16 + garbageCount.length,
+                            false,
+                            color = R.color.orange_f05a30,
+                            content = count
+                        )
+                        binding.tvGarbageWeight.createSpannableString(
+                            33 + garbageCount.length,
+                            33 + giftCount.length + garbageCount.length,
+                            false,
+                            color = R.color.green_00ad31
+                        )
+                        binding.tvUsername.text = staff.name
                     }
-
                 }
             )
         }

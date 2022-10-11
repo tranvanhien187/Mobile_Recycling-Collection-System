@@ -79,16 +79,23 @@ fun TextView.createSpannableString(
     startIndex: Int,
     endIndex: Int,
     isBoldClickableContent: Boolean = false,
-    click: () -> Unit = {}
-) {
-    val spannable = SpannableString(text)
+    click: () -> Unit = {},
+    color: Int = R.color.green_00ad31,
+    content : String = "",
+    ) {
+    val spannable: SpannableString = if (content.isNotEmpty()) {
+        SpannableString(content)
+    } else {
+        SpannableString(text)
+    }
+
     spannable.setSpan(object : ClickableSpan() {
         override fun onClick(widget: View) {
             click.invoke()
         }
         override fun updateDrawState(ds: TextPaint) {
             super.updateDrawState(ds)
-            ds.color = context.resources.getColor(R.color.green_00ad31)
+            ds.color = context.resources.getColor(color)
             ds.isUnderlineText = false
             ds.isFakeBoldText = isBoldClickableContent
         }
