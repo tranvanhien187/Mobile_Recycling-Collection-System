@@ -2,7 +2,7 @@ package datn.cnpm.rcsystem.domain.usecase
 
 import datn.cnpm.rcsystem.core.Result
 import datn.cnpm.rcsystem.core.di.IoDispatcher
-import datn.cnpm.rcsystem.data.repository.AuthenticationRepository
+import datn.cnpm.rcsystem.data.repository.CRGSRepository
 import datn.cnpm.rcsystem.data.entitiy.LoginRequest
 import datn.cnpm.rcsystem.data.entitiy.LoginResponse
 import kotlinx.coroutines.CoroutineDispatcher
@@ -23,12 +23,12 @@ interface LoginUseCase {
 
 class LoginUseCaseImpl @Inject constructor(
     @IoDispatcher ioDispatcher: CoroutineDispatcher,
-    private val authenticationRepository: AuthenticationRepository,
+    private val CRGSRepository: CRGSRepository,
 ) : BaseUseCase<LoginUseCase.Parameters, LoginResponse>(ioDispatcher),
     LoginUseCase {
 
     override suspend fun execute(parameters: LoginUseCase.Parameters): LoginResponse {
-        return authenticationRepository.login(LoginRequest(parameters.email, parameters.password), parameters.isRemember)
+        return CRGSRepository.login(LoginRequest(parameters.email, parameters.password), parameters.isRemember)
     }
 
     override suspend fun login(parameters: LoginUseCase.Parameters): Result<LoginResponse> {

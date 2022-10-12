@@ -72,7 +72,29 @@
     <string name="place_detail_level_title">Level</string>
     <string name="place_detail_schedule_btn">Schedule</string>
     <string name="transport_id_label">Transport Id</string>
+    <string name="from_agent_name">From: %s</string>
+
+
     <string name="customer_name_label">Customer Name</string>
     <string name="address_label">Address</string>
     <string name="receive_btn">Receive</string>
+
+
+    <!-- Item history -->
+    <string name="equivalent_weight">Equivalents to %s</string>
+    <string name="agent_name">Agent : %s</string>
+    <string name="staff_name">Staff %s</string>
+    <string name="latest_update">Latest update %s</string>
+    <string name="gift_name_label">Gift name</string>
+    <string name="agent_label">Agent</string>
+    <string name="staff_label">Staff</string>
+    <string name="customer_label">Customer</string>
+    <string name="export_label">Export</string>
+    <string name="status_label">Status</string>
+    <string name="evidence_label">Evidence</string>
+    <string name="exchange_gift_detail_label">Exchange Gift Detail</string>
+    <string name="exchange_garbage_detail_label">Exchange Garbage Detail</string>
+    <string name="equivalent_label">Equivalent</string>
+    <string name="id_label">Id</string>
+
 </resources>

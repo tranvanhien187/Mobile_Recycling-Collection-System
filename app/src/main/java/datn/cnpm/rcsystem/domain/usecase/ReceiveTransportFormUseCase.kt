@@ -2,8 +2,7 @@ package datn.cnpm.rcsystem.domain.usecase
 
 import datn.cnpm.rcsystem.core.Result
 import datn.cnpm.rcsystem.core.di.IoDispatcher
-import datn.cnpm.rcsystem.data.entitiy.ReceiveFormRequest
-import datn.cnpm.rcsystem.data.repository.AuthenticationRepository
+import datn.cnpm.rcsystem.data.repository.CRGSRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
@@ -20,13 +19,13 @@ interface ReceiveTransportFormUseCase {
 
 class ReceiveTransportFormUseCaseImpl @Inject constructor(
     @IoDispatcher ioDispatcher: CoroutineDispatcher,
-    private val authenticationRepository: AuthenticationRepository,
+    private val CRGSRepository: CRGSRepository,
 ) : BaseUseCase<ReceiveTransportFormUseCase.Parameters, String>(
     ioDispatcher
 ), ReceiveTransportFormUseCase {
 
     override suspend fun execute(parameters: ReceiveTransportFormUseCase.Parameters): String {
-        return authenticationRepository.receiveTransportForm(
+        return CRGSRepository.receiveTransportForm(
             parameters.historyGarbageId,
             parameters.customerName,
             parameters.customerPhoneNumber

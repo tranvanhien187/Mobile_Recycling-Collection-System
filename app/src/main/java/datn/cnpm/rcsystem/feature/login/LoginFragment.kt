@@ -13,7 +13,7 @@ import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.common.extension.createSpannableString
 import datn.cnpm.rcsystem.databinding.FragmentLoginBinding
 import datn.cnpm.rcsystem.feature.home.staff.HomeStaffActivity
-import datn.cnpm.rcsystem.feature.home.user.HomeUserActivity
+import datn.cnpm.rcsystem.feature.home.user.HomeCustomerActivity
 import datn.cnpm.rcsystem.feature.updateaccountifo.UpdateAccountInfoFragment
 
 /**
@@ -47,9 +47,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             }
 
             tvRegister.createSpannableString(
-                19,
-                40,
-                true, click = {
+                startIndex = 19,
+                endIndex = 40,
+                isBoldClickableContent = true, click = {
                     findNavController().navigate(R.id.registerFragment)
                 })
         }
@@ -79,7 +79,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                     }
                 }
                 is LoginEvent.UserLoginSuccess -> {
-                    val intent = Intent(this.activity, HomeUserActivity::class.java)
+                    val intent = Intent(this.activity, HomeCustomerActivity::class.java)
                     activity?.startActivity(intent)
                 }
                 is LoginEvent.LoginFailure -> {
@@ -95,7 +95,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                     )
                 }
                 is LoginEvent.AgentLoginSuccess -> {
-                    val intent = Intent(this.activity, HomeUserActivity::class.java)
+                    val intent = Intent(this.activity, HomeCustomerActivity::class.java)
                     activity?.startActivity(intent)
                 }
 

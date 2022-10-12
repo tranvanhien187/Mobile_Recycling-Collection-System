@@ -2,8 +2,8 @@ package datn.cnpm.rcsystem.data.di
 
 import datn.cnpm.rcsystem.data.datastore.AuthenticationApiService
 import datn.cnpm.rcsystem.data.datastore.AuthenticationDataSource
-import datn.cnpm.rcsystem.data.repository.AuthenticationRepository
-import datn.cnpm.rcsystem.data.repository.AuthenticationRepositoryImp
+import datn.cnpm.rcsystem.data.repository.CRGSRepository
+import datn.cnpm.rcsystem.data.repository.CRGSRepositoryImp
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -23,7 +23,7 @@ abstract class AuthenticationModule {
 
     @Binds
     @Singleton
-    abstract fun provideAuthenticationRepository(authenticationRepository: AuthenticationRepositoryImp): AuthenticationRepository
+    abstract fun provideAuthenticationRepository(authenticationRepository: CRGSRepositoryImp): CRGSRepository
 
     companion object {
 

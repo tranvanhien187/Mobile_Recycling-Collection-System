@@ -9,6 +9,7 @@ enum class ErrorCode(val value: String) {
     NOT_UPDATE_DEALER("You must go to headquarter to update information before become dealer!"),
     EXISTED_EMAIL("This email already existed!"),
     EMPTY_NAME("Name cannot be blank!"),
+    NOT_FIND_ROLE("Can not find suitable role!"),
     EMPTY_IDC("Identify card number cannot be blank!"),
     EMPTY_STREET("Street cannot be blank!"),
     EMPTY_DISTRICT("District cannot be blank!"),

@@ -21,7 +21,7 @@ class PrimaryButton @JvmOverloads constructor(
     init {
         background = ContextCompat.getDrawable(context, R.drawable.bg_primary_button_enable)
         setTextColor(ContextCompat.getColor(context, R.color.white))
-        typeface = ResourcesCompat.getFont(context, R.font.montserrat_semibold)
+        typeface = ResourcesCompat.getFont(context, R.font.proximanova_bold)
         isAllCaps = false
         gravity = Gravity.CENTER
         textSize = DEFAULT_TEXT_SIZE

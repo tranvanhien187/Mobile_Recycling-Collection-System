@@ -31,9 +31,9 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
     override fun initActions() {
         binding.apply {
             tvLogin.createSpannableString(
-                22,
-                27,
-                true,
+                startIndex = 22,
+                endIndex = 27,
+                isBoldClickableContent = true,
                 click = {
                     findNavController().navigate(R.id.loginFragment)
                 })

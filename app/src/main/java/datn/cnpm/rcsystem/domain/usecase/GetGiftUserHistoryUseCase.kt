@@ -2,7 +2,7 @@ package datn.cnpm.rcsystem.domain.usecase
 
 import datn.cnpm.rcsystem.core.Result
 import datn.cnpm.rcsystem.core.di.IoDispatcher
-import datn.cnpm.rcsystem.data.repository.AuthenticationRepository
+import datn.cnpm.rcsystem.data.repository.CRGSRepository
 import datn.cnpm.rcsystem.domain.model.GiftUserHistoryEntity
 import datn.cnpm.rcsystem.domain.model.mapToEntity
 import kotlinx.coroutines.CoroutineDispatcher
@@ -16,12 +16,12 @@ interface GetGiftUserHistoryUseCase {
 
 class GetGiftUserHistoryUseCaseImpl @Inject constructor(
     @IoDispatcher ioDispatcher: CoroutineDispatcher,
-    private val authenticationRepository: AuthenticationRepository,
+    private val CRGSRepository: CRGSRepository,
 ) : BaseUseCase<GetGiftUserHistoryUseCase.Parameters, List<GiftUserHistoryEntity>>(ioDispatcher),
     GetGiftUserHistoryUseCase {
 
     override suspend fun execute(parameters: GetGiftUserHistoryUseCase.Parameters): List<GiftUserHistoryEntity> {
-        return authenticationRepository.getGiftUserHistory().map { it.mapToEntity() }
+        return CRGSRepository.getGiftUserHistory().map { it.mapToEntity() }
     }
 
     override suspend fun getGiftUserHistory(parameters: GetGiftUserHistoryUseCase.Parameters): Result<List<GiftUserHistoryEntity>> {
