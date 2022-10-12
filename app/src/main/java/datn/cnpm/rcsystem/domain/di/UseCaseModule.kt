@@ -106,10 +106,22 @@ abstract class UseCaseModule {
     abstract fun provideGetListGarbageHistoryUseCase(
         useCase: GetListGarbageHistoryUseCaseImpl
     ): GetListGarbageHistoryUseCase
-    
+
     @Binds
     @Singleton
     abstract fun provideGetListGiftHistoryUseCase(
         useCase: GetListGiftHistoryUseCaseImpl
     ): GetListGiftHistoryUseCase
+
+    @Binds
+    @Singleton
+    abstract fun provideGetGiftHistoryDetailUseCase(
+        useCase: GetGiftHistoryDetailUseCaseImpl
+    ): GetGiftHistoryDetailUseCase
+    
+    @Binds
+    @Singleton
+    abstract fun provideGetGarbageHistoryDetailUseCase(
+        useCase: GetGarbageHistoryDetailUseCaseImpl
+    ): GetGarbageHistoryDetailUseCase
 }

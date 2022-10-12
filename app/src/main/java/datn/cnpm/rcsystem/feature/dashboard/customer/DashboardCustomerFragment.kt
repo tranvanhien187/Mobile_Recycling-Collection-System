@@ -1,4 +1,4 @@
-package datn.cnpm.rcsystem.feature.dashboard
+package datn.cnpm.rcsystem.feature.dashboard.customer
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,30 +6,31 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import com.google.android.material.appbar.AppBarLayout
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.common.utils.CommonUtils.toPoint
-import datn.cnpm.rcsystem.databinding.FragmentUserDashboardBinding
+import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
+import datn.cnpm.rcsystem.databinding.FragmentCustomerDashboardBinding
+import datn.cnpm.rcsystem.feature.dashboard.RecyclingGarbage
 import datn.cnpm.rcsystem.feature.dashboard.adapter.GarbageAdapter
 import datn.cnpm.rcsystem.feature.dashboard.adapter.GiftYouMayBeLikeAdapter
 import datn.cnpm.rcsystem.feature.dashboard.adapter.TradingPlaceHomeAdapter
 
 /**
- * [DashboardFragment]
+ * [DashboardCustomerFragment]
  */
 @AndroidEntryPoint
-class DashboardFragment : BaseFragment<FragmentUserDashboardBinding>() {
-    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentUserDashboardBinding
-        get() = FragmentUserDashboardBinding::inflate
+class DashboardCustomerFragment : BaseFragment<FragmentCustomerDashboardBinding>() {
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentCustomerDashboardBinding
+        get() = FragmentCustomerDashboardBinding::inflate
 
     private val garbageAdapter by lazy { GarbageAdapter() }
     private val tPlaceHomeAdapter by lazy { TradingPlaceHomeAdapter() }
     private val giftAdapter by lazy { GiftYouMayBeLikeAdapter() }
 
-    private val viewModel: DashboardViewModel by viewModels()
+    private val viewModel: DashboardCustomerViewModel by viewModels()
     override fun initData(data: Bundle?) {
         viewModel.getUserInfo()
         viewModel.fetchRandomTPlace()
@@ -54,7 +55,7 @@ class DashboardFragment : BaseFragment<FragmentUserDashboardBinding>() {
 
             btnScan.setOnClickListener {
                 context?.let {
-                    Toast.makeText(it,"This feature is not implemented", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(it, "This feature is not implemented", Toast.LENGTH_SHORT).show()
                 }
             }
             ivAvatar.setOnClickListener {
@@ -103,7 +104,7 @@ class DashboardFragment : BaseFragment<FragmentUserDashboardBinding>() {
 
                         binding.tvGarbageWeight.text = getString(
                             R.string.label_total_weight,
-                            it.garbage?.exchange?:0.0
+                            it.garbage?.exchange ?: 0.0
                         )
                         binding.tvPoint.text = it.point?.remainPoint.toPoint()
                         binding.tvUsername.text = it.name

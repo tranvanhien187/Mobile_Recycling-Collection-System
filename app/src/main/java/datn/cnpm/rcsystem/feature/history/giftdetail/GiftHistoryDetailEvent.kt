@@ -1,3 +1,5 @@
 package datn.cnpm.rcsystem.feature.history.giftdetail
 
-sealed interface GiftHistoryDetailEvent
+sealed interface GiftHistoryDetailEvent {
+    object UnKnowError : GiftHistoryDetailEvent
+}

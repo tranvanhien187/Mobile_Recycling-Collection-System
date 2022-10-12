@@ -1,6 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="false"
+        app:layout_constraintBottom_toTopOf="@id/tvPoint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_status_succes" />
+
+    <TextView
+        android:id="@+id/tvPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="6dp"
+        android:fontFamily="@font/proximanova_sbold"
+        android:textColor="@color/black"
+        android:textSize="24dp"
+        android:layout_marginVertical="12dp"
+        app:drawableStartCompat="@drawable/ic_leaf_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgStatus"
+        tools:text="1.200.000" />
+
+    <TextView
+        android:id="@+id/tvDateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="24dp"
+        android:drawablePadding="6dp"
+        android:fontFamily="@font/proximanova_sbold"
+        android:textColor="@color/black_354052"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@id/clInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPoint"
+        tools:text="13 Mar 2018, 12:37pm" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@id/btnExport"
+        app:layout_constraintTop_toBottomOf="@id/tvDateTime">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideLineBoundary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="254dp" />
+
+        <TextView
+            android:id="@+id/tvIdTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/proximanova_reg"
+            android:text="@string/id_label"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/proximanova_sbold"
+            android:gravity="end"
+            android:maxLines="2"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tvIdTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideLineBoundary"
+            app:layout_constraintTop_toTopOf="@id/tvIdTitle"
+            tools:text="5em23daw323dc" />
+
+        <TextView
+            android:id="@+id/tvGiftNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/proximanova_reg"
+            android:text="@string/equivalent_label"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvId" />
+
+        <TextView
+            android:id="@+id/tvEquivalent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/proximanova_sbold"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/tvGiftNameLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideLineBoundary"
+            app:layout_constraintTop_toTopOf="@id/tvGiftNameLabel"
+            tools:text="Iphone XX Promax UltraView" />
+
+        <TextView
+            android:id="@+id/tvStatusLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/proximanova_reg"
+            android:text="@string/status_label"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvGiftNameLabel" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/proximanova_sbold"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/tvStatusLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideLineBoundary"
+            app:layout_constraintTop_toTopOf="@id/tvStatusLabel"
+            tools:text="Success" />
+
+        <TextView
+            android:id="@+id/tvNameLabel1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/proximanova_reg"
+            tools:text="@string/agent_label"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvStatusLabel" />
+
+        <TextView
+            android:id="@+id/tvName1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/proximanova_sbold"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/tvNameLabel1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideLineBoundary"
+            app:layout_constraintTop_toTopOf="@id/tvNameLabel1"
+            tools:text="Agent name" />
+
+        <TextView
+            android:id="@+id/tvNameLabel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/proximanova_reg"
+            tools:text="@string/agent_label"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNameLabel1" />
+
+        <TextView
+            android:id="@+id/tvName2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/proximanova_sbold"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/tvNameLabel2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideLineBoundary"
+            app:layout_constraintTop_toTopOf="@id/tvNameLabel2"
+            tools:text="Agent name" />
+
+        <TextView
+            android:id="@+id/tvEvidenceTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/proximanova_reg"
+            android:text="@string/evidence_label"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvName2" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgEvidence"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="9dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="H, 366:208"
+            app:layout_constraintTop_toBottomOf="@id/tvEvidenceTitle"
+            app:shapeAppearanceOverlay="@style/CircleImage" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <datn.cnpm.rcsystem.common.widget.PrimaryButton
+        android:id="@+id/btnExport"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="44dp"
+        android:text="@string/export_label"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,8 +1,8 @@
 package datn.cnpm.rcsystem.feature.history.garbagedetail
 
-import datn.cnpm.rcsystem.domain.model.GarbageUserHistoryEntity
+import datn.cnpm.rcsystem.domain.model.history.GarbageHistoryDetailEntity
 
 data class GarbageHistoryDetailState(
     val loading: Boolean = false,
-    val garbageHistory: GarbageUserHistoryEntity? = null
+    val garbageHistoryDetail: GarbageHistoryDetailEntity? = null
 )

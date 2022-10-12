@@ -37,10 +37,10 @@ class GiftHistoryFragment : BaseFragment<FragmentGiftHistoryBinding>() {
 
     override fun initActions() {
         giftAdapter.onItemClick = { gift ->
-//            findNavController().navigate(
-//                R.id.giftHistoryDetailFragment,
-//                bundleOf(Pair(GIFT_HISTORY_KEY, gift))
-//            )
+            findNavController().navigate(
+                R.id.giftHistoryDetailFragment,
+                bundleOf(Pair(GIFT_HISTORY_ID_KEY, gift.id))
+            )
         }
         binding.apply {
         }
@@ -71,6 +71,6 @@ class GiftHistoryFragment : BaseFragment<FragmentGiftHistoryBinding>() {
     }
 
     companion object {
-        const val GIFT_HISTORY_KEY = "GIFT_HISTORY_KEY"
+        const val GIFT_HISTORY_ID_KEY = "GIFT_HISTORY_ID_KEY"
     }
 }

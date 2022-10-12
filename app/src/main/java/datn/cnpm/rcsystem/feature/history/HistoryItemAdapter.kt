@@ -9,25 +9,25 @@ import datn.cnpm.rcsystem.base.BaseListAdapter
 import datn.cnpm.rcsystem.common.extension.createSpannableString
 import datn.cnpm.rcsystem.common.extension.gone
 import datn.cnpm.rcsystem.common.extension.visible
-import datn.cnpm.rcsystem.databinding.ItemGarbageHistoryBinding
+import datn.cnpm.rcsystem.databinding.ItemHistoryBinding
 import datn.cnpm.rcsystem.domain.model.history.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 class HistoryItemAdapter : BaseListAdapter<BaseItemHistory>() {
 
-    internal var onItemClick: (String) -> Unit = {}
+    internal var onItemClick: (BaseItemHistory) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseItemViewHolder =
         GarbageExchangeHistoryViewHolder(
-            ItemGarbageHistoryBinding.inflate(
+            ItemHistoryBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
             )
         )
 
-    inner class GarbageExchangeHistoryViewHolder(private val binding: ItemGarbageHistoryBinding) :
+    inner class GarbageExchangeHistoryViewHolder(private val binding: ItemHistoryBinding) :
         BaseItemViewHolder(binding.root) {
 
         override fun bind(data: BaseItemHistory) {
@@ -52,12 +52,15 @@ class HistoryItemAdapter : BaseListAdapter<BaseItemHistory>() {
                 }
                 else -> {}
             }
+            binding.root.setOnClickListener {
+                onItemClick.invoke(data)
+            }
         }
 
         @SuppressLint("SimpleDateFormat", "SetTextI18n")
         private fun handleGarbageHistoryByAgent(
             data: ItemGarbageHistoryByAgentEntity,
-            binding: ItemGarbageHistoryBinding
+            binding: ItemHistoryBinding
         ) {
             binding.apply {
                 root.context?.let {
@@ -85,7 +88,7 @@ class HistoryItemAdapter : BaseListAdapter<BaseItemHistory>() {
         @SuppressLint("SimpleDateFormat", "SetTextI18n")
         private fun handleGarbageHistoryByCustomer(
             data: ItemGarbageHistoryByCustomerEntity,
-            binding: ItemGarbageHistoryBinding
+            binding: ItemHistoryBinding
         ) {
             binding.apply {
                 root.context?.let {
@@ -131,7 +134,7 @@ class HistoryItemAdapter : BaseListAdapter<BaseItemHistory>() {
         @SuppressLint("SimpleDateFormat", "SetTextI18n")
         private fun handleGarbageHistoryByStaff(
             data: ItemGarbageHistoryByStaffEntity,
-            binding: ItemGarbageHistoryBinding
+            binding: ItemHistoryBinding
         ) {
             binding.apply {
                 root.context?.let {
@@ -166,7 +169,7 @@ class HistoryItemAdapter : BaseListAdapter<BaseItemHistory>() {
         @SuppressLint("SimpleDateFormat", "SetTextI18n")
         private fun handleGiftHistoryByAgent(
             data: ItemGiftHistoryByAgentEntity,
-            binding: ItemGarbageHistoryBinding
+            binding: ItemHistoryBinding
         ) {
             binding.apply {
                 root.context?.let {
@@ -194,7 +197,7 @@ class HistoryItemAdapter : BaseListAdapter<BaseItemHistory>() {
         @SuppressLint("SimpleDateFormat", "SetTextI18n")
         private fun handleGiftHistoryByCustomer(
             data: ItemGiftHistoryByCustomerEntity,
-            binding: ItemGarbageHistoryBinding
+            binding: ItemHistoryBinding
         ) {
             binding.apply {
                 root.context?.let {
@@ -240,7 +243,7 @@ class HistoryItemAdapter : BaseListAdapter<BaseItemHistory>() {
         @SuppressLint("SimpleDateFormat", "SetTextI18n")
         private fun handleGiftHistoryByStaff(
             data: ItemGiftHistoryByStaffEntity,
-            binding: ItemGarbageHistoryBinding
+            binding: ItemHistoryBinding
         ) {
             binding.apply {
                 root.context?.let {
@@ -274,7 +277,10 @@ class HistoryItemAdapter : BaseListAdapter<BaseItemHistory>() {
 
         @SuppressLint("SimpleDateFormat")
         private fun Context.getDateStringDMY(date: Date): String {
-            return getString(R.string.latest_update, SimpleDateFormat("dd MMM yyyy", Locale.US).format(date))
+            return getString(
+                R.string.latest_update,
+                SimpleDateFormat("dd MMM yyyy", Locale.US).format(date)
+            )
         }
 
         @SuppressLint("SimpleDateFormat")

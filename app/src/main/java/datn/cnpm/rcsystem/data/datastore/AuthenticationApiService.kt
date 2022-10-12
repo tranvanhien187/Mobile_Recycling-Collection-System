@@ -38,8 +38,18 @@ interface AuthenticationApiService {
         @Part("provinceOrCity") provinceOrCity: RequestBody,
     ): SBResponse<UpdateUserInfoResponse>
 
-    @GET("api/v1/user/{id}")
+
+    /***        CUSTOMER      ***/
+    @GET("api/v1/customer/{id}")
     suspend fun getUserInfo(@Path("id") uuid: String): SBResponse<GetUserInfoResponse>
+
+    @GET("/api/v1/history/garbage/{id}")
+    suspend fun getListGarbageHistoryByCustomer(@Path("id") id: String): SBResponse<List<ItemGarbageHistoryByCustomerEntity>>
+
+    @GET("/api/v1/history/gift/{id}")
+    suspend fun getListGiftHistoryByCustomer(@Path("id") id: String): SBResponse<List<ItemGiftHistoryByCustomerEntity>>
+
+    /******/
 
     @GET("api/v1/tplace/get/{id}")
     suspend fun getTPlaceForUser(
@@ -77,17 +87,21 @@ interface AuthenticationApiService {
 
     @GET("/api/v1/history/gift/{id}")
     suspend fun getListGiftHistoryByStaff(@Path("id") id: String): SBResponse<List<ItemGiftHistoryByStaffEntity>>
+
     /******/
 
-    @GET("/api/v1/history/garbage/{id}")
-    suspend fun getListGarbageHistoryByCustomer(@Path("id") id: String): SBResponse<List<ItemGarbageHistoryByCustomerEntity>>
 
     @GET("/api/v1/history/garbage/{id}")
     suspend fun getListGarbageHistoryByAgent(@Path("id") id: String): SBResponse<List<ItemGarbageHistoryByAgentEntity>>
 
-    @GET("/api/v1/history/gift/{id}")
-    suspend fun getListGiftHistoryByCustomer(@Path("id") id: String): SBResponse<List<ItemGiftHistoryByCustomerEntity>>
 
     @GET("/api/v1/history/gift/{id}")
     suspend fun getListGiftHistoryByAgent(@Path("id") id: String): SBResponse<List<ItemGiftHistoryByAgentEntity>>
+
+
+    @GET("/api/v1/history/gift/details/{id}")
+    suspend fun getGiftHistoryDetail(@Path("id") historyId: String): SBResponse<GiftHistoryDetailResponse>
+
+    @GET("/api/v1/history/garbage/details/{id}")
+    suspend fun getGarbageHistoryDetail(@Path("id") historyId: String): SBResponse<GarbageHistoryDetailResponse>
 }

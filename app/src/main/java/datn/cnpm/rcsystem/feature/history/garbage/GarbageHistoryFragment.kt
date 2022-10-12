@@ -3,8 +3,11 @@ package datn.cnpm.rcsystem.feature.history.garbage
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.databinding.FragmentGarbageHistoryBinding
 import datn.cnpm.rcsystem.feature.history.HistoryItemAdapter
@@ -31,10 +34,10 @@ class GarbageHistoryFragment : BaseFragment<FragmentGarbageHistoryBinding>() {
 
     override fun initActions() {
         garbageAdapter.onItemClick = { garbage ->
-//            findNavController().navigate(
-//                R.id.garbageHistoryDetailFragment,
-//                bundleOf(Pair(GARBAGE_HISTORY_KEY, garbage))
-//            )
+            findNavController().navigate(
+                R.id.garbageHistoryDetailFragment,
+                bundleOf(Pair(GARBAGE_HISTORY_ID_KEY, garbage.id))
+            )
         }
         binding.apply {
         }
@@ -65,6 +68,6 @@ class GarbageHistoryFragment : BaseFragment<FragmentGarbageHistoryBinding>() {
     }
 
     companion object {
-        const val GARBAGE_HISTORY_KEY = "GARBAGE_HISTORY_KEY"
+        const val GARBAGE_HISTORY_ID_KEY = "GARBAGE_HISTORY_ID_KEY"
     }
 }

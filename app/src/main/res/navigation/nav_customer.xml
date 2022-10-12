@@ -13,8 +13,8 @@
         tools:layout="@layout/fragment_trading_place"/>
     <fragment
         android:id="@+id/dashboardFragment"
-        tools:layout="@layout/fragment_user_dashboard"
-        android:name="datn.cnpm.rcsystem.feature.dashboard.DashboardFragment"
+        tools:layout="@layout/fragment_customer_dashboard"
+        android:name="datn.cnpm.rcsystem.feature.dashboard.customer.DashboardCustomerFragment"
         android:label="DashboardFragment" />
     <fragment
         android:id="@+id/historyFragment"

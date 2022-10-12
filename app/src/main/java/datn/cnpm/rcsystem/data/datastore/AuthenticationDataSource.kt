@@ -119,4 +119,12 @@ class AuthenticationDataSource @Inject constructor(private val authenticationApi
     suspend fun getListGiftHistoryByAgent(id: String): SBResponse<List<ItemGiftHistoryByAgentEntity>> {
         return authenticationApiService.getListGiftHistoryByAgent(id)
     }
+
+    suspend fun getGiftHistoryDetail(historyId: String): SBResponse<GiftHistoryDetailResponse> {
+        return authenticationApiService.getGiftHistoryDetail(historyId)
+    }
+
+    suspend fun getGarbageHistoryDetail(historyId: String): SBResponse<GarbageHistoryDetailResponse> {
+        return authenticationApiService.getGarbageHistoryDetail(historyId)
+    }
 }

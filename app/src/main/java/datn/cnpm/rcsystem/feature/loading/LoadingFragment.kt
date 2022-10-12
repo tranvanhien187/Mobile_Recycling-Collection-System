@@ -12,7 +12,7 @@ import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.data.entitiy.Role
 import datn.cnpm.rcsystem.databinding.FragmentLoadingBinding
 import datn.cnpm.rcsystem.feature.home.agent.HomeAgentActivity
-import datn.cnpm.rcsystem.feature.home.user.HomeUserActivity
+import datn.cnpm.rcsystem.feature.home.user.HomeCustomerActivity
 import datn.cnpm.rcsystem.local.sharepreferences.AuthPreference
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -35,7 +35,7 @@ class LoadingFragment: BaseFragment<FragmentLoadingBinding>() {
             delay(1000)
             if (authPreference.role.isNotEmpty()) {
                 if(authPreference.role == Role.CUSTOMER.toString()) {
-                    val intent = Intent(requireActivity(), HomeUserActivity::class.java)
+                    val intent = Intent(requireActivity(), HomeCustomerActivity::class.java)
                     startActivity(intent)
                 } else if(authPreference.role == Role.AGENT.toString()) {
                     val intent = Intent(requireActivity(), HomeAgentActivity::class.java)

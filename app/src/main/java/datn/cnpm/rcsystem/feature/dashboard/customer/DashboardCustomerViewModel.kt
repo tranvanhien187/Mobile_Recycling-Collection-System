@@ -1,4 +1,4 @@
-package datn.cnpm.rcsystem.feature.dashboard
+package datn.cnpm.rcsystem.feature.dashboard.customer
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,21 +12,19 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class DashboardViewModel @Inject constructor(
+class DashboardCustomerViewModel @Inject constructor(
     private val getUserInfoUseCase: GetUserInfoUseCase,
     private val getTPlaceRandom6UseCase: GetTPlaceRandom6UseCase,
     private val getGiftRandom6UserCase: GetGiftRandom6UserCase
 ) :
-    BaseViewModel<DashboardState, DashboardEvent>() {
-    override fun initState() = DashboardState()
+    BaseViewModel<DashboardCustomerState, DashboardCustomerEvent>() {
+    override fun initState() = DashboardCustomerState()
 
     fun getUserInfo() {
         viewModelScope.launch {
             val response = getUserInfoUseCase.getUserInfo()
             if (response.succeeded) {
                 dispatchState(currentState.copy(userEntity = response.requireData))
-            } else {
-
             }
         }
     }

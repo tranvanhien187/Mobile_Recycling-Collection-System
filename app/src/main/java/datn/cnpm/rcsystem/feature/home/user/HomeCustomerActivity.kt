@@ -1,24 +1,25 @@
-package datn.cnpm.rcsystem.feature.home.agent
+package datn.cnpm.rcsystem.feature.home.user
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.base.BaseActivity
 import datn.cnpm.rcsystem.data.entitiy.Role
-import datn.cnpm.rcsystem.databinding.ActivityHomeAgentBinding
+import datn.cnpm.rcsystem.databinding.ActivityHomeCustomerBinding
 import datn.cnpm.rcsystem.local.sharepreferences.AuthPreference
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeAgentActivity : BaseActivity<ActivityHomeAgentBinding>() {
-    override val bindingInflater: (LayoutInflater) -> ActivityHomeAgentBinding
-        get() = ActivityHomeAgentBinding::inflate
+class HomeCustomerActivity : BaseActivity<ActivityHomeCustomerBinding>() {
+    override val bindingInflater: (LayoutInflater) -> ActivityHomeCustomerBinding
+        get() = ActivityHomeCustomerBinding::inflate
 
     @Inject
     lateinit var authPreference: AuthPreference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        authPreference.role = Role.AGENT.name
-        authPreference.uuid = "ef5143a2551ff782569090fcf72206a1d393ebc523a892b3142f0729bc5f6985"
+        authPreference.role = Role.CUSTOMER.name
+        authPreference.uuid = "78c07e6325ae24f04392b2d28f327d7709b07e4036ade21d2e6a3aced44fc7c3"
     }
 }

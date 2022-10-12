@@ -1,10 +1,9 @@
 package datn.cnpm.rcsystem.data.repository
 
-import datn.cnpm.rcsystem.common.ErrorCode
-import datn.cnpm.rcsystem.common.exception.BadRequestException
 import datn.cnpm.rcsystem.data.entitiy.*
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
 import datn.cnpm.rcsystem.domain.model.history.BaseItemHistory
+import datn.cnpm.rcsystem.domain.model.history.GiftHistoryDetailResponse
 
 /*
  * Created by ADMIN on 7/24/2022.
@@ -36,4 +35,6 @@ interface CRGSRepository {
 
     suspend fun getListGarbageHistory(): List<BaseItemHistory>
     suspend fun getListGiftHistory(): List<BaseItemHistory>
+    suspend fun getGiftHistoryDetail(historyId: String): GiftHistoryDetailResponse
+    suspend fun getGarbageHistoryDetail(historyId: String): GarbageHistoryDetailResponse
 }

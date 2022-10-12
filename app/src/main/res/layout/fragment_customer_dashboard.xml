@@ -100,55 +100,45 @@
                 tools:text="Equivalents to 150 kilograms trash has been recycle, congrats!" />
 
 
-            <androidx.constraintlayout.utils.widget.ImageFilterView
+            <ImageView
                 android:id="@+id/btnSetting"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:contentDescription="@string/empty_value"
                 android:src="@drawable/ic_setting_green"
-                app:altSrc="@drawable/ic_setting"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:overlay="false" />
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.utils.widget.ImageFilterView
+            <ImageView
                 android:id="@+id/btnScan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/empty_value"
-                android:src="@drawable/ic_scan_qr_green"
-                app:altSrc="@drawable/ic_scan_qr"
-                app:overlay="false"
+                android:src="@drawable/ic_qrcode_scan"
                 motion:layout_editor_absoluteX="24dp"
                 motion:layout_editor_absoluteY="122dp" />
 
-            <androidx.constraintlayout.utils.widget.ImageFilterView
+            <ImageView
                 android:id="@+id/btnGift"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/empty_value"
-                android:src="@drawable/ic_gift_green"
-                app:altSrc="@drawable/ic_gift"
-                app:overlay="false" />
+                android:src="@drawable/ic_gift" />
 
-            <androidx.constraintlayout.utils.widget.ImageFilterView
+            <ImageView
                 android:id="@+id/btnHistory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/empty_value"
-                android:src="@drawable/ic_history_green"
-                app:altSrc="@drawable/ic_history"
-                app:overlay="false" />
+                android:src="@drawable/ic_history" />
 
-            <androidx.constraintlayout.utils.widget.ImageFilterView
+            <ImageView
                 android:id="@+id/btnPlace"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/empty_value"
-                android:src="@drawable/ic_recycle_green"
-                app:altSrc="@drawable/ic_recycle"
-                app:overlay="false"
+                android:src="@drawable/ic_recycle"
                 motion:layout_editor_absoluteX="224dp"
                 motion:layout_editor_absoluteY="122dp" />
 
@@ -250,8 +240,8 @@
                 android:layout_marginTop="8dp"
                 android:clipToPadding="false"
                 android:orientation="horizontal"
-                android:paddingLeft="24dp"
-                android:paddingRight="0dp"
+                android:paddingStart="24dp"
+                android:paddingEnd="0dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toBottomOf="@id/llLabel2"
                 tools:listitem="@layout/item_recycling_garbage" />
@@ -297,7 +287,8 @@
                     android:layout_marginTop="8dp"
                     android:clipToPadding="false"
                     android:orientation="horizontal"
-                    android:paddingLeft="24dp"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="0dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintTop_toBottomOf="@id/tvLabel5"
                     tools:listitem="@layout/item_trading_place_home" />

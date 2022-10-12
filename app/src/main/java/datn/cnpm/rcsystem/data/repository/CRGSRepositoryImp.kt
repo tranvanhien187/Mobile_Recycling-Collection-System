@@ -6,6 +6,7 @@ import datn.cnpm.rcsystem.data.datastore.AuthenticationDataSource
 import datn.cnpm.rcsystem.data.entitiy.*
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
 import datn.cnpm.rcsystem.domain.model.history.BaseItemHistory
+import datn.cnpm.rcsystem.domain.model.history.GiftHistoryDetailResponse
 import datn.cnpm.rcsystem.local.sharepreferences.AuthPreference
 import javax.inject.Inject
 
@@ -226,7 +227,7 @@ class CRGSRepositoryImp @Inject constructor(
     }
 
     override suspend fun getListGarbageHistory(): List<BaseItemHistory> {
-        val response = when(authPre.role) {
+        val response = when (authPre.role) {
             Role.CUSTOMER.name -> {
                 authenticationDataSource.getListGarbageHistoryByCustomer(authPre.uuid)
             }
@@ -253,9 +254,9 @@ class CRGSRepositoryImp @Inject constructor(
             throw Exception(ErrorCode.UNKNOWN_ERROR.value)
         }
     }
-    
+
     override suspend fun getListGiftHistory(): List<BaseItemHistory> {
-        val response = when(authPre.role) {
+        val response = when (authPre.role) {
             Role.CUSTOMER.name -> {
                 authenticationDataSource.getListGiftHistoryByCustomer(authPre.uuid)
             }
@@ -270,6 +271,36 @@ class CRGSRepositoryImp @Inject constructor(
             }
         }
 
+        if (response.isSuccess) {
+            return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
+        } else {
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+        }
+    }
+
+    override suspend fun getGiftHistoryDetail(historyId: String): GiftHistoryDetailResponse {
+        val response = authenticationDataSource.getGiftHistoryDetail(historyId)
+        if (response.isSuccess) {
+            return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
+        } else {
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+        }
+    }
+
+    override suspend fun getGarbageHistoryDetail(historyId: String): GarbageHistoryDetailResponse {
+        val response = authenticationDataSource.getGarbageHistoryDetail(historyId)
         if (response.isSuccess) {
             return response.requireData
         } else if (response.isFailure) {
