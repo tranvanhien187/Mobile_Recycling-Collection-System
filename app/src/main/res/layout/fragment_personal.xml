@@ -1,6 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingHorizontal="24dp">
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivAvatar"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="30dp"
+        android:background="#E5E5E5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/CustomShapeOVerlay50P"
+        tools:src="@drawable/ic_person" />
+
+    <TextView
+        android:id="@+id/tvAccountName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivAvatar"
+        tools:text="Tran Van A" />
+
+    <TextView
+        android:id="@+id/tvPhoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/proximanova_light"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAccountName"
+        tools:text="088 737 4124" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnEditProfile"
+        android:layout_width="110dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_solid_6dp_green_00ad31"
+        android:fontFamily="@font/proximanova_reg"
+        android:text="@string/personal_edit_profile"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPhoneNumber" />
+
+    <TextView
+        android:id="@+id/tvHelp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_solid_6dp_clickable_grey_f8f8f8"
+        android:drawablePadding="18dp"
+        android:fontFamily="@font/proximanova_reg"
+        android:gravity="center_vertical"
+        android:paddingVertical="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="20dp"
+        android:text="@string/personal_help"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:drawableEndCompat="@drawable/ic_arrow_right_personal"
+        app:drawableStartCompat="@drawable/ic_personal_help"
+        app:layout_constraintTop_toBottomOf="@id/btnEditProfile" />
+
+    <TextView
+        android:id="@+id/tvTermCondition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/bg_solid_6dp_clickable_grey_f8f8f8"
+        android:drawablePadding="18dp"
+        android:fontFamily="@font/proximanova_reg"
+        android:gravity="center_vertical"
+        android:paddingVertical="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="20dp"
+        android:text="@string/personal_term_condition"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:drawableEndCompat="@drawable/ic_arrow_right_personal"
+        app:drawableStartCompat="@drawable/ic_personal_term_condition"
+        app:layout_constraintTop_toBottomOf="@id/tvHelp" />
+
+    <TextView
+        android:id="@+id/tvAboutUs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/bg_solid_6dp_clickable_grey_f8f8f8"
+        android:drawablePadding="18dp"
+        android:fontFamily="@font/proximanova_reg"
+        android:gravity="center_vertical"
+        android:paddingVertical="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="20dp"
+        android:text="@string/personal_about_us"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:drawableEndCompat="@drawable/ic_arrow_right_personal"
+        app:drawableStartCompat="@drawable/ic_personal_help"
+        app:layout_constraintTop_toBottomOf="@id/tvTermCondition" />
+
+    <TextView
+        android:id="@+id/tvLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/bg_solid_6dp_clickable_grey_f8f8f8"
+        android:drawablePadding="18dp"
+        android:fontFamily="@font/proximanova_reg"
+        android:gravity="center_vertical"
+        android:paddingVertical="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="20dp"
+        android:text="@string/personal_logout"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:drawableEndCompat="@drawable/ic_arrow_right_personal"
+        app:drawableStartCompat="@drawable/ic_personal_logout"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
