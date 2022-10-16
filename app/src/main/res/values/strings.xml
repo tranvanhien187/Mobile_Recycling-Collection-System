@@ -109,4 +109,11 @@
     <string name="personal_help">Help</string>
     <string name="personal_edit_profile">Edit profile</string>
 
+    <!-- Gift detail -->
+    <string name="electronic">Electronic</string>
+    <string name="available">Available</string>
+    <string name="gift_detail_btn_redeem">Redeem</string>
+    <string name="gift_detail_equivalents_title">Equivalents to</string>
+    <string name="call_now">Call now</string>
+    <string name="per_one">/one</string>
 </resources>

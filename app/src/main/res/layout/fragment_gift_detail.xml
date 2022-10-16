@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgCover"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="H, 414:246"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/grey_dfe3e9"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="14dp"
+            android:src="@drawable/ic_arrow_circle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvBrand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textColor="@color/grey_616265"
+            android:textSize="16dp"
+            app:layout_constraintTop_toBottomOf="@id/imgCover"
+            tools:text="Apple Inc." />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            app:layout_constraintTop_toBottomOf="@id/tvBrand"
+            tools:text="Iphone 11 Promax" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvElectronic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/blue_1c75ff"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="4dp"
+                    android:drawablePadding="7dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:paddingHorizontal="7dp"
+                    android:text="@string/electronic"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"
+                    app:drawableStartCompat="@drawable/ic_tag_electronic" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvAvailable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:cardBackgroundColor="@color/green_52de97"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="4dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:paddingHorizontal="7dp"
+                    android:text="@string/available"
+                    android:textColor="@color/white"
+                    android:textSize="12dp" />
+            </androidx.cardview.widget.CardView>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <TextView
+            android:id="@+id/tvBusinessHour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="9dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="@color/black"
+            android:textSize="12dp"
+            app:drawableStartCompat="@drawable/ic_timer_sand"
+            app:layout_constraintTop_toBottomOf="@id/llTag"
+            tools:text="Open from: 8:00 am - 17:30 pm" />
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="9dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="@color/black"
+            android:textSize="12dp"
+            app:drawableStartCompat="@drawable/ic_map_marker"
+            app:layout_constraintTop_toBottomOf="@id/tvBusinessHour"
+            tools:text="203 Tran Quoc Vuong, Hai Chau, Da Nang" />
+
+
+        <View
+            android:id="@+id/linePhoneNumberTop"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="24dp"
+            android:background="@color/grey_f2f4f6"
+            app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+
+        <ImageView
+            android:id="@+id/imgPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/ic_phone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linePhoneNumberTop"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvPhoneName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toTopOf="@id/tvPhoneNumber"
+            app:layout_constraintEnd_toStartOf="@id/btnCallNow"
+            app:layout_constraintStart_toEndOf="@id/imgPhoneNumber"
+            app:layout_constraintTop_toTopOf="@id/imgPhoneNumber"
+            tools:text="Tran Van A" />
+
+        <TextView
+            android:id="@+id/tvPhoneNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="@color/black"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="@id/imgPhoneNumber"
+            app:layout_constraintEnd_toStartOf="@id/btnCallNow"
+            app:layout_constraintStart_toEndOf="@id/imgPhoneNumber"
+            app:layout_constraintTop_toBottomOf="@id/tvPhoneName"
+            tools:text="+84 76 231 3123" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnCallNow"
+            android:layout_width="130dp"
+            android:layout_height="34dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_round_corner_8dp_black"
+            android:fontFamily="@font/proximanova_reg"
+            android:text="@string/call_now"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgPhoneNumber"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgPhoneNumber" />
+
+        <View
+            android:id="@+id/linePhoneNumberBottom"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/grey_f2f4f6"
+            app:layout_constraintTop_toBottomOf="@id/imgPhoneNumber" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="14dp"
+            android:fontFamily="@font/proximanova_light"
+            android:textColor="@color/black"
+            android:textSize="12dp"
+            app:layout_constraintTop_toBottomOf="@id/linePhoneNumberBottom"
+            tools:text="The iPhone 11 succeeded the iPhone XR, and it features a 6.1-inch LCD display that Apple calls a Liquid Retina HD Display. It features a 1792 x 828 resolution at 326ppi, a 1400:1 contrast ratio, 625 nits max brightness, True Tone support for adjusting the white balance to the ambient lighting, and wide color support" />
+
+        <View
+            android:id="@+id/vLineBelowDescription"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="14dp"
+            android:background="@color/grey_f2f4f6"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription" />
+
+        <TextView
+            android:id="@+id/tvEquivalentsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="31dp"
+            android:text="@string/gift_detail_equivalents_title"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vLineBelowDescription" />
+
+        <TextView
+            android:id="@+id/tvEquivalentsTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="6dp"
+            android:fontFamily="@font/proximanova_sbold"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:drawableStartCompat="@drawable/ic_leaf_14"
+            app:layout_constraintBaseline_toBaselineOf="@id/tvEquivalentsTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tvPerOne"
+            tools:text="1.200.000" />
+
+        <TextView
+            android:id="@+id/tvPerOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/proximanova_sbold"
+            android:text="@string/per_one"
+            android:textColor="@color/grey_9c9d9f"
+            android:textSize="12dp"
+            app:layout_constraintBaseline_toBaselineOf="@id/tvEquivalentsTo"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+        <datn.cnpm.rcsystem.common.widget.PrimaryButton
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="29dp"
+            android:text="@string/gift_detail_btn_redeem"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
