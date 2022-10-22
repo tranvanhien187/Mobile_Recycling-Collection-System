@@ -1,4 +1,4 @@
-package datn.cnpm.rcsystem.feature.dashboard.adapter
+package datn.cnpm.rcsystem.feature.tradingplace.list
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,37 +6,36 @@ import android.view.ViewGroup
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseListAdapter
 import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
-import datn.cnpm.rcsystem.databinding.ItemTradingPlaceHomeBinding
+import datn.cnpm.rcsystem.databinding.ItemTradingPlaceBinding
 import datn.cnpm.rcsystem.domain.model.history.TradingPlaceForUserEntity
 
-class TradingPlaceHomeAdapter :
-    BaseListAdapter<TradingPlaceForUserEntity>(TradingPlaceHomeDiffUntil()) {
+class TradingPlaceAdapter : BaseListAdapter<TradingPlaceForUserEntity>(TradingPlaceDiffUntil()) {
+
+    class TradingPlaceDiffUntil : BaseDiffUtilItemCallback<TradingPlaceForUserEntity>()
 
     var onItemClick: (data: TradingPlaceForUserEntity) -> Unit = {}
 
-    class TradingPlaceHomeDiffUntil : BaseDiffUtilItemCallback<TradingPlaceForUserEntity>()
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseItemViewHolder =
         TradingPlaceViewHolder(
-            ItemTradingPlaceHomeBinding.inflate(
+            ItemTradingPlaceBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
             )
         )
 
-    inner class TradingPlaceViewHolder(val binding: ItemTradingPlaceHomeBinding) :
+    inner class TradingPlaceViewHolder(val binding: ItemTradingPlaceBinding) :
         BaseItemViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         override fun bind(data: TradingPlaceForUserEntity) {
             binding.apply {
-                tvTPName.text = data.name.orEmpty()
+                tvName.text = data.name.orEmpty()
                 tvDealer.text = data.dealerName.orEmpty()
                 tvAddress.text = "${data.street}, ${data.district}, ${data.provinceOrCity}"
                 GlideHelper.loadImage(
                     data.bannerUrl.orEmpty(),
                     ivBanner,
-                    R.drawable.image_default_image_rectangle
+                    R.drawable.ic_person
                 )
                 root.setOnClickListener {
                     onItemClick.invoke(data)

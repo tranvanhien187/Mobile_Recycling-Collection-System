@@ -67,7 +67,7 @@
     <string name="bottle">Bottle</string>
     <string name="battery">Battery</string>
     <string name="place_detail_highlights_title">Hightlights</string>
-    <string name="place_detail_total_point_title">Total point exchanged</string>
+    <string name="place_detail_total_weight_title">Total weight exchanged</string>
     <string name="place_detail_total_gift_title">Total gift exchanged</string>
     <string name="place_detail_level_title">Level</string>
     <string name="place_detail_schedule_btn">Schedule</string>
@@ -96,5 +96,9 @@
     <string name="exchange_garbage_detail_label">Exchange Garbage Detail</string>
     <string name="equivalent_label">Equivalent</string>
     <string name="id_label">Id</string>
+    <string name="gift_you_may_be_like_label">Gift you may be like</string>
+    <string name="business_hour_label">Open from: 8:00 - 17:30</string>
+    <string name="_1_kilogram_label">1 kilogram</string>
+    <string name="_200_points_label">200 points</string>
 
 </resources>

@@ -2,6 +2,7 @@ package datn.cnpm.rcsystem.data.repository
 
 import datn.cnpm.rcsystem.data.entitiy.*
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
+import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.domain.model.history.BaseItemHistory
 import datn.cnpm.rcsystem.domain.model.history.GiftHistoryDetailResponse
 
@@ -22,8 +23,6 @@ interface CRGSRepository {
     suspend fun getTPlaceRandom6(): List<GetTPPlaceForUserResponse>
     suspend fun getGiftRandom6(): List<GiftResponse>
     suspend fun getGiftUserHistory(): List<GiftUserHistoryResponse>
-    suspend fun getGarbageUserHistory(): List<GarbageUserHistoryResponse>
-
     // STAFF
     suspend fun receiveTransportForm(
         historyGarbageId: String,
@@ -37,4 +36,5 @@ interface CRGSRepository {
     suspend fun getListGiftHistory(): List<BaseItemHistory>
     suspend fun getGiftHistoryDetail(historyId: String): GiftHistoryDetailResponse
     suspend fun getGarbageHistoryDetail(historyId: String): GarbageHistoryDetailResponse
+    suspend fun getTPlaceDetail(tplaceId: String): TPlaceDetailResponse
 }

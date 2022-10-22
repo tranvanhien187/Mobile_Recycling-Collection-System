@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/tradingPlaceFragment"
-        android:name="datn.cnpm.rcsystem.feature.tradingplace.TradingPlaceFragment"
+        android:name="datn.cnpm.rcsystem.feature.gift.list.GiftFragment"
         android:label="TradingPlaceFragment"
         tools:layout="@layout/fragment_trading_place"/>
     <fragment
@@ -39,7 +39,7 @@
         tools:layout="@layout/fragment_personal"/>
     <fragment
         android:id="@+id/placeDetailFragment"
-        android:name="datn.cnpm.rcsystem.feature.tradingplace.detail.PlaceDetailFragment"
+        android:name="datn.cnpm.rcsystem.feature.gift.detail.GiftDetailFragment"
         android:label="PlaceDetailFragment"
         tools:layout="@layout/fragment_place_detail"/>
 </navigation>

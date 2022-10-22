@@ -1,10 +1,9 @@
 package datn.cnpm.rcsystem.data.datastore
 
-import datn.cnpm.rcsystem.common.ErrorCode
-import datn.cnpm.rcsystem.common.exception.BadRequestException
 import datn.cnpm.rcsystem.core.SBResponse
 import datn.cnpm.rcsystem.data.entitiy.*
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
+import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.domain.model.history.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -12,7 +11,7 @@ import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import javax.inject.Inject
 
-class AuthenticationDataSource @Inject constructor(private val authenticationApiService: AuthenticationApiService) {
+class CRGSDataSource @Inject constructor(private val authenticationApiService: CRGSApiService) {
     suspend fun login(request: LoginRequest): SBResponse<LoginResponse> {
         return authenticationApiService.login(request)
     }
@@ -84,10 +83,6 @@ class AuthenticationDataSource @Inject constructor(private val authenticationApi
         return authenticationApiService.getGiftUserHistory(uuid)
     }
 
-    suspend fun getGarbageUserHistory(uuid: String): SBResponse<List<GarbageUserHistoryResponse>> {
-        return authenticationApiService.getGarbageUserHistory(uuid)
-    }
-
     suspend fun receiveTransportForm(request: ReceiveFormRequest): SBResponse<String> {
         return authenticationApiService.receiveTransportForm(request)
     }
@@ -107,7 +102,7 @@ class AuthenticationDataSource @Inject constructor(private val authenticationApi
     suspend fun getListGarbageHistoryByAgent(id: String): SBResponse<List<ItemGarbageHistoryByAgentEntity>> {
         return authenticationApiService.getListGarbageHistoryByAgent(id)
     }
-    
+
     suspend fun getListGiftHistoryByCustomer(id: String): SBResponse<List<ItemGiftHistoryByCustomerEntity>> {
         return authenticationApiService.getListGiftHistoryByCustomer(id)
     }
@@ -126,5 +121,9 @@ class AuthenticationDataSource @Inject constructor(private val authenticationApi
 
     suspend fun getGarbageHistoryDetail(historyId: String): SBResponse<GarbageHistoryDetailResponse> {
         return authenticationApiService.getGarbageHistoryDetail(historyId)
+    }
+
+    suspend fun getTPlaceDetail(tplaceId: String): SBResponse<TPlaceDetailResponse> {
+        return authenticationApiService.getTPlaceDetail(tplaceId)
     }
 }

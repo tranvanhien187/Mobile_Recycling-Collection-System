@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.AppBarLayout
@@ -17,6 +18,7 @@ import datn.cnpm.rcsystem.feature.dashboard.RecyclingGarbage
 import datn.cnpm.rcsystem.feature.dashboard.adapter.GarbageAdapter
 import datn.cnpm.rcsystem.feature.dashboard.adapter.GiftYouMayBeLikeAdapter
 import datn.cnpm.rcsystem.feature.dashboard.adapter.TradingPlaceHomeAdapter
+import datn.cnpm.rcsystem.feature.gift.detail.GiftDetailFragment
 
 /**
  * [DashboardCustomerFragment]
@@ -39,6 +41,11 @@ class DashboardCustomerFragment : BaseFragment<FragmentCustomerDashboardBinding>
 
     override fun initViews() {
         coordinateMotion()
+        binding.apply {
+            rvGarbageTrade.adapter = garbageAdapter
+            rvPlaceTrade.adapter = tPlaceHomeAdapter
+            rvGift.adapter = giftAdapter
+        }
     }
 
     override fun initActions() {
@@ -53,6 +60,14 @@ class DashboardCustomerFragment : BaseFragment<FragmentCustomerDashboardBinding>
             btnGift.setOnClickListener {
             }
 
+            tvVATPlace.setOnClickListener {
+                findNavController().navigate(R.id.tradingPlaceFragment)
+            }
+
+            tvVAGift.setOnClickListener {
+//                findNavController().navigate(R.id.tradingPlaceFragment)
+            }
+
             btnScan.setOnClickListener {
                 context?.let {
                     Toast.makeText(it, "This feature is not implemented", Toast.LENGTH_SHORT).show()
@@ -61,9 +76,15 @@ class DashboardCustomerFragment : BaseFragment<FragmentCustomerDashboardBinding>
             ivAvatar.setOnClickListener {
 //                findNavController().navigate()
             }
-            rvGarbageTrade.adapter = garbageAdapter
-            rvPlaceTrade.adapter = tPlaceHomeAdapter
-            rvGift.adapter = giftAdapter
+            tPlaceHomeAdapter.onItemClick = {
+                findNavController().navigate(
+                    R.id.placeDetailFragment, bundleOf(
+                        Pair(
+                            GiftDetailFragment.TRADING_PLACE_ID_KEY, it.id
+                        )
+                    )
+                )
+            }
         }
     }
 

@@ -3,12 +3,13 @@ package datn.cnpm.rcsystem.data.datastore
 import datn.cnpm.rcsystem.core.SBResponse
 import datn.cnpm.rcsystem.data.entitiy.*
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
+import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.domain.model.history.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
 
-interface AuthenticationApiService {
+interface CRGSApiService {
     @POST("/api/v1/login")
     suspend fun login(@Body request: LoginRequest): SBResponse<LoginResponse>
 
@@ -60,15 +61,15 @@ interface AuthenticationApiService {
     @GET("api/v1/tplace/get/random/{id}")
     suspend fun getTPlaceRandom6(@Path("id") id: String): SBResponse<List<GetTPPlaceForUserResponse>>
 
+
+    @GET("api/v1/tplace/detail/{id}")
+    suspend fun getTPlaceDetail(@Path("id") id: String): SBResponse<TPlaceDetailResponse>
+
     @GET("api/v1/gift/get/random/{id}")
     suspend fun getGiftRandom6(@Path("id") id: String): SBResponse<List<GiftResponse>>
 
     @GET("/api/v1/gift/userhistory/{id}")
     suspend fun getGiftUserHistory(@Path("id") uuid: String): SBResponse<List<GiftUserHistoryResponse>>
-
-    @GET("/api/v1/garbage/userhistory/{id}")
-    suspend fun getGarbageUserHistory(@Path("id") uuid: String): SBResponse<List<GarbageUserHistoryResponse>>
-
 
     // Get Transport Form Garbage Detail
     @GET("/api/v1/transport/details/{id}")

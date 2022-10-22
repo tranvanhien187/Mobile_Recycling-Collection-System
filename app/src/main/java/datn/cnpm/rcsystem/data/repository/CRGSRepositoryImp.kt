@@ -2,9 +2,10 @@ package datn.cnpm.rcsystem.data.repository
 
 import datn.cnpm.rcsystem.common.ErrorCode
 import datn.cnpm.rcsystem.common.exception.BadRequestException
-import datn.cnpm.rcsystem.data.datastore.AuthenticationDataSource
+import datn.cnpm.rcsystem.data.datastore.CRGSDataSource
 import datn.cnpm.rcsystem.data.entitiy.*
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
+import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.domain.model.history.BaseItemHistory
 import datn.cnpm.rcsystem.domain.model.history.GiftHistoryDetailResponse
 import datn.cnpm.rcsystem.local.sharepreferences.AuthPreference
@@ -16,7 +17,7 @@ import javax.inject.Inject
  */
 
 class CRGSRepositoryImp @Inject constructor(
-    private val authenticationDataSource: AuthenticationDataSource,
+    private val authenticationDataSource: CRGSDataSource,
     private val authPre: AuthPreference
 ) :
     CRGSRepository {
@@ -171,21 +172,6 @@ class CRGSRepositoryImp @Inject constructor(
         }
     }
 
-    override suspend fun getGarbageUserHistory(): List<GarbageUserHistoryResponse> {
-        val response = authenticationDataSource.getGarbageUserHistory(authPre.uuid)
-        if (response.isSuccess) {
-            return response.requireData
-        } else if (response.isFailure) {
-            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
-                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
-            } else {
-                throw BadRequestException(response.requireError)
-            }
-        } else {
-            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
-        }
-    }
-
     override suspend fun receiveTransportForm(
         historyGarbageId: String,
         customerName: String,
@@ -301,6 +287,21 @@ class CRGSRepositoryImp @Inject constructor(
 
     override suspend fun getGarbageHistoryDetail(historyId: String): GarbageHistoryDetailResponse {
         val response = authenticationDataSource.getGarbageHistoryDetail(historyId)
+        if (response.isSuccess) {
+            return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
+        } else {
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+        }
+    }
+
+    override suspend fun getTPlaceDetail(tplaceId: String): TPlaceDetailResponse {
+        val response = authenticationDataSource.getTPlaceDetail(tplaceId)
         if (response.isSuccess) {
             return response.requireData
         } else if (response.isFailure) {

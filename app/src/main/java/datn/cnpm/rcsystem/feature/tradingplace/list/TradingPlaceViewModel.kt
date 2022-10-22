@@ -1,26 +1,22 @@
-package datn.cnpm.rcsystem.feature.tradingplace
+package datn.cnpm.rcsystem.feature.tradingplace.list
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import datn.cnpm.rcsystem.base.BaseViewModel
-import datn.cnpm.rcsystem.common.ErrorCode
-import datn.cnpm.rcsystem.core.failed
 import datn.cnpm.rcsystem.core.requireData
 import datn.cnpm.rcsystem.core.requireError
 import datn.cnpm.rcsystem.core.succeeded
 import datn.cnpm.rcsystem.domain.usecase.GetTPlaceForUserUseCase
-import datn.cnpm.rcsystem.domain.usecase.GetUserInfoUseCase
-import datn.cnpm.rcsystem.feature.register.RegisterEvent
-import kotlinx.coroutines.Dispatchers
+import datn.cnpm.rcsystem.feature.gift.list.GiftEvent
+import datn.cnpm.rcsystem.feature.gift.list.GiftState
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
 class TradingPlaceViewModel @Inject constructor(private val getTPlaceForUserUseCase: GetTPlaceForUserUseCase) :
-    BaseViewModel<TradingPlaceState, TradingPlaceEvent>() {
-    override fun initState() = TradingPlaceState()
+    BaseViewModel<GiftState, GiftEvent>() {
+    override fun initState() = GiftState()
 
     fun fetchTPlaceForUser() {
         viewModelScope.launch() {

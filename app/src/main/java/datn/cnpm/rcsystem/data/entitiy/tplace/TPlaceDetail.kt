@@ -1,9 +1,7 @@
-package datn.cnpm.rcsystem.data.entitiy
+package datn.cnpm.rcsystem.data.entitiy.tplace
 
 
-data class GetTPPlaceForUserRequest(val uuid: String, val criteria: String)
-
-data class GetTPPlaceForUserResponse(
+data class TPlaceDetailResponse(
     val id: String? = null,
     val name: String? = null,
     val rate: Float = 0f,
@@ -14,11 +12,7 @@ data class GetTPPlaceForUserResponse(
     val street: String? = null,
     val district: String? = null,
     val provinceOrCity: String? = null,
-    val dealerName: String? = null,
-    val totalWeight: Double? = null,
-    val rank: Int = 0
+    val totalWeight: Double = 0.0,
+    val rank: Int = 0,
+    val giftExchange: Long = 0,
 )
-
-enum class GetTradingPlaceCriteria {
-    None, DISTRICT, ProvinceOrCity
-}

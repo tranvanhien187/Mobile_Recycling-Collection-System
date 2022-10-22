@@ -19,6 +19,6 @@ class HomeStaffActivity : BaseActivity<ActivityHomeStaffBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         authPreference.role = Role.STAFF.name
-        authPreference.uuid = "661bb2ae9a41faea9e1eff6196997292b3d248adc5fa140069b7ce5444ecb2f0"
+        authPreference.uuid = "b45b42d3cd58adfa969c13af56e3852185b5b47666ef79e469ad6a33b0ba300b"
     }
 }

@@ -19,6 +19,6 @@ class HomeAgentActivity : BaseActivity<ActivityHomeAgentBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         authPreference.role = Role.AGENT.name
-        authPreference.uuid = "ef5143a2551ff782569090fcf72206a1d393ebc523a892b3142f0729bc5f6985"
+        authPreference.uuid = "8331062608f18d9b3a39d41e4752cf4fe2b47606e5170d4351868dd93d31e1bf"
     }
 }

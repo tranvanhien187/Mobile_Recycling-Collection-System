@@ -1,7 +1,6 @@
-package datn.cnpm.rcsystem.feature.tradingplace
+package datn.cnpm.rcsystem.feature.tradingplace.list
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,15 +8,20 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.annotation.ArrayRes
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.databinding.FragmentTradingPlaceBinding
+import datn.cnpm.rcsystem.feature.gift.detail.GiftDetailFragment.Companion.TRADING_PLACE_ID_KEY
+import datn.cnpm.rcsystem.feature.gift.list.GiftAdapter
+import datn.cnpm.rcsystem.feature.gift.list.GiftViewModel
 
 /**
- * [TradingPlaceFragment]
+ * [GiftFragment]
  */
 @AndroidEntryPoint
 class TradingPlaceFragment : BaseFragment<FragmentTradingPlaceBinding>() {
@@ -30,9 +34,9 @@ class TradingPlaceFragment : BaseFragment<FragmentTradingPlaceBinding>() {
         private const val TAB_DISTRICT_POSITION = 2
     }
 
-    private val viewModel: TradingPlaceViewModel by viewModels()
+    private val viewModel: GiftViewModel by viewModels()
 
-    private val tPlaceAdapter: TradingPlaceAdapter by lazy { TradingPlaceAdapter() }
+    private val tPlaceAdapter: GiftAdapter by lazy { GiftAdapter() }
 
     private var rankPosition = 0
     private var cityPosition = 0
@@ -94,7 +98,8 @@ class TradingPlaceFragment : BaseFragment<FragmentTradingPlaceBinding>() {
                             }
                         }
                         TAB_DISTRICT_POSITION -> {
-                            applyDataSpinner(DistrictOfCity.values()[cityPosition].district,
+                            applyDataSpinner(
+                                DistrictOfCity.values()[cityPosition].district,
                                 districtPosition) {
                                 districtPosition = it
                             }
@@ -146,6 +151,10 @@ class TradingPlaceFragment : BaseFragment<FragmentTradingPlaceBinding>() {
     }
 
     override fun initActions() {
+        tPlaceAdapter.onItemClick = {
+            findNavController().navigate(R.id.placeDetailFragment, bundleOf(Pair(
+                TRADING_PLACE_ID_KEY,it.id)))
+        }
     }
 
     override fun initObservers() {
@@ -172,10 +181,6 @@ class TradingPlaceFragment : BaseFragment<FragmentTradingPlaceBinding>() {
         )
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("AAAA", "onDestroy")
-    }
 
     enum class DistrictOfCity(@ArrayRes val district: Int) {
         DN(R.array.DN),

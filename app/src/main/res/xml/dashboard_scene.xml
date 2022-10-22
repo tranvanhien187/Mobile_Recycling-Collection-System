@@ -52,6 +52,7 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
@@ -60,6 +61,7 @@
         <Constraint
             android:id="@+id/btnGift"
             android:layout_width="40dp"
+            android:layout_marginTop="16dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             motion:layout_constraintBottom_toBottomOf="parent"
@@ -72,6 +74,7 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:layout_marginTop="16dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toStartOf="@id/btnPlace"
             motion:layout_constraintStart_toEndOf="@id/btnGift"
@@ -83,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="8dp"
-            android:alpha="1"
+            android:layout_marginTop="16dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />

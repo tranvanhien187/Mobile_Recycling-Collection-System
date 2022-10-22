@@ -1,6 +1,5 @@
 package datn.cnpm.rcsystem.feature.history.garbagedetail
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import datn.cnpm.rcsystem.base.BaseViewModel
@@ -9,11 +8,7 @@ import datn.cnpm.rcsystem.core.logging.DebugLog
 import datn.cnpm.rcsystem.core.requireData
 import datn.cnpm.rcsystem.core.requireError
 import datn.cnpm.rcsystem.core.succeeded
-import datn.cnpm.rcsystem.domain.model.GarbageUserHistoryEntity
 import datn.cnpm.rcsystem.domain.usecase.GetGarbageHistoryDetailUseCase
-import datn.cnpm.rcsystem.domain.usecase.GetGarbageUserHistoryUseCase
-import datn.cnpm.rcsystem.domain.usecase.GetGiftHistoryDetailUseCase
-import datn.cnpm.rcsystem.feature.history.giftdetail.GiftHistoryDetailEvent
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -25,7 +20,11 @@ class GarbageHistoryDetailViewModel @Inject constructor(private val garbageHisto
     fun getGarbageHistoryDetail(historyId: String) = viewModelScope.launch {
         dispatchState(currentState.copy(loading = true))
         val response =
-            garbageHistoryDetailUseCase.getGarbageHistoryDetail(GetGarbageHistoryDetailUseCase.Parameters(historyId))
+            garbageHistoryDetailUseCase.getGarbageHistoryDetail(
+                GetGarbageHistoryDetailUseCase.Parameters(
+                    historyId
+                )
+            )
         if (response.succeeded) {
             dispatchState(currentState.copy(garbageHistoryDetail = response.requireData))
         } else if (response.failed) {

@@ -1,17 +1,19 @@
-package datn.cnpm.rcsystem.feature.tradingplace
+package datn.cnpm.rcsystem.feature.gift.list
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseListAdapter
+import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.databinding.ItemTradingPlaceBinding
-import datn.cnpm.rcsystem.domain.model.TradingPlaceForUserEntity
+import datn.cnpm.rcsystem.domain.model.history.TradingPlaceForUserEntity
 
-class TradingPlaceAdapter : BaseListAdapter<TradingPlaceForUserEntity>(TradingPlaceDiffUntil()) {
+class GiftAdapter : BaseListAdapter<TradingPlaceForUserEntity>(TradingPlaceDiffUntil()) {
 
     class TradingPlaceDiffUntil : BaseDiffUtilItemCallback<TradingPlaceForUserEntity>()
+
+    var onItemClick: (data: TradingPlaceForUserEntity) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseItemViewHolder =
         TradingPlaceViewHolder(
@@ -35,6 +37,9 @@ class TradingPlaceAdapter : BaseListAdapter<TradingPlaceForUserEntity>(TradingPl
                     ivBanner,
                     R.drawable.ic_person
                 )
+                root.setOnClickListener {
+                    onItemClick.invoke(data)
+                }
             }
         }
     }

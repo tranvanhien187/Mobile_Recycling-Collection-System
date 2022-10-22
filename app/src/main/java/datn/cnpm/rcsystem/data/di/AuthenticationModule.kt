@@ -1,7 +1,7 @@
 package datn.cnpm.rcsystem.data.di
 
-import datn.cnpm.rcsystem.data.datastore.AuthenticationApiService
-import datn.cnpm.rcsystem.data.datastore.AuthenticationDataSource
+import datn.cnpm.rcsystem.data.datastore.CRGSApiService
+import datn.cnpm.rcsystem.data.datastore.CRGSDataSource
 import datn.cnpm.rcsystem.data.repository.CRGSRepository
 import datn.cnpm.rcsystem.data.repository.CRGSRepositoryImp
 import dagger.Binds
@@ -29,16 +29,16 @@ abstract class AuthenticationModule {
 
         @Provides
         @Singleton
-        fun provideAuthenticationDataSource(apiService: AuthenticationApiService): AuthenticationDataSource {
-            return AuthenticationDataSource(apiService)
+        fun provideAuthenticationDataSource(apiService: CRGSApiService): CRGSDataSource {
+            return CRGSDataSource(apiService)
         }
 
         @Provides
         @Singleton
-        fun provideAuthApiService(retrofitBuilder: Retrofit.Builder): AuthenticationApiService {
+        fun provideAuthApiService(retrofitBuilder: Retrofit.Builder): CRGSApiService {
             return retrofitBuilder
                 .build()
-                .create(AuthenticationApiService::class.java)
+                .create(CRGSApiService::class.java)
         }
     }
 }

@@ -20,6 +20,6 @@ class HomeCustomerActivity : BaseActivity<ActivityHomeCustomerBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         authPreference.role = Role.CUSTOMER.name
-        authPreference.uuid = "78c07e6325ae24f04392b2d28f327d7709b07e4036ade21d2e6a3aced44fc7c3"
+        authPreference.uuid = "23827428501f9a7ee63564ceb12621af69b202e84e0968bef71b6ce0a5106db4"
     }
 }
