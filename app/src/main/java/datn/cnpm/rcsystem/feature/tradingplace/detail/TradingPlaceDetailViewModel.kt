@@ -4,19 +4,18 @@ import android.util.Log
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import datn.cnpm.rcsystem.base.BaseViewModel
+import datn.cnpm.rcsystem.core.logging.DebugLog
 import datn.cnpm.rcsystem.core.requireData
 import datn.cnpm.rcsystem.core.requireError
 import datn.cnpm.rcsystem.core.succeeded
 import datn.cnpm.rcsystem.domain.usecase.GetTPlaceDetailUseCase
-import datn.cnpm.rcsystem.feature.gift.detail.GiftDetailEvent
-import datn.cnpm.rcsystem.feature.gift.detail.GiftDetailState
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class TradingPlaceDetailViewModel @Inject constructor(private val getTPlaceDetailUseCase: GetTPlaceDetailUseCase) :
-    BaseViewModel<GiftDetailState, GiftDetailEvent>() {
-    override fun initState() = GiftDetailState()
+    BaseViewModel<TradingPlaceDetailState, TradingPlaceDetailEvent>() {
+    override fun initState() = TradingPlaceDetailState()
 
     fun fetchTPlaceDetail(tplaceId: String) {
         viewModelScope.launch() {
@@ -25,7 +24,7 @@ class TradingPlaceDetailViewModel @Inject constructor(private val getTPlaceDetai
             if (response.succeeded) {
                 dispatchState(currentState.copy(tplace = response.requireData))
             } else {
-                Log.d("AAAA", response.requireError.exception.message.toString())
+                DebugLog.e(response.requireError.exception.message.toString())
             }
             dispatchState(currentState.copy(loading = false))
         }

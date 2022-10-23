@@ -1,100 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layoutItemDeal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/ivGift"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="@string/empty_value"
-        app:shapeAppearanceOverlay="@style/CustomShapeOverlay10"
-        app:layout_constraintBottom_toBottomOf="@id/vLine"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0"
-        tools:src="@color/green_00ad31" />
-
-    <TextView
-        android:id="@+id/tvName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="6dp"
-        android:ellipsize="end"
-        android:fontFamily="@font/proximanova_reg"
-        android:lines="1"
-        android:textAlignment="textStart"
-        android:textColor="@color/black_354052"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ivGift"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Jhin"/>
-
-    <TextView
-        android:id="@+id/tvDealer"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="24dp"
-        android:ellipsize="end"
-        android:fontFamily="@font/proximanova_sbold"
-        android:textColor="@color/black_354052"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ivGift"
-        app:layout_constraintTop_toBottomOf="@id/tvName"
-        tools:text="Lorem  dolor sit amet consectetur adipiscing elitectetur adipiscing elit " />
-
-    <ImageView
-        android:id="@+id/imgMapPin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/ic_pin"
-        app:layout_constraintStart_toEndOf="@id/ivGift"
-        app:layout_constraintTop_toBottomOf="@id/tvDealer"
-        tools:ignore="ContentDescription" />
-
-    <TextView
-        android:id="@+id/tvAddress"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="16dp"
-        android:ellipsize="end"
-        android:fontFamily="@font/montserrat_bold"
-        android:maxLines="2"
-        android:text="@{privilegesItem.merchant.countryIncorporation}"
-        android:textColor="@color/black_516173"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toEndOf="@id/imgMapPin"
-        app:layout_constraintTop_toBottomOf="@id/tvDealer"
-        app:layout_constraintVertical_bias="0"
-        tools:text="United States of America,a Los Angeles" />
-
-    <View
-        android:id="@+id/vLine"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/grey_dfe3e9"
-        app:layout_constraintBottom_toBottomOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivGift"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/empty_value"
+            app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/CustomShapeOverlay10"
+            tools:src="@color/red_f34d4d" />
+
+        <TextView
+            android:id="@+id/tvPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_corner_12_white"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/proximanova_sbold"
+            android:gravity="center"
+            android:padding="6dp"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            app:drawableStartCompat="@drawable/ic_leaf_14"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1.500 points" />
+
+        <TextView
+            android:id="@+id/tvBrand"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="6dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/proximanova_reg"
+            android:lines="1"
+            android:textAlignment="textStart"
+            android:textColor="@color/black_354052"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivGift"
+            tools:text="Jhin"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_marginTop="2dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/proximanova_bold"
+            android:textColor="@color/black_354052"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvBrand"
+            tools:text="Lorem  dolor sit amet consectetur adipiscing elitectetur adipiscing elit " />
+
+        <TextView
+            android:layout_marginTop="4dp"
+            android:id="@+id/tvTPlaceName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/proximanova_reg"
+            android:textColor="@color/black_354052"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvName"
+            tools:text="Lorem  dolor sit amet consectetur adipiscing elitectetur adipiscing elit "
+            tools:ignore="SmallSp" />
+
+        <ImageView
+            android:id="@+id/ivDealer"
+            android:layout_width="wrap_content"
+            android:layout_height="12dp"
+            android:layout_gravity="top"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_face_agent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTPlaceName"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvAgent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/proximanova_reg"
+            android:maxLines="2"
+            android:textColor="@color/black_516173"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="@id/ivDealer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivDealer"
+            app:layout_constraintTop_toTopOf="@id/ivDealer"
+            tools:text="United States of America,a Los Angeles"
+            tools:ignore="SmallSp" />
+
+        <ImageView
+            android:id="@+id/imgMapPin"
+            android:layout_width="wrap_content"
+            android:layout_height="12dp"
+            android:layout_gravity="top"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_pin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivDealer"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/proximanova_reg"
+            android:maxLines="2"
+            android:textColor="@color/black_516173"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="@id/imgMapPin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgMapPin"
+            app:layout_constraintTop_toTopOf="@id/imgMapPin"
+            tools:text="United States of America,a Los Angeles"
+            tools:ignore="SmallSp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

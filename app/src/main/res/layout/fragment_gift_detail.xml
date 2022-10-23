@@ -11,7 +11,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imgCover"
+            android:id="@+id/imgBanner"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintDimensionRatio="H, 414:246"
@@ -35,19 +35,19 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="18dp"
-            android:fontFamily="@font/montserrat_semibold"
+            android:fontFamily="@font/proximanova_sbold"
             android:textColor="@color/grey_616265"
             android:textSize="16dp"
-            app:layout_constraintTop_toBottomOf="@id/imgCover"
+            app:layout_constraintTop_toBottomOf="@id/imgBanner"
             tools:text="Apple Inc." />
 
         <TextView
-            android:id="@+id/tvTitle"
+            android:id="@+id/tvName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="4dp"
-            android:fontFamily="@font/montserrat_semibold"
+            android:fontFamily="@font/proximanova_sbold"
             android:textColor="@color/black"
             android:textSize="18dp"
             app:layout_constraintTop_toBottomOf="@id/tvBrand"
@@ -61,7 +61,7 @@
             android:layout_marginTop="8dp"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitle">
+            app:layout_constraintTop_toBottomOf="@+id/tvName">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvElectronic"
@@ -77,7 +77,7 @@
                     android:layout_gravity="center"
                     android:layout_marginVertical="4dp"
                     android:drawablePadding="7dp"
-                    android:fontFamily="@font/montserrat_regular"
+                    android:fontFamily="@font/proximanova_reg"
                     android:gravity="center"
                     android:paddingHorizontal="7dp"
                     android:text="@string/electronic"
@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginVertical="4dp"
-                    android:fontFamily="@font/montserrat_regular"
+                    android:fontFamily="@font/proximanova_reg"
                     android:gravity="center"
                     android:paddingHorizontal="7dp"
                     android:text="@string/available"
@@ -116,12 +116,12 @@
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="10dp"
             android:drawablePadding="9dp"
-            android:fontFamily="@font/montserrat_regular"
+            android:fontFamily="@font/proximanova_reg"
             android:textColor="@color/black"
             android:textSize="12dp"
             app:drawableStartCompat="@drawable/ic_timer_sand"
             app:layout_constraintTop_toBottomOf="@id/llTag"
-            tools:text="Open from: 8:00 am - 17:30 pm" />
+            android:text="@string/business_hour_label"/>
 
         <TextView
             android:id="@+id/tvAddress"
@@ -130,7 +130,7 @@
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="10dp"
             android:drawablePadding="9dp"
-            android:fontFamily="@font/montserrat_regular"
+            android:fontFamily="@font/proximanova_reg"
             android:textColor="@color/black"
             android:textSize="12dp"
             app:drawableStartCompat="@drawable/ic_map_marker"
@@ -158,11 +158,11 @@
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/tvPhoneName"
+            android:id="@+id/tvAgentName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="12dp"
-            android:fontFamily="@font/montserrat_semibold"
+            android:fontFamily="@font/proximanova_sbold"
             android:textColor="@color/black"
             android:textSize="14dp"
             app:layout_constraintBottom_toTopOf="@id/tvPhoneNumber"
@@ -176,13 +176,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="12dp"
-            android:fontFamily="@font/montserrat_regular"
+            android:fontFamily="@font/proximanova_reg"
             android:textColor="@color/black"
             android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="@id/imgPhoneNumber"
             app:layout_constraintEnd_toStartOf="@id/btnCallNow"
             app:layout_constraintStart_toEndOf="@id/imgPhoneNumber"
-            app:layout_constraintTop_toBottomOf="@id/tvPhoneName"
+            app:layout_constraintTop_toBottomOf="@id/tvAgentName"
             tools:text="+84 76 231 3123" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -237,13 +237,14 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="31dp"
             android:text="@string/gift_detail_equivalents_title"
+            android:fontFamily="@font/proximanova_reg"
             android:textColor="@color/black"
             android:textSize="14dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/vLineBelowDescription" />
 
         <TextView
-            android:id="@+id/tvEquivalentsTo"
+            android:id="@+id/tvPoint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawablePadding="6dp"
@@ -262,10 +263,10 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/proximanova_sbold"
-            android:text="@string/per_one"
+            android:text="@string/per_one_label"
             android:textColor="@color/grey_9c9d9f"
             android:textSize="12dp"
-            app:layout_constraintBaseline_toBaselineOf="@id/tvEquivalentsTo"
+            app:layout_constraintBaseline_toBaselineOf="@id/tvPoint"
             app:layout_constraintEnd_toEndOf="parent" />
 
 

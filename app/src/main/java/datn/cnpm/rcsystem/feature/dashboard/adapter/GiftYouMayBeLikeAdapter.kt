@@ -4,10 +4,10 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseListAdapter
 import datn.cnpm.rcsystem.common.utils.CommonUtils.toPoint
+import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.databinding.ItemGiftHomeBinding
 import datn.cnpm.rcsystem.domain.model.GiftEntity
 import datn.cnpm.rcsystem.domain.model.GiftType
@@ -16,6 +16,8 @@ import datn.cnpm.rcsystem.domain.model.GiftType
 class GiftYouMayBeLikeAdapter : BaseListAdapter<GiftEntity>(GiftDiffUtil()) {
 
     class GiftDiffUtil : BaseDiffUtilItemCallback<GiftEntity>()
+
+    var onItemClick: (data: GiftEntity) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseItemViewHolder =
         TradingPlaceViewHolder(
@@ -60,6 +62,9 @@ class GiftYouMayBeLikeAdapter : BaseListAdapter<GiftEntity>(GiftDiffUtil()) {
                     }
                 }
                 tvType.text = data.type
+                root.setOnClickListener {
+                    onItemClick.invoke(data)
+                }
             }
         }
     }

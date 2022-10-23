@@ -9,28 +9,25 @@ import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
-import datn.cnpm.rcsystem.databinding.FragmentPlaceDetailBinding
+import datn.cnpm.rcsystem.databinding.FragmentGiftDetailBinding
 
-/**
- * [GiftDetailFragment]
- */
 @AndroidEntryPoint
-class GiftDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
+class GiftDetailFragment : BaseFragment<FragmentGiftDetailBinding>() {
 
-    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentPlaceDetailBinding
-        get() = FragmentPlaceDetailBinding::inflate
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentGiftDetailBinding
+        get() = FragmentGiftDetailBinding::inflate
 
     private val viewModel: GiftDetailViewModel by viewModels()
 
     companion object {
-        const val TRADING_PLACE_ID_KEY = "TRADING_PLACE_ID_KEY"
+        const val GIFT_ID_KEY = "GIFT_ID_KEY"
 
     }
 
     override fun initData(data: Bundle?) {
         data?.let {
-            it.getString(TRADING_PLACE_ID_KEY)?.let {
-                viewModel.fetchTPlaceDetail(it)
+            it.getString(GIFT_ID_KEY)?.let { giftId ->
+                viewModel.fetchGiftDetail(giftId)
             }
         }
     }
@@ -38,8 +35,11 @@ class GiftDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
     override fun initViews() {
     }
 
-    @SuppressLint("SetTextI18n")
     override fun initActions() {
+    }
+
+    @SuppressLint("SetTextI18n")
+    override fun initObservers() {
         viewModel.observe(
             owner = viewLifecycleOwner,
             selector = { state -> state.loading },
@@ -54,28 +54,24 @@ class GiftDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
 
         viewModel.observe(
             owner = viewLifecycleOwner,
-            selector = { state -> state.tplace },
-            observer = { tplace ->
-                tplace?.let {
+            selector = { state -> state.gift },
+            observer = { gift ->
+                gift?.let {
                     binding.apply {
                         tvName.text = it.name
+                        tvBrand.text = it.brand
+                        tvPhoneNumber.text = it.agentPhone
                         tvAgentName.text = it.agentName
-                        tvPhoneNumber.text = it.agentPhoneNumber
-                        tvTotalWeightValue.text = "${it.totalWeight}Kgs"
-                        tvTotalGiftValue.text = "${it.giftExchange} Gifts"
+                        tvPoint.text = "${it.redemptionPoint}"
                         tvAddress.text = "${it.street}, ${it.district}, ${it.provinceOrCity}"
                         GlideHelper.loadImage(
-                            it.bannerUrl ?: "",
+                            it.url ?: "",
                             imgBanner,
                             R.drawable.image_default_image_rectangle
                         )
-                        tvLevelValue.text = it.rank.toString()
                     }
                 }
             }
         )
-    }
-
-    override fun initObservers() {
     }
 }

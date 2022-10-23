@@ -37,12 +37,17 @@
         app:layout_constraintTop_toBottomOf="@id/tabLayoutFilter" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvTradingPlace"
+        android:id="@+id/rvGift"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:clipToPadding="false"
         android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:paddingStart="8dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="0dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spinnerCategory"
-        tools:listitem="@layout/item_trading_place" />
+        app:spanCount="2"
+        tools:listitem="@layout/item_gift" />
 </androidx.constraintlayout.widget.ConstraintLayout>

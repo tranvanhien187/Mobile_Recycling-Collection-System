@@ -19,6 +19,7 @@ import datn.cnpm.rcsystem.feature.dashboard.adapter.GarbageAdapter
 import datn.cnpm.rcsystem.feature.dashboard.adapter.GiftYouMayBeLikeAdapter
 import datn.cnpm.rcsystem.feature.dashboard.adapter.TradingPlaceHomeAdapter
 import datn.cnpm.rcsystem.feature.gift.detail.GiftDetailFragment
+import datn.cnpm.rcsystem.feature.tradingplace.detail.TradingPlaceDetailFragment
 
 /**
  * [DashboardCustomerFragment]
@@ -57,7 +58,9 @@ class DashboardCustomerFragment : BaseFragment<FragmentCustomerDashboardBinding>
             btnPlace.setOnClickListener {
                 findNavController().navigate(R.id.tradingPlaceFragment)
             }
+
             btnGift.setOnClickListener {
+                findNavController().navigate(R.id.giftFragment)
             }
 
             tvVATPlace.setOnClickListener {
@@ -65,7 +68,7 @@ class DashboardCustomerFragment : BaseFragment<FragmentCustomerDashboardBinding>
             }
 
             tvVAGift.setOnClickListener {
-//                findNavController().navigate(R.id.tradingPlaceFragment)
+                findNavController().navigate(R.id.giftFragment)
             }
 
             btnScan.setOnClickListener {
@@ -74,13 +77,25 @@ class DashboardCustomerFragment : BaseFragment<FragmentCustomerDashboardBinding>
                 }
             }
             ivAvatar.setOnClickListener {
-//                findNavController().navigate()
+                findNavController().navigate(
+                    R.id.personalFragment
+                )
             }
+
             tPlaceHomeAdapter.onItemClick = {
                 findNavController().navigate(
                     R.id.placeDetailFragment, bundleOf(
                         Pair(
-                            GiftDetailFragment.TRADING_PLACE_ID_KEY, it.id
+                            TradingPlaceDetailFragment.TRADING_PLACE_ID_KEY, it.id
+                        )
+                    )
+                )
+            }
+            giftAdapter.onItemClick = {
+                findNavController().navigate(
+                    R.id.giftDetailFragment, bundleOf(
+                        Pair(
+                            GiftDetailFragment.GIFT_ID_KEY, it.id
                         )
                     )
                 )

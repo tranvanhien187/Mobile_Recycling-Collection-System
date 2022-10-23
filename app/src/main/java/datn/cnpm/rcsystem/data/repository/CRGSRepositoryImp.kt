@@ -4,6 +4,8 @@ import datn.cnpm.rcsystem.common.ErrorCode
 import datn.cnpm.rcsystem.common.exception.BadRequestException
 import datn.cnpm.rcsystem.data.datastore.CRGSDataSource
 import datn.cnpm.rcsystem.data.entitiy.*
+import datn.cnpm.rcsystem.data.entitiy.gift.GiftDetailResponse
+import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
 import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.domain.model.history.BaseItemHistory
@@ -81,6 +83,21 @@ class CRGSRepositoryImp @Inject constructor(
 
     override suspend fun getTPlaceForUser(criteria: String): List<GetTPPlaceForUserResponse> {
         val response = authenticationDataSource.getTPlaceForUser(authPre.uuid, criteria)
+        if (response.isSuccess) {
+            return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
+        } else {
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+        }
+    }
+
+    override suspend fun getGiftByCriteria(criteria: String): List<GiftResponse> {
+        val response = authenticationDataSource.getGiftByCriteria(authPre.uuid, criteria)
         if (response.isSuccess) {
             return response.requireData
         } else if (response.isFailure) {
@@ -302,6 +319,21 @@ class CRGSRepositoryImp @Inject constructor(
 
     override suspend fun getTPlaceDetail(tplaceId: String): TPlaceDetailResponse {
         val response = authenticationDataSource.getTPlaceDetail(tplaceId)
+        if (response.isSuccess) {
+            return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
+        } else {
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+        }
+    }
+
+    override suspend fun getGiftDetail(giftId: String): GiftDetailResponse {
+        val response = authenticationDataSource.getGiftDetail(giftId)
         if (response.isSuccess) {
             return response.requireData
         } else if (response.isFailure) {

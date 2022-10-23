@@ -2,6 +2,8 @@ package datn.cnpm.rcsystem.data.datastore
 
 import datn.cnpm.rcsystem.core.SBResponse
 import datn.cnpm.rcsystem.data.entitiy.*
+import datn.cnpm.rcsystem.data.entitiy.gift.GiftDetailResponse
+import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
 import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.domain.model.history.*
@@ -71,6 +73,13 @@ class CRGSDataSource @Inject constructor(private val authenticationApiService: C
         return authenticationApiService.getTPlaceForUser(uuid, criteria)
     }
 
+    suspend fun getGiftByCriteria(
+        uuid: String,
+        criteria: String
+    ): SBResponse<List<GiftResponse>> {
+        return authenticationApiService.getGiftByCriteria(uuid, criteria)
+    }
+
     suspend fun getTPlaceRandom6(uuid: String): SBResponse<List<GetTPPlaceForUserResponse>> {
         return authenticationApiService.getTPlaceRandom6(uuid)
     }
@@ -125,5 +134,9 @@ class CRGSDataSource @Inject constructor(private val authenticationApiService: C
 
     suspend fun getTPlaceDetail(tplaceId: String): SBResponse<TPlaceDetailResponse> {
         return authenticationApiService.getTPlaceDetail(tplaceId)
+    }
+
+    suspend fun getGiftDetail(tplaceId: String): SBResponse<GiftDetailResponse> {
+        return authenticationApiService.getGiftDetail(tplaceId)
     }
 }

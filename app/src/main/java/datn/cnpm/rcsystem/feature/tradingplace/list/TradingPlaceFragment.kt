@@ -16,12 +16,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.databinding.FragmentTradingPlaceBinding
-import datn.cnpm.rcsystem.feature.gift.detail.GiftDetailFragment.Companion.TRADING_PLACE_ID_KEY
-import datn.cnpm.rcsystem.feature.gift.list.GiftAdapter
-import datn.cnpm.rcsystem.feature.gift.list.GiftViewModel
+import datn.cnpm.rcsystem.feature.tradingplace.detail.TradingPlaceDetailFragment.Companion.TRADING_PLACE_ID_KEY
 
 /**
- * [GiftFragment]
+ * [TradingPlaceFragment]
  */
 @AndroidEntryPoint
 class TradingPlaceFragment : BaseFragment<FragmentTradingPlaceBinding>() {
@@ -34,9 +32,9 @@ class TradingPlaceFragment : BaseFragment<FragmentTradingPlaceBinding>() {
         private const val TAB_DISTRICT_POSITION = 2
     }
 
-    private val viewModel: GiftViewModel by viewModels()
+    private val viewModel: TradingPlaceViewModel by viewModels()
 
-    private val tPlaceAdapter: GiftAdapter by lazy { GiftAdapter() }
+    private val tPlaceAdapter: TradingPlaceAdapter by lazy { TradingPlaceAdapter() }
 
     private var rankPosition = 0
     private var cityPosition = 0
@@ -50,7 +48,7 @@ class TradingPlaceFragment : BaseFragment<FragmentTradingPlaceBinding>() {
         showToolbar(getString(R.string.trading_place_label), R.drawable.ic_back)
         binding.rvTradingPlace.adapter = tPlaceAdapter
 
-        applyDataSpinner(R.array.level,rankPosition) {
+        applyDataSpinner(R.array.level, rankPosition) {
             rankPosition = it
         }
         initTabLayout()
@@ -100,7 +98,8 @@ class TradingPlaceFragment : BaseFragment<FragmentTradingPlaceBinding>() {
                         TAB_DISTRICT_POSITION -> {
                             applyDataSpinner(
                                 DistrictOfCity.values()[cityPosition].district,
-                                districtPosition) {
+                                districtPosition
+                            ) {
                                 districtPosition = it
                             }
                         }
@@ -152,8 +151,13 @@ class TradingPlaceFragment : BaseFragment<FragmentTradingPlaceBinding>() {
 
     override fun initActions() {
         tPlaceAdapter.onItemClick = {
-            findNavController().navigate(R.id.placeDetailFragment, bundleOf(Pair(
-                TRADING_PLACE_ID_KEY,it.id)))
+            findNavController().navigate(
+                R.id.placeDetailFragment, bundleOf(
+                    Pair(
+                        TRADING_PLACE_ID_KEY, it.id
+                    )
+                )
+            )
         }
     }
 

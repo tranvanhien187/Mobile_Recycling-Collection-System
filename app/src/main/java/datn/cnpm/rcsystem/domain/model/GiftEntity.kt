@@ -1,6 +1,6 @@
 package datn.cnpm.rcsystem.domain.model
 
-import datn.cnpm.rcsystem.data.entitiy.GiftResponse
+import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
 
 
 data class GiftEntity(
@@ -14,6 +14,10 @@ data class GiftEntity(
     val street: String? = null,
     val district: String? = null,
     val provinceOrCity: String? = null,
+    val placeId: String? = null,
+    val placeName: String? = null,
+    val agentName: String? = null,
+    val agentId: String? = null
 )
 
 fun GiftResponse.mapToEntity() = GiftEntity(
@@ -26,5 +30,9 @@ fun GiftResponse.mapToEntity() = GiftEntity(
     imageUrl,
     street,
     district,
-    provinceOrCity
+    provinceOrCity,
+    placeId,
+    placeName,
+    agentName,
+    agentId
 )

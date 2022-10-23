@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/tradingPlaceFragment"
-        android:name="datn.cnpm.rcsystem.feature.gift.list.GiftFragment"
+        android:name="datn.cnpm.rcsystem.feature.tradingplace.list.TradingPlaceFragment"
         android:label="TradingPlaceFragment"
         tools:layout="@layout/fragment_trading_place"/>
     <fragment
@@ -33,18 +33,24 @@
         tools:layout="@layout/fragment_gift_history_detail"/>
 
     <fragment
+        android:id="@+id/giftFragment"
+        android:name="datn.cnpm.rcsystem.feature.gift.list.GiftFragment"
+        android:label="GiftFragment"
+        tools:layout="@layout/fragment_gift"/>
+
+    <fragment
         android:id="@+id/personalFragment"
         android:name="datn.cnpm.rcsystem.feature.personal.PersonalFragment"
         android:label="GiftHistoryDetailFragment"
         tools:layout="@layout/fragment_personal"/>
     <fragment
         android:id="@+id/placeDetailFragment"
-        android:name="datn.cnpm.rcsystem.feature.gift.detail.GiftDetailFragment"
+        android:name="datn.cnpm.rcsystem.feature.tradingplace.detail.TradingPlaceDetailFragment"
         android:label="PlaceDetailFragment"
         tools:layout="@layout/fragment_place_detail"/>
     <fragment
         android:id="@+id/giftDetailFragment"
-        android:name="datn.cnpm.rcsystem.feature.gift.GiftDetailFragment"
+        android:name="datn.cnpm.rcsystem.feature.gift.detail.GiftDetailFragment"
         android:label="GiftDetailFragment"
         tools:layout="@layout/fragment_gift_detail"/>
 </navigation>

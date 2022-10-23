@@ -115,5 +115,5 @@
     <string name="gift_detail_btn_redeem">Redeem</string>
     <string name="gift_detail_equivalents_title">Equivalents to</string>
     <string name="call_now">Call now</string>
-    <string name="per_one">/one</string>
+    <string name="per_one_label">/one</string>
 </resources>

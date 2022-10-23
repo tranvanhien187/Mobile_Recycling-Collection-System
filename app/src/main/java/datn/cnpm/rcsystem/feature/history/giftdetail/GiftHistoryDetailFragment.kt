@@ -101,6 +101,7 @@ class GiftHistoryDetailFragment : BaseFragment<FragmentGiftHistoryDetailBinding>
                                             Locale.UK
                                         ).format(date)
                                     }
+                                    imgStatus.setImageResource(R.drawable.ic_create)
                                     tvNameLabel1.gone()
                                     tvNameLabel2.gone()
                                     tvName1.gone()
@@ -117,6 +118,7 @@ class GiftHistoryDetailFragment : BaseFragment<FragmentGiftHistoryDetailBinding>
                                             Locale.UK
                                         ).format(date)
                                     }
+                                    imgStatus.setImageResource(R.drawable.ic_driving)
                                     tvNameLabel2.gone()
                                     tvName2.gone()
                                 }
@@ -125,6 +127,7 @@ class GiftHistoryDetailFragment : BaseFragment<FragmentGiftHistoryDetailBinding>
                                         content = HistoryStatus.COMPLETE.value,
                                         color = R.color.green_00ad31
                                     )
+                                    imgStatus.setImageResource(R.drawable.ic_complete)
                                     tvDateTime.text = data.completeAt?.let { date ->
                                         SimpleDateFormat(
                                             "dd MMM yyyy, HH:mm aa",
