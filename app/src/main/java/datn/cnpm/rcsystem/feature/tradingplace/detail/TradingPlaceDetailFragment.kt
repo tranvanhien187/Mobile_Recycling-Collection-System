@@ -10,7 +10,6 @@ import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.databinding.FragmentPlaceDetailBinding
-import datn.cnpm.rcsystem.feature.gift.detail.GiftDetailViewModel
 
 /**
  * [TradingPlaceDetailFragment]
@@ -21,7 +20,7 @@ class TradingPlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentPlaceDetailBinding
         get() = FragmentPlaceDetailBinding::inflate
 
-    private val viewModel: GiftDetailViewModel by viewModels()
+    private val viewModel: TradingPlaceDetailViewModel by viewModels()
 
     companion object {
         const val TRADING_PLACE_ID_KEY = "TRADING_PLACE_ID_KEY"
@@ -39,8 +38,11 @@ class TradingPlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
     override fun initViews() {
     }
 
-    @SuppressLint("SetTextI18n")
     override fun initActions() {
+    }
+
+    @SuppressLint("SetTextI18n")
+    override fun initObservers() {
         viewModel.observe(
             owner = viewLifecycleOwner,
             selector = { state -> state.loading },
@@ -70,13 +72,28 @@ class TradingPlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
                             imgBanner,
                             R.drawable.image_default_image_rectangle
                         )
-                        tvLevelValue.text = it.rank.toString()
+                        ivLevel.run {
+                            when (it.rank) {
+                                1 -> {
+                                    setImageResource(R.drawable.ic_level_1)
+                                }
+                                2 -> {
+                                    setImageResource(R.drawable.ic_level_2)
+                                }
+                                3 -> {
+                                    setImageResource(R.drawable.ic_level_3)
+                                }
+                                4 -> {
+                                    setImageResource(R.drawable.ic_level_4)
+                                }
+                                5 -> {
+                                    setImageResource(R.drawable.ic_level_5)
+                                }
+                            }
+                        }
                     }
                 }
             }
         )
-    }
-
-    override fun initObservers() {
     }
 }

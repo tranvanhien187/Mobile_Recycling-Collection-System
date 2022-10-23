@@ -5,6 +5,8 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import datn.cnpm.rcsystem.domain.usecase.*
+import datn.cnpm.rcsystem.domain.usecase.gift.GetGiftDetailUseCase
+import datn.cnpm.rcsystem.domain.usecase.gift.GetGiftDetailUseCaseImpl
 import javax.inject.Singleton
 
 /*
@@ -124,4 +126,16 @@ abstract class UseCaseModule {
     abstract fun provideGetTPlaceDetailUseCase(
         useCase: GetTPlaceDetailUseCaseImpl
     ): GetTPlaceDetailUseCase
+
+    @Binds
+    @Singleton
+    abstract fun provideGetGiftDetailUseCase(
+        useCase: GetGiftDetailUseCaseImpl
+    ): GetGiftDetailUseCase
+
+    @Binds
+    @Singleton
+    abstract fun provideGetGiftByCriteriaUseCase(
+        useCase: GetGiftByCriteriaUseCaseImpl
+    ): GetGiftByCriteriaUseCase
 }

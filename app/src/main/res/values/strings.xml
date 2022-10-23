@@ -101,4 +101,19 @@
     <string name="_1_kilogram_label">1 kilogram</string>
     <string name="_200_points_label">200 points</string>
 
+
+    <!-- Personal -->
+    <string name="personal_logout">Log out</string>
+    <string name="personal_about_us">About us</string>
+    <string name="personal_term_condition">Term and Condition</string>
+    <string name="personal_help">Help</string>
+    <string name="personal_edit_profile">Edit profile</string>
+
+    <!-- Gift detail -->
+    <string name="electronic">Electronic</string>
+    <string name="available">Available</string>
+    <string name="gift_detail_btn_redeem">Redeem</string>
+    <string name="gift_detail_equivalents_title">Equivalents to</string>
+    <string name="call_now">Call now</string>
+    <string name="per_one_label">/one</string>
 </resources>

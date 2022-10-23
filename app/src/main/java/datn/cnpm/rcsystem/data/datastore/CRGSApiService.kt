@@ -2,6 +2,8 @@ package datn.cnpm.rcsystem.data.datastore
 
 import datn.cnpm.rcsystem.core.SBResponse
 import datn.cnpm.rcsystem.data.entitiy.*
+import datn.cnpm.rcsystem.data.entitiy.gift.GiftDetailResponse
+import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
 import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.domain.model.history.*
@@ -57,6 +59,17 @@ interface CRGSApiService {
         @Path("id") id: String,
         @Query("criteria") criteria: String
     ): SBResponse<List<GetTPPlaceForUserResponse>>
+
+    /***        GIFT      ***/
+    @GET("api/v1/gift/get/{id}")
+    suspend fun getGiftByCriteria(
+        @Path("id") id: String,
+        @Query("criteria") criteria: String
+    ): SBResponse<List<GiftResponse>>
+
+    @GET("api/v1/gift/detail/{id}")
+    suspend fun getGiftDetail(@Path("id") id: String): SBResponse<GiftDetailResponse>
+    /******/
 
     @GET("api/v1/tplace/get/random/{id}")
     suspend fun getTPlaceRandom6(@Path("id") id: String): SBResponse<List<GetTPPlaceForUserResponse>>

@@ -15,16 +15,16 @@ import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
-import datn.cnpm.rcsystem.databinding.FragmentTradingPlaceBinding
-import datn.cnpm.rcsystem.feature.gift.detail.GiftDetailFragment.Companion.TRADING_PLACE_ID_KEY
+import datn.cnpm.rcsystem.databinding.FragmentGiftBinding
+import datn.cnpm.rcsystem.feature.gift.detail.GiftDetailFragment.Companion.GIFT_ID_KEY
 
 /**
  * [GiftFragment]
  */
 @AndroidEntryPoint
-class GiftFragment : BaseFragment<FragmentTradingPlaceBinding>() {
-    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentTradingPlaceBinding
-        get() = FragmentTradingPlaceBinding::inflate
+class GiftFragment : BaseFragment<FragmentGiftBinding>() {
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentGiftBinding
+        get() = FragmentGiftBinding::inflate
 
     companion object {
         private const val TAB_RANK_POSITION = 0
@@ -34,7 +34,7 @@ class GiftFragment : BaseFragment<FragmentTradingPlaceBinding>() {
 
     private val viewModel: GiftViewModel by viewModels()
 
-    private val tPlaceAdapter: GiftAdapter by lazy { GiftAdapter() }
+    private val giftAdapter: GiftAdapter by lazy { GiftAdapter() }
 
     private var rankPosition = 0
     private var cityPosition = 0
@@ -46,9 +46,9 @@ class GiftFragment : BaseFragment<FragmentTradingPlaceBinding>() {
 
     override fun initViews() {
         showToolbar(getString(R.string.trading_place_label), R.drawable.ic_back)
-        binding.rvTradingPlace.adapter = tPlaceAdapter
+        binding.rvGift.adapter = giftAdapter
 
-        applyDataSpinner(R.array.level,rankPosition) {
+        applyDataSpinner(R.array.level, rankPosition) {
             rankPosition = it
         }
         initTabLayout()
@@ -98,7 +98,8 @@ class GiftFragment : BaseFragment<FragmentTradingPlaceBinding>() {
                         TAB_DISTRICT_POSITION -> {
                             applyDataSpinner(
                                 DistrictOfCity.values()[cityPosition].district,
-                                districtPosition) {
+                                districtPosition
+                            ) {
                                 districtPosition = it
                             }
                         }
@@ -149,9 +150,14 @@ class GiftFragment : BaseFragment<FragmentTradingPlaceBinding>() {
     }
 
     override fun initActions() {
-        tPlaceAdapter.onItemClick = {
-            findNavController().navigate(R.id.placeDetailFragment, bundleOf(Pair(
-                TRADING_PLACE_ID_KEY,it.id)))
+        giftAdapter.onItemClick = {
+            findNavController().navigate(
+                R.id.giftDetailFragment, bundleOf(
+                    Pair(
+                        GIFT_ID_KEY, it.id
+                    )
+                )
+            )
         }
     }
 
@@ -173,7 +179,7 @@ class GiftFragment : BaseFragment<FragmentTradingPlaceBinding>() {
             selector = { state -> state.listPlace },
             observer = { listPlace ->
                 if (listPlace.isNotEmpty()) {
-                    tPlaceAdapter.submitList(listPlace)
+                    giftAdapter.submitList(listPlace)
                 }
             }
         )
