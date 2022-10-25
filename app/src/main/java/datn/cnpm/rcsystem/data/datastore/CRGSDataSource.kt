@@ -62,8 +62,8 @@ class CRGSDataSource @Inject constructor(private val authenticationApiService: C
         )
     }
 
-    suspend fun getUserInfo(uuid: String): SBResponse<GetUserInfoResponse> {
-        return authenticationApiService.getUserInfo(uuid)
+    suspend fun getCustomerInfo(uuid: String): SBResponse<GetCustomerInfoResponse> {
+        return authenticationApiService.getCustomerInfo(uuid)
     }
 
     suspend fun getTPlaceForUser(

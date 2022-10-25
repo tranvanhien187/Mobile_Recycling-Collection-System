@@ -129,8 +129,8 @@ class CRGSRepositoryImp @Inject constructor(
         }
     }
 
-    override suspend fun getUserInfo(): GetUserInfoResponse {
-        val response = authenticationDataSource.getUserInfo(authPre.uuid)
+    override suspend fun getCustomerInfo(): GetCustomerInfoResponse {
+        val response = authenticationDataSource.getCustomerInfo(authPre.uuid)
         if (response.isSuccess) {
             return response.requireData
         } else if (response.isFailure) {

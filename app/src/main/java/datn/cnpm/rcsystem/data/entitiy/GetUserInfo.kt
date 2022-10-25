@@ -2,7 +2,7 @@ package datn.cnpm.rcsystem.data.entitiy
 
 import java.sql.Date
 
-data class GetUserInfoResponse(
+data class GetCustomerInfoResponse(
     val id: String? = null,
     val name: String? = null,
     val username: String? = null,

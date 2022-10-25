@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
@@ -90,6 +91,9 @@ class TradingPlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
                                     setImageResource(R.drawable.ic_level_5)
                                 }
                             }
+                        }
+                        btnSchedule.setOnClickListener {
+                            findNavController().navigate(R.id.createFormFragment)
                         }
                     }
                 }

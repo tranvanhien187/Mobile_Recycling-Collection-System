@@ -21,7 +21,7 @@ interface CRGSRepository {
     suspend fun getTPlaceForUser(criteria: String): List<GetTPPlaceForUserResponse>
     suspend fun genOTP(request: GenOTPRequest): String
     suspend fun validateOTP(request: ValidateOTPRequest): String
-    suspend fun getUserInfo(): GetUserInfoResponse
+    suspend fun getCustomerInfo(): GetCustomerInfoResponse
     suspend fun getTPlaceRandom6(): List<GetTPPlaceForUserResponse>
     suspend fun getGiftRandom6(): List<GiftResponse>
     suspend fun getGiftUserHistory(): List<GiftUserHistoryResponse>

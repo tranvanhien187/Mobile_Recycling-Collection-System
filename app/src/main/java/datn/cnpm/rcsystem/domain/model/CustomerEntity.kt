@@ -1,11 +1,10 @@
 package datn.cnpm.rcsystem.domain.model
 
+import datn.cnpm.rcsystem.SingletonObject
 import datn.cnpm.rcsystem.data.entitiy.*
 import java.sql.Date
-import java.text.NumberFormat
-import java.util.*
 
-data class UserEntity(
+data class CustomerEntity(
     val id: String? = null,
     val name: String? = null,
     val username: String? = null,
@@ -18,20 +17,24 @@ data class UserEntity(
     val point: PointResponse? = null
 )
 
-fun GetUserInfoResponse.mapToUserEntity(): UserEntity = UserEntity(
-    id = id,
-    name = name,
-    username = username,
-    email = email,
-    avatar = avatar,
-    phoneNumber = phoneNumber,
-    address = address,
-    dOB = dateOfBirth,
-    garbage = garbageManagement,
-    point = point
-)
+fun GetCustomerInfoResponse.mapToEntity(): CustomerEntity {
+    val entity = CustomerEntity(
+        id = id,
+        name = name,
+        username = username,
+        email = email,
+        avatar = avatar,
+        phoneNumber = phoneNumber,
+        address = address,
+        dOB = dateOfBirth,
+        garbage = garbageManagement,
+        point = point
+    )
+    SingletonObject.customer = entity
+    return entity
+}
 
-fun UpdateUserInfoResponse.mapToUserEntity(): UserEntity = UserEntity(
+fun UpdateUserInfoResponse.mapToEntity(): CustomerEntity = CustomerEntity(
     id = id,
     name = name,
     username = username,

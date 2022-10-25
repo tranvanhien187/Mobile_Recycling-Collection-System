@@ -9,13 +9,13 @@ import datn.cnpm.rcsystem.core.requireError
 import datn.cnpm.rcsystem.core.succeeded
 import datn.cnpm.rcsystem.domain.usecase.GetGiftRandom6UserCase
 import datn.cnpm.rcsystem.domain.usecase.GetTPlaceRandom6UseCase
-import datn.cnpm.rcsystem.domain.usecase.GetUserInfoUseCase
+import datn.cnpm.rcsystem.domain.usecase.GetUserCustomerUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class DashboardCustomerViewModel @Inject constructor(
-    private val getUserInfoUseCase: GetUserInfoUseCase,
+    private val getUserInfoUseCase: GetUserCustomerUseCase,
     private val getTPlaceRandom6UseCase: GetTPlaceRandom6UseCase,
     private val getGiftRandom6UserCase: GetGiftRandom6UserCase
 ) :

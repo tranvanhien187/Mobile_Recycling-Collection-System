@@ -44,7 +44,7 @@ interface CRGSApiService {
 
     /***        CUSTOMER      ***/
     @GET("api/v1/customer/{id}")
-    suspend fun getUserInfo(@Path("id") uuid: String): SBResponse<GetUserInfoResponse>
+    suspend fun getCustomerInfo(@Path("id") uuid: String): SBResponse<GetCustomerInfoResponse>
 
     @GET("/api/v1/history/garbage/{id}")
     suspend fun getListGarbageHistoryByCustomer(@Path("id") id: String): SBResponse<List<ItemGarbageHistoryByCustomerEntity>>

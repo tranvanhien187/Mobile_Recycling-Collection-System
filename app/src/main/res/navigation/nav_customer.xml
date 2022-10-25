@@ -53,4 +53,10 @@
         android:name="datn.cnpm.rcsystem.feature.gift.detail.GiftDetailFragment"
         android:label="GiftDetailFragment"
         tools:layout="@layout/fragment_gift_detail"/>
+
+    <fragment
+        android:id="@+id/createFormFragment"
+        android:name="datn.cnpm.rcsystem.feature.form.CreateFormFragment"
+        android:label="CreateFormFragment"
+        tools:layout="@layout/fragment_create_form"/>
 </navigation>

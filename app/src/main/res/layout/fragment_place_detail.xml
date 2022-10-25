@@ -319,6 +319,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <datn.cnpm.rcsystem.common.widget.PrimaryButton
+        android:id="@+id/btnSchedule"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginHorizontal="24dp"
