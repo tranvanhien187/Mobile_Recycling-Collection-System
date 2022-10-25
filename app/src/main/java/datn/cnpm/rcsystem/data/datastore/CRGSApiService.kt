@@ -7,6 +7,7 @@ import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
 import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGarbageRequest
+import datn.cnpm.rcsystem.domain.model.GiftEntity
 import datn.cnpm.rcsystem.domain.model.history.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -124,4 +125,10 @@ interface CRGSApiService {
     @POST("/api/v1/transport/createForm")
     suspend fun createTransportGarbageForm(@Body request: CreateTransportGarbageRequest): SBResponse<String>
     /******/
+
+    @GET("/api/v1/gift/get/owner/{ownerId}")
+    suspend fun getGiftOwnerByAgent(
+        @Path("ownerId") ownerId: String,
+        @Query("criteria") criteria: String,
+    ): SBResponse<List<GiftResponse>>
 }

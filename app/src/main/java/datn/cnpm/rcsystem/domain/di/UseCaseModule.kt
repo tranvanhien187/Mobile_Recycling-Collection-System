@@ -9,6 +9,8 @@ import datn.cnpm.rcsystem.domain.usecase.gift.GetGiftDetailUseCase
 import datn.cnpm.rcsystem.domain.usecase.gift.GetGiftDetailUseCaseImpl
 import datn.cnpm.rcsystem.domain.usecase.transport.CreateTransportGarbageFormUseCase
 import datn.cnpm.rcsystem.domain.usecase.transport.CreateTransportGarbageFormUseCaseImpl
+import datn.cnpm.rcsystem.domain.usecase.gift.GetGiftOwnerByAgentUseCase
+import datn.cnpm.rcsystem.domain.usecase.gift.GetGiftOwnerByAgentUseCaseImpl
 import javax.inject.Singleton
 
 /*
@@ -146,4 +148,10 @@ abstract class UseCaseModule {
     abstract fun provideCreateTransportGarbageFormUseCase(
         useCase: CreateTransportGarbageFormUseCaseImpl
     ): CreateTransportGarbageFormUseCase
+
+    @Binds
+    @Singleton
+    abstract fun provideGetGiftOwnerByAgent(
+        useCase: GetGiftOwnerByAgentUseCaseImpl
+    ): GetGiftOwnerByAgentUseCase
 }

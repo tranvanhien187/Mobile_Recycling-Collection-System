@@ -50,4 +50,5 @@ interface CRGSRepository {
         district: String,
         cityOrProvince: String,
     ): String
+    suspend fun getGiftOwnerByAgent(ownerId: String, criteria: String): List<GiftResponse>
 }

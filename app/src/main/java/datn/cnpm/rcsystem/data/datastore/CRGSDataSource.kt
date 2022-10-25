@@ -7,6 +7,7 @@ import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
 import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGarbageRequest
+import datn.cnpm.rcsystem.domain.model.GiftEntity
 import datn.cnpm.rcsystem.domain.model.history.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -69,14 +70,14 @@ class CRGSDataSource @Inject constructor(private val authenticationApiService: C
 
     suspend fun getTPlaceForUser(
         uuid: String,
-        criteria: String
+        criteria: String,
     ): SBResponse<List<GetTPPlaceForUserResponse>> {
         return authenticationApiService.getTPlaceForUser(uuid, criteria)
     }
 
     suspend fun getGiftByCriteria(
         uuid: String,
-        criteria: String
+        criteria: String,
     ): SBResponse<List<GiftResponse>> {
         return authenticationApiService.getGiftByCriteria(uuid, criteria)
     }
@@ -143,5 +144,9 @@ class CRGSDataSource @Inject constructor(private val authenticationApiService: C
 
     suspend fun getGiftDetail(tplaceId: String): SBResponse<GiftDetailResponse> {
         return authenticationApiService.getGiftDetail(tplaceId)
+    }
+
+    suspend fun getGiftOwnerByAgent(ownerId: String, criteria: String): SBResponse<List<GiftResponse>> {
+        return authenticationApiService.getGiftOwnerByAgent(ownerId, criteria)
     }
 }

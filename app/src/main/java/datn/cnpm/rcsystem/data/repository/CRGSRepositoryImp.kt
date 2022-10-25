@@ -375,4 +375,19 @@ class CRGSRepositoryImp @Inject constructor(
             throw Exception(ErrorCode.UNKNOWN_ERROR.value)
         }
     }
+
+    override suspend fun getGiftOwnerByAgent(ownerId: String, criteria: String): List<GiftResponse> {
+        val response = authenticationDataSource.getGiftOwnerByAgent(ownerId, criteria)
+        if (response.isSuccess) {
+            return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
+        } else {
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+        }
+    }
 }
