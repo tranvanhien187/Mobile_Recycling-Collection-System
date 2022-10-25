@@ -1,4 +1,4 @@
-package datn.cnpm.rcsystem.feature.form
+package datn.cnpm.rcsystem.feature.form.create
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel

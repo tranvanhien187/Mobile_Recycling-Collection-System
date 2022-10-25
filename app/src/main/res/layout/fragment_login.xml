@@ -63,6 +63,7 @@
             android:hint="@string/username_label"
             android:imeOptions="actionNext"
             android:inputType="text"
+            android:text="DarkNight"
             android:maxLines="1"
             android:textColor="@color/black"
             android:textColorHint="@color/black" />
@@ -101,6 +102,7 @@
             android:drawablePadding="10dp"
             android:hint="@string/password_label"
             android:imeOptions="actionDone"
+            android:text="12345678"
             android:inputType="textPassword"
             android:maxLines="1"
             android:textColor="@color/black"

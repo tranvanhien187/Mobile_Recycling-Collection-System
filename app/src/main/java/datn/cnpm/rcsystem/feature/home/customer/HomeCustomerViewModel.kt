@@ -1,4 +1,4 @@
-package datn.cnpm.rcsystem.feature.home.user
+package datn.cnpm.rcsystem.feature.home.customer
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import datn.cnpm.rcsystem.base.BaseViewModel

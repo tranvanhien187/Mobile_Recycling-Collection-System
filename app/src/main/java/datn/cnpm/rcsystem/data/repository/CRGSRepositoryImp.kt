@@ -30,7 +30,8 @@ class CRGSRepositoryImp @Inject constructor(
         if (response.isSuccess) {
             authPre.role = response.requireData.role
             authPre.accessToken = response.requireData.accessToken
-            authPre.uuid = response.requireData.uuid
+            authPre.id = response.requireData.id
+            authPre.isRememberMe = isRemember
             return response.requireData
         } else if (response.isFailure) {
             if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
@@ -83,7 +84,7 @@ class CRGSRepositoryImp @Inject constructor(
     }
 
     override suspend fun getTPlaceForUser(criteria: String): List<GetTPPlaceForUserResponse> {
-        val response = authenticationDataSource.getTPlaceForUser(authPre.uuid, criteria)
+        val response = authenticationDataSource.getTPlaceForUser(authPre.id, criteria)
         if (response.isSuccess) {
             return response.requireData
         } else if (response.isFailure) {
@@ -98,7 +99,7 @@ class CRGSRepositoryImp @Inject constructor(
     }
 
     override suspend fun getGiftByCriteria(criteria: String): List<GiftResponse> {
-        val response = authenticationDataSource.getGiftByCriteria(authPre.uuid, criteria)
+        val response = authenticationDataSource.getGiftByCriteria(authPre.id, criteria)
         if (response.isSuccess) {
             return response.requireData
         } else if (response.isFailure) {
@@ -131,7 +132,7 @@ class CRGSRepositoryImp @Inject constructor(
     }
 
     override suspend fun getCustomerInfo(): GetCustomerInfoResponse {
-        val response = authenticationDataSource.getCustomerInfo(authPre.uuid)
+        val response = authenticationDataSource.getCustomerInfo(authPre.id)
         if (response.isSuccess) {
             return response.requireData
         } else if (response.isFailure) {
@@ -146,7 +147,7 @@ class CRGSRepositoryImp @Inject constructor(
     }
 
     override suspend fun getTPlaceRandom6(): List<GetTPPlaceForUserResponse> {
-        val response = authenticationDataSource.getTPlaceRandom6(authPre.uuid)
+        val response = authenticationDataSource.getTPlaceRandom6(authPre.id)
         if (response.isSuccess) {
             return response.requireData
         } else if (response.isFailure) {
@@ -161,7 +162,7 @@ class CRGSRepositoryImp @Inject constructor(
     }
 
     override suspend fun getGiftRandom6(): List<GiftResponse> {
-        val response = authenticationDataSource.getGiftRandom6(authPre.uuid)
+        val response = authenticationDataSource.getGiftRandom6(authPre.id)
         if (response.isSuccess) {
             return response.requireData
         } else if (response.isFailure) {
@@ -176,7 +177,7 @@ class CRGSRepositoryImp @Inject constructor(
     }
 
     override suspend fun getGiftUserHistory(): List<GiftUserHistoryResponse> {
-        val response = authenticationDataSource.getGiftUserHistory(authPre.uuid)
+        val response = authenticationDataSource.getGiftUserHistory(authPre.id)
         if (response.isSuccess) {
             return response.requireData
         } else if (response.isFailure) {
@@ -198,7 +199,7 @@ class CRGSRepositoryImp @Inject constructor(
     ): String {
         val response = authenticationDataSource.createTransportGarbageForm(
             CreateTransportGarbageRequest(
-                authPre.uuid, exchangeWeight,
+                authPre.id, exchangeWeight,
                 street,
                 district,
                 cityOrProvince
@@ -224,7 +225,7 @@ class CRGSRepositoryImp @Inject constructor(
     ): String {
         val response = authenticationDataSource.receiveTransportForm(
             ReceiveFormRequest(
-                authPre.uuid, historyGarbageId,
+                authPre.id, historyGarbageId,
                 customerName,
                 customerPhoneNumber
             )
@@ -243,7 +244,7 @@ class CRGSRepositoryImp @Inject constructor(
     }
 
     override suspend fun getStaffInfo(): StaffInfoResponse {
-        val response = authenticationDataSource.getStaffInfo(authPre.uuid)
+        val response = authenticationDataSource.getStaffInfo(authPre.id)
         if (response.isSuccess) {
             return response.requireData
         } else if (response.isFailure) {
@@ -260,13 +261,13 @@ class CRGSRepositoryImp @Inject constructor(
     override suspend fun getListGarbageHistory(): List<BaseItemHistory> {
         val response = when (authPre.role) {
             Role.CUSTOMER.name -> {
-                authenticationDataSource.getListGarbageHistoryByCustomer(authPre.uuid)
+                authenticationDataSource.getListGarbageHistoryByCustomer(authPre.id)
             }
             Role.AGENT.name -> {
-                authenticationDataSource.getListGarbageHistoryByAgent(authPre.uuid)
+                authenticationDataSource.getListGarbageHistoryByAgent(authPre.id)
             }
             Role.STAFF.name -> {
-                authenticationDataSource.getListGarbageHistoryByStaff(authPre.uuid)
+                authenticationDataSource.getListGarbageHistoryByStaff(authPre.id)
             }
             else -> {
                 throw BadRequestException(ErrorCode.NOT_FIND_ROLE)
@@ -289,13 +290,13 @@ class CRGSRepositoryImp @Inject constructor(
     override suspend fun getListGiftHistory(): List<BaseItemHistory> {
         val response = when (authPre.role) {
             Role.CUSTOMER.name -> {
-                authenticationDataSource.getListGiftHistoryByCustomer(authPre.uuid)
+                authenticationDataSource.getListGiftHistoryByCustomer(authPre.id)
             }
             Role.AGENT.name -> {
-                authenticationDataSource.getListGiftHistoryByAgent(authPre.uuid)
+                authenticationDataSource.getListGiftHistoryByAgent(authPre.id)
             }
             Role.STAFF.name -> {
-                authenticationDataSource.getListGiftHistoryByStaff(authPre.uuid)
+                authenticationDataSource.getListGiftHistoryByStaff(authPre.id)
             }
             else -> {
                 throw BadRequestException(ErrorCode.NOT_FIND_ROLE)

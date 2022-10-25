@@ -17,43 +17,4 @@ import javax.inject.Inject
 class HistoryViewModel @Inject constructor(private val loginUseCase: LoginUseCase) :
     BaseViewModel<HistoryState, HistoryEvent>() {
     override fun initState() = HistoryState()
-
-    fun login(username: String, password: String, isRemember: Boolean) = viewModelScope.launch {
-        dispatchState(currentState.copy(loading = true))
-        val errorUsername = if (username.length > 6) null else ErrorCode.SHORT_USERNAME
-        val errorPassword = if (password.length > 6) null else ErrorCode.SHORT_PASSWORD
-        if (errorUsername == null && errorPassword == null) {
-            val response =
-                loginUseCase.login(LoginUseCase.Parameters(username, password, isRemember))
-            if (response.succeeded) {
-                when (response.requireData.role) {
-                    Role.CUSTOMER.toString() -> {
-                        if (response.requireData.updatedInfo) {
-                            dispatchEvent(HistoryEvent.UserLoginSuccess)
-                        } else {
-                            dispatchEvent(HistoryEvent.UserUpdatedYet(response.requireData.uuid))
-                        }
-                    }
-                    Role.AGENT.toString() -> {
-                        dispatchEvent(HistoryEvent.DealerLoginSuccess)
-                    }
-                    else -> {}
-                }
-
-            } else if (response.failed) {
-                if (response.requireError.errorCode == ErrorCode.NOT_UPDATE_DEALER) {
-                    dispatchEvent(HistoryEvent.LoginFailure(ErrorCode.NOT_UPDATE_DEALER.value))
-                } else {
-                    dispatchEvent(HistoryEvent.LoginFailure(response.requireError.exception.message.toString()))
-                }
-            } else {
-                dispatchEvent(HistoryEvent.LoginFailure(response.requireError.message))
-            }
-            dispatchState(currentState.copy(loading = false))
-        } else {
-            dispatchEvent(HistoryEvent.ValidateField(errorUsername, errorPassword))
-            dispatchState(currentState.copy(loading = false))
-        }
-
-    }
 }

@@ -29,9 +29,9 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
                 when (response.requireData.role) {
                     Role.CUSTOMER.toString() -> {
                         if (response.requireData.updatedInfo) {
-                            dispatchEvent(LoginEvent.UserLoginSuccess)
+                            dispatchEvent(LoginEvent.CustomerLoginSuccess)
                         } else {
-                            dispatchEvent(LoginEvent.UserUpdatedYet(response.requireData.uuid))
+                            dispatchEvent(LoginEvent.CustomerUpdatedYet(response.requireData.id))
                         }
                     }
 
@@ -39,7 +39,7 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
                         dispatchEvent(LoginEvent.AgentLoginSuccess)
                     }
 
-                    Role.AGENT.toString() -> {
+                    Role.STAFF.toString() -> {
                         dispatchEvent(LoginEvent.StaffLoginSuccess)
                     }
                     else -> {}

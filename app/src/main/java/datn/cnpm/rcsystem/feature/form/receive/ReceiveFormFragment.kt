@@ -1,31 +1,30 @@
-package datn.cnpm.rcsystem.feature.transportform.detail
+package datn.cnpm.rcsystem.feature.form.receive
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.common.ErrorCode
-import datn.cnpm.rcsystem.databinding.FragmentTransportFormDetailBinding
+import datn.cnpm.rcsystem.databinding.FragmentReceiveFormBinding
 import datn.cnpm.rcsystem.domain.model.history.HistoryStatus
 import datn.cnpm.rcsystem.feature.transportform.list.TransportFormFragment
 import java.text.SimpleDateFormat
 import java.util.*
 
 /**
- * [TransportFormDetailFragment]
+ * [ReceiveFormFragment]
  */
 @AndroidEntryPoint
-class TransportFormDetailFragment : BaseFragment<FragmentTransportFormDetailBinding>() {
-    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentTransportFormDetailBinding
-        get() = FragmentTransportFormDetailBinding::inflate
+class ReceiveFormFragment : BaseFragment<FragmentReceiveFormBinding>() {
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentReceiveFormBinding
+        get() = FragmentReceiveFormBinding::inflate
 
 
-    private val viewModel: TransportFormDetailViewModel by viewModels()
+    private val viewModel: ReceiveFormViewModel by viewModels()
 
 
     override fun initData(data: Bundle?) {
@@ -69,7 +68,8 @@ class TransportFormDetailFragment : BaseFragment<FragmentTransportFormDetailBind
                         tvWeight.text = "${form.weight} Kgs"
                         tvTransportId.text = form.id
                         SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").parse(form.createAt)?.let {
-                            tvDateTime.text = SimpleDateFormat("dd MMM yyyy, HH:mm aa",Locale.UK).format(it)
+                            tvDateTime.text =
+                                SimpleDateFormat("dd MMM yyyy, HH:mm aa", Locale.UK).format(it)
                         }
                         tvCustomerName.text = form.customerName
                         tvPhoneNumber.text = form.customerPhoneNumber
@@ -82,25 +82,18 @@ class TransportFormDetailFragment : BaseFragment<FragmentTransportFormDetailBind
 
         viewModel.liveEvent.observe(viewLifecycleOwner) { event ->
             when (event) {
-                is TransportFormDetailEvent.ReceiveFormSuccess -> {
-                    context?.let {
-                        Toast.makeText(
-                            it,
-                            "You received transport garbage form success",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                is ReceiveFormEvent.ReceiveFormSuccess -> {
+                    binding.btnReceive.isEnabled = false
+                    showDialogConfirm(
+                        "You received transport garbage form success",
+                        onConfirmClick = {
+
+                        })
                 }
-                is TransportFormDetailEvent.ReceiveFormFailure -> {
+                is ReceiveFormEvent.ReceiveFormFailure -> {
                     when (event.error) {
                         ErrorCode.FORM_RESOLVED -> {
-                            context?.let {
-                                Toast.makeText(
-                                    it,
-                                    event.error.value,
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
+                            showError(event.error.value)
                             binding.btnReceive.isEnabled = false
                         }
                         else -> {}

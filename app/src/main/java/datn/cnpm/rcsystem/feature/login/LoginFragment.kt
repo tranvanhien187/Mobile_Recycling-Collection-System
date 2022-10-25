@@ -13,7 +13,7 @@ import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.common.extension.createSpannableString
 import datn.cnpm.rcsystem.databinding.FragmentLoginBinding
 import datn.cnpm.rcsystem.feature.home.staff.HomeStaffActivity
-import datn.cnpm.rcsystem.feature.home.user.HomeCustomerActivity
+import datn.cnpm.rcsystem.feature.home.customer.HomeCustomerActivity
 import datn.cnpm.rcsystem.feature.updateaccountifo.UpdateAccountInfoFragment
 
 /**
@@ -78,14 +78,14 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                             if (event.errorPassword == null) null else event.errorPassword.value
                     }
                 }
-                is LoginEvent.UserLoginSuccess -> {
+                is LoginEvent.CustomerLoginSuccess -> {
                     val intent = Intent(this.activity, HomeCustomerActivity::class.java)
                     activity?.startActivity(intent)
                 }
                 is LoginEvent.LoginFailure -> {
                     showError(event.message)
                 }
-                is LoginEvent.UserUpdatedYet -> {
+                is LoginEvent.CustomerUpdatedYet -> {
                     findNavController().navigate(
                         R.id.updateAccountInfoFragment,
                         bundleOf(

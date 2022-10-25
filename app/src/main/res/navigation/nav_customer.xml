@@ -56,7 +56,7 @@
 
     <fragment
         android:id="@+id/createFormFragment"
-        android:name="datn.cnpm.rcsystem.feature.form.CreateFormFragment"
+        android:name="datn.cnpm.rcsystem.feature.form.create.CreateFormFragment"
         android:label="CreateFormFragment"
         tools:layout="@layout/fragment_create_form"/>
 </navigation>

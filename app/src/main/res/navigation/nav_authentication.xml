@@ -9,25 +9,25 @@
         android:id="@+id/loginFragment"
         android:name="datn.cnpm.rcsystem.feature.login.LoginFragment"
         android:label="Login Fragment"
-        tools:layout="@layout/fragment_login"/>
+        tools:layout="@layout/fragment_login" />
 
     <fragment
         android:id="@+id/registerFragment"
         android:name="datn.cnpm.rcsystem.feature.register.RegisterFragment"
         android:label="Register Fragment"
-        tools:layout="@layout/fragment_register"/>
+        tools:layout="@layout/fragment_register" />
 
     <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="datn.cnpm.rcsystem.feature.forgotpassword.ForgotPasswordFragment"
         android:label="ForgotPassword Fragment"
-        tools:layout="@layout/fragment_forgot_password"/>
+        tools:layout="@layout/fragment_forgot_password" />
 
     <fragment
         android:id="@+id/OTPFragment"
         android:name="datn.cnpm.rcsystem.feature.otp.OTPFragment"
         android:label="ForgotPassword Fragment"
-        tools:layout="@layout/fragment_otp"/>
+        tools:layout="@layout/fragment_otp" />
 
     <fragment
         android:id="@+id/loadingFragment"
@@ -36,19 +36,21 @@
         tools:layout="@layout/fragment_loading">
         <action
             android:id="@+id/action_loadingFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:popUpTo="@+id/loadingFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
         android:id="@+id/changePasswordFragment"
         android:name="datn.cnpm.rcsystem.feature.changepassword.ChangePasswordFragment"
         android:label="ChangePasswordFragment"
-        tools:layout="@layout/fragment_change_password"/>
+        tools:layout="@layout/fragment_change_password" />
 
     <fragment
         android:id="@+id/updateAccountInfoFragment"
         android:name="datn.cnpm.rcsystem.feature.updateaccountifo.UpdateAccountInfoFragment"
         android:label="UpdateAccountInfoFragment"
-        tools:layout="@layout/fragment_update_account_info"/>
+        tools:layout="@layout/fragment_update_account_info" />
 
 </navigation>

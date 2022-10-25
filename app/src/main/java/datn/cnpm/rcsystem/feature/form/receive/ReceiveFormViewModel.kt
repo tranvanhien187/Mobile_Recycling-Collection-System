@@ -1,4 +1,4 @@
-package datn.cnpm.rcsystem.feature.transportform.detail
+package datn.cnpm.rcsystem.feature.form.receive
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,9 +14,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class TransportFormDetailViewModel @Inject constructor(private val receiveTransportFormUseCase: ReceiveTransportFormUseCase) :
-    BaseViewModel<TransportFormDetailState, TransportFormDetailEvent>() {
-    override fun initState() = TransportFormDetailState()
+class ReceiveFormViewModel @Inject constructor(private val receiveTransportFormUseCase: ReceiveTransportFormUseCase) :
+    BaseViewModel<ReceiveFormState, ReceiveFormEvent>() {
+    override fun initState() = ReceiveFormState()
 
     fun getTransportFormDetail(form: TransportForm?) {
         dispatchState(currentState.copy(form = form))
@@ -35,21 +35,21 @@ class TransportFormDetailViewModel @Inject constructor(private val receiveTransp
                         )
                     )
                 if (response.succeeded) {
-                    dispatchEvent(event = TransportFormDetailEvent.ReceiveFormSuccess)
+                    dispatchEvent(event = ReceiveFormEvent.ReceiveFormSuccess)
 
                 } else if (response.failed) {
                     when (response.requireError.errorCode) {
                         ErrorCode.NOT_FIND_STAFF_ID -> {
-                            dispatchEvent(TransportFormDetailEvent.ReceiveFormFailure(ErrorCode.NOT_FIND_STAFF_ID))
+                            dispatchEvent(ReceiveFormEvent.ReceiveFormFailure(ErrorCode.NOT_FIND_STAFF_ID))
                         }
                         ErrorCode.FORM_RESOLVED -> {
-                            dispatchEvent(TransportFormDetailEvent.ReceiveFormFailure(ErrorCode.FORM_RESOLVED))
+                            dispatchEvent(ReceiveFormEvent.ReceiveFormFailure(ErrorCode.FORM_RESOLVED))
                         }
                         ErrorCode.NOT_FIND_FORM -> {
-                            dispatchEvent(TransportFormDetailEvent.ReceiveFormFailure(ErrorCode.NOT_FIND_FORM))
+                            dispatchEvent(ReceiveFormEvent.ReceiveFormFailure(ErrorCode.NOT_FIND_FORM))
                         }
                         else -> {
-                            dispatchEvent(TransportFormDetailEvent.ReceiveFormFailure(ErrorCode.UNKNOWN_ERROR))
+                            dispatchEvent(ReceiveFormEvent.ReceiveFormFailure(ErrorCode.UNKNOWN_ERROR))
                         }
                     }
                 } else {

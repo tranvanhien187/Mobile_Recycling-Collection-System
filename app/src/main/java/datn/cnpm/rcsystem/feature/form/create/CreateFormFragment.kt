@@ -1,12 +1,9 @@
-package datn.cnpm.rcsystem.feature.form
+package datn.cnpm.rcsystem.feature.form.create
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -14,11 +11,6 @@ import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.SingletonObject
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.databinding.FragmentCreateFormBinding
-import datn.cnpm.rcsystem.feature.home.staff.HomeStaffActivity
-import datn.cnpm.rcsystem.feature.home.user.HomeCustomerActivity
-import datn.cnpm.rcsystem.feature.login.LoginEvent
-import datn.cnpm.rcsystem.feature.updateaccountifo.UpdateAccountInfoFragment
-import kotlinx.coroutines.delay
 
 @AndroidEntryPoint
 class CreateFormFragment : BaseFragment<FragmentCreateFormBinding>() {

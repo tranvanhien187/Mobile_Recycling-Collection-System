@@ -3,7 +3,7 @@ package datn.cnpm.rcsystem.data.entitiy
 data class LoginResponse(
     val tokenType: String = "Bearer",
     val accessToken: String,
-    val uuid: String,
+    val id: String,
     val role: String,
     val updatedInfo: Boolean
 )

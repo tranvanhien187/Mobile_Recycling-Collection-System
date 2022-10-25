@@ -8,8 +8,8 @@ sealed interface LoginEvent {
         val errorPassword: ErrorCode? = null,
     ) : LoginEvent
 
-    object UserLoginSuccess : LoginEvent
-    data class UserUpdatedYet(val uuid: String) : LoginEvent
+    object CustomerLoginSuccess : LoginEvent
+    data class CustomerUpdatedYet(val uuid: String) : LoginEvent
     object AgentLoginSuccess : LoginEvent
     object StaffLoginSuccess : LoginEvent
     data class LoginFailure(val message: String) : LoginEvent

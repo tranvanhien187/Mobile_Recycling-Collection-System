@@ -17,10 +17,10 @@
         tools:layout="@layout/fragment_transport_form" />
 
     <fragment
-        android:id="@+id/transportFormDetailFragment"
-        android:name="datn.cnpm.rcsystem.feature.transportform.detail.TransportFormDetailFragment"
+        android:id="@+id/receiveFormFragment"
+        android:name="datn.cnpm.rcsystem.feature.form.receive.ReceiveFormFragment"
         android:label="TransportFormDetailFragment"
-        tools:layout="@layout/fragment_transport_form_detail" />
+        tools:layout="@layout/fragment_receive_form" />
 
     <fragment
         android:id="@+id/historyFragment"

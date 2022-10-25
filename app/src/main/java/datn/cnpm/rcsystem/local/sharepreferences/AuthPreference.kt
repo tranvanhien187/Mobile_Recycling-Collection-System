@@ -31,7 +31,7 @@ interface AuthPreference {
 
     suspend fun deleteLoginErrorPreference()
 
-    var uuid: String
+    var id: String
 
     var isRememberMe: Boolean
 
@@ -62,7 +62,7 @@ class AuthPreferenceImpl @Inject constructor(
 
     override var accessToken: String by StringPreferenceDelegate(sharedPreferences, ACCESS_TOKEN_KEY)
 
-    override var uuid: String by StringPreferenceDelegate(sharedPreferences, UUID_KEY)
+    override var id: String by StringPreferenceDelegate(sharedPreferences, UUID_KEY)
 
     override var role: String by StringPreferenceDelegate(sharedPreferences, ROLE_KEY)
 

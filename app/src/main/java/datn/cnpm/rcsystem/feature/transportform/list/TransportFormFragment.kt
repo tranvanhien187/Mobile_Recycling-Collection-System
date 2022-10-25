@@ -37,7 +37,7 @@ class TransportFormFragment : BaseFragment<FragmentTransportFormBinding>() {
     override fun initActions() {
         formAdapter.onClickItem = { data ->
             findNavController().navigate(
-                R.id.transportFormDetailFragment, bundleOf(
+                R.id.receiveFormFragment, bundleOf(
                     Pair(FORM_KEY, data)
                 )
             )
