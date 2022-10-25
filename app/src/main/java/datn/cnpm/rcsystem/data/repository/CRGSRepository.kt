@@ -42,4 +42,12 @@ interface CRGSRepository {
 
     suspend fun getGiftByCriteria(criteria: String): List<GiftResponse>
     suspend fun getGiftDetail(giftId: String): GiftDetailResponse
+
+    /*** TRANSPORT FORM  ***/
+    suspend fun createTransportGarbageForm(
+        exchangeWeight: Float,
+        street: String,
+        district: String,
+        cityOrProvince: String,
+    ): String
 }

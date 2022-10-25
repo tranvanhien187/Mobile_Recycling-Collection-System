@@ -20,6 +20,8 @@ import com.example.basesource.common.utils.permission.PermissionUtil
 import datn.cnpm.rcsystem.common.extension.adjustFontScale
 import datn.cnpm.rcsystem.common.extension.hideKeyboard
 import com.google.android.material.textfield.TextInputEditText
+import datn.cnpm.rcsystem.R
+import datn.cnpm.rcsystem.common.dialog.ConfirmDialog
 import datn.cnpm.rcsystem.common.dialog.ErrorDialog
 import datn.cnpm.rcsystem.common.extension.makeStatusBarTransparent
 
@@ -29,6 +31,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity(), DialogCommo
     companion object {
         private const val LOADING_TAG = "LOADING_TAG"
         private const val ERROR_TAG = "ERROR_TAG"
+        private const val CONFIRM_TAG = "CONFIRM_TAG"
         private const val FIVE_MINUTE_IN_MILLISECOND = (5 * 60 * 1000).toLong()
     }
 
@@ -219,6 +222,18 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity(), DialogCommo
 
     fun hideError() {
         supportFragmentManager.fragments.filter { it.tag == ERROR_TAG }.forEach {
+            (it as DialogFragment).dismissAllowingStateLoss()
+        }
+    }
+
+    fun showDialogConfirm(titleText: String, drawableId: Int, onConfirmClick: () -> Unit) {
+        val confirm = supportFragmentManager.findFragmentByTag(CONFIRM_TAG)
+        if (confirm != null && confirm.isVisible) return
+        ConfirmDialog(titleText, drawableId, onConfirmClick).show(supportFragmentManager, ERROR_TAG)
+    }
+
+    fun hideDialogConfirm() {
+        supportFragmentManager.fragments.filter { it.tag == CONFIRM_TAG }.forEach {
             (it as DialogFragment).dismissAllowingStateLoss()
         }
     }

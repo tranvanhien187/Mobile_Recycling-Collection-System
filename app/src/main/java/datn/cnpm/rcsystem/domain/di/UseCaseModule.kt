@@ -7,6 +7,8 @@ import dagger.hilt.components.SingletonComponent
 import datn.cnpm.rcsystem.domain.usecase.*
 import datn.cnpm.rcsystem.domain.usecase.gift.GetGiftDetailUseCase
 import datn.cnpm.rcsystem.domain.usecase.gift.GetGiftDetailUseCaseImpl
+import datn.cnpm.rcsystem.domain.usecase.transport.CreateTransportGarbageFormUseCase
+import datn.cnpm.rcsystem.domain.usecase.transport.CreateTransportGarbageFormUseCaseImpl
 import javax.inject.Singleton
 
 /*
@@ -138,4 +140,10 @@ abstract class UseCaseModule {
     abstract fun provideGetGiftByCriteriaUseCase(
         useCase: GetGiftByCriteriaUseCaseImpl
     ): GetGiftByCriteriaUseCase
+
+    @Binds
+    @Singleton
+    abstract fun provideCreateTransportGarbageFormUseCase(
+        useCase: CreateTransportGarbageFormUseCaseImpl
+    ): CreateTransportGarbageFormUseCase
 }

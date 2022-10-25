@@ -4,6 +4,7 @@ import android.Manifest
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import com.example.basesource.common.utils.permission.Permission
+import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.core.logging.DebugLog
 
 interface IBaseFragment : DialogCommonView {
@@ -60,6 +61,8 @@ interface IBaseFragment : DialogCommonView {
      * Called to hide error view.
      */
     fun hideError()
+    fun showDialogConfirm(titleText: String, drawableId: Int = R.drawable.ic_status_succes, onConfirmClick: () -> Unit = {})
+    fun hideDialogConfirm()
 
     /**
      * Request grants permissions.

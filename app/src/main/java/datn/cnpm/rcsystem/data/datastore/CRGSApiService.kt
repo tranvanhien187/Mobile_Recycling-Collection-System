@@ -6,6 +6,7 @@ import datn.cnpm.rcsystem.data.entitiy.gift.GiftDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
 import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
+import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGarbageRequest
 import datn.cnpm.rcsystem.domain.model.history.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -118,4 +119,9 @@ interface CRGSApiService {
 
     @GET("/api/v1/history/garbage/details/{id}")
     suspend fun getGarbageHistoryDetail(@Path("id") historyId: String): SBResponse<GarbageHistoryDetailResponse>
+
+    /***        STAFF      ***/
+    @POST("/api/v1/transport/createForm")
+    suspend fun createTransportGarbageForm(@Body request: CreateTransportGarbageRequest): SBResponse<String>
+    /******/
 }

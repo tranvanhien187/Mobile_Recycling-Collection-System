@@ -1,17 +1,24 @@
 package datn.cnpm.rcsystem.feature.form
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.SingletonObject
 import datn.cnpm.rcsystem.base.BaseFragment
-import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.databinding.FragmentCreateFormBinding
-import datn.cnpm.rcsystem.databinding.FragmentGiftDetailBinding
+import datn.cnpm.rcsystem.feature.home.staff.HomeStaffActivity
+import datn.cnpm.rcsystem.feature.home.user.HomeCustomerActivity
+import datn.cnpm.rcsystem.feature.login.LoginEvent
+import datn.cnpm.rcsystem.feature.updateaccountifo.UpdateAccountInfoFragment
+import kotlinx.coroutines.delay
 
 @AndroidEntryPoint
 class CreateFormFragment : BaseFragment<FragmentCreateFormBinding>() {
@@ -19,15 +26,15 @@ class CreateFormFragment : BaseFragment<FragmentCreateFormBinding>() {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentCreateFormBinding
         get() = FragmentCreateFormBinding::inflate
 
-    companion object {
-
-    }
+    val viewModel: CreateFormViewModel by viewModels()
 
     override fun initData(data: Bundle?) {
 
     }
 
     override fun initViews() {
+        showToolbar(getString(R.string.create_form_label), R.drawable.ic_back)
+
         SingletonObject.customer?.let {
             binding.apply {
                 tvName.text = it.name
@@ -40,21 +47,43 @@ class CreateFormFragment : BaseFragment<FragmentCreateFormBinding>() {
     }
 
     override fun initActions() {
+        binding.apply {
+            btnSubmit.setOnClickListener {
+                viewModel.createTransportGarbage(
+                    tvWeight.text.toString().toFloat(),
+                    tvStreet.text.toString(),
+                    tvDistrict.text.toString(),
+                    tvCity.text.toString(),
+                )
+            }
+        }
     }
 
     @SuppressLint("SetTextI18n")
     override fun initObservers() {
-//        viewModel.observe(
-//            owner = viewLifecycleOwner,
-//            selector = { state -> state.loading },
-//            observer = { loading ->
-//                if (loading) {
-//                    showLoading()
-//                } else {
-//                    hideLoading()
-//                }
-//            }
-//        )
+        viewModel.observe(
+            owner = viewLifecycleOwner,
+            selector = { state -> state.loading },
+            observer = { loading ->
+                if (loading) {
+                    showLoading()
+                } else {
+                    hideLoading()
+                }
+            }
+        )
+
+        viewModel.liveEvent.observe(viewLifecycleOwner) { event ->
+            when (event) {
+                is CreateFormEvent.CreateTransportGarbageSuccess -> {
+                    context?.let {
+                        showDialogConfirm("You created transport garbage form successfully. Out staff will go soon.", onConfirmClick = {
+                            findNavController().popBackStack()
+                        })
+                    }
+                }
+            }
+        }
 //
 //        viewModel.observe(
 //            owner = viewLifecycleOwner,

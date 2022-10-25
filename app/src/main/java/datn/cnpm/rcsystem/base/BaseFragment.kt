@@ -13,7 +13,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import datn.cnpm.rcsystem.common.extension.hideKeyboard
-import datn.cnpm.rcsystem.core.logging.DebugLog
 import datn.cnpm.rcsystem.databinding.FragmentBaseBinding
 import datn.cnpm.rcsystem.databinding.ToolBarBinding
 
@@ -82,6 +81,14 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment(), IBaseFragment, ToolB
 
     override fun hideError() {
         baseActivity?.hideError()
+    }
+
+    override fun showDialogConfirm(titleText: String, drawableId: Int, onConfirmClick: () -> Unit) {
+        baseActivity?.showDialogConfirm(titleText, drawableId, onConfirmClick)
+    }
+
+    override fun hideDialogConfirm() {
+        baseActivity?.hideDialogConfirm()
     }
 
     override fun onBackPressed() {

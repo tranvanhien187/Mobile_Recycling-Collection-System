@@ -119,4 +119,7 @@
     <string name="save_your_life_and_our_planet_label">Save your life and our planet.</string>
     <string name="name_label">Name</string>
     <string name="submit_label">Submit</string>
+    <string name="ok_label">OK</string>
+    <string name="create_form_label">Create Form</string>
+    <string name="your_garbage_weight_must_be_more_than_2kg_label">\u002A Your garbage weight must be more than 2kg.</string>
 </resources>

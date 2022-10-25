@@ -6,6 +6,7 @@ import datn.cnpm.rcsystem.data.entitiy.gift.GiftDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
 import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
+import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGarbageRequest
 import datn.cnpm.rcsystem.domain.model.history.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -90,6 +91,10 @@ class CRGSDataSource @Inject constructor(private val authenticationApiService: C
 
     suspend fun getGiftUserHistory(uuid: String): SBResponse<List<GiftUserHistoryResponse>> {
         return authenticationApiService.getGiftUserHistory(uuid)
+    }
+
+    suspend fun createTransportGarbageForm(request: CreateTransportGarbageRequest): SBResponse<String> {
+        return authenticationApiService.createTransportGarbageForm(request)
     }
 
     suspend fun receiveTransportForm(request: ReceiveFormRequest): SBResponse<String> {
