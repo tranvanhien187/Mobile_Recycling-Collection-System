@@ -87,6 +87,9 @@ class DashboardCustomerFragment : BaseFragment<FragmentCustomerDashboardBinding>
                     R.id.placeDetailFragment, bundleOf(
                         Pair(
                             TradingPlaceDetailFragment.TRADING_PLACE_ID_KEY, it.id
+                        ),
+                        Pair(
+                            TradingPlaceDetailFragment.TRADING_PLACE_AGENT_ID_KEY, it.agentId
                         )
                     )
                 )

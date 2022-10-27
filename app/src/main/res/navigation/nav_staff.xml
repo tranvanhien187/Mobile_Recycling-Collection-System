@@ -23,6 +23,12 @@
         tools:layout="@layout/fragment_receive_form" />
 
     <fragment
+        android:id="@+id/completeFormFragment"
+        android:name="datn.cnpm.rcsystem.feature.form.complete.CompleteFormFragment"
+        android:label="CompleteFormFragment"
+        tools:layout="@layout/fragment_complete_form" />
+
+    <fragment
         android:id="@+id/historyFragment"
         android:name="datn.cnpm.rcsystem.feature.history.HistoryFragment"
         android:label="HistoryFragment"

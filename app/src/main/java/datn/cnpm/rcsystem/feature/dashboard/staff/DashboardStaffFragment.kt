@@ -3,6 +3,7 @@ package datn.cnpm.rcsystem.feature.dashboard.staff
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,6 +37,9 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
             }
             ivHistory.setOnClickListener {
                 findNavController().navigate(R.id.historyFragment)
+            }
+            ivTrophy.setOnClickListener {
+                findNavController().navigate(R.id.completeFormFragment, bundleOf(Pair("CC", viewModel.formList[0])))
             }
         }
     }

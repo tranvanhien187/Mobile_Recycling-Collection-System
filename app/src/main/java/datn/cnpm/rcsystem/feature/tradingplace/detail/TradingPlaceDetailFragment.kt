@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -11,6 +12,7 @@ import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.databinding.FragmentPlaceDetailBinding
+import datn.cnpm.rcsystem.feature.gift.detail.GiftDetailFragment
 
 /**
  * [TradingPlaceDetailFragment]
@@ -22,24 +24,34 @@ class TradingPlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
         get() = FragmentPlaceDetailBinding::inflate
 
     private val viewModel: TradingPlaceDetailViewModel by viewModels()
+    private val adapter: GiftOwnerByAgentAdapter by lazy { GiftOwnerByAgentAdapter() }
 
     companion object {
         const val TRADING_PLACE_ID_KEY = "TRADING_PLACE_ID_KEY"
+        const val TRADING_PLACE_AGENT_ID_KEY = "TRADING_PLACE_AGENT_ID_KEY"
 
     }
 
     override fun initData(data: Bundle?) {
         data?.let {
-            it.getString(TRADING_PLACE_ID_KEY)?.let {
-                viewModel.fetchTPlaceDetail(it)
+            it.getString(TRADING_PLACE_ID_KEY)?.let { ownerId ->
+                viewModel.fetchTPlaceDetail(ownerId)
+            }
+            it.getString(TRADING_PLACE_AGENT_ID_KEY)?.let { agentId ->
+                viewModel.fetchGiftByAgentAdapter(agentId)
             }
         }
     }
 
     override fun initViews() {
+        binding.rlGiftOwnerByAgent.adapter = adapter
     }
 
     override fun initActions() {
+        adapter.onItemClick = {
+            findNavController().navigate(R.id.giftDetailFragment,
+                bundleOf(GiftDetailFragment.GIFT_ID_KEY to it.id))
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -97,6 +109,13 @@ class TradingPlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
                         }
                     }
                 }
+            }
+        )
+        viewModel.observe(
+            owner = viewLifecycleOwner,
+            selector = { state -> state.listGiftOwnerByAgent },
+            observer = { listGift ->
+                adapter.submitList(listGift)
             }
         )
     }

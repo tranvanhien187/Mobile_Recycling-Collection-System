@@ -7,11 +7,13 @@ import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
 import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGarbageRequest
+import datn.cnpm.rcsystem.data.entitiy.transport.ReceiveFormRequest
 import datn.cnpm.rcsystem.domain.model.history.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import java.io.File
 import javax.inject.Inject
 
 class CRGSDataSource @Inject constructor(private val authenticationApiService: CRGSApiService) {
@@ -69,14 +71,14 @@ class CRGSDataSource @Inject constructor(private val authenticationApiService: C
 
     suspend fun getTPlaceForUser(
         uuid: String,
-        criteria: String
+        criteria: String,
     ): SBResponse<List<GetTPPlaceForUserResponse>> {
         return authenticationApiService.getTPlaceForUser(uuid, criteria)
     }
 
     suspend fun getGiftByCriteria(
         uuid: String,
-        criteria: String
+        criteria: String,
     ): SBResponse<List<GiftResponse>> {
         return authenticationApiService.getGiftByCriteria(uuid, criteria)
     }
@@ -99,6 +101,27 @@ class CRGSDataSource @Inject constructor(private val authenticationApiService: C
 
     suspend fun receiveTransportForm(request: ReceiveFormRequest): SBResponse<String> {
         return authenticationApiService.receiveTransportForm(request)
+    }
+
+    suspend fun completeTransportGarbageForm(evidenceFile: File,
+                                             weight: String,
+                                             staffId: String,
+                                             formId: String): SBResponse<String> {
+
+        val weightParam = weight.toRequestBody("text/plain".toMediaTypeOrNull())
+        val staffIdParam = staffId.toRequestBody("text/plain".toMediaTypeOrNull())
+        val formIdParam = formId.toRequestBody("text/plain".toMediaTypeOrNull())
+        val evidence: MultipartBody.Part = MultipartBody.Part.createFormData(
+            "evidence",
+            evidenceFile.name,
+            evidenceFile.asRequestBody("image/*".toMediaTypeOrNull())
+        )
+        return authenticationApiService.completeTransportGarbageForm(
+            evidence,
+            weightParam,
+            staffIdParam,
+            formIdParam
+        )
     }
 
     suspend fun getStaffInfo(id: String): SBResponse<StaffInfoResponse> {
@@ -143,5 +166,9 @@ class CRGSDataSource @Inject constructor(private val authenticationApiService: C
 
     suspend fun getGiftDetail(tplaceId: String): SBResponse<GiftDetailResponse> {
         return authenticationApiService.getGiftDetail(tplaceId)
+    }
+
+    suspend fun getGiftOwnerByAgent(ownerId: String, criteria: String): SBResponse<List<GiftResponse>> {
+        return authenticationApiService.getGiftOwnerByAgent(ownerId, criteria)
     }
 }

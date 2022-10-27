@@ -1,8 +1,9 @@
-package datn.cnpm.rcsystem.domain.usecase
+package datn.cnpm.rcsystem.domain.usecase.transport
 
 import datn.cnpm.rcsystem.core.Result
 import datn.cnpm.rcsystem.core.di.IoDispatcher
 import datn.cnpm.rcsystem.data.repository.CRGSRepository
+import datn.cnpm.rcsystem.domain.usecase.BaseUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 

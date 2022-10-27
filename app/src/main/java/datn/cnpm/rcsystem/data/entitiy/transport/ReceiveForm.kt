@@ -1,4 +1,4 @@
-package datn.cnpm.rcsystem.data.entitiy
+package datn.cnpm.rcsystem.data.entitiy.transport
 
 
 data class ReceiveFormRequest(

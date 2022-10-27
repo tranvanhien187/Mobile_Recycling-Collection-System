@@ -9,7 +9,7 @@ import datn.cnpm.rcsystem.core.logging.DebugLog
 import datn.cnpm.rcsystem.core.requireError
 import datn.cnpm.rcsystem.core.succeeded
 import datn.cnpm.rcsystem.domain.model.TransportForm
-import datn.cnpm.rcsystem.domain.usecase.ReceiveTransportFormUseCase
+import datn.cnpm.rcsystem.domain.usecase.transport.ReceiveTransportFormUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

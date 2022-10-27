@@ -7,6 +7,7 @@ import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
 import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.domain.model.history.BaseItemHistory
 import datn.cnpm.rcsystem.domain.model.history.GiftHistoryDetailResponse
+import java.io.File
 
 /*
  * Created by ADMIN on 7/24/2022.
@@ -26,11 +27,7 @@ interface CRGSRepository {
     suspend fun getGiftRandom6(): List<GiftResponse>
     suspend fun getGiftUserHistory(): List<GiftUserHistoryResponse>
     // STAFF
-    suspend fun receiveTransportForm(
-        historyGarbageId: String,
-        customerName: String,
-        customerPhoneNumber: String
-    ): String
+
 
     suspend fun getStaffInfo(): StaffInfoResponse
 
@@ -50,4 +47,18 @@ interface CRGSRepository {
         district: String,
         cityOrProvince: String,
     ): String
+
+    suspend fun receiveTransportForm(
+        historyGarbageId: String,
+        customerName: String,
+        customerPhoneNumber: String
+    ): String
+
+    suspend fun completeTransportGarbageForm(
+        evidence: File,
+        weight: String,
+        formId: String
+    ): String
+
+    suspend fun getGiftOwnerByAgent(ownerId: String, criteria: String): List<GiftResponse>
 }
