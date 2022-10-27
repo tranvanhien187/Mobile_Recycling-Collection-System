@@ -158,8 +158,8 @@ class UpdateAccountInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding>
         }
 
     private fun pickImageFromGallery() {
-//        val pickIntent = Intent(MediaStore.ACTION_PICK_IMAGES)
-//        pickImageFromGalleryForResult.launch(pickIntent)
+        val pickIntent = Intent(MediaStore.ACTION_PICK_IMAGES)
+        pickImageFromGalleryForResult.launch(pickIntent)
     }
 
     @SuppressLint("Recycle")

@@ -121,5 +121,8 @@
     <string name="submit_label">Submit</string>
     <string name="ok_label">OK</string>
     <string name="create_form_label">Create Form</string>
+    <string name="complete_form_label">Complete Form</string>
     <string name="your_garbage_weight_must_be_more_than_2kg_label">\u002A Your garbage weight must be more than 2kg.</string>
+    <string name="weight_label">Weight</string>
+    <string name="complete_label">Complete</string>
 </resources>

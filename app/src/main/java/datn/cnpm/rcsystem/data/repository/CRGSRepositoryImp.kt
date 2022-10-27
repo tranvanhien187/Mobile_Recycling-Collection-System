@@ -9,9 +9,11 @@ import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
 import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGarbageRequest
+import datn.cnpm.rcsystem.data.entitiy.transport.ReceiveFormRequest
 import datn.cnpm.rcsystem.domain.model.history.BaseItemHistory
 import datn.cnpm.rcsystem.domain.model.history.GiftHistoryDetailResponse
 import datn.cnpm.rcsystem.local.sharepreferences.AuthPreference
+import java.io.File
 import javax.inject.Inject
 
 /*
@@ -243,6 +245,27 @@ class CRGSRepositoryImp @Inject constructor(
         }
     }
 
+    override suspend fun completeTransportGarbageForm(
+        evidence: File,
+        weight: String,
+        formId: String
+    ): String {
+        val response = authenticationDataSource.completeTransportGarbageForm(
+            evidence, weight, authPre.id, formId
+        )
+        if (response.isSuccess) {
+            return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
+        } else {
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+        }
+    }
+
     override suspend fun getStaffInfo(): StaffInfoResponse {
         val response = authenticationDataSource.getStaffInfo(authPre.id)
         if (response.isSuccess) {
@@ -376,7 +399,10 @@ class CRGSRepositoryImp @Inject constructor(
         }
     }
 
-    override suspend fun getGiftOwnerByAgent(ownerId: String, criteria: String): List<GiftResponse> {
+    override suspend fun getGiftOwnerByAgent(
+        ownerId: String,
+        criteria: String
+    ): List<GiftResponse> {
         val response = authenticationDataSource.getGiftOwnerByAgent(ownerId, criteria)
         if (response.isSuccess) {
             return response.requireData

@@ -78,7 +78,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:ellipsize="end"
-        android:fontFamily="@font/montserrat_bold"
+        android:fontFamily="@font/proximanova_bold"
         android:maxLines="2"
         android:text="@{privilegesItem.merchant.countryIncorporation}"
         android:textColor="@color/black_516173"
