@@ -19,16 +19,16 @@ import datn.cnpm.rcsystem.core.succeeded
 import datn.cnpm.rcsystem.domain.model.TransportForm
 import datn.cnpm.rcsystem.domain.model.history.HistoryStatus
 import datn.cnpm.rcsystem.domain.usecase.GetStaffInfoUseCase
+import datn.cnpm.rcsystem.domain.usecase.statistic.GetStatisticStaffCollection7DayUseCase
 import datn.cnpm.rcsystem.feature.transportform.list.TransportFormViewModel
 import kotlinx.coroutines.launch
-import java.security.SignedObject
 import javax.inject.Inject
 
 @HiltViewModel
 class DashboardStaffViewModel @Inject constructor(
-    private val getStaffInfoUseCase: GetStaffInfoUseCase
-) :
-    BaseViewModel<DashboardStaffState, DashboardStaffEvent>() {
+    private val getStaffInfoUseCase: GetStaffInfoUseCase,
+    private val getStatisticStaffCollectWeightByDay: GetStatisticStaffCollection7DayUseCase,
+) : BaseViewModel<DashboardStaffState, DashboardStaffEvent>() {
     override fun initState() = DashboardStaffState()
 
 
@@ -38,6 +38,7 @@ class DashboardStaffViewModel @Inject constructor(
             val response =
                 getStaffInfoUseCase.getStaffInfo()
             if (response.succeeded) {
+                fetchStatisticStaffCollection7Day(response.requireData.id)
                 listener()
                 dispatchState(state = currentState.copy(staff = response.requireData))
             } else if (response.failed) {
@@ -56,35 +57,54 @@ class DashboardStaffViewModel @Inject constructor(
         }
     }
 
+    private fun fetchStatisticStaffCollection7Day(staffId: String) {
+        viewModelScope.launch {
+            dispatchState(currentState.copy(loading = true))
+            val response =
+                getStatisticStaffCollectWeightByDay.getStatisticsStaffCollectLast7Days(
+                    GetStatisticStaffCollection7DayUseCase.Parameters(staffId))
+            if (response.succeeded) {
+                listener()
+                dispatchState(state = currentState.copy(staffCollection7Day = response.requireData))
+            } else {
+                DebugLog.e(response.requireError.message)
+            }
+            dispatchState(currentState.copy(loading = false))
+        }
+    }
+
 
     val database = Firebase.database
     val formList = mutableListOf<TransportForm>()
+    private var staffId: String = ""
 
     fun listener() {
-        database.getReference(TransportFormViewModel.TRANSPORT_FORM).child(TransportFormViewModel.GARBAGE).child(
-            HistoryStatus.RECEIVE.name).child(SingletonObject.staff!!.id).addChildEventListener(object :
-            ChildEventListener {
-            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                snapshot.getValue(TransportForm::class.java)?.let {
-                    formList.add(it)
-                    Log.d("AAAAA", it.id)
+        database.getReference(TransportFormViewModel.TRANSPORT_FORM)
+            .child(TransportFormViewModel.GARBAGE).child(
+            HistoryStatus.RECEIVE.name).child(SingletonObject.staff!!.id)
+            .addChildEventListener(object :
+                ChildEventListener {
+                override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                    snapshot.getValue(TransportForm::class.java)?.let {
+                        formList.add(it)
+                        Log.d("AAAAA", it.id)
+                    }
                 }
-            }
 
-            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-            }
-
-            override fun onChildRemoved(snapshot: DataSnapshot) {
-                snapshot.getValue(TransportForm::class.java)?.let {
-                    formList.remove(it)
+                override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
                 }
-            }
 
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-            }
+                override fun onChildRemoved(snapshot: DataSnapshot) {
+                    snapshot.getValue(TransportForm::class.java)?.let {
+                        formList.remove(it)
+                    }
+                }
 
-            override fun onCancelled(error: DatabaseError) {
-            }
-        })
+                override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
     }
 }

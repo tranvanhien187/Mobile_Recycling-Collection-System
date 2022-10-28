@@ -126,5 +126,13 @@
     <string name="weight_label">Weight</string>
     <string name="complete_label">Complete</string>
     <string name="redeem_label">Redeem</string>
+    <string name="month_year">%s/%s</string>
+
+    <!-- Dashboard staff -->
+    <string name="total">Total</string>
+    <string name="kilograms_trash">Kilograms trash.</string>
+    <string name="dashboard_staff_free">You’re free to set new schedule.</string>
+    <string name="dashboard_staff_select_more"><![CDATA[Go to <ABC> tab to select\nthe most suitable schedule for you.]]></string>
+    <string name="dashboard_staff_schedule">My Schedule</string>
     <string name="leaderboard_label">Leaderboard</string>
 </resources>
