@@ -9,6 +9,8 @@ import datn.cnpm.rcsystem.domain.usecase.gift.GetGiftDetailUseCase
 import datn.cnpm.rcsystem.domain.usecase.gift.GetGiftDetailUseCaseImpl
 import datn.cnpm.rcsystem.domain.usecase.gift.GetGiftOwnerByAgentUseCase
 import datn.cnpm.rcsystem.domain.usecase.gift.GetGiftOwnerByAgentUseCaseImpl
+import datn.cnpm.rcsystem.domain.usecase.statistic.GetStatisticStaffCollection7DayUseCase
+import datn.cnpm.rcsystem.domain.usecase.statistic.GetStatisticStaffCollection7DayUseCaseImpl
 import datn.cnpm.rcsystem.domain.usecase.transport.*
 import javax.inject.Singleton
 
@@ -159,4 +161,10 @@ abstract class UseCaseModule {
     abstract fun provideGetGiftOwnerByAgent(
         useCase: GetGiftOwnerByAgentUseCaseImpl
     ): GetGiftOwnerByAgentUseCase
+
+    @Binds
+    @Singleton
+    abstract fun provideGetStatisticStaffCollection7DayUseCase(
+        useCase: GetStatisticStaffCollection7DayUseCaseImpl
+    ): GetStatisticStaffCollection7DayUseCase
 }

@@ -5,6 +5,7 @@ import datn.cnpm.rcsystem.data.entitiy.*
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
+import datn.cnpm.rcsystem.data.entitiy.statistic.StatisticStaffCollectWeightByDayResponse
 import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGarbageRequest
 import datn.cnpm.rcsystem.data.entitiy.transport.ReceiveFormRequest
@@ -71,6 +72,7 @@ interface CRGSApiService {
 
     @GET("api/v1/gift/detail/{id}")
     suspend fun getGiftDetail(@Path("id") id: String): SBResponse<GiftDetailResponse>
+
     /******/
 
     @GET("api/v1/tplace/get/random/{id}")
@@ -124,6 +126,7 @@ interface CRGSApiService {
     /***        STAFF      ***/
     @POST("/api/v1/transport/createForm")
     suspend fun createTransportGarbageForm(@Body request: CreateTransportGarbageRequest): SBResponse<String>
+
     /******/
 
     @Multipart
@@ -140,4 +143,10 @@ interface CRGSApiService {
         @Path("ownerId") ownerId: String,
         @Query("criteria") criteria: String,
     ): SBResponse<List<GiftResponse>>
+
+
+    /***        STATISTIC      ***/
+    @POST("/api/v1/statistics/totalweight/7days/{id}")
+    suspend fun getStatisticsStaffCollectLast7Days(@Path("id") staffId: String): SBResponse<List<StatisticStaffCollectWeightByDayResponse>>
+    /******/
 }

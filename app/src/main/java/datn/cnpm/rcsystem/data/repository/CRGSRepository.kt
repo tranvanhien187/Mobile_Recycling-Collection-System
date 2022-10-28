@@ -4,6 +4,7 @@ import datn.cnpm.rcsystem.data.entitiy.*
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
+import datn.cnpm.rcsystem.data.entitiy.statistic.StatisticStaffCollectWeightByDayResponse
 import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.domain.model.history.BaseItemHistory
 import datn.cnpm.rcsystem.domain.model.history.GiftHistoryDetailResponse
@@ -61,4 +62,6 @@ interface CRGSRepository {
     ): String
 
     suspend fun getGiftOwnerByAgent(ownerId: String, criteria: String): List<GiftResponse>
+
+    suspend fun getStatisticsStaffCollectLast7Days(staffId: String): List<StatisticStaffCollectWeightByDayResponse>
 }

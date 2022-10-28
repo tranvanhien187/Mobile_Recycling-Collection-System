@@ -7,6 +7,7 @@ import datn.cnpm.rcsystem.data.entitiy.*
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
+import datn.cnpm.rcsystem.data.entitiy.statistic.StatisticStaffCollectWeightByDayResponse
 import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGarbageRequest
 import datn.cnpm.rcsystem.data.entitiy.transport.ReceiveFormRequest
@@ -404,6 +405,21 @@ class CRGSRepositoryImp @Inject constructor(
         criteria: String
     ): List<GiftResponse> {
         val response = authenticationDataSource.getGiftOwnerByAgent(ownerId, criteria)
+        if (response.isSuccess) {
+            return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
+        } else {
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+        }
+    }
+
+    override suspend fun getStatisticsStaffCollectLast7Days(staffId: String): List<StatisticStaffCollectWeightByDayResponse> {
+        val response = authenticationDataSource.getStatisticsStaffCollectLast7Days(staffId)
         if (response.isSuccess) {
             return response.requireData
         } else if (response.isFailure) {
