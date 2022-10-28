@@ -1,5 +1,6 @@
 package datn.cnpm.rcsystem.feature.dashboard.customer
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,12 +15,16 @@ import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.common.utils.CommonUtils.toPoint
 import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.databinding.FragmentCustomerDashboardBinding
+import datn.cnpm.rcsystem.feature.authentication.AuthenticationActivity
 import datn.cnpm.rcsystem.feature.dashboard.RecyclingGarbage
 import datn.cnpm.rcsystem.feature.dashboard.adapter.GarbageAdapter
 import datn.cnpm.rcsystem.feature.dashboard.adapter.GiftYouMayBeLikeAdapter
 import datn.cnpm.rcsystem.feature.dashboard.adapter.TradingPlaceHomeAdapter
 import datn.cnpm.rcsystem.feature.gift.detail.GiftDetailFragment
+import datn.cnpm.rcsystem.feature.home.customer.HomeCustomerActivity
 import datn.cnpm.rcsystem.feature.tradingplace.detail.TradingPlaceDetailFragment
+import datn.cnpm.rcsystem.local.sharepreferences.AuthPreference
+import javax.inject.Inject
 
 /**
  * [DashboardCustomerFragment]
@@ -32,6 +37,9 @@ class DashboardCustomerFragment : BaseFragment<FragmentCustomerDashboardBinding>
     private val garbageAdapter by lazy { GarbageAdapter() }
     private val tPlaceHomeAdapter by lazy { TradingPlaceHomeAdapter() }
     private val giftAdapter by lazy { GiftYouMayBeLikeAdapter() }
+
+    @Inject
+    lateinit var authPreference: AuthPreference
 
     private val viewModel: DashboardCustomerViewModel by viewModels()
     override fun initData(data: Bundle?) {
@@ -80,6 +88,14 @@ class DashboardCustomerFragment : BaseFragment<FragmentCustomerDashboardBinding>
                 findNavController().navigate(
                     R.id.personalFragment
                 )
+            }
+
+            btnSetting.setOnClickListener {
+                val intent = Intent(this@DashboardCustomerFragment.activity, AuthenticationActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                activity?.startActivity(intent)
+                activity?.finish()
+                authPreference.isRememberMe = false
             }
 
             tPlaceHomeAdapter.onItemClick = {

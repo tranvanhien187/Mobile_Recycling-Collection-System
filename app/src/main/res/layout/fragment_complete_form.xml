@@ -198,7 +198,7 @@
                 <ImageView
                     android:id="@+id/ivEvidence"
                     android:layout_marginTop="9dp"
-                    android:src="@drawable/ic_cam"
+                    android:src="@drawable/ic_pick_image"
                     android:layout_width="match_parent"
                     android:layout_height="160dp"
                     android:scaleType="fitCenter" />

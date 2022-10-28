@@ -4,12 +4,15 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.databinding.FragmentGiftDetailBinding
+import datn.cnpm.rcsystem.feature.form.gift.create.CreateFormGiftFragment
 
 @AndroidEntryPoint
 class GiftDetailFragment : BaseFragment<FragmentGiftDetailBinding>() {
@@ -36,6 +39,12 @@ class GiftDetailFragment : BaseFragment<FragmentGiftDetailBinding>() {
     }
 
     override fun initActions() {
+        binding.btnRedeem.setOnClickListener {
+            findNavController().navigate(
+                R.id.createFormGiftFragment,
+                bundleOf(Pair(CreateFormGiftFragment.GIFT_KEY, viewModel.currentState.gift))
+            )
+        }
     }
 
     @SuppressLint("SetTextI18n")

@@ -1,8 +1,10 @@
 package datn.cnpm.rcsystem.domain.model.gift
 
+import android.os.Parcelable
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftDetailResponse
+import kotlinx.parcelize.Parcelize
 
-
+@Parcelize
 data class GiftDetailEntity(
     val id: String? = null,
     val brand: String? = null,
@@ -19,7 +21,7 @@ data class GiftDetailEntity(
     val provinceOrCity: String? = null,
     val url: String? = null,
     val type: String? = null,
-)
+) : Parcelable
 
 fun GiftDetailResponse.mapToEntity(): GiftDetailEntity = GiftDetailEntity(
     id,

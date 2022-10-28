@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -107,6 +108,16 @@ class CompleteFormFragment : BaseFragment<FragmentCompleteFormBinding>() {
                 }
             }
         )
+
+        viewModel.observe(
+            owner = viewLifecycleOwner,
+            selector = { state -> state.file },
+            observer = { file ->
+                file?.let {
+                    binding.ivEvidence.setImageURI(file.toUri())
+                }
+            }
+        )
     }
 
     private val pickImageFromGalleryForResult =
@@ -123,8 +134,8 @@ class CompleteFormFragment : BaseFragment<FragmentCompleteFormBinding>() {
         }
 
     private fun pickImageFromGallery() {
-        val pickIntent = Intent(MediaStore.ACTION_PICK_IMAGES)
-        pickImageFromGalleryForResult.launch(pickIntent)
+//        val pickIntent = Intent(MediaStore.ACTION_PICK_IMAGES)
+//        pickImageFromGalleryForResult.launch(pickIntent)
     }
 
     @SuppressLint("Recycle")

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/llTPlace"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/ivTPlaceBanner"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="12dp" />
+
+        <TextView
+            android:id="@+id/tvTPlaceName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            tools:text="Trading Place 1" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="0dp"
+        android:layout_height="1.5dp"
+        android:background="@color/grey_dfe3e9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llTPlace" />
+
+    <TextView
+        android:id="@+id/tvNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/proximanova_reg"
+        android:text="@string/name_label"
+        android:textColor="@color/grey_7f8fa4"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider1" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:fontFamily="@font/proximanova_reg"
+        android:maxLines="2"
+        android:textColor="@color/black_354052"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameLabel"
+        app:layout_goneMarginEnd="8dp"
+        tools:text="Tran Van Hien" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="0dp"
+        android:layout_height="1.5dp"
+        android:layout_marginTop="9dp"
+        android:background="@color/grey_dfe3e9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvName" />
+
+    <TextView
+        android:id="@+id/tvPhoneNumberLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/proximanova_reg"
+        android:text="@string/phone_number_label"
+        android:textColor="@color/grey_7f8fa4"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+    <TextView
+        android:id="@+id/tvPhoneNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:fontFamily="@font/proximanova_reg"
+        android:maxLines="2"
+        android:textColor="@color/black_354052"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPhoneNumberLabel"
+        app:layout_goneMarginEnd="8dp"
+        tools:text="0899 871 914" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="0dp"
+        android:layout_height="1.5dp"
+        android:layout_marginTop="9dp"
+        android:background="@color/grey_dfe3e9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPhoneNumber" />
+
+    <TextView
+        android:id="@+id/tvStreetLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/proximanova_reg"
+        android:text="@string/street_label"
+        android:textColor="@color/grey_7f8fa4"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+    <EditText
+        android:id="@+id/edtStreet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="9dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/proximanova_reg"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:textColor="@color/black_354052"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/tvStreetLabel"
+        tools:ignore="LabelFor"
+        tools:text="K90 Đống Đa" />
+
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="0dp"
+        android:layout_height="1.5dp"
+        android:layout_marginTop="9dp"
+        android:background="@color/grey_dfe3e9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtStreet" />
+
+    <TextView
+        android:id="@+id/tvDistrictLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/proximanova_reg"
+        android:text="@string/name_label"
+        android:textColor="@color/grey_7f8fa4"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider4" />
+
+    <EditText
+        android:id="@+id/edtDistrict"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="9dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/proximanova_reg"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:textColor="@color/black_354052"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/tvDistrictLabel"
+        tools:ignore="LabelFor"
+        tools:text="Hải Châu" />
+
+    <View
+        android:id="@+id/divider5"
+        android:layout_width="0dp"
+        android:layout_height="1.5dp"
+        android:layout_marginTop="9dp"
+        android:background="@color/grey_dfe3e9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtDistrict" />
+
+    <TextView
+        android:id="@+id/tvCityLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/proximanova_reg"
+        android:text="@string/street_label"
+        android:textColor="@color/grey_7f8fa4"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider5" />
+
+    <EditText
+        android:id="@+id/edtCity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="9dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/proximanova_reg"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:textColor="@color/black_354052"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/tvCityLabel"
+        tools:ignore="LabelFor"
+        tools:text="Đà Nẵng" />
+
+    <View
+        android:id="@+id/divider6"
+        android:layout_width="0dp"
+        android:layout_height="1.5dp"
+        android:layout_marginTop="9dp"
+        android:background="@color/grey_dfe3e9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtCity" />
+
+    <ImageView
+        android:id="@+id/ivGift"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider6"
+        tools:src="@drawable/ic_award" />
+
+    <TextView
+        android:id="@+id/tvGiftName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/proximanova_bold"
+        android:textColor="@color/black_516173"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/ivGift"
+        app:layout_constraintTop_toTopOf="@id/ivGift"
+        tools:text="Iphone 14 Promax" />
+
+    <TextView
+        android:id="@+id/tvGiftPoint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="18dp"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/proximanova_reg"
+        android:gravity="center"
+        android:textColor="@color/black_516173"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivGift"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivGift"
+        app:layout_constraintTop_toBottomOf="@id/tvGiftName"
+        tools:text="10.000.000" />
+
+    <TextView
+        android:id="@+id/btnRedeem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_solid_8dp_green_00ad31"
+        android:enabled="true"
+        android:gravity="center"
+        android:paddingVertical="14dp"
+        android:text="@string/redeem_label"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivGift"
+        app:layout_constraintVertical_bias="1" />
+</androidx.constraintlayout.widget.ConstraintLayout>

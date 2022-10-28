@@ -1,5 +1,6 @@
 package datn.cnpm.rcsystem.feature.dashboard.staff
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,6 +13,9 @@ import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.common.extension.createSpannableString
 import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.databinding.FragmentStaffDashboardBinding
+import datn.cnpm.rcsystem.feature.authentication.AuthenticationActivity
+import datn.cnpm.rcsystem.local.sharepreferences.AuthPreference
+import javax.inject.Inject
 
 /**
  * [DashboardStaffFragment]
@@ -21,6 +25,8 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentStaffDashboardBinding
         get() = FragmentStaffDashboardBinding::inflate
 
+    @Inject
+    lateinit var authPreference: AuthPreference
     private val viewModel: DashboardStaffViewModel by viewModels()
     override fun initData(data: Bundle?) {
         viewModel.fetchStaffInfo()
@@ -39,7 +45,19 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
                 findNavController().navigate(R.id.historyFragment)
             }
             ivTrophy.setOnClickListener {
-                findNavController().navigate(R.id.completeFormFragment, bundleOf(Pair("CC", viewModel.formList[0])))
+                findNavController().navigate(
+                    R.id.completeFormFragment,
+                    bundleOf(Pair("CC", viewModel.formList[0]))
+                )
+            }
+
+            btnSetting.setOnClickListener {
+                val intent =
+                    Intent(this@DashboardStaffFragment.activity, AuthenticationActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                activity?.startActivity(intent)
+                activity?.finish()
+                authPreference.isRememberMe = false
             }
         }
     }

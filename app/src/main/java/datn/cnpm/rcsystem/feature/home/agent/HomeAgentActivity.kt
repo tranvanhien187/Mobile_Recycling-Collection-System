@@ -13,10 +13,4 @@ import javax.inject.Inject
 class HomeAgentActivity : BaseActivity<ActivityHomeAgentBinding>() {
     override val bindingInflater: (LayoutInflater) -> ActivityHomeAgentBinding
         get() = ActivityHomeAgentBinding::inflate
-
-    @Inject
-    lateinit var authPreference: AuthPreference
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 }

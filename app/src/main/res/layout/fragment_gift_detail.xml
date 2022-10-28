@@ -271,6 +271,7 @@
 
 
         <datn.cnpm.rcsystem.common.widget.PrimaryButton
+            android:id="@+id/btnRedeem"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginHorizontal="24dp"

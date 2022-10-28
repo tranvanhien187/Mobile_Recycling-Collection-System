@@ -96,7 +96,8 @@
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_base.xml" value="0.26403985507246375" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_change_password.xml" value="0.26721014492753625" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_complete_form.xml" value="0.33" />
-        <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_create_form.xml" value="0.2" />
+        <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_create_form.xml" value="0.33" />
+        <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_create_form_gift.xml" value="0.25" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_customer_dashboard.xml" value="0.22" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_dashboard_staff.xml" value="0.2875905797101449" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_forgot_password.xml" value="0.26992753623188404" />
@@ -115,6 +116,7 @@
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_otp.xml" value="0.2" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_personal.xml" value="0.19" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_place_detail.xml" value="0.2" />
+        <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_receive_form.xml" value="0.1889564336372847" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_register.xml" value="0.26811594202898553" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_staff_dashboard.xml" value="0.18" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_trading_place.xml" value="0.21197916666666666" />

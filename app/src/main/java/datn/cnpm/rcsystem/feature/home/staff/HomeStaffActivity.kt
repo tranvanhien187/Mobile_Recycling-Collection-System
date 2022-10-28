@@ -13,10 +13,4 @@ import javax.inject.Inject
 class HomeStaffActivity : BaseActivity<ActivityHomeStaffBinding>() {
     override val bindingInflater: (LayoutInflater) -> ActivityHomeStaffBinding
         get() = ActivityHomeStaffBinding::inflate
-
-    @Inject
-    lateinit var authPreference: AuthPreference
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 }

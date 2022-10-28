@@ -13,13 +13,4 @@ import javax.inject.Inject
 class HomeCustomerActivity : BaseActivity<ActivityHomeCustomerBinding>() {
     override val bindingInflater: (LayoutInflater) -> ActivityHomeCustomerBinding
         get() = ActivityHomeCustomerBinding::inflate
-
-    @Inject
-    lateinit var authPreference: AuthPreference
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        authPreference.role = Role.CUSTOMER.name
-        authPreference.accessToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4ZTVlMzI2MGNlYThlOGJkNzFkYjNjNzhmY2I1NmUxMGJjMGEzZDJjZGM2NjhmNmU0ZTRlYjI3NzA0MGFkOTMzLERhcmtOaWdodCIsImlzcyI6ImFkbWluSGllblRWNiIsImlhdCI6MTY2Mzg1MzIyOH0.XT11gdcfH6jX_AkfEGw1omhrkFPw1FruTOv-xFuEcPTuyogeomzLGhwwGs4li0HLYQSkusKm9dRUF7vQfqRSkA"
-    }
 }

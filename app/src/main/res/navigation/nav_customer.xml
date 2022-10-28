@@ -59,4 +59,10 @@
         android:name="datn.cnpm.rcsystem.feature.form.create.CreateFormFragment"
         android:label="CreateFormFragment"
         tools:layout="@layout/fragment_create_form"/>
+
+    <fragment
+        android:id="@+id/createFormGiftFragment"
+        android:name="datn.cnpm.rcsystem.feature.form.gift.create.CreateFormGiftFragment"
+        android:label="CreateFormFragment"
+        tools:layout="@layout/fragment_create_form_gift"/>
 </navigation>
