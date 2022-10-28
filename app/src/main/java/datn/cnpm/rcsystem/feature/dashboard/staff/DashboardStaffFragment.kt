@@ -1,6 +1,7 @@
 package datn.cnpm.rcsystem.feature.dashboard.staff
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -24,6 +25,7 @@ import datn.cnpm.rcsystem.domain.model.statistic.StatisticStaffCollectWeightByDa
 import datn.cnpm.rcsystem.feature.authentication.AuthenticationActivity
 import datn.cnpm.rcsystem.local.sharepreferences.AuthPreference
 import javax.inject.Inject
+
 
 /**
  * [DashboardStaffFragment]
