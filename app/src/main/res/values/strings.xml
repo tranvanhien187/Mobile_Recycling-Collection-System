@@ -126,6 +126,7 @@
     <string name="weight_label">Weight</string>
     <string name="complete_label">Complete</string>
     <string name="redeem_label">Redeem</string>
+    <string name="leaderboard_label">Leaderboard</string>
     <string name="month_year">%s/%s</string>
 
     <!-- Dashboard staff -->
