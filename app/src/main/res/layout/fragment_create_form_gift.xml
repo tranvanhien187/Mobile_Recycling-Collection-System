@@ -1,296 +1,396 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/grey_f8f8f8"
+    android:fillViewport="true">
 
-    <LinearLayout
-        android:id="@+id/llTPlace"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="UseCompoundDrawables">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/ivTPlaceBanner"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="12dp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clDeliveryAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvTPlaceName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="12dp"
+                android:fontFamily="@font/proximanova_sbold"
+                android:gravity="center_vertical"
+                android:textColor="@color/black_202020"
+                android:textSize="14dp"
+                app:drawableStartCompat="@drawable/ic_map_marker_green"
+                app:layout_constraintEnd_toStartOf="@id/imgArrowAddress"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Delivery Address" />
+
+            <TextView
+                android:id="@+id/tvUserNameAndPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/proximanova_reg"
+                android:textColor="@color/black_202020"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@id/imgArrowAddress"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTPlaceName"
+                tools:text="User Name | Phone Number" />
+
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="10dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/proximanova_reg"
+                android:maxLines="2"
+                android:textColor="@color/black_202020"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/imgArrowAddress"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvUserNameAndPhone"
+                tools:text="User Name | Phone Number Address with max 2 line and ellipse end" />
+
+            <ImageView
+                android:id="@+id/imgArrowAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/ic_arrow_right_616265"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clGiftInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@color/white"
+            android:paddingVertical="10dp"
+            app:layout_constraintTop_toBottomOf="@id/clDeliveryAddress">
+
+            <TextView
+                android:id="@+id/tvBrand"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="24dp"
+                android:fontFamily="@font/proximanova_reg"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Apple Inc." />
+
+            <ImageView
+                android:id="@+id/imgGift"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBrand"
+                tools:src="@color/black" />
+
+            <TextView
+                android:id="@+id/tvGiftName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/proximanova_reg"
+                android:textColor="@color/black"
+                android:textSize="13dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imgGift"
+                app:layout_constraintTop_toTopOf="@id/imgGift"
+                tools:text="Macbook Pro 2022 M2 1Tb" />
+
+            <TextView
+                android:id="@+id/tvGiftDescription"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/proximanova_light"
+                android:textColor="@color/black"
+                android:textSize="12dp"
+                android:gravity="top|start"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imgGift"
+                app:layout_constraintTop_toBottomOf="@id/tvGiftName"
+                tools:text="The iPhone 11 succeeded the iPhone XR, and it features a 6.1-inch LCD display that Apple calls a LThe iPhone 11 succeeded the iPhone XR, and it features a 6.1-inch LCD display that Apple calls a LThe iPhone 11 succeeded the iPhone XR, and it features a 6.1-inch LCD display that Apple calls a LThe iPhone 11 succeeded the iPhone XR, and it features a 6.1-inch LCD display that Apple calls a LThe iPhone 11 succeeded the iPhone XR, and it features a 6.1-inch LCD display that Apple calls a LThe iPhone 11 succeeded the iPhone XR, and it features a 6.1-inch LCD display that Apple calls a Liquid Retina HD Display. It features a 1792 x..." />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clGiftInfo2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingBottom="10dp"
+            app:layout_constraintTop_toBottomOf="@id/clGiftInfo">
+
+            <View
+                android:id="@+id/vLineMessage"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey_f8f8f8"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/proximanova_reg"
+                android:text="@string/create_form_gift_message"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vLineMessage" />
+
+            <EditText
+                android:id="@+id/edtMessage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="24dp"
+                android:background="@null"
+                android:fontFamily="@font/proximanova_reg"
+                android:gravity="end"
+                android:hint="@string/create_form_gift_message_hint"
+                android:inputType="textMultiLine"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvMessage"
+                app:layout_constraintTop_toTopOf="@+id/tvMessage"
+                tools:ignore="Autofill" />
+
+            <View
+                android:id="@+id/vLineOrderTotal"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/grey_f8f8f8"
+                app:layout_constraintTop_toBottomOf="@id/edtMessage" />
+
+            <TextView
+                android:id="@+id/tvOrderTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/proximanova_reg"
+                android:text="@string/create_form_gift_order_total"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vLineOrderTotal" />
+
+            <TextView
+                android:id="@+id/tvTotalOrderValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:drawablePadding="6dp"
+                android:fontFamily="@font/proximanova_sbold"
+                android:gravity="end"
+                android:textColor="@color/green_00ad31"
+                android:textSize="14dp"
+                app:drawableStartCompat="@drawable/ic_leaf_14"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvOrderTotal"
+                tools:text="1.200.000" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clReceiveOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@color/white"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="10dp"
+            app:layout_constraintTop_toBottomOf="@id/clGiftInfo2">
+
+            <TextView
+                android:id="@+id/tvReceiveOptionTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:fontFamily="@font/proximanova_reg"
+                android:text="@string/create_form_gift_receive_options"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioGroup
+                android:id="@+id/rgReceiveOption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/tvReceiveOptionTitle">
+
+                <RadioButton
+                    android:id="@+id/rbOnStore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:buttonTint="@color/green_00ad31"
+                    android:checked="true"
+                    android:fontFamily="@font/proximanova_reg"
+                    android:maxHeight="16dp"
+                    android:text="@string/create_form_gift_on_store"
+                    android:textColor="@color/black"
+                    android:textSize="12dp" />
+
+                <RadioButton
+                    android:id="@+id/rbShipping"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:buttonTint="@color/green_00ad31"
+                    android:fontFamily="@font/proximanova_reg"
+                    android:text="@string/create_form_gift_shipping"
+                    android:textColor="@color/black"
+                    android:textSize="12dp" />
+            </RadioGroup>
+
+            <ImageView
+                android:id="@+id/imgWaring"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_warning"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rgReceiveOption" />
+
+            <TextView
+                android:id="@+id/tvWarning"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/proximanova_reg"
+                android:text="@string/create_form_gift_warning"
+                android:textColor="@color/grey_616265"
+                android:textSize="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imgWaring"
+                app:layout_constraintTop_toTopOf="@+id/imgWaring" />
+
+            <TextView
+                android:id="@+id/tvWarningNote"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/proximanova_light"
+                android:text="@string/create_form_gift_warning_note"
+                android:textColor="@color/grey_616265"
+                android:textSize="8dp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imgWaring"
+                app:layout_constraintTop_toBottomOf="@+id/tvWarning" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/tvTPlaceName"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvTermOfTransaction"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            tools:text="Trading Place 1" />
-    </LinearLayout>
+            android:layout_marginTop="6dp"
+            android:background="@color/white"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/proximanova_reg"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="20dp"
+            android:text="@string/create_form_gift_term_transaction"
+            android:textColor="@color/black"
+            android:textSize="12dp"
+            app:drawableStartCompat="@drawable/ic_term_of_transaction"
+            app:layout_constraintTop_toBottomOf="@id/clReceiveOption" />
 
-    <View
-        android:id="@+id/divider1"
-        android:layout_width="0dp"
-        android:layout_height="1.5dp"
-        android:background="@color/grey_dfe3e9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/llTPlace" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTotalPayment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@color/white"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvTermOfTransaction">
 
-    <TextView
-        android:id="@+id/tvNameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="9dp"
-        android:fontFamily="@font/proximanova_reg"
-        android:text="@string/name_label"
-        android:textColor="@color/grey_7f8fa4"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider1" />
+            <TextView
+                android:id="@+id/tvEquivalentsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proximanova_sbold"
+                android:text="@string/create_form_gift_total_payment"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="18dp"
-        android:fontFamily="@font/proximanova_reg"
-        android:maxLines="2"
-        android:textColor="@color/black_354052"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNameLabel"
-        app:layout_goneMarginEnd="8dp"
-        tools:text="Tran Van Hien" />
+            <TextView
+                android:id="@+id/tvPoint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="6dp"
+                android:fontFamily="@font/proximanova_sbold"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:drawableStartCompat="@drawable/ic_leaf_14"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvEquivalentsTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvPerOne"
+                tools:text="1.200.000" />
 
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="0dp"
-        android:layout_height="1.5dp"
-        android:layout_marginTop="9dp"
-        android:background="@color/grey_dfe3e9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvName" />
+            <TextView
+                android:id="@+id/tvPerOne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proximanova_sbold"
+                android:text="@string/per_one_label"
+                android:textColor="@color/grey_9c9d9f"
+                android:textSize="12dp"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvPoint"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/tvPhoneNumberLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="9dp"
-        android:fontFamily="@font/proximanova_reg"
-        android:text="@string/phone_number_label"
-        android:textColor="@color/grey_7f8fa4"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
-    <TextView
-        android:id="@+id/tvPhoneNumber"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="18dp"
-        android:fontFamily="@font/proximanova_reg"
-        android:maxLines="2"
-        android:textColor="@color/black_354052"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPhoneNumberLabel"
-        app:layout_goneMarginEnd="8dp"
-        tools:text="0899 871 914" />
-
-    <View
-        android:id="@+id/divider3"
-        android:layout_width="0dp"
-        android:layout_height="1.5dp"
-        android:layout_marginTop="9dp"
-        android:background="@color/grey_dfe3e9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvPhoneNumber" />
-
-    <TextView
-        android:id="@+id/tvStreetLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="9dp"
-        android:fontFamily="@font/proximanova_reg"
-        android:text="@string/street_label"
-        android:textColor="@color/grey_7f8fa4"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider3" />
-
-    <EditText
-        android:id="@+id/edtStreet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginBottom="9dp"
-        android:background="@android:color/transparent"
-        android:fontFamily="@font/proximanova_reg"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        android:textColor="@color/black_354052"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/tvStreetLabel"
-        tools:ignore="LabelFor"
-        tools:text="K90 Đống Đa" />
-
-    <View
-        android:id="@+id/divider4"
-        android:layout_width="0dp"
-        android:layout_height="1.5dp"
-        android:layout_marginTop="9dp"
-        android:background="@color/grey_dfe3e9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtStreet" />
-
-    <TextView
-        android:id="@+id/tvDistrictLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="9dp"
-        android:fontFamily="@font/proximanova_reg"
-        android:text="@string/name_label"
-        android:textColor="@color/grey_7f8fa4"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider4" />
-
-    <EditText
-        android:id="@+id/edtDistrict"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginBottom="9dp"
-        android:background="@android:color/transparent"
-        android:fontFamily="@font/proximanova_reg"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        android:textColor="@color/black_354052"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/tvDistrictLabel"
-        tools:ignore="LabelFor"
-        tools:text="Hải Châu" />
-
-    <View
-        android:id="@+id/divider5"
-        android:layout_width="0dp"
-        android:layout_height="1.5dp"
-        android:layout_marginTop="9dp"
-        android:background="@color/grey_dfe3e9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtDistrict" />
-
-    <TextView
-        android:id="@+id/tvCityLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="9dp"
-        android:fontFamily="@font/proximanova_reg"
-        android:text="@string/street_label"
-        android:textColor="@color/grey_7f8fa4"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider5" />
-
-    <EditText
-        android:id="@+id/edtCity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginBottom="9dp"
-        android:background="@android:color/transparent"
-        android:fontFamily="@font/proximanova_reg"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        android:textColor="@color/black_354052"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/tvCityLabel"
-        tools:ignore="LabelFor"
-        tools:text="Đà Nẵng" />
-
-    <View
-        android:id="@+id/divider6"
-        android:layout_width="0dp"
-        android:layout_height="1.5dp"
-        android:layout_marginTop="9dp"
-        android:background="@color/grey_dfe3e9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtCity" />
-
-    <ImageView
-        android:id="@+id/ivGift"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider6"
-        tools:src="@drawable/ic_award" />
-
-    <TextView
-        android:id="@+id/tvGiftName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="9dp"
-        android:fontFamily="@font/proximanova_bold"
-        android:textColor="@color/black_516173"
-        android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@id/ivGift"
-        app:layout_constraintTop_toTopOf="@id/ivGift"
-        tools:text="Iphone 14 Promax" />
-
-    <TextView
-        android:id="@+id/tvGiftPoint"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="18dp"
-        android:layout_marginTop="9dp"
-        android:fontFamily="@font/proximanova_reg"
-        android:gravity="center"
-        android:textColor="@color/black_516173"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@id/ivGift"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ivGift"
-        app:layout_constraintTop_toBottomOf="@id/tvGiftName"
-        tools:text="10.000.000" />
-
-    <TextView
-        android:id="@+id/btnRedeem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/bg_solid_8dp_green_00ad31"
-        android:enabled="true"
-        android:gravity="center"
-        android:paddingVertical="14dp"
-        android:text="@string/redeem_label"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivGift"
-        app:layout_constraintVertical_bias="1" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <datn.cnpm.rcsystem.common.widget.PrimaryButton
+                android:id="@+id/btnOrder"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="22dp"
+                android:text="@string/create_form_gift_place_order"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPoint" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
