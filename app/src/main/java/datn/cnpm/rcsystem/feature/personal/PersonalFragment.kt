@@ -26,14 +26,15 @@ class PersonalFragment : BaseFragment<FragmentPersonalBinding>() {
     }
 
     override fun initViews() {
-        showToolbar(getString(R.string.personal_label), R.drawable.ic_back)
-
         SingletonObject.customer?.let {
             GlideHelper.loadImage(
                 it.avatar.orEmpty(),
                 binding.ivAvatar,
                 R.drawable.ic_person
             )
+            binding.tvWeight.text = "${it.garbage?.exchange}"
+            binding.tvPhoneNumber.text = it.phoneNumber
+            binding.tvName.text = it.name
         }
     }
 
@@ -42,6 +43,8 @@ class PersonalFragment : BaseFragment<FragmentPersonalBinding>() {
             btnEditProfile.setOnClickListener {
                 findNavController().navigate(R.id.updateAccountInfoFragment)
             }
+
+            ivBack.setOnClickListener { findNavController().popBackStack() }
         }
     }
 
