@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="25dp"
-        app:layout_constraintBottom_toTopOf="@id/btnSchedule"
+        app:layout_constraintBottom_toTopOf="@id/frSchedule"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -234,6 +234,21 @@
                 app:layout_constraintTop_toBottomOf="@id/tvAgentName"
                 tools:text="0899 871 914" />
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnCallNow"
+                android:layout_width="130dp"
+                android:layout_height="34dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/bg_round_corner_8dp_black"
+                android:fontFamily="@font/proximanova_reg"
+                android:text="@string/call_now"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgPhoneNumber"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imgPhoneNumber" />
+
             <View
                 android:id="@+id/linePhoneNumberBottom"
                 android:layout_width="match_parent"
@@ -356,12 +371,20 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-    <datn.cnpm.rcsystem.common.widget.PrimaryButton
-        android:id="@+id/btnSchedule"
+    <FrameLayout
+        android:id="@+id/frSchedule"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginBottom="23dp"
-        android:text="@string/place_detail_schedule_btn"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="5dp"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="23dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <datn.cnpm.rcsystem.common.widget.PrimaryButton
+            android:id="@+id/btnSchedule"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/place_detail_schedule_btn" />
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
