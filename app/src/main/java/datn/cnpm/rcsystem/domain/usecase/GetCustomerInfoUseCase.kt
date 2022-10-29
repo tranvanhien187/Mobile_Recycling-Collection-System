@@ -9,23 +9,23 @@ import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
 
-interface GetUserCustomerUseCase {
+interface GetCustomerInfoUseCase {
     class Parameters()
 
-    suspend fun getUserInfo(parameters: Parameters = Parameters() ): Result<CustomerEntity>
+    suspend fun getCustomerInfo(parameters: Parameters = Parameters() ): Result<CustomerEntity>
 }
 
 class GetCustomerInfoUseCaseImpl @Inject constructor(
     @IoDispatcher ioDispatcher: CoroutineDispatcher,
     private val CRGSRepository: CRGSRepository,
-) : BaseUseCase<GetUserCustomerUseCase.Parameters, CustomerEntity>(ioDispatcher),
-    GetUserCustomerUseCase {
+) : BaseUseCase<GetCustomerInfoUseCase.Parameters, CustomerEntity>(ioDispatcher),
+    GetCustomerInfoUseCase {
 
-    override suspend fun execute(parameters: GetUserCustomerUseCase.Parameters): CustomerEntity {
+    override suspend fun execute(parameters: GetCustomerInfoUseCase.Parameters): CustomerEntity {
         return CRGSRepository.getCustomerInfo().mapToEntity()
     }
 
-    override suspend fun getUserInfo(parameters: GetUserCustomerUseCase.Parameters): Result<CustomerEntity> {
+    override suspend fun getCustomerInfo(parameters: GetCustomerInfoUseCase.Parameters): Result<CustomerEntity> {
         return invoke(parameters)
     }
 }

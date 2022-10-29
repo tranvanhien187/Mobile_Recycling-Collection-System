@@ -1,6 +1,6 @@
 package datn.cnpm.rcsystem.domain.model.history
 
-import datn.cnpm.rcsystem.data.entitiy.GarbageHistoryDetailResponse
+import datn.cnpm.rcsystem.data.entitiy.history.GarbageHistoryDetailResponse
 import java.util.*
 
 

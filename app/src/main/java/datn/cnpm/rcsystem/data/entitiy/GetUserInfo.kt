@@ -8,6 +8,7 @@ data class GetCustomerInfoResponse(
     val username: String? = null,
     val email: String? = null,
     val avatar: String? = null,
+    val identityCardNumber: String? = null,
     val phoneNumber: String? = null,
     val dateOfBirth: Date? = null,
     val address: AddressResponse? = null,

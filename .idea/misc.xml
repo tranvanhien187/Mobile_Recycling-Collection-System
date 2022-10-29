@@ -13,7 +13,10 @@
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/background_input_field_pin_default.xml" value="0.1" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/background_input_field_pin_focus.xml" value="0.1" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/background_input_field_pin_password_active.xml" value="0.1" />
+        <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/bg_border_3_cyan_4feaff.xml" value="0.214" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/bg_border_3_orange_ffddad.xml" value="0.1" />
+        <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/bg_border_3_pink_pink_ff9efb.xml" value="0.214" />
+        <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/bg_border_3_yellow_fff402.xml" value="0.214" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/bg_circle_stroke_2__green_00ad31.xml" value="0.1645" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/bg_corner_10_grey.xml" value="0.19" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/bg_corner_12_white.xml" value="0.2405" />
@@ -25,6 +28,7 @@
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/bg_corner_bottom_12_green.xml" value="0.25" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/bg_corner_white_16dp.xml" value="0.2405" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/bg_deal_type_bottom_8.xml" value="0.115" />
+        <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/bg_gradient_home.xml" value="0.214" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/bg_primary_button.xml" value="0.213" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/bg_primary_button_disable.xml" value="0.213" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/bg_received_type_bottom_8.xml" value="0.115" />
@@ -37,7 +41,9 @@
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/corner_primary_bg.xml" value="0.213" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/custom_shadow.xml" value="0.15" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/custom_text_cursor.xml" value="0.192" />
+        <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/ic_arrow_circle.xml" value="0.214" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/ic_baseline_qr_code_scanner_24.xml" value="0.2405" />
+        <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/ic_bg_rank.xml" value="0.214" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/ic_cam.xml" value="0.2405" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/ic_camera.xml" value="0.15" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/ic_complete.xml" value="0.214" />
@@ -55,6 +61,7 @@
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/ic_leaf_14.xml" value="0.214" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/ic_person.xml" value="0.1195" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/ic_person_16.xml" value="0.1325" />
+        <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/ic_pick_image.xml" value="0.133" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/ic_pin.xml" value="0.161" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/ic_place_green.xml" value="0.2405" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/drawable/ic_place_no_bg.xml" value="0.2405" />
@@ -111,18 +118,20 @@
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_home.xml" value="0.26721014492753625" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_home_dealer.xml" value="0.1337386018237082" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_home_user.xml" value="0.33" />
+        <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_leaderboard.xml" value="0.33" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_loading.xml" value="0.26811594202898553" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_otp.xml" value="0.2" />
-        <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_personal.xml" value="0.19" />
+        <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_personal.xml" value="0.33" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_place_detail.xml" value="0.2" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_receive_form.xml" value="0.1889564336372847" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_register.xml" value="0.26811594202898553" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_staff_dashboard.xml" value="0.18" />
+        <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_top_staff_collect.xml" value="0.28894927536231885" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_trading_place.xml" value="0.21197916666666666" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_transport_form.xml" value="0.22" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_transport_form_detail.xml" value="0.2875905797101449" />
-        <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_update_account_info.xml" value="0.3333333333333333" />
+        <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_update_account_info.xml" value="0.22" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/fragment_user_dashboard.xml" value="0.25" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/item_district_and_poc.xml" value="0.2749094202898551" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/item_garbage_history.xml" value="0.4" />
@@ -134,6 +143,7 @@
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/item_history.xml" value="0.29257246376811596" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/item_otp_input.xml" value="0.27445652173913043" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/item_pin_input.xml" value="0.21197916666666666" />
+        <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/item_rank.xml" value="0.28894927536231885" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/item_recycling_garbage.xml" value="0.176" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/item_trading_place.xml" value="0.4" />
         <entry key="..\:/DATN/Mobile/RecyclingCollectionSystem/app/src/main/res/layout/item_trading_place_home.xml" value="0.264" />

@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
+import datn.cnpm.rcsystem.SingletonObject
 import datn.cnpm.rcsystem.base.BaseFragment
+import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.databinding.FragmentPersonalBinding
 
 /**
@@ -24,11 +27,21 @@ class PersonalFragment : BaseFragment<FragmentPersonalBinding>() {
 
     override fun initViews() {
         showToolbar(getString(R.string.personal_label), R.drawable.ic_back)
+
+        SingletonObject.customer?.let {
+            GlideHelper.loadImage(
+                it.avatar.orEmpty(),
+                binding.ivAvatar,
+                R.drawable.ic_person
+            )
+        }
     }
 
     override fun initActions() {
         binding.apply {
-
+            btnEditProfile.setOnClickListener {
+                findNavController().navigate(R.id.updateAccountInfoFragment)
+            }
         }
     }
 

@@ -41,8 +41,8 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toTopOf="@id/btnSave"
+        android:paddingBottom="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivAvatar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,27 +61,38 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilFullName"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <EditText
+                android:id="@+id/edtName"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_corner_8_grey_f2f4f6"
+                android:fontFamily="@font/proximanova_reg"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:paddingHorizontal="10dp"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/tvLabelFullName"
+                tools:ignore="LabelFor" />
+
+            <TextView
+                android:id="@+id/tvErrorName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="8dp"
-                app:hintEnabled="false"
-                app:layout_constraintTop_toBottomOf="@+id/tvLabelFullName">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tieFullName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_corner_8_grey_f2f4f6"
-                    android:gravity="center_vertical"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="2dp"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/proximanova_reg"
+                android:paddingHorizontal="10dp"
+                android:textColor="@color/red_f34d4d"
+                android:textSize="10sp"
+                android:visibility="gone"
+                app:drawableStartCompat="@drawable/ic_error"
+                app:layout_constraintTop_toBottomOf="@+id/edtName"
+                tools:ignore="SmallSp"
+                tools:text="Name must be empty"
+                tools:visibility="visible" />
 
             <TextView
                 android:id="@+id/tvLabelDOB"
@@ -93,29 +104,40 @@
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilFullName" />
+                app:layout_constraintTop_toBottomOf="@id/tvErrorName" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilDOB"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <EditText
+                android:id="@+id/edtDOB"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_corner_8_grey_f2f4f6"
+                android:fontFamily="@font/proximanova_reg"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:paddingHorizontal="10dp"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/tvLabelDOB"
+                tools:ignore="LabelFor" />
+
+            <TextView
+                android:id="@+id/tvErrorDOB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="10dp"
-                app:hintEnabled="false"
-                app:layout_constraintTop_toBottomOf="@+id/tvLabelDOB">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tieDOB"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_corner_8_grey_f2f4f6"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:text="18/07/2000"
-                    android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="2dp"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/proximanova_reg"
+                android:paddingHorizontal="10dp"
+                android:textColor="@color/red_f34d4d"
+                android:textSize="10sp"
+                android:visibility="gone"
+                app:drawableStartCompat="@drawable/ic_error"
+                app:layout_constraintTop_toBottomOf="@+id/edtDOB"
+                tools:ignore="SmallSp"
+                tools:text="Name must be empty"
+                tools:visibility="visible" />
 
             <TextView
                 android:id="@+id/tvLabelCMND"
@@ -127,29 +149,40 @@
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilDOB" />
+                app:layout_constraintTop_toBottomOf="@id/tvErrorDOB" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilIN"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <EditText
+                android:id="@+id/edtIN"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_corner_8_grey_f2f4f6"
+                android:fontFamily="@font/proximanova_reg"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:paddingHorizontal="10dp"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/tvLabelCMND"
+                tools:ignore="LabelFor" />
+
+            <TextView
+                android:id="@+id/tvErrorIN"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="10dp"
-                app:hintEnabled="false"
-                app:layout_constraintTop_toBottomOf="@+id/tvLabelCMND">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tieIN"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_corner_8_grey_f2f4f6"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:text="Tran Van Hien"
-                    android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="2dp"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/proximanova_reg"
+                android:paddingHorizontal="10dp"
+                android:textColor="@color/red_f34d4d"
+                android:textSize="10sp"
+                android:visibility="gone"
+                app:drawableStartCompat="@drawable/ic_error"
+                app:layout_constraintTop_toBottomOf="@+id/edtIN"
+                tools:ignore="SmallSp"
+                tools:text="Name must be empty"
+                tools:visibility="visible" />
 
             <TextView
                 android:id="@+id/tvLabelPN"
@@ -161,29 +194,40 @@
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilIN" />
+                app:layout_constraintTop_toBottomOf="@id/tvErrorIN" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilPN"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <EditText
+                android:id="@+id/edtPN"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_corner_8_grey_f2f4f6"
+                android:fontFamily="@font/proximanova_reg"
+                android:importantForAutofill="no"
+                android:inputType="phone"
+                android:paddingHorizontal="10dp"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/tvLabelPN"
+                tools:ignore="LabelFor" />
+
+            <TextView
+                android:id="@+id/tvErrorPN"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="10dp"
-                app:hintEnabled="false"
-                app:layout_constraintTop_toBottomOf="@+id/tvLabelPN">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tiePN"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_corner_8_grey_f2f4f6"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:text="0899871914"
-                    android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="2dp"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/proximanova_reg"
+                android:paddingHorizontal="10dp"
+                android:textColor="@color/red_f34d4d"
+                android:textSize="10sp"
+                android:visibility="gone"
+                app:drawableStartCompat="@drawable/ic_error"
+                app:layout_constraintTop_toBottomOf="@+id/edtPN"
+                tools:ignore="SmallSp"
+                tools:text="Name must be empty"
+                tools:visibility="visible" />
 
             <TextView
                 android:id="@+id/tvLabelPOC"
@@ -195,17 +239,19 @@
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilPN" />
+                app:layout_constraintTop_toBottomOf="@id/tvErrorPN" />
 
             <TextView
                 android:id="@+id/tvPOC"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="44dp"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_corner_8_grey_f2f4f6"
                 android:gravity="center_vertical"
+                android:paddingHorizontal="10dp"
                 android:textColor="@color/black"
+                android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@+id/tvLabelPOC" />
 
             <TextView
@@ -223,12 +269,15 @@
             <TextView
                 android:id="@+id/tvDistrict"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="44dp"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_corner_8_grey_f2f4f6"
+                android:fontFamily="@font/proximanova_reg"
                 android:gravity="center_vertical"
+                android:paddingHorizontal="10dp"
                 android:textColor="@color/black"
+                android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@+id/tvLabelDistrict" />
 
             <TextView
@@ -243,41 +292,51 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvDistrict" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilStreet"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <EditText
+                android:id="@+id/edtStreet"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_corner_8_grey_f2f4f6"
+                android:fontFamily="@font/proximanova_reg"
+                android:importantForAutofill="no"
+                android:inputType="phone"
+                android:paddingHorizontal="10dp"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/tvStreet"
+                tools:ignore="LabelFor" />
+
+            <TextView
+                android:id="@+id/tvErrorStreet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="10dp"
-                app:hintEnabled="false"
-                app:layout_constraintTop_toBottomOf="@+id/tvStreet">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tieStreet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_corner_8_grey_f2f4f6"
-                    android:imeOptions="actionDone"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:text="K90/27 Đống Đa"
-                    android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="2dp"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/proximanova_reg"
+                android:paddingHorizontal="10dp"
+                android:textColor="@color/red_f34d4d"
+                android:textSize="10sp"
+                android:visibility="gone"
+                app:drawableStartCompat="@drawable/ic_error"
+                app:layout_constraintTop_toBottomOf="@+id/edtStreet"
+                tools:ignore="SmallSp"
+                tools:text="Name must be empty"
+                tools:visibility="visible" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
     <TextView
         android:id="@+id/btnSave"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="44dp"
         android:layout_marginHorizontal="24dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/bg_solid_8dp_green_00ad31"
         android:enabled="true"
         android:fontFamily="@font/proximanova_bold"
         android:gravity="center"
-        android:paddingVertical="14dp"
         android:text="@string/save_btn"
         android:textColor="@color/white"
         android:textSize="16sp"

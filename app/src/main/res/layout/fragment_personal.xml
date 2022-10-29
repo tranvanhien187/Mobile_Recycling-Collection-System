@@ -3,8 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingHorizontal="24dp">
+    android:layout_height="match_parent">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_corner_28_orange_ffd600"
+        app:layout_constraintBottom_toBottomOf="@id/ivGarbage"
+        app:layout_constraintEnd_toEndOf="@id/tvWeight"
+        app:layout_constraintStart_toStartOf="@id/ivGarbage"
+        app:layout_constraintTop_toTopOf="@id/ivGarbage" />
+
+    <ImageView
+        android:layout_marginTop="12dp"
+        android:paddingEnd="0dp"
+        android:paddingStart="8dp"
+        android:id="@+id/ivGarbage"
+        android:layout_width="24dp"
+        android:layout_height="28dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_garbage"
+        app:layout_constraintEnd_toStartOf="@id/tvWeight"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:paddingStart="0dp"
+        android:id="@+id/tvWeight"
+        android:paddingEnd="8dp"
+        android:fontFamily="@font/proximanova_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/ivGarbage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivGarbage"
+        tools:text="100.00" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivAvatar"
@@ -58,6 +91,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvPhoneNumber" />
 
     <TextView
+        android:layout_marginHorizontal="24dp"
         android:id="@+id/tvHelp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -77,6 +111,7 @@
         app:layout_constraintTop_toBottomOf="@id/btnEditProfile" />
 
     <TextView
+        android:layout_marginHorizontal="24dp"
         android:id="@+id/tvTermCondition"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -96,6 +131,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvHelp" />
 
     <TextView
+        android:layout_marginHorizontal="24dp"
         android:id="@+id/tvAboutUs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -115,6 +151,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvTermCondition" />
 
     <TextView
+        android:layout_marginHorizontal="24dp"
         android:id="@+id/tvLogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

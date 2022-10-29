@@ -8,7 +8,7 @@ import datn.cnpm.rcsystem.core.failed
 import datn.cnpm.rcsystem.core.requireData
 import datn.cnpm.rcsystem.core.requireError
 import datn.cnpm.rcsystem.core.succeeded
-import datn.cnpm.rcsystem.domain.usecase.GetUserCustomerUseCase
+import datn.cnpm.rcsystem.domain.usecase.GetCustomerInfoUseCase
 import datn.cnpm.rcsystem.domain.usecase.UpdateUserInfoUseCase
 import kotlinx.coroutines.launch
 import java.io.File
@@ -17,7 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class UpdateUserInfoViewModel @Inject constructor(
     private val updateUserInfoUseCase: UpdateUserInfoUseCase,
-    private val getUserInfoUseCase: GetUserCustomerUseCase
+    private val getUserInfoUseCase: GetCustomerInfoUseCase
 ) :
     BaseViewModel<UpdateUserInfoState, UpdateUserInfoEvent>() {
     override fun initState() = UpdateUserInfoState()
@@ -30,7 +30,7 @@ class UpdateUserInfoViewModel @Inject constructor(
         viewModelScope.launch {
             if (isUpdated) {
                 dispatchState(currentState.copy(loading = true))
-                val response = getUserInfoUseCase.getUserInfo(GetUserCustomerUseCase.Parameters())
+                val response = getUserInfoUseCase.getCustomerInfo(GetCustomerInfoUseCase.Parameters())
                 if(response.succeeded) {
                     dispatchState(currentState.copy(loading = false))
                     dispatchState(currentState.copy(user = response.requireData))

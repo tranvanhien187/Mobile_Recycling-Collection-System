@@ -49,7 +49,7 @@
 
     <fragment
         android:id="@+id/updateAccountInfoFragment"
-        android:name="datn.cnpm.rcsystem.feature.updateaccountifo.UpdateAccountInfoFragment"
+        android:name="datn.cnpm.rcsystem.feature.updateaccountifo.UpdateCustomerInfoFragment"
         android:label="UpdateAccountInfoFragment"
         tools:layout="@layout/fragment_update_account_info" />
 

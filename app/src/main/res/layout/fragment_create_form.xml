@@ -242,7 +242,7 @@
                     android:layout_marginTop="9dp"
                     android:layout_marginEnd="18dp"
                     android:fontFamily="@font/proximanova_reg"
-                    android:text="Weight"
+                    android:text="@string/weight_label"
                     android:textColor="@color/grey_7f8fa4"
                     android:textSize="14sp" />
 
@@ -252,10 +252,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="18dp"
                     android:layout_marginEnd="18dp"
+                    android:layout_marginBottom="4dp"
                     android:background="@android:color/transparent"
                     android:fontFamily="@font/proximanova_reg"
                     android:importantForAutofill="no"
-                    android:layout_marginBottom="4dp"
                     android:inputType="numberDecimal"
                     android:textColor="@color/black_354052"
                     android:textSize="14sp"
@@ -266,13 +266,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="18dp"
-                    android:layout_marginBottom="9dp"
                     android:layout_marginEnd="18dp"
+                    android:layout_marginBottom="9dp"
                     android:fontFamily="@font/proximanova_reg"
                     android:text="@string/your_garbage_weight_must_be_more_than_2kg_label"
                     android:textColor="@color/green_00ad31"
                     android:textSize="10sp"
                     tools:ignore="SmallSp" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1.5dp"
@@ -289,7 +290,7 @@
                     android:enabled="true"
                     android:gravity="center"
                     android:paddingVertical="14dp"
-                    android:text="@string/submit_label"
+                    android:text="@string/exchange_btn"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />

@@ -21,11 +21,10 @@ class CreateFormFragment : BaseFragment<FragmentCreateFormBinding>() {
     val viewModel: CreateFormViewModel by viewModels()
 
     override fun initData(data: Bundle?) {
-
     }
 
     override fun initViews() {
-        showToolbar(getString(R.string.create_form_label), R.drawable.ic_back)
+        showToolbar(getString(R.string.exchange_garbage_label), R.drawable.ic_back)
 
         SingletonObject.customer?.let {
             binding.apply {
@@ -69,34 +68,14 @@ class CreateFormFragment : BaseFragment<FragmentCreateFormBinding>() {
             when (event) {
                 is CreateFormEvent.CreateTransportGarbageSuccess -> {
                     context?.let {
-                        showDialogConfirm("You created transport garbage form successfully. Out staff will go soon.", onConfirmClick = {
-                            findNavController().popBackStack()
-                        })
+                        showDialogConfirm(
+                            "You created transport garbage form successfully. Out staff will go soon.",
+                            onConfirmClick = {
+                                findNavController().popBackStack()
+                            })
                     }
                 }
             }
         }
-//
-//        viewModel.observe(
-//            owner = viewLifecycleOwner,
-//            selector = { state -> state.gift },
-//            observer = { gift ->
-//                gift?.let {
-//                    binding.apply {
-//                        tvName.text = it.name
-//                        tvBrand.text = it.brand
-//                        tvPhoneNumber.text = it.agentPhone
-//                        tvAgentName.text = it.agentName
-//                        tvPoint.text = "${it.redemptionPoint}"
-//                        tvAddress.text = "${it.street}, ${it.district}, ${it.provinceOrCity}"
-//                        GlideHelper.loadImage(
-//                            it.url ?: "",
-//                            imgBanner,
-//                            R.drawable.image_default_image_rectangle
-//                        )
-//                    }
-//                }
-//            }
-//        )
     }
 }

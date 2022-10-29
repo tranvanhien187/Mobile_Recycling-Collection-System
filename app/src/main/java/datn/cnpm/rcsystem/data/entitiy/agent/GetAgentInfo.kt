@@ -1,7 +1,10 @@
-package datn.cnpm.rcsystem.data.entitiy
+package datn.cnpm.rcsystem.data.entitiy.agent
+
+import datn.cnpm.rcsystem.data.entitiy.AddressResponse
+import datn.cnpm.rcsystem.data.entitiy.TradingPlaceResponse
 
 
-data class GetDealerInfoResponse(
+data class GetAgentInfoResponse(
     val id: String? = null,
     val name: String? = null,
     val username: String? = null,

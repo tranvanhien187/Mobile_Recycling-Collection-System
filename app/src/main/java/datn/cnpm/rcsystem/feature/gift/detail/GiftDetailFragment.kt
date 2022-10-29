@@ -70,6 +70,7 @@ class GiftDetailFragment : BaseFragment<FragmentGiftDetailBinding>() {
                         tvName.text = it.name
                         tvBrand.text = it.brand
                         tvPhoneNumber.text = it.agentPhone
+                        tvDescription.text = it.description
                         tvAgentName.text = it.agentName
                         tvPoint.text = "${it.redemptionPoint}"
                         tvAddress.text = "${it.street}, ${it.district}, ${it.provinceOrCity}"

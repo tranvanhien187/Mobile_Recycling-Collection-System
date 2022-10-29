@@ -65,7 +65,7 @@ abstract class UseCaseModule {
     @Singleton
     abstract fun provideGetUserInfoUseCase(
         useCase: GetCustomerInfoUseCaseImpl
-    ): GetUserCustomerUseCase
+    ): GetCustomerInfoUseCase
 
     @Binds
     @Singleton

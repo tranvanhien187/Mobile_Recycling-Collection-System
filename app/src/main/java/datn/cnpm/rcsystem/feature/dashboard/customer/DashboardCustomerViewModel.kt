@@ -9,13 +9,13 @@ import datn.cnpm.rcsystem.core.requireError
 import datn.cnpm.rcsystem.core.succeeded
 import datn.cnpm.rcsystem.domain.usecase.GetGiftRandom6UserCase
 import datn.cnpm.rcsystem.domain.usecase.GetTPlaceRandom6UseCase
-import datn.cnpm.rcsystem.domain.usecase.GetUserCustomerUseCase
+import datn.cnpm.rcsystem.domain.usecase.GetCustomerInfoUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class DashboardCustomerViewModel @Inject constructor(
-    private val getUserInfoUseCase: GetUserCustomerUseCase,
+    private val getUserInfoUseCase: GetCustomerInfoUseCase,
     private val getTPlaceRandom6UseCase: GetTPlaceRandom6UseCase,
     private val getGiftRandom6UserCase: GetGiftRandom6UserCase
 ) :
@@ -24,7 +24,7 @@ class DashboardCustomerViewModel @Inject constructor(
 
     fun getUserInfo() {
         viewModelScope.launch {
-            val response = getUserInfoUseCase.getUserInfo()
+            val response = getUserInfoUseCase.getCustomerInfo()
             if (response.succeeded) {
                 dispatchState(currentState.copy(userEntity = response.requireData))
             }

@@ -11,7 +11,7 @@ import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.common.extension.createSpannableString
 import datn.cnpm.rcsystem.databinding.FragmentRegisterBinding
-import datn.cnpm.rcsystem.feature.updateaccountifo.UpdateAccountInfoFragment
+import datn.cnpm.rcsystem.feature.updateaccountifo.UpdateCustomerInfoFragment
 
 /**
  * [RegisterFragment]
@@ -80,8 +80,8 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
                     findNavController().navigate(
                         R.id.updateAccountInfoFragment,
                         bundleOf(
-                            Pair(UpdateAccountInfoFragment.IS_UPDATED_KEY, false),
-                            Pair(UpdateAccountInfoFragment.UUID_KEY, event.uuid)
+                            Pair(UpdateCustomerInfoFragment.IS_UPDATED_KEY, false),
+                            Pair(UpdateCustomerInfoFragment.ID_KEY, event.uuid)
                         )
                     )
                 }

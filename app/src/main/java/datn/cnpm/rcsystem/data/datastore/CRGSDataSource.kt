@@ -4,6 +4,7 @@ import datn.cnpm.rcsystem.core.SBResponse
 import datn.cnpm.rcsystem.data.entitiy.*
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
+import datn.cnpm.rcsystem.data.entitiy.history.GarbageHistoryDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
 import datn.cnpm.rcsystem.data.entitiy.statistic.StatisticStaffCollectResponse
 import datn.cnpm.rcsystem.data.entitiy.statistic.StatisticStaffCollectWeightByDayResponse

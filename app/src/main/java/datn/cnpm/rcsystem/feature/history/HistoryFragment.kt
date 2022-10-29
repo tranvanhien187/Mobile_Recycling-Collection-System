@@ -29,7 +29,6 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
         showToolbar(getString(R.string.history_label), R.drawable.ic_back)
         historyAdapter = HistoryScreenAdapter(this)
         binding.apply {
-            pager.isSaveEnabled = false
             pager.adapter = historyAdapter
             TabLayoutMediator(tabLayout, pager) { tab, position ->
                 when (position) {
@@ -40,7 +39,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
             tabLayout.addOnTabSelectedListener(object :
                 TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab) {
-                    tab.position.let { position ->
+                    tab.position.let {
                     }
                 }
 

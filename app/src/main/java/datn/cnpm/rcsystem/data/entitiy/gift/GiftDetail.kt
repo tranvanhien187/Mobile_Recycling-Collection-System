@@ -5,6 +5,7 @@ data class GiftDetailResponse(
     val id: String? = null,
     val brand: String? = null,
     val name: String? = null,
+    val description: String? = null,
     val redemptionPoint: Int = 0,
     val status: String? = null,
     val agentId: String? = null,

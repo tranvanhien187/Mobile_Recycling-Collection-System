@@ -65,4 +65,10 @@
         android:name="datn.cnpm.rcsystem.feature.form.gift.create.CreateFormGiftFragment"
         android:label="CreateFormFragment"
         tools:layout="@layout/fragment_create_form_gift"/>
+
+    <fragment
+        android:id="@+id/updateAccountInfoFragment"
+        android:name="datn.cnpm.rcsystem.feature.updateaccountifo.UpdateCustomerInfoFragment"
+        android:label="UpdateAccountInfoFragment"
+        tools:layout="@layout/fragment_update_account_info" />
 </navigation>

@@ -1,7 +1,7 @@
 package datn.cnpm.rcsystem.domain.model
 
 import android.os.Parcelable
-import datn.cnpm.rcsystem.data.entitiy.GarbageUserHistoryResponse
+import datn.cnpm.rcsystem.data.entitiy.history.GarbageUserHistoryResponse
 import kotlinx.parcelize.Parcelize
 import java.util.*
 

@@ -14,7 +14,7 @@ import datn.cnpm.rcsystem.common.extension.createSpannableString
 import datn.cnpm.rcsystem.databinding.FragmentLoginBinding
 import datn.cnpm.rcsystem.feature.home.staff.HomeStaffActivity
 import datn.cnpm.rcsystem.feature.home.customer.HomeCustomerActivity
-import datn.cnpm.rcsystem.feature.updateaccountifo.UpdateAccountInfoFragment
+import datn.cnpm.rcsystem.feature.updateaccountifo.UpdateCustomerInfoFragment
 
 /**
  * A simple [LoginFragment] subclass as the default destination in the navigation.
@@ -89,8 +89,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                     findNavController().navigate(
                         R.id.updateAccountInfoFragment,
                         bundleOf(
-                            Pair(UpdateAccountInfoFragment.IS_UPDATED_KEY, false),
-                            Pair(UpdateAccountInfoFragment.UUID_KEY, event.uuid)
+                            Pair(UpdateCustomerInfoFragment.IS_UPDATED_KEY, false),
+                            Pair(UpdateCustomerInfoFragment.ID_KEY, event.uuid)
                         )
                     )
                 }

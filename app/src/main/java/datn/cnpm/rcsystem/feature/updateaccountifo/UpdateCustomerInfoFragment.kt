@@ -2,7 +2,6 @@ package datn.cnpm.rcsystem.feature.updateaccountifo
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Intent
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
@@ -17,13 +16,16 @@ import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
+import datn.cnpm.rcsystem.SingletonObject
 import datn.cnpm.rcsystem.base.BaseFragment
+import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.databinding.FragmentUpdateAccountInfoBinding
 import java.io.File
+import java.text.SimpleDateFormat
 
 
 @AndroidEntryPoint
-class UpdateAccountInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding>() {
+class UpdateCustomerInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding>() {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentUpdateAccountInfoBinding
         get() = FragmentUpdateAccountInfoBinding::inflate
 
@@ -34,13 +36,7 @@ class UpdateAccountInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding>
     private var cityList = emptyList<String>()
     private lateinit var bottomBehavior: BottomSheetBehavior<ConstraintLayout>
     override fun initData(data: Bundle?) {
-        data?.let {
-            viewModel.checkUserUpdated(
-                data.getBoolean(IS_UPDATED_KEY),
-//                data.getString(UUID_KEY, "")
-            )
-        }
-        cityList = context?.resources?.getStringArray(R.array.City)?.toList()?: emptyList()
+        cityList = context?.resources?.getStringArray(R.array.City)?.toList() ?: emptyList()
     }
 
     override fun initViews() {
@@ -48,15 +44,32 @@ class UpdateAccountInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding>
         bottomBehavior.state = BottomSheetBehavior.STATE_HIDDEN
         bottomBehavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
-
             }
 
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                // React to dragging events
             }
         })
 
-        binding.rvDistrictAndPOC.adapter = districtAndPOCAdapter
+        binding.apply {
+            rvDistrictAndPOC.adapter = districtAndPOCAdapter
+
+            SingletonObject.customer?.let { data ->
+                edtName.setText(data.name)
+                data.dOB?.let {
+                    edtDOB.setText(SimpleDateFormat("dd/MM/yyyy").format(it))
+                }
+                edtPN.setText(data.phoneNumber)
+                edtStreet.setText(data.address?.street)
+                tvDistrict.text = data.address?.district
+                tvPOC.text = data.address?.provinceOrCity
+                edtIN.setText(data.identityCardNumber)
+                GlideHelper.loadImage(
+                    data.avatar ?: "",
+                    ivAvatar,
+                    R.drawable.ic_person
+                )
+            }
+        }
     }
 
     override fun initActions() {
@@ -74,11 +87,11 @@ class UpdateAccountInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding>
             btnSave.setOnClickListener {
                 viewModel.updateUserInfo(
                     viewModel.avatarFile ?: genDefaultAvatarFile(),
-                    tieFullName.text.toString(),
-                    tiePN.text.toString(),
-                    tieIN.text.toString(),
-                    tieDOB.text.toString(),
-                    tieStreet.text.toString(),
+                    edtName.text.toString(),
+                    edtPN.text.toString(),
+                    edtIN.text.toString(),
+                    edtDOB.text.toString(),
+                    edtStreet.text.toString(),
                     tvDistrict.text.toString(),
                     tvPOC.text.toString()
                 )
@@ -86,16 +99,25 @@ class UpdateAccountInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding>
 
             tvDistrict.setOnClickListener {
                 districtAndPOCAdapter.type = DistrictAndPOCAdapter.Type.District
-                if(cityList.isNotEmpty()) {
+                if (cityList.isNotEmpty()) {
                     when (tvPOC.text) {
                         cityList[0] -> {
-                            districtAndPOCAdapter.submitList(context?.resources?.getStringArray(R.array.DN)?.toList()?: emptyList())
+                            districtAndPOCAdapter.submitList(
+                                context?.resources?.getStringArray(R.array.DN)?.toList()
+                                    ?: emptyList()
+                            )
                         }
                         cityList[1] -> {
-                            districtAndPOCAdapter.submitList(context?.resources?.getStringArray(R.array.HN)?.toList()?: emptyList())
+                            districtAndPOCAdapter.submitList(
+                                context?.resources?.getStringArray(R.array.HN)?.toList()
+                                    ?: emptyList()
+                            )
                         }
                         cityList[2] -> {
-                            districtAndPOCAdapter.submitList(context?.resources?.getStringArray(R.array.HCM)?.toList()?: emptyList())
+                            districtAndPOCAdapter.submitList(
+                                context?.resources?.getStringArray(R.array.HCM)?.toList()
+                                    ?: emptyList()
+                            )
                         }
                     }
                 }
@@ -181,6 +203,6 @@ class UpdateAccountInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding>
 
     companion object {
         const val IS_UPDATED_KEY = "IS_UPDATED_KEY"
-        const val UUID_KEY = "UUID_KEY"
+        const val ID_KEY = "ID_KEY"
     }
 }
