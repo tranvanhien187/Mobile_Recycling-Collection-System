@@ -5,6 +5,7 @@ import datn.cnpm.rcsystem.data.entitiy.*
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
+import datn.cnpm.rcsystem.data.entitiy.statistic.StatisticStaffCollectResponse
 import datn.cnpm.rcsystem.data.entitiy.statistic.StatisticStaffCollectWeightByDayResponse
 import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGarbageRequest
@@ -146,7 +147,10 @@ interface CRGSApiService {
 
 
     /***        STATISTIC      ***/
-    @POST("/api/v1/statistics/totalweight/7days/{id}")
+    @GET("/api/v1/statistics/totalweight/7days/{id}")
     suspend fun getStatisticsStaffCollectLast7Days(@Path("id") staffId: String): SBResponse<List<StatisticStaffCollectWeightByDayResponse>>
+
+    @GET("/api/v1/statistics/top-staff")
+    suspend fun getStatisticTopStaffCollect(): SBResponse<List<StatisticStaffCollectResponse>>
     /******/
 }

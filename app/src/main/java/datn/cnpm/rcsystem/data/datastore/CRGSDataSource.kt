@@ -5,6 +5,7 @@ import datn.cnpm.rcsystem.data.entitiy.*
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
+import datn.cnpm.rcsystem.data.entitiy.statistic.StatisticStaffCollectResponse
 import datn.cnpm.rcsystem.data.entitiy.statistic.StatisticStaffCollectWeightByDayResponse
 import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGarbageRequest
@@ -175,5 +176,9 @@ class CRGSDataSource @Inject constructor(private val authenticationApiService: C
 
     suspend fun getStatisticsStaffCollectLast7Days(staffId: String): SBResponse<List<StatisticStaffCollectWeightByDayResponse>> {
         return authenticationApiService.getStatisticsStaffCollectLast7Days(staffId)
+    }
+
+    suspend fun getStatisticTopStaffCollect(): SBResponse<List<StatisticStaffCollectResponse>> {
+        return authenticationApiService.getStatisticTopStaffCollect()
     }
 }

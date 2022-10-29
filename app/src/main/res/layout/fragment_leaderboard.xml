@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvLabelUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/proximanova_bold"
+        android:text="CRGS"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_corner_28_orange_ffd600"
+        app:layout_constraintBottom_toBottomOf="@id/ivGarbage"
+        app:layout_constraintEnd_toEndOf="@id/tvWeight"
+        app:layout_constraintStart_toStartOf="@id/ivGarbage"
+        app:layout_constraintTop_toTopOf="@id/ivGarbage" />
+
+    <ImageView
+        android:paddingEnd="0dp"
+        android:paddingStart="8dp"
+        android:id="@+id/ivGarbage"
+        android:layout_width="24dp"
+        android:layout_height="28dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_garbage"
+        app:layout_constraintBottom_toBottomOf="@id/tvLabelUserName"
+        app:layout_constraintEnd_toStartOf="@id/tvWeight"
+        app:layout_constraintTop_toTopOf="@id/tvLabelUserName" />
+
+    <TextView
+        android:paddingStart="0dp"
+        android:id="@+id/tvWeight"
+        android:paddingEnd="8dp"
+        android:fontFamily="@font/proximanova_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/tvLabelUserName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvLabelUserName"
+        tools:text="100.00" />
+
+    <TextView
+        android:id="@+id/tvApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/proximanova_bold"
+        android:text="CRGS"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvLeaderBoardLable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/proximanova_bold"
+        android:text="@string/leaderboard_label"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvApp" />
+
+    <ImageView
+        android:id="@+id/ivBGRank"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_bg_rank"
+        app:layout_constraintBottom_toBottomOf="@+id/ivBorderStrokeRank1"
+        app:layout_constraintEnd_toEndOf="@+id/ivBorderStrokeRank1"
+        app:layout_constraintStart_toStartOf="@+id/ivBorderStrokeRank1"
+        app:layout_constraintTop_toTopOf="@id/ivBorderStrokeRank1" />
+
+    <ImageView
+        android:id="@+id/ivCrown"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_crown"
+        app:layout_constraintEnd_toEndOf="@id/ivBorderStrokeRank1"
+        app:layout_constraintStart_toStartOf="@id/ivBorderStrokeRank1"
+        app:layout_constraintTop_toBottomOf="@id/tvLeaderBoardLable" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivBorderStrokeRank1"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:src="@drawable/bg_border_3_yellow_fff402"
+        app:layout_constraintEnd_toStartOf="@id/ivBorderStrokeRank3"
+        app:layout_constraintStart_toEndOf="@id/ivBorderStrokeRank2"
+        app:layout_constraintTop_toBottomOf="@id/ivCrown"
+        app:shapeAppearanceOverlay="@style/CustomShapeOVerlay50P" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivAvatarRank1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivBorderStrokeRank1"
+        app:layout_constraintEnd_toEndOf="@+id/ivBorderStrokeRank1"
+        app:layout_constraintStart_toStartOf="@+id/ivBorderStrokeRank1"
+        app:layout_constraintTop_toTopOf="@id/ivBorderStrokeRank1"
+        app:shapeAppearanceOverlay="@style/CustomShapeOVerlay50P"
+        tools:background="#E5E5E5"
+        tools:src="@drawable/ic_person" />
+
+    <ImageView
+        android:id="@+id/ivRank1"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_rank1"
+        app:layout_constraintBottom_toBottomOf="@id/ivBorderStrokeRank1"
+        app:layout_constraintEnd_toEndOf="@id/ivBorderStrokeRank1"
+        app:layout_constraintStart_toStartOf="@id/ivBorderStrokeRank1"
+        app:layout_constraintTop_toBottomOf="@id/ivBorderStrokeRank1" />
+
+    <TextView
+        android:id="@+id/tvNameRank1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/proximanova_sbold"
+        android:text="CRGS"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/ivRank1"
+        app:layout_constraintStart_toStartOf="@id/ivRank1"
+        app:layout_constraintTop_toBottomOf="@id/ivRank1" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivBorderStrokeRank2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/bg_border_3_cyan_4feaff"
+        app:layout_constraintEnd_toStartOf="@id/ivBorderStrokeRank1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/ivRank1"
+        app:shapeAppearanceOverlay="@style/CustomShapeOVerlay50P" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivAvatarRank2"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivBorderStrokeRank2"
+        app:layout_constraintEnd_toEndOf="@+id/ivBorderStrokeRank2"
+        app:layout_constraintStart_toStartOf="@+id/ivBorderStrokeRank2"
+        app:layout_constraintTop_toTopOf="@id/ivBorderStrokeRank2"
+        app:shapeAppearanceOverlay="@style/CustomShapeOVerlay50P"
+        tools:background="#E5E5E5"
+        tools:src="@drawable/ic_person" />
+
+    <ImageView
+        android:id="@+id/ivRank2"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_rank2"
+        app:layout_constraintBottom_toBottomOf="@id/ivBorderStrokeRank2"
+        app:layout_constraintEnd_toEndOf="@id/ivBorderStrokeRank2"
+        app:layout_constraintStart_toStartOf="@id/ivBorderStrokeRank2"
+        app:layout_constraintTop_toBottomOf="@id/ivBorderStrokeRank2" />
+
+    <TextView
+        android:id="@+id/tvNameRank2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/proximanova_sbold"
+        android:text="CRGS"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/ivRank2"
+        app:layout_constraintStart_toStartOf="@id/ivRank2"
+        app:layout_constraintTop_toBottomOf="@id/ivRank2" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivBorderStrokeRank3"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/bg_border_3_pink_ff9efb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivBorderStrokeRank1"
+        app:layout_constraintBottom_toBottomOf="@id/ivRank2"
+        app:shapeAppearanceOverlay="@style/CustomShapeOVerlay50P" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivAvatar"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivBorderStrokeRank3"
+        app:layout_constraintEnd_toEndOf="@+id/ivBorderStrokeRank3"
+        app:layout_constraintStart_toStartOf="@+id/ivBorderStrokeRank3"
+        app:layout_constraintTop_toTopOf="@id/ivBorderStrokeRank3"
+        app:shapeAppearanceOverlay="@style/CustomShapeOVerlay50P"
+        tools:background="#E5E5E5"
+        tools:src="@drawable/ic_person" />
+
+    <ImageView
+        android:id="@+id/ivRank3"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/ic_rank3"
+        app:layout_constraintBottom_toBottomOf="@id/ivBorderStrokeRank3"
+        app:layout_constraintEnd_toEndOf="@id/ivBorderStrokeRank3"
+        app:layout_constraintStart_toStartOf="@id/ivBorderStrokeRank3"
+        app:layout_constraintTop_toBottomOf="@id/ivBorderStrokeRank3" />
+
+    <TextView
+        android:id="@+id/tvNameRank3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/proximanova_sbold"
+        android:text="CRGS"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/ivRank3"
+        app:layout_constraintStart_toStartOf="@id/ivRank3"
+        app:layout_constraintTop_toBottomOf="@id/ivRank3" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:clipToPadding="false"
+        android:paddingTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/tvNameRank3"
+        tools:listitem="@layout/item_rank" />
+</androidx.constraintlayout.widget.ConstraintLayout>

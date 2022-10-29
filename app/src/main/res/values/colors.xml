@@ -31,6 +31,7 @@
 
 
     <color name="yellow_ffeb3b">#FFEB3B</color>
+    <color name="yellow_fff402">#FFE402</color>
 
     <color name="grey_dfe3e9">#DFE3E9</color>
     <color name="grey_7f8fa4">#7F8FA4</color>
@@ -42,6 +43,12 @@
     <color name="purple_652d90">#652d90</color>
     <color name="purple_a521bc">#A521BC</color>
     <color name="purple_9747ff">#9747FF</color>
+
+
+    <color name="pink_ff9efb">#FF9EFB</color>
+
+
+    <color name="cyan_4feaff">#4FEAFF</color>
 
 
     <color name="green_4caf50">#4CAF50</color>

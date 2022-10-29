@@ -35,6 +35,12 @@
         tools:layout="@layout/fragment_history" />
 
     <fragment
+        android:id="@+id/leaderboardFragment"
+        android:name="datn.cnpm.rcsystem.feature.leaderboard.LeaderboardFragment"
+        android:label="LeaderboardFragment"
+        tools:layout="@layout/fragment_leaderboard" />
+
+    <fragment
         android:id="@+id/giftHistoryDetailFragment"
         android:name="datn.cnpm.rcsystem.feature.history.giftdetail.GiftHistoryDetailFragment"
         android:label="GiftHistoryDetailFragment"
