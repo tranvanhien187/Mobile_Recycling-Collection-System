@@ -137,4 +137,19 @@
     <string name="dashboard_staff_schedule">My Schedule</string>
     <string name="leaderboard_label">Leaderboard</string>
     <string name="month_year">%s/%s</string>
+
+    <!-- Create form gift -->
+    <string name="create_form_gift_term_transaction">By clicking “Place Order”, you are agreeing to Recycling Collection System’s Transaction Terms</string>
+    <string name="create_form_gift_term_transaction_hyper_link_text">Recycling Collection System’s Transaction Terms</string>
+    <string name="create_form_name_and_phone">%s | %s</string>
+    <string name="create_form_gift_on_store">On-store</string>
+    <string name="create_form_gift_shipping">Shipping</string>
+    <string name="create_form_gift_warning">With the “On-store” option please visit our nearest agent store to receive your gift. Otherwise, you can pay an extra “Shipping fee*” to get your gift at home with the Shipping option.</string>
+    <string name="create_form_gift_warning_note">*Contact nearest agent store to get shipping fee information.</string>
+    <string name="create_form_gift_message">Message:</string>
+    <string name="create_form_gift_message_hint">Please leave a message…</string>
+    <string name="create_form_gift_order_total">Order total:</string>
+    <string name="create_form_gift_receive_options">Receive Options</string>
+    <string name="create_form_gift_total_payment">Total Payment</string>
+    <string name="create_form_gift_place_order">Place Order</string>
 </resources>

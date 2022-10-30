@@ -2,17 +2,22 @@ package datn.cnpm.rcsystem.feature.form.gift.create
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.SingletonObject
 import datn.cnpm.rcsystem.base.BaseFragment
+import datn.cnpm.rcsystem.common.extension.setColor
+import datn.cnpm.rcsystem.common.extension.setSpanClick
 import datn.cnpm.rcsystem.common.utils.CommonUtils.toPoint
 import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.databinding.FragmentCreateFormGiftBinding
+
 
 @AndroidEntryPoint
 class CreateFormGiftFragment : BaseFragment<FragmentCreateFormGiftBinding>() {
@@ -32,21 +37,26 @@ class CreateFormGiftFragment : BaseFragment<FragmentCreateFormGiftBinding>() {
 
     override fun initViews() {
         showToolbar(getString(R.string.create_form_label), R.drawable.ic_back)
-
         SingletonObject.customer?.let {
             binding.apply {
-                tvName.text = it.name
-                tvPhoneNumber.text = it.phoneNumber
-                edtStreet.setText(it.address?.street)
-                edtDistrict.setText(it.address?.district)
-                edtCity.setText(it.address?.provinceOrCity)
+                tvUserNameAndPhone.text =
+                    getString(R.string.create_form_name_and_phone, it.name, it.phoneNumber)
+                tvAddress.text = it.address?.street
+                tvTermOfTransaction.setColor(ContextCompat.getColor(requireContext(),
+                    R.color.blue_1c75ff),
+                    getString(R.string.create_form_gift_term_transaction_hyper_link_text))
+                tvTermOfTransaction.setSpanClick(getString(R.string.create_form_gift_term_transaction_hyper_link_text),
+                    false) {
+                    //TODO: Handle click later
+                }
+                tvGiftDescription.movementMethod = LinkMovementMethod.getInstance()
             }
         }
     }
 
     override fun initActions() {
         binding.apply {
-            btnRedeem.setOnClickListener {
+            btnOrder.setOnClickListener {
 //                viewModel.createTransportGarbage(
 //                    tvWeight.text.toString().toFloat(),
 //                    tvStreet.text.toString(),
@@ -91,19 +101,16 @@ class CreateFormGiftFragment : BaseFragment<FragmentCreateFormGiftBinding>() {
             observer = { gift ->
                 gift?.let {
                     binding.apply {
+                        tvBrand.text = it.brand
                         tvGiftName.text = it.name
+                        tvGiftDescription.text = it.description
                         tvTPlaceName.text = it.placeName
-                        tvGiftPoint.text = it.redemptionPoint.toPoint()
+                        tvTotalOrderValue.text = it.redemptionPoint.toPoint()
+                        tvPoint.text = it.redemptionPoint.toPoint()
 
                         GlideHelper.loadImage(
                             it.url ?: "",
-                            ivGift,
-                            R.drawable.image_default_image_rectangle
-                        )
-
-                        GlideHelper.loadImage(
-                            it.url ?: "",
-                            ivTPlaceBanner,
+                            imgGift,
                             R.drawable.image_default_image_rectangle
                         )
                     }
