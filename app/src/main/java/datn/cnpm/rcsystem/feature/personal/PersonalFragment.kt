@@ -9,6 +9,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.SingletonObject
 import datn.cnpm.rcsystem.base.BaseFragment
+import datn.cnpm.rcsystem.common.utils.CommonUtils.toPoint
 import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.databinding.FragmentPersonalBinding
 
@@ -33,14 +34,14 @@ class PersonalFragment : BaseFragment<FragmentPersonalBinding>() {
                 R.drawable.ic_person
             )
             binding.tvWeight.text = "${it.garbage?.exchange}"
-            binding.tvPhoneNumber.text = it.phoneNumber
             binding.tvName.text = it.name
+            binding.tvPoint.text = it.point?.remainPoint.toPoint()
         }
     }
 
     override fun initActions() {
         binding.apply {
-            btnEditProfile.setOnClickListener {
+            tvUpdateInfo.setOnClickListener {
                 findNavController().navigate(R.id.updateAccountInfoFragment)
             }
 

@@ -21,7 +21,6 @@ import datn.cnpm.rcsystem.feature.dashboard.adapter.GarbageAdapter
 import datn.cnpm.rcsystem.feature.dashboard.adapter.GiftYouMayBeLikeAdapter
 import datn.cnpm.rcsystem.feature.dashboard.adapter.TradingPlaceHomeAdapter
 import datn.cnpm.rcsystem.feature.gift.detail.GiftDetailFragment
-import datn.cnpm.rcsystem.feature.home.customer.HomeCustomerActivity
 import datn.cnpm.rcsystem.feature.tradingplace.detail.TradingPlaceDetailFragment
 import datn.cnpm.rcsystem.local.sharepreferences.AuthPreference
 import javax.inject.Inject
@@ -43,7 +42,7 @@ class DashboardCustomerFragment : BaseFragment<FragmentCustomerDashboardBinding>
 
     private val viewModel: DashboardCustomerViewModel by viewModels()
     override fun initData(data: Bundle?) {
-        viewModel.getUserInfo()
+        viewModel.getCustomerInfo()
         viewModel.fetchRandomTPlace()
         viewModel.fetchRandomGift()
     }

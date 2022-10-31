@@ -16,28 +16,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class UpdateUserInfoViewModel @Inject constructor(
-    private val updateUserInfoUseCase: UpdateUserInfoUseCase,
-    private val getUserInfoUseCase: GetCustomerInfoUseCase
-) :
+    private val updateUserInfoUseCase: UpdateUserInfoUseCase) :
     BaseViewModel<UpdateUserInfoState, UpdateUserInfoEvent>() {
     override fun initState() = UpdateUserInfoState()
 
     var uuid: String = ""
     var avatarFile: File? = null
-
-
-    fun checkUserUpdated(isUpdated: Boolean) {
-        viewModelScope.launch {
-            if (isUpdated) {
-                dispatchState(currentState.copy(loading = true))
-                val response = getUserInfoUseCase.getCustomerInfo(GetCustomerInfoUseCase.Parameters())
-                if(response.succeeded) {
-                    dispatchState(currentState.copy(loading = false))
-                    dispatchState(currentState.copy(user = response.requireData))
-                }
-            }
-        }
-    }
 
     fun updateUserInfo(
         avatar: File,

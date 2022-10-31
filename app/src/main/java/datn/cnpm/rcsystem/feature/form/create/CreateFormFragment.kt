@@ -71,7 +71,7 @@ class CreateFormFragment : BaseFragment<FragmentCreateFormBinding>() {
                         showDialogConfirm(
                             "You created transport garbage form successfully. Out staff will go soon.",
                             onConfirmClick = {
-                                findNavController().popBackStack()
+                                findNavController().popBackStack(R.id.dashboardCustomerFragment, true)
                             })
                     }
                 }

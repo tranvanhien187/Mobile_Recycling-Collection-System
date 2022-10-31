@@ -105,7 +105,7 @@
     <!-- Personal -->
     <string name="personal_logout">Log out</string>
     <string name="personal_about_us">About us</string>
-    <string name="personal_term_condition">Term and Condition</string>
+    <string name="personal_policy">Policy</string>
     <string name="personal_help">Help</string>
     <string name="personal_edit_profile">Edit profile</string>
 
@@ -121,6 +121,7 @@
     <string name="submit_label">Submit</string>
     <string name="ok_label">OK</string>
     <string name="create_form_label">Create Form</string>
+    <string name="redeem_gift_label">Redeem Gift</string>
     <string name="exchange_garbage_label">Exchange Garbage</string>
     <string name="exchange_btn">Exchange</string>
     <string name="complete_form_label">Complete Form</string>
@@ -152,4 +153,7 @@
     <string name="create_form_gift_receive_options">Receive Options</string>
     <string name="create_form_gift_total_payment">Total Payment</string>
     <string name="create_form_gift_place_order">Place Order</string>
+    <string name="your_remaining_points_label">Your remaining points</string>
+    <string name="personal_edit_information">Edit Information</string>
+    <string name="profile_label">Profile</string>
 </resources>

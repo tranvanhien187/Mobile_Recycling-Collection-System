@@ -54,6 +54,8 @@
     <color name="purple_652d90">#652d90</color>
     <color name="purple_a521bc">#A521BC</color>
     <color name="purple_9747ff">#9747FF</color>
+    <color name="purple_bb34fd">#BB34FD</color>
+
 
 
     <color name="pink_ff9efb">#FF9EFB</color>
@@ -61,6 +63,8 @@
 
     <color name="cyan_4feaff">#4FEAFF</color>
 
+    <color name="blue_58a0fa">#58A0FA</color>
+    <color name="blue_15eaf8">#15EAF8</color>
 
     <color name="green_4caf50">#4CAF50</color>
     <color name="green_00ad31">#00AD31</color>

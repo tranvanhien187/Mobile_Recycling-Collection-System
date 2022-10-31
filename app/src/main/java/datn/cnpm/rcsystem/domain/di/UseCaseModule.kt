@@ -152,6 +152,13 @@ abstract class UseCaseModule {
         useCase: CreateTransportGarbageFormUseCaseImpl
     ): CreateTransportGarbageFormUseCase
 
+
+    @Binds
+    @Singleton
+    abstract fun provideCreateTransportGiftFormUseCase(
+        useCase: CreateTransportGiftFormUseCaseImpl
+    ): CreateTransportGiftFormUseCase
+
     @Binds
     @Singleton
     abstract fun provideCompleteTransportFormUseCase(
@@ -169,7 +176,7 @@ abstract class UseCaseModule {
     abstract fun provideGetStatisticStaffCollection7DayUseCase(
         useCase: GetStatisticStaffCollection7DayUseCaseImpl
     ): GetStatisticStaffCollection7DayUseCase
-    
+
     @Binds
     @Singleton
     abstract fun provideGetStatisticTopStaffCollectUseCase(

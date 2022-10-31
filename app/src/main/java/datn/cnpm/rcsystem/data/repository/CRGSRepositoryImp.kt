@@ -12,6 +12,7 @@ import datn.cnpm.rcsystem.data.entitiy.statistic.StatisticStaffCollectResponse
 import datn.cnpm.rcsystem.data.entitiy.statistic.StatisticStaffCollectWeightByDayResponse
 import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGarbageRequest
+import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGiftRequest
 import datn.cnpm.rcsystem.data.entitiy.transport.ReceiveFormRequest
 import datn.cnpm.rcsystem.domain.model.history.BaseItemHistory
 import datn.cnpm.rcsystem.domain.model.history.GiftHistoryDetailResponse
@@ -205,6 +206,34 @@ class CRGSRepositoryImp @Inject constructor(
         val response = authenticationDataSource.createTransportGarbageForm(
             CreateTransportGarbageRequest(
                 authPre.id, exchangeWeight,
+                street,
+                district,
+                cityOrProvince
+            )
+        )
+        if (response.isSuccess) {
+            return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
+        } else {
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+        }
+    }
+
+    override suspend fun createTransportGiftForm(
+        giftId: String,
+        street: String,
+        district: String,
+        cityOrProvince: String,
+    ): String {
+        val response = authenticationDataSource.createTransportGiftForm(
+            CreateTransportGiftRequest(
+                giftId,
+                authPre.id,
                 street,
                 district,
                 cityOrProvince

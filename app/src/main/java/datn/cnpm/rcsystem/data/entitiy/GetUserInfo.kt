@@ -1,6 +1,6 @@
 package datn.cnpm.rcsystem.data.entitiy
 
-import java.sql.Date
+import java.sql.Timestamp
 
 data class GetCustomerInfoResponse(
     val id: String? = null,
@@ -10,7 +10,7 @@ data class GetCustomerInfoResponse(
     val avatar: String? = null,
     val identityCardNumber: String? = null,
     val phoneNumber: String? = null,
-    val dateOfBirth: Date? = null,
+    val dateOfBirth: Timestamp? = null,
     val address: AddressResponse? = null,
     val garbageManagement: GarbageManagementResponse? = null,
     val point: PointResponse

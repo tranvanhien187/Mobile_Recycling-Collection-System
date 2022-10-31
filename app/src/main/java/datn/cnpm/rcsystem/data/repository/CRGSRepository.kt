@@ -51,6 +51,13 @@ interface CRGSRepository {
         cityOrProvince: String,
     ): String
 
+    suspend fun createTransportGiftForm(
+        giftId: String,
+        street: String,
+        district: String,
+        cityOrProvince: String,
+    ): String
+
     suspend fun receiveTransportForm(
         historyGarbageId: String,
         customerName: String,

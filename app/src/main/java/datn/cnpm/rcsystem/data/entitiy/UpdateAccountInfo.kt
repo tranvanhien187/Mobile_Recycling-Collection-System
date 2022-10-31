@@ -1,7 +1,7 @@
 package datn.cnpm.rcsystem.data.entitiy
 
 import java.io.File
-import java.sql.Date
+import java.sql.Timestamp
 
 data class UpdateUserInfoRequest(
     val avatar: File,
@@ -23,7 +23,7 @@ data class UpdateUserInfoResponse(
     val avatar: String? = null,
     val phoneNumber: String? = null,
     val identityCardNumber: String? = null,
-    val dateOfBirth: Date? = null,
+    val dateOfBirth: Timestamp? = null,
     val address: AddressResponse? = null
 )
 

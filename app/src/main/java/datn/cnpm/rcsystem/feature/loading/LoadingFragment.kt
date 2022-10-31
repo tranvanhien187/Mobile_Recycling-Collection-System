@@ -35,15 +35,19 @@ class LoadingFragment: BaseFragment<FragmentLoadingBinding>() {
             delay(1000)
             if(authPreference.isRememberMe) {
                 if (authPreference.role.isNotEmpty()) {
-                    if(authPreference.role == Role.CUSTOMER.toString()) {
-                        val intent = Intent(requireActivity(), HomeCustomerActivity::class.java)
-                        startActivity(intent)
-                    } else if(authPreference.role == Role.AGENT.toString()) {
-                        val intent = Intent(requireActivity(), HomeAgentActivity::class.java)
-                        startActivity(intent)
-                    } else if(authPreference.role == Role.STAFF.toString()) {
-                        val intent = Intent(requireActivity(), HomeStaffActivity::class.java)
-                        startActivity(intent)
+                    when (authPreference.role) {
+                        Role.CUSTOMER.toString() -> {
+                            val intent = Intent(requireActivity(), HomeCustomerActivity::class.java)
+                            startActivity(intent)
+                        }
+                        Role.AGENT.toString() -> {
+                            val intent = Intent(requireActivity(), HomeAgentActivity::class.java)
+                            startActivity(intent)
+                        }
+                        Role.STAFF.toString() -> {
+                            val intent = Intent(requireActivity(), HomeStaffActivity::class.java)
+                            startActivity(intent)
+                        }
                     }
                 } else {
                     findNavController().navigate(LoadingFragmentDirections.actionLoadingFragmentToLoginFragment())

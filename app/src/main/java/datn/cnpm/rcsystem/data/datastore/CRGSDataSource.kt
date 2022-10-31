@@ -10,6 +10,7 @@ import datn.cnpm.rcsystem.data.entitiy.statistic.StatisticStaffCollectResponse
 import datn.cnpm.rcsystem.data.entitiy.statistic.StatisticStaffCollectWeightByDayResponse
 import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGarbageRequest
+import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGiftRequest
 import datn.cnpm.rcsystem.data.entitiy.transport.ReceiveFormRequest
 import datn.cnpm.rcsystem.domain.model.history.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -100,6 +101,10 @@ class CRGSDataSource @Inject constructor(private val authenticationApiService: C
 
     suspend fun createTransportGarbageForm(request: CreateTransportGarbageRequest): SBResponse<String> {
         return authenticationApiService.createTransportGarbageForm(request)
+    }
+
+    suspend fun createTransportGiftForm(request: CreateTransportGiftRequest): SBResponse<String> {
+        return authenticationApiService.createTransportGiftForm(request)
     }
 
     suspend fun receiveTransportForm(request: ReceiveFormRequest): SBResponse<String> {

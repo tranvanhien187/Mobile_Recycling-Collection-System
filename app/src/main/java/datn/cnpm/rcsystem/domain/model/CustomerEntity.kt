@@ -3,6 +3,7 @@ package datn.cnpm.rcsystem.domain.model
 import datn.cnpm.rcsystem.SingletonObject
 import datn.cnpm.rcsystem.data.entitiy.*
 import java.sql.Date
+import java.sql.Timestamp
 
 data class CustomerEntity(
     val id: String? = null,
@@ -12,7 +13,7 @@ data class CustomerEntity(
     val avatar: String? = null,
     val identityCardNumber: String? = null,
     val phoneNumber: String? = null,
-    val dOB: Date? = null,
+    val dOB: Timestamp? = null,
     val address: AddressResponse? = null,
     val garbage: GarbageManagementResponse? = null,
     val point: PointResponse? = null

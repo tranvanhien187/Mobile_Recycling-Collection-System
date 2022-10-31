@@ -7,9 +7,9 @@ import datn.cnpm.rcsystem.core.logging.DebugLog
 import datn.cnpm.rcsystem.core.requireData
 import datn.cnpm.rcsystem.core.requireError
 import datn.cnpm.rcsystem.core.succeeded
+import datn.cnpm.rcsystem.domain.usecase.GetCustomerInfoUseCase
 import datn.cnpm.rcsystem.domain.usecase.GetGiftRandom6UserCase
 import datn.cnpm.rcsystem.domain.usecase.GetTPlaceRandom6UseCase
-import datn.cnpm.rcsystem.domain.usecase.GetCustomerInfoUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,11 +22,13 @@ class DashboardCustomerViewModel @Inject constructor(
     BaseViewModel<DashboardCustomerState, DashboardCustomerEvent>() {
     override fun initState() = DashboardCustomerState()
 
-    fun getUserInfo() {
+    fun getCustomerInfo() {
         viewModelScope.launch {
             val response = getUserInfoUseCase.getCustomerInfo()
             if (response.succeeded) {
                 dispatchState(currentState.copy(userEntity = response.requireData))
+            } else {
+                DebugLog.e(response.requireError.message)
             }
         }
     }
@@ -36,6 +38,8 @@ class DashboardCustomerViewModel @Inject constructor(
             val response = getTPlaceRandom6UseCase.getTPlaceRandom6()
             if (response.succeeded) {
                 dispatchState(currentState.copy(tPlaceList = response.requireData))
+            } else {
+                DebugLog.e(response.requireError.message)
             }
         }
     }

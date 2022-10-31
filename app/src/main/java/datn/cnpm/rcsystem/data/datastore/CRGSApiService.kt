@@ -10,6 +10,7 @@ import datn.cnpm.rcsystem.data.entitiy.statistic.StatisticStaffCollectResponse
 import datn.cnpm.rcsystem.data.entitiy.statistic.StatisticStaffCollectWeightByDayResponse
 import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGarbageRequest
+import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGiftRequest
 import datn.cnpm.rcsystem.data.entitiy.transport.ReceiveFormRequest
 import datn.cnpm.rcsystem.domain.model.history.*
 import okhttp3.MultipartBody
@@ -96,7 +97,7 @@ interface CRGSApiService {
 
 
     /***        STAFF      ***/
-    @POST("/api/v1/transport/receiveForm")
+    @POST("/api/v1/transport/garbage/receiveForm")
     suspend fun receiveTransportForm(@Body request: ReceiveFormRequest): SBResponse<String>
 
     @GET("/api/v1/staff/{id}")
@@ -126,13 +127,16 @@ interface CRGSApiService {
     suspend fun getGarbageHistoryDetail(@Path("id") historyId: String): SBResponse<GarbageHistoryDetailResponse>
 
     /***        STAFF      ***/
-    @POST("/api/v1/transport/createForm")
+    @POST("/api/v1/transport/garbage/createForm")
     suspend fun createTransportGarbageForm(@Body request: CreateTransportGarbageRequest): SBResponse<String>
+
+    @POST("/api/v1/transport/gift/createForm")
+    suspend fun createTransportGiftForm(@Body request: CreateTransportGiftRequest): SBResponse<String>
 
     /******/
 
     @Multipart
-    @POST("/api/v1/transport/completeForm")
+    @POST("/api/v1/transport/garbage/completeForm")
     suspend fun completeTransportGarbageForm(
         @Part evidence: MultipartBody.Part,
         @Part("weight") weight: RequestBody,

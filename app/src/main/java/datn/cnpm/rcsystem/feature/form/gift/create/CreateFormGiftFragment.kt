@@ -36,17 +36,23 @@ class CreateFormGiftFragment : BaseFragment<FragmentCreateFormGiftBinding>() {
     }
 
     override fun initViews() {
-        showToolbar(getString(R.string.create_form_label), R.drawable.ic_back)
+        showToolbar(getString(R.string.redeem_gift_label), R.drawable.ic_back)
         SingletonObject.customer?.let {
             binding.apply {
                 tvUserNameAndPhone.text =
                     getString(R.string.create_form_name_and_phone, it.name, it.phoneNumber)
                 tvAddress.text = it.address?.street
-                tvTermOfTransaction.setColor(ContextCompat.getColor(requireContext(),
-                    R.color.blue_1c75ff),
-                    getString(R.string.create_form_gift_term_transaction_hyper_link_text))
-                tvTermOfTransaction.setSpanClick(getString(R.string.create_form_gift_term_transaction_hyper_link_text),
-                    false) {
+                tvTermOfTransaction.setColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.blue_1c75ff
+                    ),
+                    getString(R.string.create_form_gift_term_transaction_hyper_link_text)
+                )
+                tvTermOfTransaction.setSpanClick(
+                    getString(R.string.create_form_gift_term_transaction_hyper_link_text),
+                    false
+                ) {
                     //TODO: Handle click later
                 }
                 tvGiftDescription.movementMethod = LinkMovementMethod.getInstance()
@@ -57,12 +63,9 @@ class CreateFormGiftFragment : BaseFragment<FragmentCreateFormGiftBinding>() {
     override fun initActions() {
         binding.apply {
             btnOrder.setOnClickListener {
-//                viewModel.createTransportGarbage(
-//                    tvWeight.text.toString().toFloat(),
-//                    tvStreet.text.toString(),
-//                    tvDistrict.text.toString(),
-//                    tvCity.text.toString(),
-//                )
+                SingletonObject.customer?.address?.let {
+                    viewModel.createTransportGarbage(it.street, it.district, it.provinceOrCity)
+                }
             }
         }
     }
@@ -83,14 +86,17 @@ class CreateFormGiftFragment : BaseFragment<FragmentCreateFormGiftBinding>() {
 
         viewModel.liveEvent.observe(viewLifecycleOwner) { event ->
             when (event) {
-                is CreateFormGiftEvent.CreateTransportGarbageSuccess -> {
+                is CreateFormGiftEvent.CreateTransportGiftSuccess -> {
                     context?.let {
                         showDialogConfirm(
-                            "You created transport garbage form successfully. Out staff will go soon.",
+                            "You created transport garbage form successfully. Our staff will go soon.",
                             onConfirmClick = {
-                                findNavController().popBackStack()
+                                findNavController().popBackStack(R.id.dashboardCustomerFragment, true)
                             })
                     }
+                }
+                is CreateFormGiftEvent.CreateTransportGiftFailure -> {
+                    showError(event.error)
                 }
             }
         }
@@ -99,17 +105,17 @@ class CreateFormGiftFragment : BaseFragment<FragmentCreateFormGiftBinding>() {
             owner = viewLifecycleOwner,
             selector = { state -> state.gift },
             observer = { gift ->
-                gift?.let {
+                gift?.let { data ->
                     binding.apply {
-                        tvBrand.text = it.brand
-                        tvGiftName.text = it.name
-                        tvGiftDescription.text = it.description
-                        tvTPlaceName.text = it.placeName
-                        tvTotalOrderValue.text = it.redemptionPoint.toPoint()
-                        tvPoint.text = it.redemptionPoint.toPoint()
+                        tvBrand.text = data.brand
+                        tvGiftName.text = data.name
+                        tvGiftDescription.text = data.description
+                        tvAddress.text = "${data.street}, ${data.district}, ${data.provinceOrCity}"
+                        tvTotalOrderValue.text = data.redemptionPoint.toPoint()
+                        tvPoint.text = data.redemptionPoint.toPoint()
 
                         GlideHelper.loadImage(
-                            it.url ?: "",
+                            data.url ?: "",
                             imgGift,
                             R.drawable.image_default_image_rectangle
                         )

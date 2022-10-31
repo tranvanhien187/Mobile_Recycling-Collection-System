@@ -195,7 +195,7 @@
                 android:paddingEnd="0dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toBottomOf="@id/tvWCIGot"
-                tools:listitem="@layout/item_gift_home" />
+                tools:listitem="@layout/item_recycling_garbage" />
 
             <TextView
                 android:id="@+id/tvGYMLike"
@@ -236,7 +236,7 @@
                 android:paddingEnd="0dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toBottomOf="@id/tvGYMLike"
-                tools:listitem="@layout/item_recycling_garbage" />
+                tools:listitem="@layout/item_gift_by_agent" />
 
 
             <TextView

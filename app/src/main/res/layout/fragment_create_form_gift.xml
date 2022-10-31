@@ -20,7 +20,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/tvTPlaceName"
+                android:id="@+id/tvTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -35,21 +35,21 @@
                 app:layout_constraintEnd_toStartOf="@id/imgArrowAddress"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Delivery Address" />
+                android:text="Delivery Address" />
 
             <TextView
                 android:id="@+id/tvUserNameAndPhone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="6dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/proximanova_reg"
                 android:textColor="@color/black_202020"
                 android:textSize="14dp"
                 app:layout_constraintEnd_toStartOf="@id/imgArrowAddress"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvTPlaceName"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
                 tools:text="User Name | Phone Number" />
 
             <TextView
@@ -68,7 +68,7 @@
                 app:layout_constraintEnd_toStartOf="@id/imgArrowAddress"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvUserNameAndPhone"
-                tools:text="User Name | Phone Number Address with max 2 line and ellipse end" />
+                tools:text="Address with max 2 line and ellipse end" />
 
             <ImageView
                 android:id="@+id/imgArrowAddress"
@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="24dp"
-                android:fontFamily="@font/proximanova_reg"
+                android:fontFamily="@font/proximanova_bold"
                 android:textColor="@color/black"
                 android:textSize="13dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -131,13 +131,14 @@
             <TextView
                 android:id="@+id/tvGiftDescription"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="24dp"
+                android:ellipsize="end"
                 android:fontFamily="@font/proximanova_light"
+                android:maxLines="5"
                 android:textColor="@color/black"
                 android:textSize="12dp"
-                android:gravity="top|start"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/imgGift"

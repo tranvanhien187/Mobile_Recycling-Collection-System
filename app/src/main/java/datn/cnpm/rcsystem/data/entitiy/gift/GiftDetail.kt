@@ -2,7 +2,7 @@ package datn.cnpm.rcsystem.data.entitiy.gift
 
 
 data class GiftDetailResponse(
-    val id: String? = null,
+    val id: String,
     val brand: String? = null,
     val name: String? = null,
     val description: String? = null,

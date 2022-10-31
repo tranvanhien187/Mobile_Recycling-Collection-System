@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class GiftDetailEntity(
-    val id: String? = null,
+    val id: String,
     val brand: String? = null,
     val name: String? = null,
     val description: String? = null,
