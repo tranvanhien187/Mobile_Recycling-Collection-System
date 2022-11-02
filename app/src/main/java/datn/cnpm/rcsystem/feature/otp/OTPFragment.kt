@@ -20,14 +20,16 @@ class OTPFragment : BaseFragment<FragmentOtpBinding>() {
         get() = FragmentOtpBinding::inflate
 
     private val viewModel: OTPViewModel by viewModels()
+
+    override fun isDisableFullScreen(): Boolean = false
+
     override fun initData(data: Bundle?) {
         data?.let {
             viewModel.setData(data.getString(EMAIL_KEY, ""), data.getInt(TYPE_KEY))
         }
     }
 
-    override fun initViews() {
-    }
+    override fun initViews() = Unit
 
     override fun initActions() {
         binding.apply {

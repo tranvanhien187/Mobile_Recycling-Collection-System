@@ -35,6 +35,9 @@ class UpdateCustomerInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding
 
     private var cityList = emptyList<String>()
     private lateinit var bottomBehavior: BottomSheetBehavior<ConstraintLayout>
+
+    override fun isDisableFullScreen(): Boolean = false
+
     override fun initData(data: Bundle?) {
         cityList = context?.resources?.getStringArray(R.array.City)?.toList() ?: emptyList()
     }

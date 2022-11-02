@@ -13,6 +13,8 @@ class ChangePasswordFragment : BaseFragment<FragmentChangePasswordBinding>() {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentChangePasswordBinding
         get() = FragmentChangePasswordBinding::inflate
 
+    override fun isDisableFullScreen(): Boolean = false
+
     override fun initData(data: Bundle?) {
     }
 

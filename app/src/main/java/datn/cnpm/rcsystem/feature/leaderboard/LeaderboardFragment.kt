@@ -26,15 +26,14 @@ class LeaderboardFragment : BaseFragment<FragmentLeaderboardBinding>() {
     }
 
     override fun initViews() {
+        setStatusBarColor(R.color.white)
         binding.rvRank.adapter = adapter
         SingletonObject.staff?.let {
             binding.tvWeight.text = "${it.weightTotal}"
         }
     }
 
-    override fun initActions() {
-
-    }
+    override fun initActions() = Unit
 
     override fun initObservers() {
         viewModel.observe(

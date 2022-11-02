@@ -23,11 +23,12 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>() {
         get() = FragmentForgotPasswordBinding::inflate
 
     private val viewModel: ForgotPasswordViewModel by viewModels()
-    override fun initData(data: Bundle?) {
-    }
 
-    override fun initViews() {
-    }
+    override fun isDisableFullScreen(): Boolean = false
+
+    override fun initData(data: Bundle?) = Unit
+
+    override fun initViews() = Unit
 
     override fun initActions() {
         binding.apply {
@@ -64,7 +65,7 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>() {
                     is ForgotPasswordEvent.GenOTPFailure -> {
 
                     }
-                    else -> {}
+                    else -> Unit
 
                 }
             }
