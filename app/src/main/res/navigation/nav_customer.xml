@@ -56,15 +56,15 @@
 
     <fragment
         android:id="@+id/createFormFragment"
-        android:name="datn.cnpm.rcsystem.feature.form.create.CreateFormFragment"
+        android:name="datn.cnpm.rcsystem.feature.form.garbage.create.CreateGarbageFormFragment"
         android:label="CreateFormFragment"
-        tools:layout="@layout/fragment_create_form" />
+        tools:layout="@layout/fragment_create_garbage_form" />
 
     <fragment
         android:id="@+id/createFormGiftFragment"
         android:name="datn.cnpm.rcsystem.feature.form.gift.create.CreateFormGiftFragment"
         android:label="CreateFormFragment"
-        tools:layout="@layout/fragment_create_form_gift" />
+        tools:layout="@layout/fragment_create_gift_form" />
 
     <fragment
         android:id="@+id/updateAccountInfoFragment"

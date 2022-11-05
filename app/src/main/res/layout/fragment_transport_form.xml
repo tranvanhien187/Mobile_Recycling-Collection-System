@@ -1,20 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/transactionDetailBody"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:paddingTop="16dp"
-        android:clipToPadding="false"
-        android:id="@+id/rvForm"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_transport_form" />
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="24dp"
+        android:background="@drawable/bg_tab_layout_history"
+        android:layout_marginTop="25dp"
+        app:tabBackground="@null"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:clipToOutline="false"
+        app:tabRippleColor="@null"
+        app:tabIndicatorColor="@color/green_52de97"
+        app:tabIndicator="@drawable/bg_tab_item_history"
+        app:tabIndicatorGravity="stretch"
+        app:tabSelectedTextColor="@color/black"
+        app:tabTextAppearance="@style/tabBarDiscover"
+        app:tabTextColor="@color/grey_9c9d9f" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 </LinearLayout>

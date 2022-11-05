@@ -176,10 +176,10 @@ class GiftFragment : BaseFragment<FragmentGiftBinding>() {
 
         viewModel.observe(
             owner = viewLifecycleOwner,
-            selector = { state -> state.listPlace },
-            observer = { listPlace ->
-                if (listPlace.isNotEmpty()) {
-                    giftAdapter.submitList(listPlace)
+            selector = { state -> state.listGift },
+            observer = { listGift ->
+                if (listGift.isNotEmpty()) {
+                    giftAdapter.submitList(listGift)
                 }
             }
         )

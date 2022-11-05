@@ -1,6 +1,5 @@
 package datn.cnpm.rcsystem.feature.dashboard.staff
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
@@ -16,11 +15,11 @@ import datn.cnpm.rcsystem.core.logging.DebugLog
 import datn.cnpm.rcsystem.core.requireData
 import datn.cnpm.rcsystem.core.requireError
 import datn.cnpm.rcsystem.core.succeeded
-import datn.cnpm.rcsystem.domain.model.TransportForm
+import datn.cnpm.rcsystem.domain.model.TransportFormFirebase
 import datn.cnpm.rcsystem.domain.model.history.HistoryStatus
 import datn.cnpm.rcsystem.domain.usecase.GetStaffInfoUseCase
 import datn.cnpm.rcsystem.domain.usecase.statistic.GetStatisticStaffCollection7DayUseCase
-import datn.cnpm.rcsystem.feature.transportform.list.TransportFormViewModel
+import datn.cnpm.rcsystem.feature.transportform.mission.MissionViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -31,6 +30,42 @@ class DashboardStaffViewModel @Inject constructor(
 ) : BaseViewModel<DashboardStaffState, DashboardStaffEvent>() {
     override fun initState() = DashboardStaffState()
 
+    companion object {
+
+        const val TRANSPORT_FORM = "TRANSPORT_FORM"
+    }
+
+    fun listenerReceiveForm() {
+        SingletonObject.staff?.let {
+            Firebase.database.getReference(TRANSPORT_FORM).child(HistoryStatus.RECEIVE.name).child(it.id).limitToLast(1)
+                .addChildEventListener(object :
+                    ChildEventListener {
+                    override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                        snapshot.getValue(TransportFormFirebase::class.java)?.let { form ->
+                            dispatchState(state = currentState.copy(form = form))
+                        }
+                    }
+
+                    override fun onChildChanged(
+                        snapshot: DataSnapshot,
+                        previousChildName: String?
+                    ) {
+                    }
+
+                    override fun onChildRemoved(snapshot: DataSnapshot) {
+                        snapshot.getValue(TransportFormFirebase::class.java)?.let { form ->
+                            dispatchState(state = currentState.copy(form = null))
+                        }
+                    }
+
+                    override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                    }
+                })
+        }
+    }
 
     fun fetchStaffInfo() {
         viewModelScope.launch {
@@ -39,7 +74,6 @@ class DashboardStaffViewModel @Inject constructor(
                 getStaffInfoUseCase.getStaffInfo()
             if (response.succeeded) {
                 fetchStatisticStaffCollection7Day(response.requireData.id)
-                listener()
                 dispatchState(state = currentState.copy(staff = response.requireData))
             } else if (response.failed) {
                 when (response.requireError.errorCode) {
@@ -62,49 +96,14 @@ class DashboardStaffViewModel @Inject constructor(
             dispatchState(currentState.copy(loading = true))
             val response =
                 getStatisticStaffCollectWeightByDay.getStatisticsStaffCollectLast7Days(
-                    GetStatisticStaffCollection7DayUseCase.Parameters(staffId))
+                    GetStatisticStaffCollection7DayUseCase.Parameters(staffId)
+                )
             if (response.succeeded) {
-                listener()
                 dispatchState(state = currentState.copy(staffCollection7Day = response.requireData))
             } else {
                 DebugLog.e(response.requireError.message)
             }
             dispatchState(currentState.copy(loading = false))
         }
-    }
-
-
-    val database = Firebase.database
-    val formList = mutableListOf<TransportForm>()
-    private var staffId: String = ""
-
-    fun listener() {
-        database.getReference(TransportFormViewModel.TRANSPORT_FORM)
-            .child(TransportFormViewModel.GARBAGE).child(
-            HistoryStatus.RECEIVE.name).child(SingletonObject.staff!!.id)
-            .addChildEventListener(object :
-                ChildEventListener {
-                override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                    snapshot.getValue(TransportForm::class.java)?.let {
-                        formList.add(it)
-                        Log.d("AAAAA", it.id)
-                    }
-                }
-
-                override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-                }
-
-                override fun onChildRemoved(snapshot: DataSnapshot) {
-                    snapshot.getValue(TransportForm::class.java)?.let {
-                        formList.remove(it)
-                    }
-                }
-
-                override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                }
-            })
     }
 }

@@ -22,7 +22,7 @@ class GiftViewModel @Inject constructor(private val getGiftByCriteriaUseCase: Ge
             val response =
                 getGiftByCriteriaUseCase.getGiftByCriteria(GetGiftByCriteriaUseCase.Parameters())
             if (response.succeeded) {
-                dispatchState(currentState.copy(listPlace = response.requireData))
+                dispatchState(currentState.copy(listGift = response.requireData))
             } else {
                 DebugLog.e(response.requireError.message)
             }

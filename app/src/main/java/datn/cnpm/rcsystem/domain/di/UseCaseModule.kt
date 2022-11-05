@@ -94,9 +94,15 @@ abstract class UseCaseModule {
 
     @Binds
     @Singleton
-    abstract fun provideReceiveTransportFormUseCase(
+    abstract fun provideReceiveTransportGarbageFormUseCase(
         useCase: ReceiveTransportFormUseCaseImpl
     ): ReceiveTransportFormUseCase
+
+    @Binds
+    @Singleton
+    abstract fun provideReceiveTransportGiftFormUseCase(
+        useCase: ReceiveTransportGiftFormUseCaseImpl
+    ): ReceiveTransportGiftFormUseCase
 
     @Binds
     @Singleton
@@ -152,7 +158,6 @@ abstract class UseCaseModule {
         useCase: CreateTransportGarbageFormUseCaseImpl
     ): CreateTransportGarbageFormUseCase
 
-
     @Binds
     @Singleton
     abstract fun provideCreateTransportGiftFormUseCase(
@@ -161,9 +166,15 @@ abstract class UseCaseModule {
 
     @Binds
     @Singleton
-    abstract fun provideCompleteTransportFormUseCase(
-        useCase: CompleteTransportFormUseCaseImpl
-    ): CompleteTransportFormUseCase
+    abstract fun provideCompleteTransportGarbageFormUseCase(
+        useCase: CompleteTransportGarbageFormUseCaseImpl
+    ): CompleteTransportGarbageFormUseCase
+
+    @Binds
+    @Singleton
+    abstract fun provideCompleteTransportGiftFormUseCase(
+        useCase: CompleteTransportGiftFormUseCaseImpl
+    ): CompleteTransportGiftFormUseCase
 
     @Binds
     @Singleton

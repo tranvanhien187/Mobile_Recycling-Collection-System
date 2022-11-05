@@ -18,15 +18,33 @@
 
     <fragment
         android:id="@+id/receiveFormFragment"
-        android:name="datn.cnpm.rcsystem.feature.form.receive.ReceiveFormFragment"
-        android:label="TransportFormDetailFragment"
-        tools:layout="@layout/fragment_receive_form" />
+        android:name="datn.cnpm.rcsystem.feature.form.garbage.receive.ReceiveGarbageFormFragment"
+        android:label="ReceiveGarbageFormFragment"
+        tools:layout="@layout/fragment_receive_garbage_form" />
+
+    <fragment
+        android:id="@+id/receiveFromGiftFragment"
+        android:name="datn.cnpm.rcsystem.feature.form.gift.receive.ReceiveFromGiftFragment"
+        android:label="ReceiveFromGiftFragment"
+        tools:layout="@layout/fragment_receive_gift_form" />
 
     <fragment
         android:id="@+id/completeFormFragment"
-        android:name="datn.cnpm.rcsystem.feature.form.complete.CompleteFormFragment"
+        android:name="datn.cnpm.rcsystem.feature.form.garbage.complete.CompleteGarbageFormFragment"
         android:label="CompleteFormFragment"
-        tools:layout="@layout/fragment_complete_form" />
+        tools:layout="@layout/fragment_complete_garbage_form" />
+
+    <fragment
+        android:id="@+id/completeGiftFormFragment"
+        android:name="datn.cnpm.rcsystem.feature.form.gift.complete.CompleteGiftFormFragment"
+        android:label="CompleteGiftFormFragment"
+        tools:layout="@layout/fragment_complete_gift_form" />
+
+    <fragment
+        android:id="@+id/missionFragment"
+        android:name="datn.cnpm.rcsystem.feature.transportform.mission.MissionFragment"
+        android:label="CompleteGiftFormFragment"
+        tools:layout="@layout/fragment_list" />
 
     <fragment
         android:id="@+id/historyFragment"
@@ -44,11 +62,11 @@
         android:id="@+id/giftHistoryDetailFragment"
         android:name="datn.cnpm.rcsystem.feature.history.giftdetail.GiftHistoryDetailFragment"
         android:label="GiftHistoryDetailFragment"
-        tools:layout="@layout/fragment_gift_history_detail"/>
+        tools:layout="@layout/fragment_gift_history_detail" />
 
     <fragment
         android:id="@+id/garbageHistoryDetailFragment"
         android:name="datn.cnpm.rcsystem.feature.history.garbagedetail.GarbageHistoryDetailFragment"
         android:label="GarbageHistoryDetailFragment"
-        tools:layout="@layout/fragment_garbage_history_detail"/>
+        tools:layout="@layout/fragment_garbage_history_detail" />
 </navigation>

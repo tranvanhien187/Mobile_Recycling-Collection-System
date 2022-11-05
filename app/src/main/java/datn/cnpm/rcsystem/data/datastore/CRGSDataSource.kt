@@ -11,7 +11,8 @@ import datn.cnpm.rcsystem.data.entitiy.statistic.StatisticStaffCollectWeightByDa
 import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGarbageRequest
 import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGiftRequest
-import datn.cnpm.rcsystem.data.entitiy.transport.ReceiveFormRequest
+import datn.cnpm.rcsystem.data.entitiy.transport.ReceiveFormGarbageRequest
+import datn.cnpm.rcsystem.data.entitiy.transport.ReceiveFormGiftRequest
 import datn.cnpm.rcsystem.domain.model.history.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -107,8 +108,12 @@ class CRGSDataSource @Inject constructor(private val authenticationApiService: C
         return authenticationApiService.createTransportGiftForm(request)
     }
 
-    suspend fun receiveTransportForm(request: ReceiveFormRequest): SBResponse<String> {
+    suspend fun receiveTransportForm(request: ReceiveFormGarbageRequest): SBResponse<String> {
         return authenticationApiService.receiveTransportForm(request)
+    }
+
+    suspend fun receiveTransportGiftForm(request: ReceiveFormGiftRequest): SBResponse<String> {
+        return authenticationApiService.receiveTransportGiftForm(request)
     }
 
     suspend fun completeTransportGarbageForm(evidenceFile: File,
@@ -127,6 +132,24 @@ class CRGSDataSource @Inject constructor(private val authenticationApiService: C
         return authenticationApiService.completeTransportGarbageForm(
             evidence,
             weightParam,
+            staffIdParam,
+            formIdParam
+        )
+    }
+
+    suspend fun completeTransportGiftForm(evidenceFile: File,
+                                             staffId: String,
+                                             formId: String): SBResponse<String> {
+
+        val staffIdParam = staffId.toRequestBody("text/plain".toMediaTypeOrNull())
+        val formIdParam = formId.toRequestBody("text/plain".toMediaTypeOrNull())
+        val evidence: MultipartBody.Part = MultipartBody.Part.createFormData(
+            "evidence",
+            evidenceFile.name,
+            evidenceFile.asRequestBody("image/*".toMediaTypeOrNull())
+        )
+        return authenticationApiService.completeTransportGiftForm(
+            evidence,
             staffIdParam,
             formIdParam
         )

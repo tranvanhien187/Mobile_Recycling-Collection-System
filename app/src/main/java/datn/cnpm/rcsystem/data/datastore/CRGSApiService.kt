@@ -11,7 +11,8 @@ import datn.cnpm.rcsystem.data.entitiy.statistic.StatisticStaffCollectWeightByDa
 import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGarbageRequest
 import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGiftRequest
-import datn.cnpm.rcsystem.data.entitiy.transport.ReceiveFormRequest
+import datn.cnpm.rcsystem.data.entitiy.transport.ReceiveFormGarbageRequest
+import datn.cnpm.rcsystem.data.entitiy.transport.ReceiveFormGiftRequest
 import datn.cnpm.rcsystem.domain.model.history.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -97,8 +98,6 @@ interface CRGSApiService {
 
 
     /***        STAFF      ***/
-    @POST("/api/v1/transport/garbage/receiveForm")
-    suspend fun receiveTransportForm(@Body request: ReceiveFormRequest): SBResponse<String>
 
     @GET("/api/v1/staff/{id}")
     suspend fun getStaffInfo(@Path("id") id: String): SBResponse<StaffInfoResponse>
@@ -126,14 +125,12 @@ interface CRGSApiService {
     @GET("/api/v1/history/garbage/details/{id}")
     suspend fun getGarbageHistoryDetail(@Path("id") historyId: String): SBResponse<GarbageHistoryDetailResponse>
 
-    /***        STAFF      ***/
+    /***        TRANSPORT FORM      ***/
     @POST("/api/v1/transport/garbage/createForm")
     suspend fun createTransportGarbageForm(@Body request: CreateTransportGarbageRequest): SBResponse<String>
 
-    @POST("/api/v1/transport/gift/createForm")
-    suspend fun createTransportGiftForm(@Body request: CreateTransportGiftRequest): SBResponse<String>
-
-    /******/
+    @POST("/api/v1/transport/garbage/receiveForm")
+    suspend fun receiveTransportForm(@Body request: ReceiveFormGarbageRequest): SBResponse<String>
 
     @Multipart
     @POST("/api/v1/transport/garbage/completeForm")
@@ -143,6 +140,23 @@ interface CRGSApiService {
         @Part("staffId") id: RequestBody,
         @Part("formId") formId: RequestBody,
     ): SBResponse<String>
+
+    @POST("/api/v1/transport/gift/createForm")
+    suspend fun createTransportGiftForm(@Body request: CreateTransportGiftRequest): SBResponse<String>
+
+    @POST("/api/v1/transport/gift/receiveForm")
+    suspend fun receiveTransportGiftForm(@Body request: ReceiveFormGiftRequest): SBResponse<String>
+
+    @Multipart
+    @POST("/api/v1/transport/gift/completeForm")
+    suspend fun completeTransportGiftForm(
+        @Part evidence: MultipartBody.Part,
+        @Part("staffId") id: RequestBody,
+        @Part("formId") formId: RequestBody,
+    ): SBResponse<String>
+    /******/
+
+
 
     @GET("/api/v1/gift/get/owner/{ownerId}")
     suspend fun getGiftOwnerByAgent(

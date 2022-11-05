@@ -15,7 +15,7 @@ interface ReceiveTransportFormUseCase {
         val customerPhoneNumber: String,
     )
 
-    suspend fun receiveTransportForm(parameters: Parameters): Result<String>
+    suspend fun receiveTransportGarbageForm(parameters: Parameters): Result<String>
 }
 
 class ReceiveTransportFormUseCaseImpl @Inject constructor(
@@ -26,7 +26,7 @@ class ReceiveTransportFormUseCaseImpl @Inject constructor(
 ), ReceiveTransportFormUseCase {
 
     override suspend fun execute(parameters: ReceiveTransportFormUseCase.Parameters): String {
-        return CRGSRepository.receiveTransportForm(
+        return CRGSRepository.receiveTransportGarbageForm(
             parameters.historyGarbageId,
             parameters.customerName,
             parameters.customerPhoneNumber
@@ -34,7 +34,7 @@ class ReceiveTransportFormUseCaseImpl @Inject constructor(
 
     }
 
-    override suspend fun receiveTransportForm(parameters: ReceiveTransportFormUseCase.Parameters): Result<String> {
+    override suspend fun receiveTransportGarbageForm(parameters: ReceiveTransportFormUseCase.Parameters): Result<String> {
         return invoke(parameters)
     }
 }

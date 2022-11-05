@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
-import datn.cnpm.rcsystem.databinding.FragmentGarbageHistoryBinding
+import datn.cnpm.rcsystem.databinding.FragmentListBinding
 import datn.cnpm.rcsystem.feature.history.HistoryItemAdapter
 
 /**
@@ -17,9 +17,9 @@ import datn.cnpm.rcsystem.feature.history.HistoryItemAdapter
  */
 
 @AndroidEntryPoint
-class GarbageHistoryFragment : BaseFragment<FragmentGarbageHistoryBinding>() {
-    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentGarbageHistoryBinding
-        get() = FragmentGarbageHistoryBinding::inflate
+class GarbageHistoryFragment : BaseFragment<FragmentListBinding>() {
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentListBinding
+        get() = FragmentListBinding::inflate
 
     private val viewModel: GarbageHistoryViewModel by viewModels()
     private lateinit var garbageAdapter: HistoryItemAdapter
@@ -29,7 +29,7 @@ class GarbageHistoryFragment : BaseFragment<FragmentGarbageHistoryBinding>() {
 
     override fun initViews() {
         garbageAdapter = HistoryItemAdapter()
-        binding.rvGarbageHistory.adapter = garbageAdapter
+        binding.rvData.adapter = garbageAdapter
     }
 
     override fun initActions() {

@@ -156,4 +156,5 @@
     <string name="your_remaining_points_label">Your remaining points</string>
     <string name="personal_edit_information">Edit Information</string>
     <string name="profile_label">Profile</string>
+    <string name="mark_as_complete_label">Mark as Complete!</string>
 </resources>

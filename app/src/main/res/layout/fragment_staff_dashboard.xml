@@ -94,8 +94,20 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:contentDescription="@string/empty_value"
-            android:src="@drawable/ic_transport"
+            android:src="@drawable/ic_form"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />
+
+        <ImageView
+            android:id="@+id/ivShipping"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="24dp"
+            android:contentDescription="@string/empty_value"
+            android:src="@drawable/ic_shipping"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ivTrophy"
+            app:layout_constraintStart_toEndOf="@id/ivForm"
             app:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />
 
         <ImageView
@@ -106,7 +118,7 @@
             android:contentDescription="@string/empty_value"
             android:src="@drawable/ic_award"
             app:layout_constraintEnd_toStartOf="@id/ivHistory"
-            app:layout_constraintStart_toEndOf="@id/ivForm"
+            app:layout_constraintStart_toEndOf="@id/ivShipping"
             app:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />
 
         <ImageView
@@ -114,20 +126,9 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="24dp"
-            android:contentDescription="@string/empty_value"
-            android:src="@drawable/ic_history"
-            app:layout_constraintEnd_toStartOf="@id/ivPersonal"
-            app:layout_constraintStart_toEndOf="@id/ivTrophy"
-            app:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />
-
-        <ImageView
-            android:id="@+id/ivPersonal"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:contentDescription="@string/empty_value"
-            android:src="@drawable/ic_user_green"
+            android:src="@drawable/ic_history"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />
 
@@ -142,7 +143,7 @@
             android:textColor="@color/black"
             android:textSize="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivPersonal" />
+            app:layout_constraintTop_toBottomOf="@id/ivShipping" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/llNoSchedule"
@@ -150,10 +151,12 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="12dp"
             android:background="@drawable/bg_staff_schedule"
             android:gravity="center"
             android:orientation="vertical"
             android:paddingVertical="50dp"
+            app:layout_constraintBottom_toTopOf="@id/clChart"
             app:layout_constraintTop_toBottomOf="@id/tvScheduleTitle">
 
             <ImageView
@@ -184,13 +187,143 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/background_order"
+            android:paddingHorizontal="16dp"
+            app:layout_constraintBottom_toTopOf="@id/clChart"
+            app:layout_constraintTop_toBottomOf="@id/tvScheduleTitle">
+
+            <TextView
+                android:id="@+id/tvDateTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/proximanova_bold"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="14 Dec 2022 - 14:00" />
+
+
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/proximanova_sbold"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                app:drawableStartCompat="@drawable/ic_pin_white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDateTime"
+                tools:text="Tran Van A Street, Hai Chau Dis, Da Nang City" />
+
+            <TextView
+                android:id="@+id/tvNameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/proximanova_sbold"
+                android:text="@string/name_label"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proximanova_sbold"
+                android:gravity="end"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvNameLabel"
+                app:layout_constraintTop_toTopOf="@id/tvNameLabel"
+                tools:text="Tran Van Hien" />
+
+            <TextView
+                android:id="@+id/tvOrderTypeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/proximanova_sbold"
+                android:text="@string/name_label"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvNameLabel" />
+
+            <TextView
+                android:id="@+id/tvOrderDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proximanova_sbold"
+                android:gravity="end"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvOrderTypeLabel"
+                app:layout_constraintTop_toTopOf="@id/tvOrderTypeLabel"
+                tools:text="Tran Van Hien" />
+
+            <TextView
+                android:id="@+id/tvPhoneNumberLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/proximanova_sbold"
+                android:text="@string/phone_number_label"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvOrderTypeLabel" />
+
+            <TextView
+                android:id="@+id/tvPhoneNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="@font/proximanova_sbold"
+                android:gravity="end"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                app:layout_constraintBottom_toTopOf="@id/btnMarkComplete"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvPhoneNumberLabel"
+                app:layout_constraintTop_toTopOf="@id/tvPhoneNumberLabel"
+                tools:text="Tran Van Hien" />
+
+            <TextView
+                android:id="@+id/btnMarkComplete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_corner_8_white"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="4dp"
+                android:text="@string/mark_as_complete_label"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clChart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="24dp"
             android:background="@color/white"
             android:elevation="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/llNoSchedule">
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <TextView
                 android:id="@+id/tvTotalWeightTitle"
@@ -198,6 +331,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="28dp"
+                android:fontFamily="@font/proximanova_reg"
                 android:text="@string/total"
                 android:textColor="@color/black"
                 android:textSize="20dp"

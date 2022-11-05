@@ -16,14 +16,14 @@ import datn.cnpm.rcsystem.common.extension.setColor
 import datn.cnpm.rcsystem.common.extension.setSpanClick
 import datn.cnpm.rcsystem.common.utils.CommonUtils.toPoint
 import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
-import datn.cnpm.rcsystem.databinding.FragmentCreateFormGiftBinding
+import datn.cnpm.rcsystem.databinding.FragmentCreateGiftFormBinding
 
 
 @AndroidEntryPoint
-class CreateFormGiftFragment : BaseFragment<FragmentCreateFormGiftBinding>() {
+class CreateFormGiftFragment : BaseFragment<FragmentCreateGiftFormBinding>() {
 
-    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentCreateFormGiftBinding
-        get() = FragmentCreateFormGiftBinding::inflate
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentCreateGiftFormBinding
+        get() = FragmentCreateGiftFormBinding::inflate
 
     val viewModel: CreateFormGiftViewModel by viewModels()
 

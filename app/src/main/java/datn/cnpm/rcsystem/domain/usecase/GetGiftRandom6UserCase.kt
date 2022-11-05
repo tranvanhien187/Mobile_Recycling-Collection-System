@@ -3,8 +3,8 @@ package datn.cnpm.rcsystem.domain.usecase
 import datn.cnpm.rcsystem.core.Result
 import datn.cnpm.rcsystem.core.di.IoDispatcher
 import datn.cnpm.rcsystem.data.repository.CRGSRepository
-import datn.cnpm.rcsystem.domain.model.GiftEntity
-import datn.cnpm.rcsystem.domain.model.mapToEntity
+import datn.cnpm.rcsystem.domain.model.gift.GiftEntity
+import datn.cnpm.rcsystem.domain.model.gift.mapToEntity
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 

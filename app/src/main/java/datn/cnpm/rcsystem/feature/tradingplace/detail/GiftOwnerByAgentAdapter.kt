@@ -8,7 +8,7 @@ import datn.cnpm.rcsystem.base.BaseListAdapter
 import datn.cnpm.rcsystem.common.utils.CommonUtils.toPoint
 import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.databinding.ItemGiftByAgentBinding
-import datn.cnpm.rcsystem.domain.model.GiftEntity
+import datn.cnpm.rcsystem.domain.model.gift.GiftEntity
 
 class GiftOwnerByAgentAdapter : BaseListAdapter<GiftEntity>(GiftUntil()) {
 

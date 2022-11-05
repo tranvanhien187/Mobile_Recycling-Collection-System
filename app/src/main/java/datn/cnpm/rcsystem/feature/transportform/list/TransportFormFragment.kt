@@ -3,9 +3,8 @@ package datn.cnpm.rcsystem.feature.transportform.list
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
@@ -20,56 +19,49 @@ class TransportFormFragment : BaseFragment<FragmentTransportFormBinding>() {
         get() = FragmentTransportFormBinding::inflate
 
 
-    private val viewModel: TransportFormViewModel by viewModels()
-
-    private val formAdapter: TransportFormAdapter by lazy { TransportFormAdapter() }
-
-
+    private var transportAdapter: TransportFormScreenAdapter? = null
     override fun initData(data: Bundle?) {
-        viewModel.listener()
     }
 
     override fun initViews() {
-        showToolbar(getString(R.string.transport_form_label), R.drawable.ic_back)
-        binding.rvForm.adapter = formAdapter
-    }
+        showToolbar(getString(R.string.history_label), R.drawable.ic_back)
+        transportAdapter = TransportFormScreenAdapter(this)
+        binding.apply {
+            pager.adapter = transportAdapter
+            TabLayoutMediator(tabLayout, pager) { tab, position ->
+                when (position) {
+                    HistoryTab.Gift.ordinal -> tab.text = getString(R.string.gift_label)
+                    HistoryTab.Garbage.ordinal -> tab.text = getString(R.string.garbage_label)
+                }
+            }.attach()
+            tabLayout.addOnTabSelectedListener(object :
+                TabLayout.OnTabSelectedListener {
+                override fun onTabSelected(tab: TabLayout.Tab) {
+                    tab.position.let {
+                    }
+                }
 
-    override fun initActions() {
-        formAdapter.onClickItem = { data ->
-            findNavController().navigate(
-                R.id.receiveFormFragment, bundleOf(
-                    Pair(FORM_KEY, data)
-                )
-            )
+                override fun onTabReselected(tab: TabLayout.Tab?) {}
+                override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            })
         }
     }
 
+    override fun initActions() {
+        binding.apply {
+        }
+    }
 
     override fun initObservers() {
-        viewModel.observe(
-            owner = viewLifecycleOwner,
-            selector = { state -> state.loading },
-            observer = { loading ->
-                if (loading) {
-                    showLoading()
-                } else {
-                    hideLoading()
-                }
-            }
-        )
-
-        viewModel.observe(
-            owner = viewLifecycleOwner,
-            selector = { state -> state.listForm },
-            observer = { listPlace ->
-                if (listPlace.isNotEmpty()) {
-                    formAdapter.submitList(listPlace)
-                }
-            }
-        )
     }
 
-    companion object {
-        const val FORM_KEY = "FORM_KEY"
+    override fun onDestroyView() {
+        super.onDestroyView()
+        transportAdapter = null
     }
+}
+
+enum class HistoryTab {
+    Gift,
+    Garbage
 }

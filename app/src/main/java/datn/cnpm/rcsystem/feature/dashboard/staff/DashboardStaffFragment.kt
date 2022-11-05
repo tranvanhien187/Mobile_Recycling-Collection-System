@@ -1,13 +1,11 @@
 package datn.cnpm.rcsystem.feature.dashboard.staff
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.github.mikephil.charting.components.XAxis
@@ -19,11 +17,16 @@ import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.common.extension.createSpannableString
+import datn.cnpm.rcsystem.common.extension.gone
+import datn.cnpm.rcsystem.common.extension.visible
 import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.databinding.FragmentStaffDashboardBinding
 import datn.cnpm.rcsystem.domain.model.statistic.StatisticStaffCollectWeightByDayEntity
 import datn.cnpm.rcsystem.feature.authentication.AuthenticationActivity
+import datn.cnpm.rcsystem.feature.transportform.TransportFormAdapter
 import datn.cnpm.rcsystem.local.sharepreferences.AuthPreference
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 
@@ -36,6 +39,7 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
     companion object {
         private const val CHART_COLUMN_NUMBER = 7
     }
+
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentStaffDashboardBinding
         get() = FragmentStaffDashboardBinding::inflate
 
@@ -44,6 +48,7 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
     private val viewModel: DashboardStaffViewModel by viewModels()
     override fun initData(data: Bundle?) {
         viewModel.fetchStaffInfo()
+        viewModel.listenerReceiveForm()
     }
 
     override fun initViews() {
@@ -54,6 +59,9 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
         binding.apply {
             ivForm.setOnClickListener {
                 findNavController().navigate(R.id.transportFormFragment)
+            }
+            ivShipping.setOnClickListener {
+                findNavController().navigate(R.id.missionFragment)
             }
             ivHistory.setOnClickListener {
                 findNavController().navigate(R.id.historyFragment)
@@ -84,6 +92,39 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
                         showLoading()
                     } else {
                         hideLoading()
+                    }
+                }
+            )
+
+            observe(
+                owner = viewLifecycleOwner,
+                selector = { state -> state.form },
+                observer = { form ->
+                    binding.apply {
+                        form?.let {
+                            tvAddress.text =
+                                "${form.street}, ${form.district}, ${form.cityOrProvince}"
+                            tvName.text = form.customerName
+                            tvPhoneNumber.text = form.customerPhoneNumber
+                            SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").parse(form.receiveAt.toString())
+                                ?.let {
+                                    tvDateTime.text =
+                                        SimpleDateFormat("dd MMM yyyy, HH:mm aa", Locale.UK).format(
+                                            it
+                                        )
+                                }
+                            if (form.type == TransportFormAdapter.TransportFormType.GARBAGE.name) {
+                                tvOrderTypeLabel.text = getString(R.string.weight_label)
+                                tvOrderDescription.text = "${form.weight}Kg"
+                            } else {
+                                tvOrderTypeLabel.text = getString(R.string.gift_name_label)
+                                tvOrderDescription.text = "${form.giftName}"
+                            }
+                            llNoSchedule.gone()
+                            clForm.visible()
+                        } ?: kotlin.run {
+                            llNoSchedule.visible()
+                        }
                     }
                 }
             )
@@ -139,7 +180,13 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
         for (i in 0 until CHART_COLUMN_NUMBER) {
             if (i < datas.size) {
                 entries.add(BarEntry(i.toFloat(), datas[i].totalWeight.toFloat()))
-                xAxisLabel.add(getString(R.string.month_year, datas[i].datOfMonth, datas[i].monthOfYear))
+                xAxisLabel.add(
+                    getString(
+                        R.string.month_year,
+                        datas[i].datOfMonth,
+                        datas[i].monthOfYear
+                    )
+                )
             } else {
                 entries.add(BarEntry(i.toFloat(), 0f))
                 xAxisLabel.add("")
@@ -158,7 +205,12 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
         val chartData = BarData(set)
         chartData.barWidth = 0.6f
         chartData.setValueTextSize(10f)
-        chartData.setValueTypeface(ResourcesCompat.getFont(requireContext(),R.font.proximanova_reg))
+        chartData.setValueTypeface(
+            ResourcesCompat.getFont(
+                requireContext(),
+                R.font.proximanova_reg
+            )
+        )
 
         binding.chartWeighPerDay.run {
             data = chartData
@@ -170,8 +222,8 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
                 }
             }
             xAxis.valueFormatter = formatter
-            axisLeft.typeface = ResourcesCompat.getFont(requireContext(),R.font.proximanova_reg)
-            xAxis.typeface  = ResourcesCompat.getFont(requireContext(),R.font.proximanova_reg)
+            axisLeft.typeface = ResourcesCompat.getFont(requireContext(), R.font.proximanova_reg)
+            xAxis.typeface = ResourcesCompat.getFont(requireContext(), R.font.proximanova_reg)
             axisLeft.xOffset = 9f
             xAxis.granularity = 1f
             axisLeft.axisMinimum = (0F)

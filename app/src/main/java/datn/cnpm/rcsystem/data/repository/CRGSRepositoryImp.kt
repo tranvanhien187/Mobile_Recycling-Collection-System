@@ -13,7 +13,8 @@ import datn.cnpm.rcsystem.data.entitiy.statistic.StatisticStaffCollectWeightByDa
 import datn.cnpm.rcsystem.data.entitiy.tplace.TPlaceDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGarbageRequest
 import datn.cnpm.rcsystem.data.entitiy.transport.CreateTransportGiftRequest
-import datn.cnpm.rcsystem.data.entitiy.transport.ReceiveFormRequest
+import datn.cnpm.rcsystem.data.entitiy.transport.ReceiveFormGarbageRequest
+import datn.cnpm.rcsystem.data.entitiy.transport.ReceiveFormGiftRequest
 import datn.cnpm.rcsystem.domain.model.history.BaseItemHistory
 import datn.cnpm.rcsystem.domain.model.history.GiftHistoryDetailResponse
 import datn.cnpm.rcsystem.local.sharepreferences.AuthPreference
@@ -252,13 +253,38 @@ class CRGSRepositoryImp @Inject constructor(
         }
     }
 
-    override suspend fun receiveTransportForm(
+    override suspend fun receiveTransportGarbageForm(
         historyGarbageId: String,
         customerName: String,
         customerPhoneNumber: String
     ): String {
         val response = authenticationDataSource.receiveTransportForm(
-            ReceiveFormRequest(
+            ReceiveFormGarbageRequest(
+                authPre.id, historyGarbageId,
+                customerName,
+                customerPhoneNumber
+            )
+        )
+        if (response.isSuccess) {
+            return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
+        } else {
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+        }
+    }
+
+    override suspend fun receiveTransportGiftForm(
+        historyGarbageId: String,
+        customerName: String,
+        customerPhoneNumber: String
+    ): String {
+        val response = authenticationDataSource.receiveTransportGiftForm(
+            ReceiveFormGiftRequest(
                 authPre.id, historyGarbageId,
                 customerName,
                 customerPhoneNumber
@@ -284,6 +310,26 @@ class CRGSRepositoryImp @Inject constructor(
     ): String {
         val response = authenticationDataSource.completeTransportGarbageForm(
             evidence, weight, authPre.id, formId
+        )
+        if (response.isSuccess) {
+            return response.requireData
+        } else if (response.isFailure) {
+            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
+                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+            } else {
+                throw BadRequestException(response.requireError)
+            }
+        } else {
+            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
+        }
+    }
+
+    override suspend fun completeTransportGiftForm(
+        evidence: File,
+        formId: String
+    ): String {
+        val response = authenticationDataSource.completeTransportGiftForm(
+            evidence, authPre.id, formId
         )
         if (response.isSuccess) {
             return response.requireData

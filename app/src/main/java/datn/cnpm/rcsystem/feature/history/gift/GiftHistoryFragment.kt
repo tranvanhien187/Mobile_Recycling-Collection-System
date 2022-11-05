@@ -3,25 +3,23 @@ package datn.cnpm.rcsystem.feature.history.gift
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
-import datn.cnpm.rcsystem.databinding.FragmentGiftHistoryBinding
+import datn.cnpm.rcsystem.databinding.FragmentListBinding
 import datn.cnpm.rcsystem.feature.history.HistoryItemAdapter
-import datn.cnpm.rcsystem.feature.history.garbage.GarbageHistoryFragment
 
 /**
  * A simple [GiftHistoryFragment] subclass as the default destination in the navigation.
  */
 
 @AndroidEntryPoint
-class GiftHistoryFragment : BaseFragment<FragmentGiftHistoryBinding>() {
-    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentGiftHistoryBinding
-        get() = FragmentGiftHistoryBinding::inflate
+class GiftHistoryFragment : BaseFragment<FragmentListBinding>() {
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentListBinding
+        get() = FragmentListBinding::inflate
 
     private val viewModel: GiftHistoryViewModel by viewModels()
     private lateinit var giftAdapter: HistoryItemAdapter
@@ -32,7 +30,7 @@ class GiftHistoryFragment : BaseFragment<FragmentGiftHistoryBinding>() {
 
     override fun initViews() {
         giftAdapter = HistoryItemAdapter()
-        binding.rvGiftHistory.adapter = giftAdapter
+        binding.rvData.adapter = giftAdapter
     }
 
     override fun initActions() {

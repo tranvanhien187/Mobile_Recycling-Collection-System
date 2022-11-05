@@ -2,13 +2,10 @@ package datn.cnpm.rcsystem.domain.usecase.gift
 
 import datn.cnpm.rcsystem.core.Result
 import datn.cnpm.rcsystem.core.di.IoDispatcher
-import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
 import datn.cnpm.rcsystem.data.repository.CRGSRepository
-import datn.cnpm.rcsystem.domain.model.GiftEntity
-import datn.cnpm.rcsystem.domain.model.gift.GiftDetailEntity
-import datn.cnpm.rcsystem.domain.model.mapToEntity
+import datn.cnpm.rcsystem.domain.model.gift.GiftEntity
+import datn.cnpm.rcsystem.domain.model.gift.mapToEntity
 import datn.cnpm.rcsystem.domain.usecase.BaseUseCase
-import datn.cnpm.rcsystem.domain.usecase.GetGiftByCriteriaUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
@@ -27,7 +24,8 @@ class GetGiftOwnerByAgentUseCaseImpl @Inject constructor(
     GetGiftOwnerByAgentUseCase {
 
     override suspend fun execute(parameters: GetGiftOwnerByAgentUseCase.Parameters): List<GiftEntity> {
-        return CRGSRepository.getGiftOwnerByAgent(parameters.ownerId, parameters.criteria).map { it.mapToEntity() }
+        return CRGSRepository.getGiftOwnerByAgent(parameters.ownerId, parameters.criteria)
+            .map { it.mapToEntity() }
     }
 
     override suspend fun getGiftOwnerByAgent(parameters: GetGiftOwnerByAgentUseCase.Parameters): Result<List<GiftEntity>> {
