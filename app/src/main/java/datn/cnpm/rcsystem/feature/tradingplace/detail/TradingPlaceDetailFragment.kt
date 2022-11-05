@@ -32,6 +32,8 @@ class TradingPlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
 
     }
 
+    override fun isDisableFullScreen(): Boolean = false
+
     override fun initData(data: Bundle?) {
         data?.let {
             it.getString(TRADING_PLACE_ID_KEY)?.let { ownerId ->

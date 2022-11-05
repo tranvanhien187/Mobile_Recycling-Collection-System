@@ -22,11 +22,12 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
         get() = FragmentRegisterBinding::inflate
 
     private val viewModel: RegisterViewModel by viewModels()
-    override fun initData(data: Bundle?) {
-    }
 
-    override fun initViews() {
-    }
+    override fun isDisableFullScreen(): Boolean = false
+
+    override fun initData(data: Bundle?) = Unit
+
+    override fun initViews() = Unit
 
     override fun initActions() {
         binding.apply {

@@ -27,8 +27,9 @@ class LoadingFragment: BaseFragment<FragmentLoadingBinding>() {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentLoadingBinding
         get() = FragmentLoadingBinding::inflate
 
-    override fun initData(data: Bundle?) {
-    }
+    override fun initData(data: Bundle?) = Unit
+
+    override fun isDisableFullScreen(): Boolean = false
 
     override fun initViews() {
         lifecycleScope.launch {

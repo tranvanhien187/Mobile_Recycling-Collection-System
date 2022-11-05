@@ -27,11 +27,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     private val viewModel: LoginViewModel by viewModels()
 
-    override fun initData(data: Bundle?) {
-    }
+    override fun initData(data: Bundle?) = Unit
 
-    override fun initViews() {
-    }
+    override fun initViews() = Unit
+
+    override fun isDisableFullScreen(): Boolean = false
 
     override fun initActions() {
         binding.apply {

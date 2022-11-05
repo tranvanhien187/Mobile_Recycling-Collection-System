@@ -6,7 +6,7 @@
     android:id="@+id/appBarLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#FAFAFA"
+    android:background="@color/grey_fafafa"
     android:visibility="gone"
     tools:visibility="visible">
 

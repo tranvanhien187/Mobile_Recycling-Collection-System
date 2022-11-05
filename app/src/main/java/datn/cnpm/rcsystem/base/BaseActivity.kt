@@ -9,9 +9,15 @@ import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.MotionEvent
+import android.view.ViewGroup
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.DialogFragment
 import androidx.viewbinding.ViewBinding
 import datn.cnpm.rcsystem.common.loader.LogoLoaderDialog
@@ -40,6 +46,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity(), DialogCommo
     lateinit var binding: VB
         private set
     abstract val bindingInflater: (LayoutInflater) -> VB
+    private var statusBarHeight = 0
 
 //    private var dialogTokenUnAuthenticator: DialogCustom? = null
 //
@@ -317,5 +324,38 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity(), DialogCommo
 
     private fun startHandler() {
         handler.postDelayed(runnable, FIVE_MINUTE_IN_MILLISECOND)
+    }
+
+    fun applyInsetsListener(
+        isDisableFullScreen: Boolean = true,
+        callBack: (statusBarHeight: Int, navigationBarHeight: Int) -> Unit = { _, _ -> }
+    ) {
+        binding.root.let {
+            if (isDisableFullScreen) {
+                (it.layoutParams as? ViewGroup.MarginLayoutParams)?.bottomMargin = 0
+            }
+            ViewCompat.setOnApplyWindowInsetsListener(it) { _, insets ->
+                val bottomMargin =
+                    if (isDisableFullScreen) 0 else insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+                (it.layoutParams as? ViewGroup.MarginLayoutParams)?.bottomMargin = bottomMargin
+                statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
+                callBack.invoke(statusBarHeight, bottomMargin)
+                WindowInsetsCompat.CONSUMED
+            }
+        }
+    }
+
+    internal fun getHeightOfStatusBar() = statusBarHeight
+
+    internal fun setStatusBarColor(color: Int) {
+        window.statusBarColor = ContextCompat.getColor(this, color)
+    }
+
+    internal fun setLightStatusBar(isLight : Boolean) {
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = isLight
+    }
+
+    internal fun setDecorFitSystemWindow(isDisableFullScreen: Boolean) {
+        WindowCompat.setDecorFitsSystemWindows(window, isDisableFullScreen)
     }
 }

@@ -46,6 +46,8 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
     @Inject
     lateinit var authPreference: AuthPreference
     private val viewModel: DashboardStaffViewModel by viewModels()
+
+    override fun isDisableFullScreen(): Boolean = false
     override fun initData(data: Bundle?) {
         viewModel.fetchStaffInfo()
         viewModel.listenerReceiveForm()

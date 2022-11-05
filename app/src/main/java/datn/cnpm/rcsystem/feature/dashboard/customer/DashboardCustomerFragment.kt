@@ -41,6 +41,9 @@ class DashboardCustomerFragment : BaseFragment<FragmentCustomerDashboardBinding>
     lateinit var authPreference: AuthPreference
 
     private val viewModel: DashboardCustomerViewModel by viewModels()
+
+    override fun isDisableFullScreen(): Boolean = false
+
     override fun initData(data: Bundle?) {
         viewModel.getCustomerInfo()
         viewModel.fetchRandomTPlace()

@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedDispatcherOwner
 import androidx.activity.addCallback
 import androidx.annotation.CallSuper
+import androidx.annotation.ColorRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
+import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.common.extension.hideKeyboard
 import datn.cnpm.rcsystem.databinding.FragmentBaseBinding
 import datn.cnpm.rcsystem.databinding.ToolBarBinding
@@ -59,12 +61,19 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment(), IBaseFragment, ToolB
         super.onViewCreated(view, savedInstanceState)
         initObservers()
         mNavController = NavHostFragment.findNavController(this)
-
+        (activity as? BaseActivity<*>)?.setDecorFitSystemWindow(isDisableFullScreen())
+        setStatusBarColor()
+        setLightStatusBar()
         (requireActivity() as OnBackPressedDispatcherOwner)
             .onBackPressedDispatcher
             .addCallback(viewLifecycleOwner) {
                 onBackPressed()
             }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as? BaseActivity<*>)?.applyInsetsListener(isDisableFullScreen())
     }
 
     override fun showLoading() {
@@ -168,5 +177,22 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment(), IBaseFragment, ToolB
     override fun onIconStartClicked() {
         super.onIconStartClicked()
         onBackPressed()
+    }
+
+    open fun isDisableFullScreen() : Boolean = true
+
+    open fun isLightStatusBar() : Boolean = true
+
+    private fun setLightStatusBar() {
+        (activity as? BaseActivity<*>)?.setLightStatusBar(isLightStatusBar())
+    }
+
+    internal fun setStatusBarColor(@ColorRes color: Int = R.color.grey_fafafa) {
+        val colorStatusBar = if (!isDisableFullScreen()) {
+            android.R.color.transparent
+        } else {
+            color
+        }
+        (activity as? BaseActivity<*>)?.setStatusBarColor(colorStatusBar)
     }
 }

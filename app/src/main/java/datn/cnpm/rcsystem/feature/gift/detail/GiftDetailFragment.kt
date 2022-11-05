@@ -24,8 +24,9 @@ class GiftDetailFragment : BaseFragment<FragmentGiftDetailBinding>() {
 
     companion object {
         const val GIFT_ID_KEY = "GIFT_ID_KEY"
-
     }
+
+    override fun isDisableFullScreen(): Boolean = false
 
     override fun initData(data: Bundle?) {
         data?.let {
@@ -35,8 +36,7 @@ class GiftDetailFragment : BaseFragment<FragmentGiftDetailBinding>() {
         }
     }
 
-    override fun initViews() {
-    }
+    override fun initViews() = Unit
 
     override fun initActions() {
         binding.btnRedeem.setOnClickListener {

@@ -22,9 +22,10 @@ class PersonalFragment : BaseFragment<FragmentPersonalBinding>() {
         get() = FragmentPersonalBinding::inflate
 
     private val viewModel: PersonalViewModel by viewModels()
-    override fun initData(data: Bundle?) {
 
-    }
+    override fun isDisableFullScreen(): Boolean = false
+
+    override fun initData(data: Bundle?) = Unit
 
     override fun initViews() {
         SingletonObject.customer?.let {
