@@ -1,7 +1,7 @@
 package datn.cnpm.rcsystem
 
-import datn.cnpm.rcsystem.domain.model.CustomerEntity
-import datn.cnpm.rcsystem.domain.model.StaffInfoEntity
+import datn.cnpm.rcsystem.domain.model.customer.CustomerEntity
+import datn.cnpm.rcsystem.domain.model.staff.StaffInfoEntity
 
 
 object SingletonObject {

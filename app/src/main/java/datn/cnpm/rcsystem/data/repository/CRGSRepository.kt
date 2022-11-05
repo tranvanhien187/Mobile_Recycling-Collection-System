@@ -28,7 +28,6 @@ interface CRGSRepository {
     suspend fun getCustomerInfo(): GetCustomerInfoResponse
     suspend fun getTPlaceRandom6(): List<GetTPPlaceForUserResponse>
     suspend fun getGiftRandom6(): List<GiftResponse>
-    suspend fun getGiftUserHistory(): List<GiftUserHistoryResponse>
     // STAFF
 
 

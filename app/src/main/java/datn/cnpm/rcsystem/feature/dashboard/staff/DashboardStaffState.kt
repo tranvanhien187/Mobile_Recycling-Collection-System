@@ -1,7 +1,7 @@
 package datn.cnpm.rcsystem.feature.dashboard.staff
 
-import datn.cnpm.rcsystem.domain.model.StaffInfoEntity
 import datn.cnpm.rcsystem.domain.model.TransportFormFirebase
+import datn.cnpm.rcsystem.domain.model.staff.StaffInfoEntity
 import datn.cnpm.rcsystem.domain.model.statistic.StatisticStaffCollectWeightByDayEntity
 
 data class DashboardStaffState(

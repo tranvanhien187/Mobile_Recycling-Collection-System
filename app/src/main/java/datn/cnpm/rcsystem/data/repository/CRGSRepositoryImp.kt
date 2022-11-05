@@ -183,21 +183,6 @@ class CRGSRepositoryImp @Inject constructor(
         }
     }
 
-    override suspend fun getGiftUserHistory(): List<GiftUserHistoryResponse> {
-        val response = authenticationDataSource.getGiftUserHistory(authPre.id)
-        if (response.isSuccess) {
-            return response.requireData
-        } else if (response.isFailure) {
-            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
-                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
-            } else {
-                throw BadRequestException(response.requireError)
-            }
-        } else {
-            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
-        }
-    }
-
     override suspend fun createTransportGarbageForm(
         exchangeWeight: Float,
         street: String,

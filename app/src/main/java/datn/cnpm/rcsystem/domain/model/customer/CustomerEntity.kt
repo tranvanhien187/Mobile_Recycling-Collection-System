@@ -1,4 +1,4 @@
-package datn.cnpm.rcsystem.domain.model
+package datn.cnpm.rcsystem.domain.model.customer
 
 import datn.cnpm.rcsystem.SingletonObject
 import datn.cnpm.rcsystem.data.entitiy.*
@@ -19,7 +19,7 @@ data class CustomerEntity(
     val point: PointResponse? = null
 )
 
-fun GetCustomerInfoResponse.mapToEntity(): CustomerEntity {
+fun GetCustomerInfoResponse.mapToCustomerEntity(): CustomerEntity {
     val entity = CustomerEntity(
         id = id,
         name = name,

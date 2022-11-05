@@ -1,7 +1,7 @@
 package datn.cnpm.rcsystem.feature.dashboard.customer
 
+import datn.cnpm.rcsystem.domain.model.customer.CustomerEntity
 import datn.cnpm.rcsystem.domain.model.gift.GiftEntity
-import datn.cnpm.rcsystem.domain.model.CustomerEntity
 import datn.cnpm.rcsystem.domain.model.history.TradingPlaceForUserEntity
 
 data class DashboardCustomerState(

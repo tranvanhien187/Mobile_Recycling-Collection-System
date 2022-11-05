@@ -89,14 +89,6 @@ interface CRGSApiService {
     @GET("api/v1/gift/get/random/{id}")
     suspend fun getGiftRandom6(@Path("id") id: String): SBResponse<List<GiftResponse>>
 
-    @GET("/api/v1/gift/userhistory/{id}")
-    suspend fun getGiftUserHistory(@Path("id") uuid: String): SBResponse<List<GiftUserHistoryResponse>>
-
-    // Get Transport Form Garbage Detail
-    @GET("/api/v1/transport/details/{id}")
-    suspend fun getTransportFormGarbageDetails(@Path("id") historyId: String): SBResponse<TransportFormGarbageDetailResponse>
-
-
     /***        STAFF      ***/
 
     @GET("/api/v1/staff/{id}")

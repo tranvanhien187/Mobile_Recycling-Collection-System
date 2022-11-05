@@ -27,6 +27,7 @@ class ReceiveGarbageFormFragment : BaseFragment<FragmentReceiveGarbageFormBindin
 
     private val viewModel: ReceiveGarbageFormViewModel by viewModels()
 
+
     override fun initData(data: Bundle?) {
         data?.let {
             viewModel.getTransportFormDetail(

@@ -14,8 +14,6 @@ import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.databinding.FragmentReceiveGiftFormBinding
 import datn.cnpm.rcsystem.domain.model.history.HistoryStatus
 import datn.cnpm.rcsystem.feature.transportform.garbage.GarbageFormFragment
-import java.text.SimpleDateFormat
-import java.util.*
 
 @AndroidEntryPoint
 class ReceiveFromGiftFragment : BaseFragment<FragmentReceiveGiftFormBinding>() {
@@ -35,7 +33,6 @@ class ReceiveFromGiftFragment : BaseFragment<FragmentReceiveGiftFormBinding>() {
     }
 
     override fun initViews() {
-        showToolbar(getString(R.string.transport_form_detail_label), R.drawable.ic_back)
     }
 
     override fun initActions() {
@@ -67,10 +64,6 @@ class ReceiveFromGiftFragment : BaseFragment<FragmentReceiveGiftFormBinding>() {
                         tvGiftName.text = form.giftName
                         tvGiftBrand.text = form.giftBrand
                         tvTransportId.text = form.id
-                        SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").parse(form.createAt)?.let {
-                            tvDateTime.text =
-                                SimpleDateFormat("dd MMM yyyy, HH:mm aa", Locale.UK).format(it)
-                        }
                         tvCustomerName.text = form.customerName
                         tvPhoneNumber.text = form.customerPhoneNumber
                         tvAddress.text = "${form.street}, ${form.district}, ${form.cityOrProvince}"

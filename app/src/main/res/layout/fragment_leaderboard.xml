@@ -5,19 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvLabelUserName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/proximanova_bold"
-        android:text="CRGS"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <View
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -28,39 +15,37 @@
         app:layout_constraintTop_toTopOf="@id/ivGarbage" />
 
     <ImageView
-        android:paddingEnd="0dp"
-        android:paddingStart="8dp"
         android:id="@+id/ivGarbage"
         android:layout_width="24dp"
         android:layout_height="28dp"
         android:layout_marginEnd="8dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="0dp"
         android:src="@drawable/ic_garbage"
-        app:layout_constraintBottom_toBottomOf="@id/tvLabelUserName"
+        app:layout_constraintBottom_toBottomOf="@id/tvApp"
         app:layout_constraintEnd_toStartOf="@id/tvWeight"
-        app:layout_constraintTop_toTopOf="@id/tvLabelUserName" />
+        app:layout_constraintTop_toTopOf="@id/tvApp" />
 
     <TextView
-        android:paddingStart="0dp"
         android:id="@+id/tvWeight"
-        android:paddingEnd="8dp"
-        android:fontFamily="@font/proximanova_bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="@id/tvLabelUserName"
+        android:fontFamily="@font/proximanova_bold"
+        android:paddingStart="0dp"
+        android:paddingEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/tvApp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvLabelUserName"
+        app:layout_constraintTop_toTopOf="@id/tvApp"
         tools:text="100.00" />
 
-    <TextView
+    <ImageView
         android:id="@+id/tvApp"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/proximanova_bold"
-        android:text="CRGS"
-        android:textColor="@color/black"
-        android:textSize="20sp"
+        android:layout_marginTop="12dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_logo_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -137,7 +122,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/proximanova_sbold"
-        android:text="CRGS"
+        tools:text="CRGS"
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@id/ivRank1"
@@ -149,9 +134,9 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/bg_border_3_cyan_4feaff"
+        app:layout_constraintBottom_toBottomOf="@id/ivRank1"
         app:layout_constraintEnd_toStartOf="@id/ivBorderStrokeRank1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/ivRank1"
         app:shapeAppearanceOverlay="@style/CustomShapeOVerlay50P" />
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -183,7 +168,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/proximanova_sbold"
-        android:text="CRGS"
+        tools:text="CRGS"
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@id/ivRank2"
@@ -195,9 +180,9 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/bg_border_3_pink_ff9efb"
+        app:layout_constraintBottom_toBottomOf="@id/ivRank2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ivBorderStrokeRank1"
-        app:layout_constraintBottom_toBottomOf="@id/ivRank2"
         app:shapeAppearanceOverlay="@style/CustomShapeOVerlay50P" />
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -229,7 +214,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/proximanova_sbold"
-        android:text="CRGS"
+        tools:text="CRGS"
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@id/ivRank3"

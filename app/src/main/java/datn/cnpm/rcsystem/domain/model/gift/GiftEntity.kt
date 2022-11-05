@@ -36,3 +36,11 @@ fun GiftResponse.mapToEntity() = GiftEntity(
     agentName,
     agentId
 )
+
+enum class GiftStatus {
+    AVAILABLE, REGISTER, RECEIVED
+}
+
+enum class GiftType {
+    Beverage, Electronic, Houseware
+}

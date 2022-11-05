@@ -9,6 +9,7 @@ import datn.cnpm.rcsystem.domain.usecase.gift.GetGiftDetailUseCase
 import datn.cnpm.rcsystem.domain.usecase.gift.GetGiftDetailUseCaseImpl
 import datn.cnpm.rcsystem.domain.usecase.gift.GetGiftOwnerByAgentUseCase
 import datn.cnpm.rcsystem.domain.usecase.gift.GetGiftOwnerByAgentUseCaseImpl
+import datn.cnpm.rcsystem.domain.usecase.history.*
 import datn.cnpm.rcsystem.domain.usecase.statistic.GetStatisticStaffCollection7DayUseCase
 import datn.cnpm.rcsystem.domain.usecase.statistic.GetStatisticStaffCollection7DayUseCaseImpl
 import datn.cnpm.rcsystem.domain.usecase.statistic.GetStatisticTopStaffCollectUseCase
@@ -78,12 +79,6 @@ abstract class UseCaseModule {
     abstract fun provideGetTPlaceRandom6UseCase(
         useCase: GetTPlaceRandom6UseCaseImpl
     ): GetTPlaceRandom6UseCase
-
-    @Binds
-    @Singleton
-    abstract fun provideGetGiftUserHistoryUseCase(
-        useCase: GetGiftUserHistoryUseCaseImpl
-    ): GetGiftUserHistoryUseCase
 
     @Binds
     @Singleton

@@ -1,4 +1,4 @@
-package datn.cnpm.rcsystem.domain.model
+package datn.cnpm.rcsystem.domain.model.staff
 
 import datn.cnpm.rcsystem.SingletonObject
 import datn.cnpm.rcsystem.data.entitiy.AddressResponse
@@ -23,7 +23,7 @@ data class StaffInfoEntity(
     val giftCount: Long = 0
 )
 
-fun StaffInfoResponse.mapToEntity(): StaffInfoEntity {
+fun StaffInfoResponse.mapToStaffEntity(): StaffInfoEntity {
     val entity = StaffInfoEntity(
         id,
         name,

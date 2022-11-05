@@ -9,7 +9,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
 interface GetGiftRandom6UserCase {
-    class Parameters()
+    class Parameters
 
     suspend fun getGiftRandom6(parameters: Parameters = Parameters()): Result<List<GiftEntity>>
 }

@@ -39,14 +39,13 @@ class CompleteGiftFormFragment : BaseFragment<FragmentCompleteGiftFormBinding>()
     }
 
     override fun initViews() {
-        showToolbar(getString(R.string.complete_form_label), R.drawable.ic_back)
     }
 
     @SuppressLint("SetTextI18n")
     override fun initActions() {
         binding.run {
             btnComplete.setOnClickListener {
-                viewModel.completeForm(tvHistoryId.text.toString())
+                viewModel.completeForm(tvTransportId.text.toString())
             }
             ivEvidence.setOnClickListener {
                 pickImageFromGallery()
@@ -101,10 +100,10 @@ class CompleteGiftFormFragment : BaseFragment<FragmentCompleteGiftFormBinding>()
             observer = { form ->
                 form?.let { data ->
                     binding.apply {
-                        tvHistoryId.text = data.id
+                        tvTransportId.text = data.id
                         tvGiftBrand.text = data.giftBrand
                         tvGiftName.text = data.giftName
-                        tvName.text = data.customerName
+                        tvCustomerName.text = data.customerName
                         tvAddress.text =
                             "${data.street}, ${data.district}, ${data.cityOrProvince}"
 

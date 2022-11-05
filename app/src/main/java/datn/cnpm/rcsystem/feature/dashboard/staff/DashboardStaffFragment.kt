@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.github.mikephil.charting.components.XAxis
@@ -24,6 +25,7 @@ import datn.cnpm.rcsystem.databinding.FragmentStaffDashboardBinding
 import datn.cnpm.rcsystem.domain.model.statistic.StatisticStaffCollectWeightByDayEntity
 import datn.cnpm.rcsystem.feature.authentication.AuthenticationActivity
 import datn.cnpm.rcsystem.feature.transportform.TransportFormAdapter
+import datn.cnpm.rcsystem.feature.transportform.mission.MissionFragment
 import datn.cnpm.rcsystem.local.sharepreferences.AuthPreference
 import java.text.SimpleDateFormat
 import java.util.*
@@ -50,7 +52,6 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
     override fun isDisableFullScreen(): Boolean = false
     override fun initData(data: Bundle?) {
         viewModel.fetchStaffInfo()
-        viewModel.listenerReceiveForm()
     }
 
     override fun initViews() {
@@ -70,6 +71,24 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
             }
             ivTrophy.setOnClickListener {
                 findNavController().navigate(R.id.leaderboardFragment)
+            }
+            ivViewAll.setOnClickListener {
+                findNavController().navigate(R.id.missionFragment)
+            }
+            btnMarkComplete.setOnClickListener {
+                viewModel.currentState.form?.let {
+                    if (it.type == TransportFormAdapter.TransportFormType.GIFT.name) {
+                        findNavController().navigate(
+                            R.id.completeGiftFormFragment,
+                            bundleOf(Pair(MissionFragment.FORM_KEY, it))
+                        )
+                    } else if (it.type == TransportFormAdapter.TransportFormType.GARBAGE.name) {
+                        findNavController().navigate(
+                            R.id.completeFormFragment,
+                            bundleOf(Pair(MissionFragment.FORM_KEY, it))
+                        )
+                    }
+                }
             }
 
             btnSetting.setOnClickListener {

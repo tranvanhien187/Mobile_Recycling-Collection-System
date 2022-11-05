@@ -8,7 +8,7 @@ import datn.cnpm.rcsystem.core.logging.DebugLog
 import datn.cnpm.rcsystem.core.requireData
 import datn.cnpm.rcsystem.core.requireError
 import datn.cnpm.rcsystem.core.succeeded
-import datn.cnpm.rcsystem.domain.usecase.GetGarbageHistoryDetailUseCase
+import datn.cnpm.rcsystem.domain.usecase.history.GetGarbageHistoryDetailUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

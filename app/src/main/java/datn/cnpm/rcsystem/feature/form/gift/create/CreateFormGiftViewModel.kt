@@ -8,7 +8,6 @@ import datn.cnpm.rcsystem.core.logging.DebugLog
 import datn.cnpm.rcsystem.core.requireError
 import datn.cnpm.rcsystem.core.succeeded
 import datn.cnpm.rcsystem.domain.model.gift.GiftDetailEntity
-import datn.cnpm.rcsystem.domain.usecase.transport.CreateTransportGarbageFormUseCase
 import datn.cnpm.rcsystem.domain.usecase.transport.CreateTransportGiftFormUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,7 +23,7 @@ class CreateFormGiftViewModel @Inject constructor(private val createTransportGif
         cityOrProvince: String
     ) {
         currentState.gift?.let {
-            if(it.redemptionPoint < (SingletonObject.customer?.point?.remainPoint ?: 0)) {
+            if (it.redemptionPoint < (SingletonObject.customer?.point?.remainPoint ?: 0)) {
                 viewModelScope.launch {
                     dispatchState(currentState.copy(loading = true))
                     val response =

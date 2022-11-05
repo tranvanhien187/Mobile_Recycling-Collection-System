@@ -1,15 +1,16 @@
-package datn.cnpm.rcsystem.domain.usecase
+package datn.cnpm.rcsystem.domain.usecase.history
 
 import datn.cnpm.rcsystem.core.Result
 import datn.cnpm.rcsystem.core.di.IoDispatcher
 import datn.cnpm.rcsystem.data.repository.CRGSRepository
 import datn.cnpm.rcsystem.domain.model.history.BaseItemHistory
+import datn.cnpm.rcsystem.domain.usecase.BaseUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
 
 interface GetListGiftHistoryUseCase {
-    class Parameters()
+    class Parameters
 
     suspend fun getListGiftHistory(parameters: Parameters = Parameters()): Result<List<BaseItemHistory>>
 }

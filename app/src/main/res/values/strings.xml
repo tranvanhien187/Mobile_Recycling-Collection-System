@@ -157,4 +157,6 @@
     <string name="personal_edit_information">Edit Information</string>
     <string name="profile_label">Profile</string>
     <string name="mark_as_complete_label">Mark as Complete!</string>
+    <string name="receive_transport_form_label">Receive Transport Form</string>
+    <string name="complete_transport_form_label">Complete Transport Form</string>
 </resources>

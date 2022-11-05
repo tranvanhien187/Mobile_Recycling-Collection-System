@@ -19,7 +19,6 @@ import datn.cnpm.rcsystem.domain.model.TransportFormFirebase
 import datn.cnpm.rcsystem.domain.model.history.HistoryStatus
 import datn.cnpm.rcsystem.domain.usecase.GetStaffInfoUseCase
 import datn.cnpm.rcsystem.domain.usecase.statistic.GetStatisticStaffCollection7DayUseCase
-import datn.cnpm.rcsystem.feature.transportform.mission.MissionViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -35,9 +34,10 @@ class DashboardStaffViewModel @Inject constructor(
         const val TRANSPORT_FORM = "TRANSPORT_FORM"
     }
 
-    fun listenerReceiveForm() {
+    private fun listenerReceiveForm() {
         SingletonObject.staff?.let {
-            Firebase.database.getReference(TRANSPORT_FORM).child(HistoryStatus.RECEIVE.name).child(it.id).limitToLast(1)
+            Firebase.database.getReference(TRANSPORT_FORM).child(HistoryStatus.RECEIVE.name)
+                .child(it.id).limitToLast(1)
                 .addChildEventListener(object :
                     ChildEventListener {
                     override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
@@ -74,6 +74,7 @@ class DashboardStaffViewModel @Inject constructor(
                 getStaffInfoUseCase.getStaffInfo()
             if (response.succeeded) {
                 fetchStatisticStaffCollection7Day(response.requireData.id)
+                listenerReceiveForm()
                 dispatchState(state = currentState.copy(staff = response.requireData))
             } else if (response.failed) {
                 when (response.requireError.errorCode) {

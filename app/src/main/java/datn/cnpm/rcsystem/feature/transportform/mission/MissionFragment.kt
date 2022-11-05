@@ -28,6 +28,7 @@ class MissionFragment : BaseFragment<FragmentListBinding>() {
     }
 
     override fun initViews() {
+        showToolbar("Remain form", R.drawable.ic_back)
         binding.rvData.adapter = formAdapter
     }
 

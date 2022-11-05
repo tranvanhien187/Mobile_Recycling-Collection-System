@@ -96,10 +96,6 @@ class CRGSDataSource @Inject constructor(private val authenticationApiService: C
         return authenticationApiService.getGiftRandom6(uuid)
     }
 
-    suspend fun getGiftUserHistory(uuid: String): SBResponse<List<GiftUserHistoryResponse>> {
-        return authenticationApiService.getGiftUserHistory(uuid)
-    }
-
     suspend fun createTransportGarbageForm(request: CreateTransportGarbageRequest): SBResponse<String> {
         return authenticationApiService.createTransportGarbageForm(request)
     }
