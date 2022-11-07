@@ -2,7 +2,6 @@ package datn.cnpm.rcsystem.domain.model.staff
 
 import datn.cnpm.rcsystem.SingletonObject
 import datn.cnpm.rcsystem.data.entitiy.AddressResponse
-import datn.cnpm.rcsystem.data.entitiy.GetCustomerInfoResponse
 import datn.cnpm.rcsystem.data.entitiy.staff.StaffInfoResponse
 import java.util.*
 

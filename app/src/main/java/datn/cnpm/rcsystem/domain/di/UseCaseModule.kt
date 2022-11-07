@@ -5,6 +5,8 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import datn.cnpm.rcsystem.domain.usecase.*
+import datn.cnpm.rcsystem.domain.usecase.agent.GetAgentInfoUseCase
+import datn.cnpm.rcsystem.domain.usecase.agent.GetAgentInfoUseCaseImpl
 import datn.cnpm.rcsystem.domain.usecase.gift.GetGiftDetailUseCase
 import datn.cnpm.rcsystem.domain.usecase.gift.GetGiftDetailUseCaseImpl
 import datn.cnpm.rcsystem.domain.usecase.gift.GetGiftOwnerByAgentUseCase
@@ -104,6 +106,12 @@ abstract class UseCaseModule {
     abstract fun provideGetStaffInfoUseCase(
         useCase: GetStaffInfoUseCaseImpl
     ): GetStaffInfoUseCase
+
+    @Binds
+    @Singleton
+    abstract fun provideGetAgentInfoUseCase(
+        useCase: GetAgentInfoUseCaseImpl
+    ): GetAgentInfoUseCase
 
     @Binds
     @Singleton

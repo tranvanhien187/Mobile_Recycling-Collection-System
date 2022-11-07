@@ -7,14 +7,12 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="25dp"
-        app:layout_constraintBottom_toTopOf="@id/frSchedule"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="98dp">
 
             <ImageView
                 android:id="@+id/imgBanner"
@@ -352,7 +350,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="42dp"
                 android:fontFamily="@font/proximanova_sbold"
-                android:text="Available Gifts"
+                android:text="@string/available_gifts_label"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -372,20 +370,12 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-    <FrameLayout
-        android:id="@+id/frSchedule"
+    <datn.cnpm.rcsystem.common.widget.PrimaryButton
+        android:id="@+id/btnSchedule"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:elevation="5dp"
-        android:paddingHorizontal="24dp"
-        android:paddingVertical="23dp"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <datn.cnpm.rcsystem.common.widget.PrimaryButton
-            android:id="@+id/btnSchedule"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="@string/place_detail_schedule_btn" />
-    </FrameLayout>
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/place_detail_schedule_btn"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

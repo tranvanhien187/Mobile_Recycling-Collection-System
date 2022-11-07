@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import datn.cnpm.rcsystem.base.BaseListAdapter
 import datn.cnpm.rcsystem.databinding.ItemRecyclingGarbageBinding
-import datn.cnpm.rcsystem.feature.dashboard.RecyclingGarbage
 
 
 class GarbageAdapter : BaseListAdapter<RecyclingGarbage>() {

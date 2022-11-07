@@ -159,4 +159,5 @@
     <string name="mark_as_complete_label">Mark as Complete!</string>
     <string name="receive_transport_form_label">Receive Transport Form</string>
     <string name="complete_transport_form_label">Complete Transport Form</string>
+    <string name="available_gifts_label">Available Gifts</string>
 </resources>

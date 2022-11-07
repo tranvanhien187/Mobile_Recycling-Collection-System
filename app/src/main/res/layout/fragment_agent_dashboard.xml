@@ -93,7 +93,7 @@
             tools:text="Tran Van Hien" />
 
         <ImageView
-            android:id="@+id/ivForm"
+            android:id="@+id/ivMyTPlace"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="24dp"
@@ -104,7 +104,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />
 
         <ImageView
-            android:id="@+id/ivShipping"
+            android:id="@+id/iVMyGift"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="24dp"
@@ -112,7 +112,7 @@
             android:src="@drawable/ic_shipping"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintEnd_toStartOf="@id/ivTrophy"
-            app:layout_constraintStart_toEndOf="@id/ivForm"
+            app:layout_constraintStart_toEndOf="@id/ivMyTPlace"
             app:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />
 
         <ImageView
@@ -123,7 +123,7 @@
             android:contentDescription="@string/empty_value"
             android:src="@drawable/ic_award"
             app:layout_constraintEnd_toStartOf="@id/ivHistory"
-            app:layout_constraintStart_toEndOf="@id/ivShipping"
+            app:layout_constraintStart_toEndOf="@id/iVMyGift"
             app:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />
 
         <ImageView
@@ -137,189 +137,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />
 
-        <TextView
-            android:id="@+id/tvScheduleTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="60dp"
-            android:fontFamily="@font/proximanova_sbold"
-            android:text="@string/dashboard_staff_schedule"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivShipping" />
-
-        <ImageView
-            android:id="@+id/ivViewAll"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginEnd="24dp"
-            android:contentDescription="@string/empty_value"
-            android:src="@drawable/ic_view_all"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/tvScheduleTitle"
-            app:layout_constraintTop_toTopOf="@id/tvScheduleTitle" />
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/llNoSchedule"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="12dp"
-            android:background="@drawable/bg_staff_schedule"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingVertical="50dp"
-            app:layout_constraintBottom_toTopOf="@id/clChart"
-            app:layout_constraintTop_toBottomOf="@id/tvScheduleTitle">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_staff_no_schedule" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="14dp"
-                android:fontFamily="@font/proximanova_reg"
-                android:gravity="center"
-                android:text="@string/dashboard_staff_free"
-                android:textColor="@color/grey_9c9d9f"
-                android:textSize="16dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/proximanova_reg"
-                android:gravity="center"
-                android:text="@string/dashboard_staff_select_more"
-                android:textColor="@color/grey_9c9d9f"
-                android:textSize="12dp" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clForm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="12dp"
-            android:visibility="gone"
-            android:background="@drawable/background_order"
-            android:paddingHorizontal="16dp"
-            app:layout_constraintBottom_toTopOf="@id/clChart"
-            app:layout_constraintTop_toBottomOf="@id/tvScheduleTitle">
-
-            <TextView
-                android:id="@+id/tvDateTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:fontFamily="@font/proximanova_bold"
-                android:textColor="@color/white"
-                android:textSize="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="14 Dec 2022 - 14:00" />
-
-
-            <TextView
-                android:id="@+id/tvAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawablePadding="4dp"
-                android:fontFamily="@font/proximanova_sbold"
-                android:textColor="@color/white"
-                android:textSize="12dp"
-                app:drawableStartCompat="@drawable/ic_pin_white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvDateTime"
-                tools:text="Tran Van A Street, Hai Chau Dis, Da Nang City" />
-
-            <TextView
-                android:id="@+id/tvNameLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/proximanova_sbold"
-                android:text="@string/name_label"
-                android:textColor="@color/white"
-                android:textSize="12dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvAddress" />
-
-            <TextView
-                android:id="@+id/tvName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/proximanova_sbold"
-                android:gravity="end"
-                android:textColor="@color/white"
-                android:textSize="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tvNameLabel"
-                app:layout_constraintTop_toTopOf="@id/tvNameLabel"
-                tools:text="Tran Van Hien" />
-
-            <TextView
-                android:id="@+id/tvOrderTypeLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/proximanova_sbold"
-                android:text="@string/name_label"
-                android:textColor="@color/white"
-                android:textSize="12dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvNameLabel" />
-
-            <TextView
-                android:id="@+id/tvOrderDescription"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/proximanova_sbold"
-                android:gravity="end"
-                android:textColor="@color/white"
-                android:textSize="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tvOrderTypeLabel"
-                app:layout_constraintTop_toTopOf="@id/tvOrderTypeLabel"
-                tools:text="Tran Van Hien" />
-
-            <TextView
-                android:id="@+id/tvPhoneNumberLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/proximanova_sbold"
-                android:text="@string/phone_number_label"
-                android:textColor="@color/white"
-                android:textSize="12dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvOrderTypeLabel" />
-
-            <TextView
-                android:id="@+id/tvPhoneNumber"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:fontFamily="@font/proximanova_sbold"
-                android:gravity="end"
-                android:textColor="@color/white"
-                android:textSize="12dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tvPhoneNumberLabel"
-                app:layout_constraintTop_toTopOf="@id/tvPhoneNumberLabel"
-                tools:text="Tran Van Hien" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+            app:layout_constraintTop_toBottomOf="@id/ivHistory"
             android:id="@+id/clChart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

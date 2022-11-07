@@ -12,6 +12,7 @@ import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.common.extension.createSpannableString
 import datn.cnpm.rcsystem.databinding.FragmentLoginBinding
+import datn.cnpm.rcsystem.feature.home.agent.HomeAgentActivity
 import datn.cnpm.rcsystem.feature.home.staff.HomeStaffActivity
 import datn.cnpm.rcsystem.feature.home.customer.HomeCustomerActivity
 import datn.cnpm.rcsystem.feature.updateaccountifo.UpdateCustomerInfoFragment
@@ -36,9 +37,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     override fun initActions() {
         binding.apply {
             btnLogin.setOnClickListener {
-                viewModel.login(
-                    tieUsername.text.toString(),
-                    tiePassword.text.toString(),
+                viewModel.loginByPass(
+                    tieUsername.text.toString().trim(),
+                    tiePassword.text.toString().trim(),
                     cbRememberMe.isChecked
                 )
             }
@@ -95,7 +96,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                     )
                 }
                 is LoginEvent.AgentLoginSuccess -> {
-                    val intent = Intent(this.activity, HomeCustomerActivity::class.java)
+                    val intent = Intent(this.activity, HomeAgentActivity::class.java)
                     activity?.startActivity(intent)
                 }
 

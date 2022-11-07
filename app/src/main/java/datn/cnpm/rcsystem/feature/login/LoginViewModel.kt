@@ -59,6 +59,41 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
             dispatchEvent(LoginEvent.ValidateField(errorUsername, errorPassword))
             dispatchState(currentState.copy(loading = false))
         }
+    }
 
+    fun loginByPass(username: String, password: String, isRemember: Boolean) = viewModelScope.launch {
+        dispatchState(currentState.copy(loading = true))
+        val response =
+            loginUseCase.login(LoginUseCase.Parameters(username, password, isRemember))
+        if (response.succeeded) {
+            when (response.requireData.role) {
+                Role.CUSTOMER.toString() -> {
+                    if (response.requireData.updatedInfo) {
+                        dispatchEvent(LoginEvent.CustomerLoginSuccess)
+                    } else {
+                        dispatchEvent(LoginEvent.CustomerUpdatedYet(response.requireData.id))
+                    }
+                }
+
+                Role.AGENT.toString() -> {
+                    dispatchEvent(LoginEvent.AgentLoginSuccess)
+                }
+
+                Role.STAFF.toString() -> {
+                    dispatchEvent(LoginEvent.StaffLoginSuccess)
+                }
+                else -> {}
+            }
+
+        } else if (response.failed) {
+            if (response.requireError.errorCode == ErrorCode.NOT_UPDATE_DEALER) {
+                dispatchEvent(LoginEvent.LoginFailure(ErrorCode.NOT_UPDATE_DEALER.value))
+            } else {
+                dispatchEvent(LoginEvent.LoginFailure(response.requireError.exception.message.toString()))
+            }
+        } else {
+            dispatchEvent(LoginEvent.LoginFailure(response.requireError.message))
+        }
+        dispatchState(currentState.copy(loading = false))
     }
 }

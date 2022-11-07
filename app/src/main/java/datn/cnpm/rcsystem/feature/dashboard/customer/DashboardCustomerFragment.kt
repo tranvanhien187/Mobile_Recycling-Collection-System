@@ -16,7 +16,7 @@ import datn.cnpm.rcsystem.common.utils.CommonUtils.toPoint
 import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.databinding.FragmentCustomerDashboardBinding
 import datn.cnpm.rcsystem.feature.authentication.AuthenticationActivity
-import datn.cnpm.rcsystem.feature.dashboard.RecyclingGarbage
+import datn.cnpm.rcsystem.feature.dashboard.adapter.RecyclingGarbage
 import datn.cnpm.rcsystem.feature.dashboard.adapter.GarbageAdapter
 import datn.cnpm.rcsystem.feature.dashboard.adapter.GiftYouMayBeLikeAdapter
 import datn.cnpm.rcsystem.feature.dashboard.adapter.TradingPlaceHomeAdapter

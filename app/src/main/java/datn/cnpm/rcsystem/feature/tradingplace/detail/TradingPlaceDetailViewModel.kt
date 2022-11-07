@@ -7,6 +7,7 @@ import datn.cnpm.rcsystem.core.logging.DebugLog
 import datn.cnpm.rcsystem.core.requireData
 import datn.cnpm.rcsystem.core.requireError
 import datn.cnpm.rcsystem.core.succeeded
+import datn.cnpm.rcsystem.data.entitiy.gift.GiftCriteria
 import datn.cnpm.rcsystem.domain.usecase.GetTPlaceDetailUseCase
 import datn.cnpm.rcsystem.domain.usecase.gift.GetGiftOwnerByAgentUseCase
 import kotlinx.coroutines.Dispatchers
@@ -19,10 +20,6 @@ class TradingPlaceDetailViewModel @Inject constructor(
     private val getGiftOwnerByAgentUseCase: GetGiftOwnerByAgentUseCase,
 ) : BaseViewModel<TradingPlaceDetailState, TradingPlaceDetailEvent>() {
     override fun initState() = TradingPlaceDetailState()
-
-    companion object {
-        private const val CRITERIA_AVAILABLE = "AVAILABLE"
-    }
 
     fun fetchTPlaceDetail(tplaceId: String) {
         viewModelScope.launch {
@@ -42,7 +39,7 @@ class TradingPlaceDetailViewModel @Inject constructor(
         viewModelScope.launch {
             dispatchState(currentState.copy(loading = true))
             val response =
-                getGiftOwnerByAgentUseCase.getGiftOwnerByAgent(GetGiftOwnerByAgentUseCase.Parameters(ownerId, CRITERIA_AVAILABLE))
+                getGiftOwnerByAgentUseCase.getGiftOwnerByAgent(GetGiftOwnerByAgentUseCase.Parameters(ownerId, GiftCriteria.AVAILABLE.name))
             if (response.succeeded) {
                 dispatchState(currentState.copy(listGiftOwnerByAgent = response.requireData.toMutableList()))
             } else {

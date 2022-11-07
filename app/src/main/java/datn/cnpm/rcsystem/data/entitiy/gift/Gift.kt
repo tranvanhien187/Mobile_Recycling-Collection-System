@@ -5,6 +5,7 @@ data class GiftResponse(
     val id: String? = null,
     val name: String? = null,
     val brand: String? = null,
+    val status: String? = null,
     val contributor: String? = null,
     val redemptionPoint: Int = 0,
     val type: String? = null,

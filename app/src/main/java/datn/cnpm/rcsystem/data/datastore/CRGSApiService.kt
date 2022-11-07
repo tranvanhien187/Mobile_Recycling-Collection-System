@@ -2,6 +2,7 @@ package datn.cnpm.rcsystem.data.datastore
 
 import datn.cnpm.rcsystem.core.SBResponse
 import datn.cnpm.rcsystem.data.entitiy.*
+import datn.cnpm.rcsystem.data.entitiy.agent.AgentInfoResponse
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
 import datn.cnpm.rcsystem.data.entitiy.history.GarbageHistoryDetailResponse
@@ -88,6 +89,12 @@ interface CRGSApiService {
 
     @GET("api/v1/gift/get/random/{id}")
     suspend fun getGiftRandom6(@Path("id") id: String): SBResponse<List<GiftResponse>>
+
+
+    /***        AGENT      ***/
+    @GET("/api/v1/agent/{id}")
+    suspend fun getAgentInfo(@Path("id") id: String): SBResponse<AgentInfoResponse>
+    /******/
 
     /***        STAFF      ***/
 

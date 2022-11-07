@@ -75,7 +75,7 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
             ivViewAll.setOnClickListener {
                 findNavController().navigate(R.id.missionFragment)
             }
-            btnMarkComplete.setOnClickListener {
+            clForm.setOnClickListener {
                 viewModel.currentState.form?.let {
                     if (it.type == TransportFormAdapter.TransportFormType.GIFT.name) {
                         findNavController().navigate(

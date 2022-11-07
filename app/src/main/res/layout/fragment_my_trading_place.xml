@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="98dp">
+
+    <ImageView
+        android:id="@+id/imgBanner"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="H, 414:246"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@color/grey_dfe3e9"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/custom_shadow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_back_2" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="210dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_round_corner_ractangle_24"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/imgBanner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tvWeightCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/proximanova_reg"
+            android:gravity="center"
+            android:text="@string/_1_kilogram_label"
+            android:textColor="@color/black"
+            android:textSize="12dp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="4dp"
+            android:background="@color/grey_c4c4c4" />
+
+        <TextView
+            android:id="@+id/tvPointCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/proximanova_reg"
+            android:gravity="center"
+            android:text="@string/_200_points_label"
+            android:textColor="@color/black"
+            android:textSize="12dp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/proximanova_sbold"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintTop_toBottomOf="@id/imgBanner"
+        tools:text="This is name of place that you can bring trash to recycle" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvName">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvPaper"
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/green_52de97"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="4dp"
+                android:fontFamily="@font/proximanova_reg"
+                android:gravity="center"
+                android:text="@string/paper"
+                android:textColor="@color/white"
+                android:textSize="12dp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvBottle"
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            app:cardBackgroundColor="@color/orange_f99200"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="4dp"
+                android:fontFamily="@font/proximanova_reg"
+                android:gravity="center"
+                android:text="@string/bottle"
+                android:textColor="@color/white"
+                android:textSize="12dp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvPin"
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            app:cardBackgroundColor="@color/blue_1c75ff"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="4dp"
+                android:fontFamily="@font/proximanova_reg"
+                android:gravity="center"
+                android:text="@string/battery"
+                android:textColor="@color/white"
+                android:textSize="12dp" />
+        </androidx.cardview.widget.CardView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <TextView
+        android:id="@+id/tvBusinessHourLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="10dp"
+        android:drawablePadding="9dp"
+        android:fontFamily="@font/proximanova_reg"
+        android:text="@string/business_hour_label"
+        android:textColor="@color/black"
+        android:textSize="12dp"
+        app:drawableStartCompat="@drawable/ic_timer_sand"
+        app:layout_constraintTop_toBottomOf="@id/llTag" />
+
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="10dp"
+        android:drawablePadding="9dp"
+        android:fontFamily="@font/proximanova_reg"
+        android:textColor="@color/black"
+        android:textSize="12dp"
+        app:drawableStartCompat="@drawable/ic_map_marker"
+        app:layout_constraintTop_toBottomOf="@id/tvBusinessHourLabel"
+        tools:text="203 Tran Quoc Vuong, Hai Chau, Da Nang" />
+
+
+    <View
+        android:id="@+id/linePhoneNumberTop"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="24dp"
+        android:background="@color/grey_f2f4f6"
+        app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+
+    <ImageView
+        android:id="@+id/imgPhoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/ic_phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linePhoneNumberTop"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvAgentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:fontFamily="@font/proximanova_sbold"
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@id/tvPhoneNumber"
+        app:layout_constraintStart_toEndOf="@id/imgPhoneNumber"
+        app:layout_constraintTop_toTopOf="@id/imgPhoneNumber"
+        tools:text="Tran Van A" />
+
+    <TextView
+        android:id="@+id/tvPhoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:fontFamily="@font/proximanova_reg"
+        android:textColor="@color/black"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="@id/imgPhoneNumber"
+        app:layout_constraintStart_toEndOf="@id/imgPhoneNumber"
+        app:layout_constraintTop_toBottomOf="@id/tvAgentName"
+        tools:text="0899 871 914" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCallNow"
+        android:layout_width="130dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/bg_round_corner_8dp_black"
+        android:fontFamily="@font/proximanova_reg"
+        android:text="@string/call_now"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgPhoneNumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgPhoneNumber" />
+
+    <View
+        android:id="@+id/linePhoneNumberBottom"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/grey_f2f4f6"
+        app:layout_constraintTop_toBottomOf="@id/imgPhoneNumber" />
+
+    <TextView
+        android:id="@+id/tvHighlights"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/proximanova_sbold"
+        android:text="@string/place_detail_highlights_title"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linePhoneNumberBottom" />
+
+    <TextView
+        android:id="@+id/tvWeightExchangeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="14dp"
+        android:fontFamily="@font/proximanova_reg"
+        android:text="@string/place_detail_total_weight_title"
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvHighlights" />
+
+    <TextView
+        android:id="@+id/tvTotalGiftTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/proximanova_reg"
+        android:text="@string/place_detail_total_gift_title"
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvWeightExchangeLabel" />
+
+    <TextView
+        android:id="@+id/tvLevelLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/proximanova_reg"
+        android:text="@string/place_detail_level_title"
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTotalGiftTitle" />
+
+    <TextView
+        android:id="@+id/tvTotalWeightValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/proximanova_sbold"
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@id/tvWeightExchangeLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="8.000 points" />
+
+    <TextView
+        android:id="@+id/tvTotalGiftValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/proximanova_sbold"
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@id/tvTotalGiftTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="100 gifts" />
+
+    <ImageView
+        android:id="@+id/ivLevel"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="24dp"
+        android:contentDescription="@string/empty_value"
+        app:layout_constraintBottom_toBottomOf="@id/tvLevelLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvLevelLabel" />
+
+    <TextView
+        android:id="@+id/tvAvailableGifts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="42dp"
+        android:fontFamily="@font/proximanova_sbold"
+        android:text="@string/available_gifts_label"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvLevelLabel" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rlGiftOwnerByAgent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:paddingHorizontal="24dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAvailableGifts" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package datn.cnpm.rcsystem.data.datastore
 
 import datn.cnpm.rcsystem.core.SBResponse
 import datn.cnpm.rcsystem.data.entitiy.*
+import datn.cnpm.rcsystem.data.entitiy.agent.AgentInfoResponse
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
 import datn.cnpm.rcsystem.data.entitiy.history.GarbageHistoryDetailResponse
@@ -153,6 +154,10 @@ class CRGSDataSource @Inject constructor(private val authenticationApiService: C
 
     suspend fun getStaffInfo(id: String): SBResponse<StaffInfoResponse> {
         return authenticationApiService.getStaffInfo(id)
+    }
+
+    suspend fun getAgentInfo(id: String): SBResponse<AgentInfoResponse> {
+        return authenticationApiService.getAgentInfo(id)
     }
 
     suspend fun getListGarbageHistoryByCustomer(id: String): SBResponse<List<ItemGarbageHistoryByCustomerEntity>> {

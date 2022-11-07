@@ -32,6 +32,11 @@
             android:exported="true">
 
         </activity>
+
+        <activity
+            android:name=".feature.home.agent.HomeAgentActivity"
+            android:exported="true" />
+
         <activity
             android:name=".feature.home.staff.HomeStaffActivity"
             android:exported="true" />

@@ -207,4 +207,8 @@ object CommonUtils {
     fun Int?.toPoint(): String {
         return NumberFormat.getNumberInstance(Locale.US).format(this ?: 0) + " points"
     }
+
+    fun Double?.toWeight(): String {
+        return "${String.format(" % .2f", this?: 0.0)}Kg"
+    }
 }

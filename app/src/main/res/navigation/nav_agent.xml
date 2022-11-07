@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_dealer"
-    app:startDestination="@id/homeDealerFragment">
+    app:startDestination="@id/dashboardAgentFragment">
 
     <fragment
-        android:id="@+id/homeDealerFragment"
-        android:name="datn.cnpm.rcsystem.feature.home.agent.HomeDealerFragment"
-        android:label="HomeDealerFragment" />
+        android:id="@+id/dashboardAgentFragment"
+        android:name="datn.cnpm.rcsystem.feature.dashboard.agent.DashboardAgentFragment"
+        android:label="DashboardAgentFragment"
+        tools:layout="@layout/fragment_agent_dashboard" />
+
+    <fragment
+        android:id="@+id/myTradingPlaceFragment"
+        android:name="datn.cnpm.rcsystem.feature.tradingplace.mytradingplace.MyTradingPlaceFragment"
+        android:label="MyTradingPlaceFragment"
+        tools:layout="@layout/fragment_my_trading_place" />
+
+    <fragment
+        android:id="@+id/myGiftFragment"
+        android:name="datn.cnpm.rcsystem.feature.gift.mygift.MyGiftFragment"
+        android:label="MyGiftFragment"
+        tools:layout="@layout/fragment_my_gift" />
 </navigation>
