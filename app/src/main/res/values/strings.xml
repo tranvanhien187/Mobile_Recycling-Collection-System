@@ -138,6 +138,10 @@
     <string name="dashboard_staff_schedule">My Schedule</string>
     <string name="leaderboard_label">Leaderboard</string>
     <string name="month_year">%s/%s</string>
+    <string name="dashboard_staff_gift">Gifts</string>
+    <string name="dashboard_staff_qr">QR</string>
+    <string name="dashboard_staff_history">History</string>
+    <string name="dashboard_staff_place">Place</string>
 
     <!-- Create form gift -->
     <string name="create_form_gift_term_transaction">By clicking “Place Order”, you are agreeing to Recycling Collection System’s Transaction Terms</string>

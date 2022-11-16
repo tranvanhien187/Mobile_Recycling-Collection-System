@@ -1,6 +1,8 @@
 package datn.cnpm.rcsystem.feature.dashboard.staff
 
 import android.content.Intent
+import android.graphics.LinearGradient
+import android.graphics.Shader
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -55,6 +57,7 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
     }
 
     override fun initViews() {
+        initMenuTextShader()
     }
 
     override fun initActions() {
@@ -105,17 +108,17 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
     override fun initObservers() {
 
         viewModel.apply {
-            observe(
-                owner = viewLifecycleOwner,
-                selector = { state -> state.loading },
-                observer = { loading ->
-                    if (loading) {
-                        showLoading()
-                    } else {
-                        hideLoading()
-                    }
-                }
-            )
+//            observe(
+//                owner = viewLifecycleOwner,
+//                selector = { state -> state.loading },
+//                observer = { loading ->
+//                    if (loading) {
+//                        showLoading()
+//                    } else {
+//                        hideLoading()
+//                    }
+//                }
+//            )
 
             observe(
                 owner = viewLifecycleOwner,
@@ -257,5 +260,20 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
             xAxis.setDrawGridLines(false)
         }
         binding.chartWeighPerDay.invalidate()
+    }
+
+    private fun initMenuTextShader() {
+        binding.run {
+            val textShader: Shader = LinearGradient(0F, 0F, 0F, tvGift.textSize,
+                intArrayOf(
+                    ContextCompat.getColor(requireContext(), R.color.blue_1c75ff),
+                    ContextCompat.getColor(requireContext(), R.color.green_00ad31)),
+                null,
+                Shader.TileMode.MIRROR)
+            tvGift.paint.shader = textShader
+            tvQR.paint.shader = textShader
+            tvHistory.paint.shader = textShader
+            tvPlace.paint.shader = textShader
+        }
     }
 }

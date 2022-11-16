@@ -12,9 +12,9 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/bg_gradient_home"
             app:layout_constraintBottom_toBottomOf="@id/ivAvatar"
-            android:background="@drawable/bg_gradient_home"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvLabelWellcome"
@@ -103,6 +103,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />
 
+        <TextView
+            android:id="@+id/tvGift"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/proximanova_sbold"
+            android:text="@string/dashboard_staff_gift"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="@id/ivForm"
+            app:layout_constraintStart_toStartOf="@id/ivForm"
+            app:layout_constraintTop_toBottomOf="@id/ivForm" />
+
         <ImageView
             android:id="@+id/ivShipping"
             android:layout_width="40dp"
@@ -115,6 +128,19 @@
             app:layout_constraintStart_toEndOf="@id/ivForm"
             app:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />
 
+        <TextView
+            android:id="@+id/tvQR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/proximanova_sbold"
+            android:text="@string/dashboard_staff_qr"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="@id/ivShipping"
+            app:layout_constraintStart_toStartOf="@id/ivShipping"
+            app:layout_constraintTop_toBottomOf="@id/ivShipping" />
+
         <ImageView
             android:id="@+id/ivTrophy"
             android:layout_width="40dp"
@@ -126,6 +152,19 @@
             app:layout_constraintStart_toEndOf="@id/ivShipping"
             app:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />
 
+        <TextView
+            android:id="@+id/tvHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/proximanova_sbold"
+            android:text="@string/dashboard_staff_history"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="@id/ivTrophy"
+            app:layout_constraintStart_toStartOf="@id/ivTrophy"
+            app:layout_constraintTop_toBottomOf="@id/ivTrophy" />
+
         <ImageView
             android:id="@+id/ivHistory"
             android:layout_width="40dp"
@@ -136,6 +175,19 @@
             android:src="@drawable/ic_history"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />
+
+        <TextView
+            android:id="@+id/tvPlace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/proximanova_sbold"
+            android:text="@string/dashboard_staff_place"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="@id/ivHistory"
+            app:layout_constraintStart_toStartOf="@id/ivHistory"
+            app:layout_constraintTop_toBottomOf="@id/ivHistory" />
 
         <TextView
             android:id="@+id/tvScheduleTitle"
@@ -157,8 +209,8 @@
             android:layout_marginEnd="24dp"
             android:contentDescription="@string/empty_value"
             android:src="@drawable/ic_view_all"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/tvScheduleTitle"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tvScheduleTitle" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -209,9 +261,9 @@
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="12dp"
-            android:visibility="gone"
             android:background="@drawable/background_order"
             android:paddingHorizontal="16dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@id/clChart"
             app:layout_constraintTop_toBottomOf="@id/tvScheduleTitle">
 
