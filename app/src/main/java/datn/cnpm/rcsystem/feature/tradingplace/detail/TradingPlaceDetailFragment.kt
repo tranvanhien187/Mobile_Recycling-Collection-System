@@ -10,6 +10,8 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
+import datn.cnpm.rcsystem.common.extension.gone
+import datn.cnpm.rcsystem.common.extension.visible
 import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.databinding.FragmentPlaceDetailBinding
 import datn.cnpm.rcsystem.feature.gift.detail.GiftDetailFragment
@@ -117,7 +119,21 @@ class TradingPlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
             owner = viewLifecycleOwner,
             selector = { state -> state.listGiftOwnerByAgent },
             observer = { listGift ->
-                adapter.submitList(listGift)
+                listGift?.let {
+                    if(listGift.isEmpty()) {
+                        binding.tvAvailableGifts.gone()
+                        binding.rlGiftOwnerByAgent.gone()
+                        binding.llEmptyBox.visible()
+                    } else {
+                        adapter.submitList(listGift)
+                        binding.llEmptyBox.gone()
+                        binding.tvAvailableGifts.visible()
+                        binding.rlGiftOwnerByAgent.visible()
+                    }
+                } ?: kotlin.run {
+                    binding.tvAvailableGifts.gone()
+                    binding.rlGiftOwnerByAgent.gone()
+                }
             }
         )
     }

@@ -3,13 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#EDEDED">
 
-    <View
+    <ImageView
+        android:adjustViewBounds="true"
         android:id="@+id/vBGGreen"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="#44cb5a"
+        android:layout_height="wrap_content"
+        android:src="@drawable/background_personal"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -17,7 +19,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/custom_shadow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,7 +31,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/proximanova_sbold"
         android:text="@string/personal_label"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@id/ivBack"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +42,7 @@
         android:id="@+id/cvPoint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
+        android:layout_marginHorizontal="16dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="@id/vBGGreen"
@@ -140,113 +142,158 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/tvUpdateInfo"
+    <LinearLayout
+        android:id="@+id/llUpdateInfo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="4dp"
         android:background="@drawable/bg_solid_8_white"
-        android:drawablePadding="6dp"
         android:elevation="12dp"
-        android:fontFamily="@font/proximanova_reg"
-        android:gravity="center"
-        android:paddingVertical="10dp"
-        android:text="@string/personal_edit_information"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:drawableTopCompat="@drawable/ic_personal_edit"
-        app:layout_constraintEnd_toStartOf="@id/tvHelp"
+        android:orientation="vertical"
+        android:paddingVertical="12dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="0dp"
+        app:layout_constraintEnd_toStartOf="@id/llHelp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cvPoint" />
+        app:layout_constraintTop_toBottomOf="@id/cvPoint">
 
-    <TextView
-        android:id="@+id/tvHelp"
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_personal_edit" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/proximanova_reg"
+            android:text="@string/personal_edit_information"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llHelp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/bg_solid_8_white"
-        android:drawablePadding="8dp"
         android:elevation="12dp"
-        android:fontFamily="@font/proximanova_reg"
-        android:gravity="center"
-        android:paddingVertical="10dp"
-        android:text="@string/personal_help"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:drawableTopCompat="@drawable/ic_personal_help"
-        app:layout_constraintBottom_toBottomOf="@id/tvUpdateInfo"
+        android:orientation="vertical"
+        android:paddingVertical="12dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tvUpdateInfo"
-        app:layout_constraintTop_toTopOf="@id/tvUpdateInfo" />
+        app:layout_constraintStart_toEndOf="@id/llUpdateInfo"
+        app:layout_constraintTop_toBottomOf="@id/cvPoint">
 
-    <TextView
-        android:id="@+id/tvTermCondition"
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_personal_help" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/proximanova_reg"
+            android:text="@string/personal_help"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llAboutUs"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="4dp"
         android:background="@drawable/bg_solid_8_white"
-        android:drawablePadding="8dp"
         android:elevation="12dp"
-        android:fontFamily="@font/proximanova_reg"
-        android:gravity="center"
-        android:paddingVertical="10dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="20dp"
-        android:text="@string/personal_policy"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:drawableTopCompat="@drawable/ic_personal_policy"
-        app:layout_constraintEnd_toStartOf="@id/tvAboutUs"
+        android:orientation="vertical"
+        android:paddingVertical="12dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="0dp"
+        app:layout_constraintEnd_toStartOf="@id/llPolicy"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvHelp" />
+        app:layout_constraintTop_toBottomOf="@id/llUpdateInfo">
 
-    <TextView
-        android:id="@+id/tvAboutUs"
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_about_us" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/proximanova_reg"
+            android:text="@string/personal_about_us"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llPolicy"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/bg_solid_8_white"
-        android:drawablePadding="8dp"
         android:elevation="12dp"
-        android:fontFamily="@font/proximanova_reg"
-        android:gravity="center"
-        android:paddingVertical="10dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="20dp"
-        android:text="@string/personal_about_us"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:drawableTopCompat="@drawable/ic_about_us"
-        app:layout_constraintBottom_toBottomOf="@id/tvTermCondition"
+        android:orientation="vertical"
+        android:paddingVertical="12dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tvTermCondition"
-        app:layout_constraintTop_toTopOf="@id/tvTermCondition" />
+        app:layout_constraintStart_toEndOf="@id/llAboutUs"
+        app:layout_constraintTop_toBottomOf="@id/llUpdateInfo">
 
-    <TextView
-        android:id="@+id/tvLogout"
-        android:layout_width="match_parent"
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_personal_policy" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/proximanova_reg"
+            android:text="@string/personal_policy"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llLogout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/bg_solid_8_white"
-        android:drawablePadding="18dp"
-        android:elevation="4dp"
-        android:fontFamily="@font/proximanova_reg"
-        android:gravity="center_vertical"
-        android:paddingVertical="10dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="20dp"
-        android:text="@string/personal_logout"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:drawableEndCompat="@drawable/ic_arrow_right_personal"
-        app:drawableStartCompat="@drawable/ic_personal_logout"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:elevation="12dp"
+        android:orientation="vertical"
+        android:paddingVertical="12dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="0dp"
+        app:layout_constraintEnd_toStartOf="@id/llPolicy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llPolicy">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_personal_logout" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/proximanova_reg"
+            android:text="@string/personal_logout"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

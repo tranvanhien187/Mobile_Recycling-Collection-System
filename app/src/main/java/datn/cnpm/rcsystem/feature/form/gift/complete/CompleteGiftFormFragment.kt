@@ -2,7 +2,6 @@ package datn.cnpm.rcsystem.feature.form.gift.complete
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Intent
 import android.database.Cursor
 import android.net.Uri
 import android.os.Build
@@ -30,6 +29,7 @@ class CompleteGiftFormFragment : BaseFragment<FragmentCompleteGiftFormBinding>()
 
     val viewModel: CompleteGiftFormViewModel by viewModels()
 
+    override fun isDisableFullScreen() = false
     override fun initData(data: Bundle?) {
         data?.let {
             viewModel.setForm(
@@ -41,11 +41,13 @@ class CompleteGiftFormFragment : BaseFragment<FragmentCompleteGiftFormBinding>()
     override fun initViews() {
     }
 
-    @SuppressLint("SetTextI18n")
     override fun initActions() {
         binding.run {
             btnComplete.setOnClickListener {
                 viewModel.completeForm(tvTransportId.text.toString())
+            }
+            ivBack.setOnClickListener {
+                findNavController().popBackStack()
             }
             ivEvidence.setOnClickListener {
                 pickImageFromGallery()
@@ -104,6 +106,7 @@ class CompleteGiftFormFragment : BaseFragment<FragmentCompleteGiftFormBinding>()
                         tvGiftBrand.text = data.giftBrand
                         tvGiftName.text = data.giftName
                         tvCustomerName.text = data.customerName
+                        tvGiftDescription.text = data.description
                         tvAddress.text =
                             "${data.street}, ${data.district}, ${data.cityOrProvince}"
 

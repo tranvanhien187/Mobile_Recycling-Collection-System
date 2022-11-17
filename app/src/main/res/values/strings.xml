@@ -40,6 +40,7 @@
     <string name="transport_form_detail_label">Transport Form Detail</string>
     <string name="home_label">Home</string>
     <string name="history_label">History</string>
+    <string name="receive_form_label">Receive Form</string>
     <string name="personal_label">Personal</string>
     <string name="full_name_label">Full name</string>
     <string name="full_name_require">Full name \u002A</string>
@@ -99,7 +100,7 @@
     <string name="gift_you_may_be_like_label">Gift you may be like</string>
     <string name="business_hour_label">Open from: 8:00 – 17:30</string>
     <string name="_1_kilogram_label">1 kilogram</string>
-    <string name="_200_points_label">200 points</string>
+    <string name="_100_points_label">100 points</string>
 
 
     <!-- Personal -->
@@ -160,4 +161,8 @@
     <string name="receive_transport_form_label">Receive Transport Form</string>
     <string name="complete_transport_form_label">Complete Transport Form</string>
     <string name="available_gifts_label">Available Gifts</string>
+    <string name="no_result_label">No result.</string>
+    <string name="no_gift_available_label">No gift available</string>
+    <string name="can">Can</string>
+    <string name="plastic">Plastic</string>
 </resources>

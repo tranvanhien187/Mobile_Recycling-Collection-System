@@ -60,16 +60,16 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
     override fun initActions() {
 
         binding.apply {
-            ivForm.setOnClickListener {
+            ivOrderList.setOnClickListener {
                 findNavController().navigate(R.id.transportFormFragment)
             }
-            ivShipping.setOnClickListener {
+            ivMyOrder.setOnClickListener {
                 findNavController().navigate(R.id.missionFragment)
             }
             ivHistory.setOnClickListener {
                 findNavController().navigate(R.id.historyFragment)
             }
-            ivTrophy.setOnClickListener {
+            ivLeaderboard.setOnClickListener {
                 findNavController().navigate(R.id.leaderboardFragment)
             }
             ivViewAll.setOnClickListener {

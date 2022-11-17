@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/viewImageHighLight"
-    android:layout_width="240dp"
+    android:layout_width="200dp"
     android:layout_height="wrap_content"
     android:layout_marginEnd="24dp"
     android:layout_marginBottom="10dp"
@@ -11,13 +11,13 @@
     app:cardElevation="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="240dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/ivBanner"
-            android:layout_width="240dp"
-            android:layout_height="150dp"
+            android:layout_width="200dp"
+            android:layout_height="125dp"
             android:contentDescription="@string/empty_value"
             android:scaleType="centerCrop"
             android:src="@drawable/image_default_image_rectangle"
@@ -32,19 +32,21 @@
             android:fontFamily="@font/proximanova_sbold"
             android:gravity="center_vertical"
             android:orientation="horizontal"
+            android:textSize="10sp"
             android:paddingHorizontal="20dp"
             android:paddingVertical="4dp"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="2" />
+            tools:text="2"
+            tools:ignore="SmallSp" />
 
         <TextView
             android:id="@+id/tvGiftName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="6dp"
             android:fontFamily="@font/proximanova_sbold"
             android:textColor="@color/black"
             android:textSize="14sp"
@@ -67,7 +69,7 @@
             android:maxLines="2"
             android:textColor="@color/green_00ad31"
             android:textSize="12sp"
-            app:drawableStartCompat="@drawable/ic_leaf"
+            app:drawableStartCompat="@drawable/ic_leaf_14"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="6dp"
             android:src="@drawable/ic_pin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvPoint"
@@ -92,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:layout_marginStart="2dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="6dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="16dp"
             android:ellipsize="end"

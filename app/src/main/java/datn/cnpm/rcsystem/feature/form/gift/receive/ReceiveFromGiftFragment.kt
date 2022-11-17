@@ -23,6 +23,7 @@ class ReceiveFromGiftFragment : BaseFragment<FragmentReceiveGiftFormBinding>() {
 
     private val viewModel: ReceiveFromGiftViewModel by viewModels()
 
+    override fun isDisableFullScreen() = false
 
     override fun initData(data: Bundle?) {
         data?.let {
@@ -38,6 +39,9 @@ class ReceiveFromGiftFragment : BaseFragment<FragmentReceiveGiftFormBinding>() {
     override fun initActions() {
         binding.btnReceive.setOnClickListener {
             viewModel.receiveTransportForm()
+        }
+        binding.ivBack.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 
@@ -66,6 +70,7 @@ class ReceiveFromGiftFragment : BaseFragment<FragmentReceiveGiftFormBinding>() {
                         tvTransportId.text = form.id
                         tvCustomerName.text = form.customerName
                         tvPhoneNumber.text = form.customerPhoneNumber
+                        tvGiftDescription.text = form.description
                         tvAddress.text = "${form.street}, ${form.district}, ${form.cityOrProvince}"
                         btnReceive.isEnabled = HistoryStatus.CREATE.name == form.status
                         GlideHelper.loadImage(

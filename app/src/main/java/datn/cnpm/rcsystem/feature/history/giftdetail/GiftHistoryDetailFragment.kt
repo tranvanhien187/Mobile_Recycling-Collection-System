@@ -144,7 +144,6 @@ class GiftHistoryDetailFragment : BaseFragment<FragmentGiftHistoryDetailBinding>
                             )
                             tvPoint.text = data.point.toString()
 
-
                             when (authPreference.role) {
                                 Role.CUSTOMER.name -> {
                                     tvName1.text = data.staffName
@@ -165,22 +164,4 @@ class GiftHistoryDetailFragment : BaseFragment<FragmentGiftHistoryDetailBinding>
             }
         )
     }
-
-    fun getStatusIcon(status: String) : Int {
-        return when(status) {
-            HistoryStatus.CREATE.name -> R.drawable.ic_status_succes
-            HistoryStatus.CREATE.name -> R.drawable.ic_status_pending
-            HistoryStatus.CREATE.name -> R.drawable.ic_status_fail
-            else ->{ R.drawable.ic_status_fail }
-        }
-    }
-
-    fun getStatusColor(status: String) : Int{
-        return when(status) {
-            "Success" -> R.color.green_00ad31
-            "Pending" -> R.color.orange_f99200
-            else -> R.color.red_f34d4d
-        }
-    }
-
 }

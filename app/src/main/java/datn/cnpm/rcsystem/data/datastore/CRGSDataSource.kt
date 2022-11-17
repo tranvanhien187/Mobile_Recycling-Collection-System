@@ -168,20 +168,12 @@ class CRGSDataSource @Inject constructor(private val authenticationApiService: C
         return authenticationApiService.getListGarbageHistoryByStaff(id)
     }
 
-    suspend fun getListGarbageHistoryByAgent(id: String): SBResponse<List<ItemGarbageHistoryByAgentEntity>> {
-        return authenticationApiService.getListGarbageHistoryByAgent(id)
-    }
-
     suspend fun getListGiftHistoryByCustomer(id: String): SBResponse<List<ItemGiftHistoryByCustomerEntity>> {
         return authenticationApiService.getListGiftHistoryByCustomer(id)
     }
 
     suspend fun getListGiftHistoryByStaff(id: String): SBResponse<List<ItemGiftHistoryByStaffEntity>> {
         return authenticationApiService.getListGiftHistoryByStaff(id)
-    }
-
-    suspend fun getListGiftHistoryByAgent(id: String): SBResponse<List<ItemGiftHistoryByAgentEntity>> {
-        return authenticationApiService.getListGiftHistoryByAgent(id)
     }
 
     suspend fun getGiftHistoryDetail(historyId: String): SBResponse<GiftHistoryDetailResponse> {

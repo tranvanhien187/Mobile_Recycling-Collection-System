@@ -59,8 +59,10 @@ class MyGiftFragment : BaseFragment<FragmentMyGiftBinding>() {
             owner = viewLifecycleOwner,
             selector = { state -> state.listGift },
             observer = { listGift ->
-                if (listGift.isNotEmpty()) {
+                listGift?.let {
+                    if (it.isNotEmpty()) {
                     giftAdapter.submitList(listGift)
+                }
                 }
             }
         )

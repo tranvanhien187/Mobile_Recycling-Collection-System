@@ -17,7 +17,7 @@
             android:id="@+id/motionLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_gradient_home"
+            android:background="@drawable/background_dashboard"
             android:minHeight="90dp"
             app:layoutDescription="@xml/dashboard_scene"
             app:layout_scrollFlags="scroll|enterAlways|snap|exitUntilCollapsed"
@@ -106,7 +106,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:contentDescription="@string/empty_value"
-                android:src="@drawable/ic_setting_green"
+                android:src="@drawable/ic_setting"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -115,8 +115,19 @@
                 android:id="@+id/btnScan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:contentDescription="@string/empty_value"
                 android:src="@drawable/ic_qrcode_scan"
+                motion:layout_editor_absoluteX="24dp"
+                motion:layout_editor_absoluteY="122dp" />
+
+            <ImageView
+                android:id="@+id/tvScan"
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/empty_value"
+                android:src="@drawable/text_qr"
                 motion:layout_editor_absoluteX="24dp"
                 motion:layout_editor_absoluteY="122dp" />
 
@@ -124,25 +135,59 @@
                 android:id="@+id/btnGift"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:contentDescription="@string/empty_value"
                 android:src="@drawable/ic_gift" />
+
+            <ImageView
+                android:id="@+id/tvGift"
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/empty_value"
+                android:src="@drawable/text_gift"
+                motion:layout_editor_absoluteX="24dp"
+                motion:layout_editor_absoluteY="122dp" />
 
             <ImageView
                 android:id="@+id/btnHistory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:contentDescription="@string/empty_value"
-                android:src="@drawable/ic_history" />
+                android:src="@drawable/ic_history"
+                motion:layout_editor_absoluteX="240dp"
+                motion:layout_editor_absoluteY="314dp" />
+
+            <ImageView
+                android:id="@+id/tvHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="13dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/empty_value"
+                android:src="@drawable/text_history"
+                motion:layout_editor_absoluteX="24dp"
+                motion:layout_editor_absoluteY="122dp" />
 
             <ImageView
                 android:id="@+id/btnPlace"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="10dp"
+                android:adjustViewBounds="true"
                 android:contentDescription="@string/empty_value"
                 android:src="@drawable/ic_recycle"
                 motion:layout_editor_absoluteX="224dp"
                 motion:layout_editor_absoluteY="122dp" />
 
+            <ImageView
+                android:id="@+id/tvPlace"
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/empty_value"
+                android:src="@drawable/text_place"
+                motion:layout_editor_absoluteX="24dp"
+                motion:layout_editor_absoluteY="122dp" />
 
         </androidx.constraintlayout.motion.widget.MotionLayout>
     </com.google.android.material.appbar.AppBarLayout>

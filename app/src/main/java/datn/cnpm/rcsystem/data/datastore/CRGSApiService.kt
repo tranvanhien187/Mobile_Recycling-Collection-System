@@ -55,10 +55,10 @@ interface CRGSApiService {
     suspend fun getCustomerInfo(@Path("id") uuid: String): SBResponse<GetCustomerInfoResponse>
 
     @GET("/api/v1/history/garbage/{id}")
-    suspend fun getListGarbageHistoryByCustomer(@Path("id") id: String): SBResponse<List<ItemGarbageHistoryByCustomerEntity>>
+    suspend fun getListGarbageHistoryByCustomer(@Path("id") id: String, @Query("page") page: Int = 0): SBResponse<List<ItemGarbageHistoryByCustomerEntity>>
 
     @GET("/api/v1/history/gift/{id}")
-    suspend fun getListGiftHistoryByCustomer(@Path("id") id: String): SBResponse<List<ItemGiftHistoryByCustomerEntity>>
+    suspend fun getListGiftHistoryByCustomer(@Path("id") id: String, @Query("page") page: Int = 0): SBResponse<List<ItemGiftHistoryByCustomerEntity>>
 
     /******/
 
@@ -102,20 +102,12 @@ interface CRGSApiService {
     suspend fun getStaffInfo(@Path("id") id: String): SBResponse<StaffInfoResponse>
 
     @GET("/api/v1/history/garbage/{id}")
-    suspend fun getListGarbageHistoryByStaff(@Path("id") id: String): SBResponse<List<ItemGarbageHistoryByStaffEntity>>
+    suspend fun getListGarbageHistoryByStaff(@Path("id") id: String, @Query("page") page: Int = 0): SBResponse<List<ItemGarbageHistoryByStaffEntity>>
 
     @GET("/api/v1/history/gift/{id}")
-    suspend fun getListGiftHistoryByStaff(@Path("id") id: String): SBResponse<List<ItemGiftHistoryByStaffEntity>>
+    suspend fun getListGiftHistoryByStaff(@Path("id") id: String, @Query("page") page: Int = 0): SBResponse<List<ItemGiftHistoryByStaffEntity>>
 
     /******/
-
-
-    @GET("/api/v1/history/garbage/{id}")
-    suspend fun getListGarbageHistoryByAgent(@Path("id") id: String): SBResponse<List<ItemGarbageHistoryByAgentEntity>>
-
-
-    @GET("/api/v1/history/gift/{id}")
-    suspend fun getListGiftHistoryByAgent(@Path("id") id: String): SBResponse<List<ItemGiftHistoryByAgentEntity>>
 
 
     @GET("/api/v1/history/gift/details/{id}")

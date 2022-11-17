@@ -38,8 +38,27 @@ class TradingPlaceHomeAdapter :
                     ivBanner,
                     R.drawable.image_default_image_rectangle
                 )
+                ivLevel.run {
+                    when (data.rank) {
+                        1 -> {
+                            setImageResource(R.drawable.ic_level_1)
+                        }
+                        2 -> {
+                            setImageResource(R.drawable.ic_level_2)
+                        }
+                        3 -> {
+                            setImageResource(R.drawable.ic_level_3)
+                        }
+                        4 -> {
+                            setImageResource(R.drawable.ic_level_4)
+                        }
+                        5 -> {
+                            setImageResource(R.drawable.ic_level_5)
+                        }
+                    }
+                }
                 root.setOnClickListener {
-                    onItemClick.invoke(data)
+                    onItemClick(data)
                 }
             }
         }

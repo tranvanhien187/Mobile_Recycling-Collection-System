@@ -7,8 +7,9 @@ import datn.cnpm.rcsystem.core.logging.DebugLog
 import datn.cnpm.rcsystem.core.requireData
 import datn.cnpm.rcsystem.core.requireError
 import datn.cnpm.rcsystem.core.succeeded
+import datn.cnpm.rcsystem.domain.model.gift.GiftEntity
 import datn.cnpm.rcsystem.domain.usecase.GetGiftByCriteriaUseCase
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -16,17 +17,39 @@ class GiftViewModel @Inject constructor(private val getGiftByCriteriaUseCase: Ge
     BaseViewModel<GiftState, GiftEvent>() {
     override fun initState() = GiftState()
 
-    fun fetchTPlaceForUser() {
+    private lateinit var giftList : List<GiftEntity>
+    fun fetchGift() {
         viewModelScope.launch() {
-            dispatchState(currentState.copy(loading = true))
             val response =
                 getGiftByCriteriaUseCase.getGiftByCriteria(GetGiftByCriteriaUseCase.Parameters())
             if (response.succeeded) {
-                dispatchState(currentState.copy(listGift = response.requireData))
+                giftList = response.requireData
+                dispatchState(currentState.copy(listGift = giftList))
             } else {
                 DebugLog.e(response.requireError.message)
             }
-            dispatchState(currentState.copy(loading = false))
+        }
+    }
+
+    fun initList() {
+        dispatchState(currentState.copy(listGift = giftList))
+    }
+    private lateinit var searchJob: Job
+    fun performSearch(keyWord: String) {
+        if(::searchJob.isInitialized && searchJob.isActive) {
+            searchJob.cancel()
+        }
+
+        if(::giftList.isInitialized) {
+            searchJob = viewModelScope.launch(Dispatchers.Default) {
+                delay(1000)
+                val result = giftList.filter { gift->
+                    gift.name?.contains(keyWord, true) ?: false
+                }
+                withContext(Dispatchers.Main) {
+                    dispatchState(currentState.copy(listGift = result))
+                }
+            }
         }
     }
 }

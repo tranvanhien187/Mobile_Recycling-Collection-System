@@ -365,9 +365,6 @@ class CRGSRepositoryImp @Inject constructor(
             Role.CUSTOMER.name -> {
                 authenticationDataSource.getListGarbageHistoryByCustomer(authPre.id)
             }
-            Role.AGENT.name -> {
-                authenticationDataSource.getListGarbageHistoryByAgent(authPre.id)
-            }
             Role.STAFF.name -> {
                 authenticationDataSource.getListGarbageHistoryByStaff(authPre.id)
             }
@@ -393,9 +390,6 @@ class CRGSRepositoryImp @Inject constructor(
         val response = when (authPre.role) {
             Role.CUSTOMER.name -> {
                 authenticationDataSource.getListGiftHistoryByCustomer(authPre.id)
-            }
-            Role.AGENT.name -> {
-                authenticationDataSource.getListGiftHistoryByAgent(authPre.id)
             }
             Role.STAFF.name -> {
                 authenticationDataSource.getListGiftHistoryByStaff(authPre.id)

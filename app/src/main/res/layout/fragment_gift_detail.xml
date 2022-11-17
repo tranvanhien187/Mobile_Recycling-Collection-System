@@ -11,6 +11,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
+
             android:id="@+id/imgBanner"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -24,7 +25,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="32dp"
             android:background="@drawable/custom_shadow"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -188,7 +189,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnCallNow"
-            android:layout_width="130dp"
+            android:layout_width="100dp"
             android:layout_height="34dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/bg_round_corner_8dp_black"

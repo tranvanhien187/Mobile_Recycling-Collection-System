@@ -49,47 +49,83 @@
 
         <Constraint
             android:id="@+id/btnScan"
-            android:layout_width="40dp"
+            android:layout_width="44dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintBottom_toTopOf="@id/tvScan"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />
 
         <Constraint
+            android:id="@+id/tvScan"
+            android:layout_width="0dp"
+            android:layout_height="11dp"
+            android:layout_marginBottom="8dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="@id/btnScan"
+            motion:layout_constraintStart_toStartOf="@id/btnScan" />
+
+        <Constraint
             android:id="@+id/btnGift"
-            android:layout_width="40dp"
+            android:layout_width="44dp"
             android:layout_marginTop="16dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintBottom_toTopOf="@id/tvGift"
             motion:layout_constraintEnd_toStartOf="@id/btnHistory"
             motion:layout_constraintStart_toEndOf="@id/btnScan"
             motion:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />
 
         <Constraint
-            android:id="@+id/btnHistory"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/tvGift"
+            android:layout_width="0dp"
+            android:layout_height="11dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginTop="16dp"
             motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toStartOf="@id/btnHistory"
+            motion:layout_constraintStart_toEndOf="@id/btnScan" />
+
+        <Constraint
+            android:id="@+id/btnHistory"
+            android:layout_width="44dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="16dp"
+            motion:layout_constraintBottom_toTopOf="@id/tvHistory"
             motion:layout_constraintEnd_toStartOf="@id/btnPlace"
             motion:layout_constraintStart_toEndOf="@id/btnGift"
             motion:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />
 
         <Constraint
+            android:id="@+id/tvHistory"
+            android:layout_width="0dp"
+            android:layout_height="13dp"
+            android:layout_marginBottom="8dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="@id/btnHistory"
+            motion:layout_constraintStart_toStartOf="@id/btnHistory" />
+
+        <Constraint
             android:id="@+id/btnPlace"
-            android:layout_width="40dp"
+            android:layout_width="44dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="9dp"
             android:layout_marginTop="16dp"
-            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintBottom_toTopOf="@id/tvPlace"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintTop_toBottomOf="@id/tvGarbageWeight" />
+
+        <Constraint
+            android:id="@+id/tvPlace"
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_marginBottom="8dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintStart_toStartOf="@id/btnPlace"
+            motion:layout_constraintEnd_toEndOf="@id/btnPlace" />
 
         <Constraint
             android:id="@+id/tvGarbageWeight"
@@ -106,8 +142,8 @@
 
         <Constraint
             android:id="@+id/btnScan"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             motion:layout_constraintEnd_toStartOf="@id/btnGift"
             motion:layout_constraintStart_toEndOf="@id/ivBorderStroke"
             motion:layout_constraintBottom_toBottomOf="@id/ivBorderStroke"
@@ -115,8 +151,8 @@
 
         <Constraint
             android:id="@+id/btnGift"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             motion:layout_constraintEnd_toStartOf="@id/btnHistory"
             motion:layout_constraintStart_toEndOf="@id/btnScan"
             motion:layout_constraintBottom_toBottomOf="@id/ivBorderStroke"
@@ -124,8 +160,8 @@
 
         <Constraint
             android:id="@+id/btnHistory"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             motion:layout_constraintEnd_toStartOf="@id/btnPlace"
             motion:layout_constraintStart_toEndOf="@id/btnGift"
             motion:layout_constraintBottom_toBottomOf="@id/ivBorderStroke"
@@ -133,17 +169,49 @@
 
         <Constraint
             android:id="@+id/btnPlace"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             motion:layout_constraintBottom_toBottomOf="@id/ivBorderStroke"
             motion:layout_constraintEnd_toStartOf="@id/btnSetting"
             motion:layout_constraintStart_toEndOf="@id/btnHistory"
             motion:layout_constraintTop_toTopOf="@id/ivBorderStroke" />
 
         <Constraint
+            android:id="@+id/tvScan"
+            android:layout_width="0dp"
+            android:layout_height="11dp"
+            motion:layout_constraintTop_toBottomOf="@id/tvGarbageWeight"
+            motion:layout_constraintEnd_toEndOf="@id/btnScan"
+            motion:layout_constraintStart_toStartOf="@id/btnScan" />
+
+        <Constraint
+            android:id="@+id/tvGift"
+            android:layout_width="0dp"
+            android:layout_height="11dp"
+            motion:layout_constraintTop_toBottomOf="@id/tvGarbageWeight"
+            motion:layout_constraintEnd_toStartOf="@id/btnHistory"
+            motion:layout_constraintStart_toEndOf="@id/btnScan" />
+
+        <Constraint
+            android:id="@+id/tvHistory"
+            android:layout_width="0dp"
+            android:layout_height="13dp"
+            motion:layout_constraintTop_toBottomOf="@id/tvGarbageWeight"
+            motion:layout_constraintEnd_toEndOf="@id/btnHistory"
+            motion:layout_constraintStart_toStartOf="@id/btnHistory" />
+
+        <Constraint
+            android:id="@+id/tvPlace"
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            motion:layout_constraintTop_toBottomOf="@id/tvGarbageWeight"
+            motion:layout_constraintStart_toStartOf="@id/btnPlace"
+            motion:layout_constraintEnd_toEndOf="@id/btnPlace" />
+
+        <Constraint
             android:id="@+id/btnSetting"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginEnd="24dp"
             motion:layout_constraintBottom_toBottomOf="@id/ivBorderStroke"
             motion:layout_constraintEnd_toEndOf="parent"
@@ -151,8 +219,8 @@
 
         <Constraint
             android:id="@+id/ivBorderStroke"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="56dp"
             android:layout_marginBottom="16dp"
@@ -171,8 +239,8 @@
 
         <Constraint
             android:id="@+id/ivAvatar"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             motion:layout_constraintBottom_toBottomOf="@+id/ivBorderStroke"
             motion:layout_constraintEnd_toEndOf="@+id/ivBorderStroke"
             motion:layout_constraintStart_toStartOf="@+id/ivBorderStroke"

@@ -24,7 +24,7 @@ class TransportFormFragment : BaseFragment<FragmentTransportFormBinding>() {
     }
 
     override fun initViews() {
-        showToolbar(getString(R.string.history_label), R.drawable.ic_back)
+        showToolbar(getString(R.string.receive_form_label), R.drawable.ic_back)
         transportAdapter = TransportFormScreenAdapter(this)
         binding.apply {
             pager.adapter = transportAdapter

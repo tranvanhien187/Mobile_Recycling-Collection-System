@@ -15,7 +15,7 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivGift"
             android:layout_width="140dp"
-            android:layout_height="181dp"
+            android:layout_height="140dp"
             android:contentDescription="@string/empty_value"
             app:layout_constraintDimensionRatio="H,1:1"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +39,8 @@
             app:drawableStartCompat="@drawable/ic_leaf_14"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="1.500 points" />
+            tools:text="1.500 points"
+            tools:ignore="SmallSp" />
 
         <TextView
             android:id="@+id/tvBrand"
@@ -119,7 +120,7 @@
             android:fontFamily="@font/proximanova_reg"
             android:maxLines="2"
             android:textColor="@color/black_516173"
-            android:textSize="14sp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ivDealer"
             app:layout_constraintTop_toTopOf="@id/ivDealer"
@@ -149,7 +150,7 @@
             android:fontFamily="@font/proximanova_reg"
             android:maxLines="2"
             android:textColor="@color/black_516173"
-            android:textSize="14sp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/imgMapPin"
             app:layout_constraintTop_toTopOf="@id/imgMapPin"

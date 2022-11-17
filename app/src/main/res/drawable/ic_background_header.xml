@@ -8,7 +8,7 @@
     tools:ignore="VectorRaster">
   <path
       android:strokeWidth="1"
-      android:pathData="M415,1H1V188.75C1,188.75 94.11,225 210.75,225C327.39,225 415,188.75 415,188.75V1Z"
+      android:pathData="M416,0H0V188.75C1,188.75 94.11,226 210.75,226C327.39,226 416,188.75 416,188.75V0Z"
       android:fillColor="#00AD31"
       android:strokeColor="#00AD31"/>
   <path
@@ -26,7 +26,7 @@
     </aapt:attr>
   </path>
   <path
-      android:pathData="M1,77.36V187.31C42.81,199.27 139.31,226.73 192,224C185.59,78.62 62.09,64.26 1,77.36Z">
+      android:pathData="M0,77.36V187.31C42.81,199.27 139.31,226.73 192,224C185.59,78.62 62.09,64.26 1,77.36Z">
     <aapt:attr name="android:fillColor">
       <gradient 
           android:startX="43"

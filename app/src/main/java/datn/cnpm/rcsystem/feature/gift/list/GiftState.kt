@@ -4,5 +4,5 @@ import datn.cnpm.rcsystem.domain.model.gift.GiftEntity
 
 data class GiftState(
     val loading: Boolean = false,
-    val listGift: List<GiftEntity> = emptyList()
+    val listGift: List<GiftEntity>? = null
 )

@@ -28,7 +28,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="32dp"
                 android:background="@drawable/custom_shadow"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -69,7 +69,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/proximanova_reg"
                     android:gravity="center"
-                    android:text="@string/_200_points_label"
+                    android:text="@string/_100_points_label"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -133,6 +133,48 @@
                         android:fontFamily="@font/proximanova_reg"
                         android:gravity="center"
                         android:text="@string/bottle"
+                        android:textColor="@color/white"
+                        android:textSize="12dp" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvCan"
+                    android:layout_width="56dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    app:cardBackgroundColor="#D15DAA"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="0dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="4dp"
+                        android:fontFamily="@font/proximanova_reg"
+                        android:gravity="center"
+                        android:text="@string/can"
+                        android:textColor="@color/white"
+                        android:textSize="12dp" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvPlastic"
+                    android:layout_width="56dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    app:cardBackgroundColor="#554CA5"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="0dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="4dp"
+                        android:fontFamily="@font/proximanova_reg"
+                        android:gravity="center"
+                        android:text="@string/plastic"
                         android:textColor="@color/white"
                         android:textSize="12dp" />
                 </androidx.cardview.widget.CardView>
@@ -208,6 +250,10 @@
                 tools:ignore="ContentDescription" />
 
             <TextView
+                android:layout_marginEnd="4dp"
+                app:layout_constraintHorizontal_bias="0"
+                android:ellipsize="end"
+                app:layout_constraintEnd_toStartOf="@id/btnCallNow"
                 android:id="@+id/tvAgentName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -235,7 +281,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnCallNow"
-                android:layout_width="130dp"
+                android:layout_width="100dp"
                 android:layout_height="34dp"
                 android:layout_marginEnd="24dp"
                 android:background="@drawable/bg_round_corner_8dp_black"
@@ -367,6 +413,34 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvAvailableGifts" />
+
+            <LinearLayout
+                android:id="@+id/llEmptyBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvLevelLabel"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:id="@+id/imgEmptyBox"
+                    android:layout_width="165dp"
+                    android:layout_height="165dp"
+                    android:src="@drawable/ic_empty_box"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:fontFamily="@font/proximanova_reg"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_gift_available_label"
+                    android:textColor="@color/black_354052" />
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

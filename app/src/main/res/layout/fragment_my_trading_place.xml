@@ -61,7 +61,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/proximanova_reg"
             android:gravity="center"
-            android:text="@string/_200_points_label"
+            android:text="@string/_100_points_label"
             android:textColor="@color/black"
             android:textSize="12dp" />
     </androidx.appcompat.widget.LinearLayoutCompat>

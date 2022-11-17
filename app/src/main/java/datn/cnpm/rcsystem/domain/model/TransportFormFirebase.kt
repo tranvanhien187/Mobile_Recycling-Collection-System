@@ -10,6 +10,7 @@ data class TransportFormFirebase(
     val giftName: String? = null,
     val giftBrand: String? = null,
     val giftUrl: String? = null,
+    val description: String? = null,
     val type: String,
     val point: Int = 0,
     val weight: Float = 0f,
@@ -24,5 +25,5 @@ data class TransportFormFirebase(
     val receiveAt: String? = null,
     val completeAt: String? = null,
 ): Parcelable {
-    constructor() : this("","","","","",0,0f,"","","","","","","","","","")
+    constructor() : this("","","","","","",0,0f,"","","","","","","","","","")
 }

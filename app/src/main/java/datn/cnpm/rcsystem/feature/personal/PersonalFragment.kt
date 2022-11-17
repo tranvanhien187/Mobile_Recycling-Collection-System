@@ -1,5 +1,6 @@
 package datn.cnpm.rcsystem.feature.personal
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,6 +13,9 @@ import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.common.utils.CommonUtils.toPoint
 import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.databinding.FragmentPersonalBinding
+import datn.cnpm.rcsystem.feature.authentication.AuthenticationActivity
+import datn.cnpm.rcsystem.local.sharepreferences.AuthPreference
+import javax.inject.Inject
 
 /**
  * [PersonalFragment]
@@ -23,6 +27,8 @@ class PersonalFragment : BaseFragment<FragmentPersonalBinding>() {
 
     private val viewModel: PersonalViewModel by viewModels()
 
+    @Inject
+    lateinit var authPreference: AuthPreference
     override fun isDisableFullScreen(): Boolean = false
 
     override fun initData(data: Bundle?) = Unit
@@ -42,10 +48,16 @@ class PersonalFragment : BaseFragment<FragmentPersonalBinding>() {
 
     override fun initActions() {
         binding.apply {
-            tvUpdateInfo.setOnClickListener {
+            llUpdateInfo.setOnClickListener {
                 findNavController().navigate(R.id.updateAccountInfoFragment)
             }
-
+            llLogout.setOnClickListener {
+                val intent = Intent(this@PersonalFragment.activity, AuthenticationActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                activity?.startActivity(intent)
+                activity?.finish()
+                authPreference.isRememberMe = false
+            }
             ivBack.setOnClickListener { findNavController().popBackStack() }
         }
     }
