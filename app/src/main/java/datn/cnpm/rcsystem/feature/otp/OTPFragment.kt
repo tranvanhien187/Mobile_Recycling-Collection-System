@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -59,13 +60,19 @@ class OTPFragment : BaseFragment<FragmentOtpBinding>() {
             liveEvent.observe(viewLifecycleOwner) { event ->
                 when (event) {
                     is OTPEvent.ValidateOTPSuccess -> {
-                        findNavController().navigate(R.id.changePasswordFragment)
+                        findNavController().navigate(
+                            R.id.changePasswordFragment,
+                            bundleOf(Pair(EMAIL_KEY, viewModel.email)))
                     }
                     is OTPEvent.ValidateOTPFailure -> {
 
                     }
-                    is OTPEvent.ReGenOTPSuccess-> {
-                        Toast.makeText(requireContext(),"New otp has been sent to your email!", Toast.LENGTH_LONG).show()
+                    is OTPEvent.ReGenOTPSuccess -> {
+                        Toast.makeText(
+                            requireContext(),
+                            "New otp has been sent to your email!",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
                     is OTPEvent.ReGenOTPFailure -> {
 

@@ -19,7 +19,7 @@ class OTPViewModel @Inject constructor(
     BaseViewModel<OTPState, OTPEvent>() {
     override fun initState() = OTPState()
 
-    private var email: String = ""
+    var email: String = ""
     private var type: Int = 0
 
     fun setData(email: String, type: Int) {

@@ -1,4 +1,6 @@
 package datn.cnpm.rcsystem.feature.changepassword
 
-object ChangePasswordEvent {
+sealed interface ChangePasswordEvent {
+    object ChangePasswordSuccess : ChangePasswordEvent
+    data class ChangePasswordFailure( val message: String) : ChangePasswordEvent
 }

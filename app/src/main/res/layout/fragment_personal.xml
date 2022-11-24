@@ -7,10 +7,10 @@
     android:background="#EDEDED">
 
     <ImageView
-        android:adjustViewBounds="true"
         android:id="@+id/vBGGreen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
         android:src="@drawable/background_personal"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -165,6 +165,7 @@
             android:src="@drawable/ic_personal_edit" />
 
         <TextView
+            android:id="@+id/tvInformation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/proximanova_reg"
@@ -267,21 +268,52 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/llLogout"
+        android:id="@+id/llResetPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="4dp"
         android:background="@drawable/bg_solid_8_white"
         android:elevation="12dp"
         android:orientation="vertical"
         android:paddingVertical="12dp"
         android:paddingStart="8dp"
         android:paddingEnd="0dp"
-        app:layout_constraintEnd_toStartOf="@id/llPolicy"
+        app:layout_constraintEnd_toStartOf="@id/llLogout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/llPolicy">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_reset_password" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/proximanova_reg"
+            android:text="@string/personal_reset_password"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llLogout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_solid_8_white"
+        android:elevation="12dp"
+        android:orientation="vertical"
+        android:paddingVertical="12dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/llResetPassword"
+        app:layout_constraintTop_toBottomOf="@id/llAboutUs">
 
         <ImageView
             android:layout_width="30dp"

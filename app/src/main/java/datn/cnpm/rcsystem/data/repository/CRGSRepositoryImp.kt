@@ -4,7 +4,6 @@ import datn.cnpm.rcsystem.common.ErrorCode
 import datn.cnpm.rcsystem.common.exception.BadRequestException
 import datn.cnpm.rcsystem.data.datastore.CRGSDataSource
 import datn.cnpm.rcsystem.data.entitiy.*
-import datn.cnpm.rcsystem.data.entitiy.agent.AgentInfoResponse
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
 import datn.cnpm.rcsystem.data.entitiy.history.GarbageHistoryDetailResponse
@@ -38,7 +37,7 @@ class CRGSRepositoryImp @Inject constructor(
         if (response.isSuccess) {
             authPre.role = response.requireData.role
             authPre.accessToken = response.requireData.accessToken
-            authPre.id = response.requireData.id
+            authPre.id = response.requireData.accountId
             authPre.isRememberMe = isRemember
             return response.requireData
         } else if (response.isFailure) {
@@ -332,21 +331,6 @@ class CRGSRepositoryImp @Inject constructor(
 
     override suspend fun getStaffInfo(): StaffInfoResponse {
         val response = authenticationDataSource.getStaffInfo(authPre.id)
-        if (response.isSuccess) {
-            return response.requireData
-        } else if (response.isFailure) {
-            if (response.requireError == ErrorCode.UNKNOWN_ERROR) {
-                throw Exception(ErrorCode.UNKNOWN_ERROR.value)
-            } else {
-                throw BadRequestException(response.requireError)
-            }
-        } else {
-            throw Exception(ErrorCode.UNKNOWN_ERROR.value)
-        }
-    }
-
-    override suspend fun getAgentInfo(): AgentInfoResponse {
-        val response = authenticationDataSource.getAgentInfo(authPre.id)
         if (response.isSuccess) {
             return response.requireData
         } else if (response.isFailure) {

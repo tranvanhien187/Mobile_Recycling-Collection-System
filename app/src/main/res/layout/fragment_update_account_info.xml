@@ -316,7 +316,7 @@
                 android:background="@drawable/bg_corner_8_grey_f2f4f6"
                 android:fontFamily="@font/proximanova_reg"
                 android:importantForAutofill="no"
-                android:inputType="phone"
+                android:inputType="text"
                 android:paddingHorizontal="10dp"
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@+id/tvStreet"

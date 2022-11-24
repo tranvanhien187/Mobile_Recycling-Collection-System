@@ -90,7 +90,10 @@ class ReceiveFromGiftFragment : BaseFragment<FragmentReceiveGiftFormBinding>() {
                     showDialogConfirm(
                         "You received transport garbage form success",
                         onConfirmClick = {
-                            findNavController().popBackStack(R.id.dashboardStaffFragment, true)
+                            findNavController().apply {
+                                navigate(R.id.dashboardStaffFragment)
+                                backQueue.clear()
+                            }
                         })
                 }
                 is ReceiveFromGiftEvent.ReceiveFormFailure -> {

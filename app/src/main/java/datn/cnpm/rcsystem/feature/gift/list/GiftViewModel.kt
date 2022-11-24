@@ -1,5 +1,6 @@
 package datn.cnpm.rcsystem.feature.gift.list
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import datn.cnpm.rcsystem.base.BaseViewModel
@@ -17,7 +18,9 @@ class GiftViewModel @Inject constructor(private val getGiftByCriteriaUseCase: Ge
     BaseViewModel<GiftState, GiftEvent>() {
     override fun initState() = GiftState()
 
-    private lateinit var giftList : List<GiftEntity>
+    private lateinit var giftList: List<GiftEntity>
+    private var category: GiftCategoryModel? = null
+    private var searchKeyWord: String = ""
     fun fetchGift() {
         viewModelScope.launch() {
             val response =
@@ -34,17 +37,44 @@ class GiftViewModel @Inject constructor(private val getGiftByCriteriaUseCase: Ge
     fun initList() {
         dispatchState(currentState.copy(listGift = giftList))
     }
+
     private lateinit var searchJob: Job
+    private lateinit var filterJob: Job
+
     fun performSearch(keyWord: String) {
-        if(::searchJob.isInitialized && searchJob.isActive) {
+        if (::searchJob.isInitialized && searchJob.isActive) {
             searchJob.cancel()
         }
 
-        if(::giftList.isInitialized) {
+        if (::giftList.isInitialized) {
             searchJob = viewModelScope.launch(Dispatchers.Default) {
                 delay(1000)
-                val result = giftList.filter { gift->
-                    gift.name?.contains(keyWord, true) ?: false
+                val result = giftList.filter { gift ->
+                    (gift.name?.contains(keyWord, true)
+                        ?: false) && (category?.let { gift.type.equals(it.category.value) }
+                        ?: kotlin.run { true })
+                }
+                searchKeyWord = keyWord
+                withContext(Dispatchers.Main) {
+                    dispatchState(currentState.copy(listGift = result))
+                }
+            }
+        }
+    }
+
+    fun filter(data: GiftCategoryModel?) {
+        if (::filterJob.isInitialized && filterJob.isActive) {
+            filterJob.cancel()
+        }
+
+        if (::giftList.isInitialized) {
+            filterJob = viewModelScope.launch(Dispatchers.Default) {
+                delay(1000)
+                category = data
+                val result = giftList.filter { gift ->
+                    (gift.name?.contains(searchKeyWord, true)
+                        ?: false) && (category?.let { gift.type.equals(it.category.value) }
+                        ?: kotlin.run { true })
                 }
                 withContext(Dispatchers.Main) {
                     dispatchState(currentState.copy(listGift = result))

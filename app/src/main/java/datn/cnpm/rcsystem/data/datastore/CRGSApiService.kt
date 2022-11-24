@@ -2,7 +2,6 @@ package datn.cnpm.rcsystem.data.datastore
 
 import datn.cnpm.rcsystem.core.SBResponse
 import datn.cnpm.rcsystem.data.entitiy.*
-import datn.cnpm.rcsystem.data.entitiy.agent.AgentInfoResponse
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
 import datn.cnpm.rcsystem.data.entitiy.history.GarbageHistoryDetailResponse
@@ -26,7 +25,7 @@ interface CRGSApiService {
     @POST("/api/v1/register")
     suspend fun register(@Body request: RegisterRequest): SBResponse<RegisterResponse>
 
-    @POST("/api/v1/resetpassword")
+    @POST("/api/v1/change-password")
     suspend fun changePassword(@Body request: ChangePasswordRequest): SBResponse<String>
 
     @POST("/api/v1/otp/gen")
@@ -89,12 +88,6 @@ interface CRGSApiService {
 
     @GET("api/v1/gift/get/random/{id}")
     suspend fun getGiftRandom6(@Path("id") id: String): SBResponse<List<GiftResponse>>
-
-
-    /***        AGENT      ***/
-    @GET("/api/v1/agent/{id}")
-    suspend fun getAgentInfo(@Path("id") id: String): SBResponse<AgentInfoResponse>
-    /******/
 
     /***        STAFF      ***/
 

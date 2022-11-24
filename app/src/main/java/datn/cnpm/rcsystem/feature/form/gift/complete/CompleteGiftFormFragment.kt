@@ -2,6 +2,7 @@ package datn.cnpm.rcsystem.feature.form.gift.complete
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Intent
 import android.database.Cursor
 import android.net.Uri
 import android.os.Build
@@ -13,12 +14,15 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.databinding.FragmentCompleteGiftFormBinding
+import id.zelory.compressor.Compressor
+import kotlinx.coroutines.launch
 import java.io.File
 
 @AndroidEntryPoint
@@ -78,7 +82,10 @@ class CompleteGiftFormFragment : BaseFragment<FragmentCompleteGiftFormBinding>()
                     showDialogConfirm(
                         "You completed transport gift form success. Keep going !",
                         onConfirmClick = {
-                            findNavController().popBackStack(R.id.dashboardStaffFragment, true)
+                            findNavController().apply {
+                                navigate(R.id.dashboardStaffFragment)
+                                backQueue.clear()
+                            }
                         })
                 }
             }
@@ -135,10 +142,14 @@ class CompleteGiftFormFragment : BaseFragment<FragmentCompleteGiftFormBinding>()
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             if (result.resultCode == Activity.RESULT_OK) {
                 val uri = result.data?.data
-                uri?.let {
-                    getRealPathFromURI(uri)?.let {
-                        // File
-                        viewModel.setFileEvidence(File(it))
+                lifecycleScope.launch {
+                    uri?.let {
+                        getRealPathFromURI(uri)?.let {
+                            // File
+                            val compressedImageFile =
+                                Compressor.compress(requireContext(), File(it))
+                            viewModel.setFileEvidence(compressedImageFile)
+                        }
                     }
                 }
             }
@@ -146,8 +157,8 @@ class CompleteGiftFormFragment : BaseFragment<FragmentCompleteGiftFormBinding>()
 
     private fun pickImageFromGallery() {
         if (Build.VERSION.SDK_INT >= 33) {
-//            val pickIntent = Intent(MediaStore.ACTION_PICK_IMAGES)
-//            pickImageFromGalleryForResult.launch(pickIntent)
+            val pickIntent = Intent(MediaStore.ACTION_PICK_IMAGES)
+            pickImageFromGalleryForResult.launch(pickIntent)
         }
     }
 

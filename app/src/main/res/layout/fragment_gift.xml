@@ -68,6 +68,31 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <TextView
+        android:id="@+id/tvLabel1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/proximanova_reg"
+        android:text="@string/gift_category_label"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clSearch" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:layout_marginTop="6dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/tvLabel1"
+        tools:listitem="@layout/item_gift_category" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvGift"
         android:layout_width="match_parent"
@@ -78,9 +103,11 @@
         android:paddingTop="24dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/clSearch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rvCategory"
+        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/item_gift" />
-
 
     <LinearLayout
         android:id="@+id/llEmptyBox"
@@ -92,7 +119,7 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/clSearch"
+        app:layout_constraintTop_toBottomOf="@id/rvCategory"
         tools:ignore="UseCompoundDrawables">
 
         <ImageView
@@ -103,11 +130,11 @@
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:fontFamily="@font/proximanova_reg"
-            android:textSize="14sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/proximanova_reg"
             android:text="@string/no_result_label"
-            android:textColor="@color/black_354052" />
+            android:textColor="@color/black_354052"
+            android:textSize="14sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

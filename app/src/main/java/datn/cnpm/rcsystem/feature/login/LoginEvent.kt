@@ -10,7 +10,6 @@ sealed interface LoginEvent {
 
     object CustomerLoginSuccess : LoginEvent
     data class CustomerUpdatedYet(val uuid: String) : LoginEvent
-    object AgentLoginSuccess : LoginEvent
     object StaffLoginSuccess : LoginEvent
     data class LoginFailure(val message: String) : LoginEvent
 }

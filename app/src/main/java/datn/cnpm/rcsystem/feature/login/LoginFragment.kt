@@ -12,7 +12,6 @@ import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.base.BaseFragment
 import datn.cnpm.rcsystem.common.extension.createSpannableString
 import datn.cnpm.rcsystem.databinding.FragmentLoginBinding
-import datn.cnpm.rcsystem.feature.home.agent.HomeAgentActivity
 import datn.cnpm.rcsystem.feature.home.staff.HomeStaffActivity
 import datn.cnpm.rcsystem.feature.home.customer.HomeCustomerActivity
 import datn.cnpm.rcsystem.feature.updateaccountifo.UpdateCustomerInfoFragment
@@ -94,10 +93,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                             Pair(UpdateCustomerInfoFragment.ID_KEY, event.uuid)
                         )
                     )
-                }
-                is LoginEvent.AgentLoginSuccess -> {
-                    val intent = Intent(this.activity, HomeAgentActivity::class.java)
-                    activity?.startActivity(intent)
                 }
 
                 is LoginEvent.StaffLoginSuccess -> {

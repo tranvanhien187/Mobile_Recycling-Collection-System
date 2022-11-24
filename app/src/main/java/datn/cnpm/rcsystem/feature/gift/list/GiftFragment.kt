@@ -26,6 +26,7 @@ class GiftFragment : BaseFragment<FragmentGiftBinding>() {
     private val viewModel: GiftViewModel by viewModels()
 
     private val giftAdapter: GiftAdapter by lazy { GiftAdapter() }
+    private val categoryAdapter: GiftCategoryAdapter by lazy { GiftCategoryAdapter() }
 
     override fun initData(data: Bundle?) {
         viewModel.fetchGift()
@@ -33,6 +34,20 @@ class GiftFragment : BaseFragment<FragmentGiftBinding>() {
 
     override fun initViews() {
         binding.rvGift.adapter = giftAdapter
+        binding.rvCategory.adapter = categoryAdapter
+        if (categoryAdapter.currentList.isEmpty()) {
+            categoryAdapter.submitList(
+                listOf(
+                    GiftCategoryModel(GiftCategory.FOOD, R.drawable.food, false),
+                    GiftCategoryModel(GiftCategory.BEVERAGE, R.drawable.beverage, false),
+                    GiftCategoryModel(GiftCategory.FASHION, R.drawable.fashion, false),
+                    GiftCategoryModel(GiftCategory.COSMETIC, R.drawable.cosmetic, false),
+                    GiftCategoryModel(GiftCategory.ELECTRONIC, R.drawable.electronic, false),
+                    GiftCategoryModel(GiftCategory.HOUSEWARES, R.drawable.houseware, false),
+                    GiftCategoryModel(GiftCategory.VOUCHER, R.drawable.voucher, false)
+                )
+            )
+        }
     }
 
     override fun initActions() {
@@ -44,6 +59,14 @@ class GiftFragment : BaseFragment<FragmentGiftBinding>() {
                     )
                 )
             )
+        }
+        categoryAdapter.apply {
+            onItemClick = { data, lastIndex ->
+                viewModel.filter(data)
+                if (lastIndex != -1) {
+                    notifyItemChanged(lastIndex, null)
+                }
+            }
         }
         binding.apply {
             edtSearch.doAfterTextChanged {
@@ -82,7 +105,7 @@ class GiftFragment : BaseFragment<FragmentGiftBinding>() {
                 binding.apply {
                     listGift?.let {
                         giftAdapter.submitList(listGift)
-                        if(it.isNotEmpty()) {
+                        if (it.isNotEmpty()) {
                             llEmptyBox.gone()
                             rvGift.visible()
                         } else {

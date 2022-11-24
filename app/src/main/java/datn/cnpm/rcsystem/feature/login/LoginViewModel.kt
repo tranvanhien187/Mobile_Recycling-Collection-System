@@ -31,12 +31,15 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
                         if (response.requireData.updatedInfo) {
                             dispatchEvent(LoginEvent.CustomerLoginSuccess)
                         } else {
-                            dispatchEvent(LoginEvent.CustomerUpdatedYet(response.requireData.id))
+                            dispatchEvent(LoginEvent.CustomerUpdatedYet(response.requireData.accountId))
                         }
                     }
 
                     Role.AGENT.toString() -> {
-                        dispatchEvent(LoginEvent.AgentLoginSuccess)
+                        dispatchEvent(LoginEvent.LoginFailure("Mobile phone don't support your role"))
+                    }
+                    Role.ADMIN.toString() -> {
+                        dispatchEvent(LoginEvent.LoginFailure("Mobile phone don't support your role"))
                     }
 
                     Role.STAFF.toString() -> {
@@ -71,12 +74,8 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
                     if (response.requireData.updatedInfo) {
                         dispatchEvent(LoginEvent.CustomerLoginSuccess)
                     } else {
-                        dispatchEvent(LoginEvent.CustomerUpdatedYet(response.requireData.id))
+                        dispatchEvent(LoginEvent.CustomerUpdatedYet(response.requireData.accountId))
                     }
-                }
-
-                Role.AGENT.toString() -> {
-                    dispatchEvent(LoginEvent.AgentLoginSuccess)
                 }
 
                 Role.STAFF.toString() -> {

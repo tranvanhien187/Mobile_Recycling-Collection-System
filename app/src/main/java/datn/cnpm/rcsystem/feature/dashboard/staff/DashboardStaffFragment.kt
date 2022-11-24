@@ -75,6 +75,9 @@ class DashboardStaffFragment : BaseFragment<FragmentStaffDashboardBinding>() {
             ivViewAll.setOnClickListener {
                 findNavController().navigate(R.id.missionFragment)
             }
+            ivAvatar.setOnClickListener {
+                findNavController().navigate(R.id.personalFragment)
+            }
             clForm.setOnClickListener {
                 viewModel.currentState.form?.let {
                     if (it.type == TransportFormAdapter.TransportFormType.GIFT.name) {

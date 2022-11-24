@@ -16,8 +16,8 @@ data class StaffInfoEntity(
     val avatar: String,
     val phoneNumber: String,
     val identityCardNumber: String,
-    val dayOfBirth: Date,
-    val address: AddressResponse,
+    val dayOfBirth: Date?,
+    val address: AddressResponse?,
     val weightTotal: Double = 0.0,
     val giftCount: Long = 0
 )

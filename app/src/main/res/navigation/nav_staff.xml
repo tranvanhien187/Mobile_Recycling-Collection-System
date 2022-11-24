@@ -69,4 +69,16 @@
         android:name="datn.cnpm.rcsystem.feature.history.garbagedetail.GarbageHistoryDetailFragment"
         android:label="GarbageHistoryDetailFragment"
         tools:layout="@layout/fragment_garbage_history_detail" />
+
+    <fragment
+        android:id="@+id/personalFragment"
+        android:name="datn.cnpm.rcsystem.feature.personal.PersonalFragment"
+        android:label="GiftHistoryDetailFragment"
+        tools:layout="@layout/fragment_personal" />
+
+    <fragment
+        android:id="@+id/updateAccountInfoFragment"
+        android:name="datn.cnpm.rcsystem.feature.updateaccountifo.UpdateCustomerInfoFragment"
+        android:label="UpdateAccountInfoFragment"
+        tools:layout="@layout/fragment_update_account_info" />
 </navigation>

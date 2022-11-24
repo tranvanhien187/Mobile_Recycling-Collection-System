@@ -2,6 +2,7 @@ package datn.cnpm.rcsystem.feature.updateaccountifo
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Intent
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
@@ -13,15 +14,22 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.SingletonObject
 import datn.cnpm.rcsystem.base.BaseFragment
+import datn.cnpm.rcsystem.common.extension.gone
 import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
+import datn.cnpm.rcsystem.data.entitiy.Role
 import datn.cnpm.rcsystem.databinding.FragmentUpdateAccountInfoBinding
+import datn.cnpm.rcsystem.local.sharepreferences.AuthPreference
+import id.zelory.compressor.Compressor
+import kotlinx.coroutines.launch
 import java.io.File
 import java.text.SimpleDateFormat
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -36,6 +44,8 @@ class UpdateCustomerInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding
     private var cityList = emptyList<String>()
     private lateinit var bottomBehavior: BottomSheetBehavior<ConstraintLayout>
 
+    @Inject
+    lateinit var authPreference: AuthPreference
     override fun isDisableFullScreen(): Boolean = false
 
     override fun initData(data: Bundle?) {
@@ -43,104 +53,139 @@ class UpdateCustomerInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding
     }
 
     override fun initViews() {
-        bottomBehavior = BottomSheetBehavior.from(binding.bottomSheet)
-        bottomBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-        bottomBehavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-            }
 
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {
-            }
-        })
+        if (authPreference.role == Role.STAFF.name) {
+            bottomBehavior = BottomSheetBehavior.from(binding.bottomSheet)
+            bottomBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+            binding.apply {
+                SingletonObject.staff?.let { data ->
+                    edtName.setText(data.name)
+                    edtName.isEnabled = false
+                    edtDOB.isEnabled = false
 
-        binding.apply {
-            rvDistrictAndPOC.adapter = districtAndPOCAdapter
-
-            SingletonObject.customer?.let { data ->
-                edtName.setText(data.name)
-                data.dOB?.let {
-                    edtDOB.setText(SimpleDateFormat("dd/MM/yyyy").format(it))
+                    data.dayOfBirth?.let {
+                        edtDOB.setText(SimpleDateFormat("dd/MM/yyyy").format(it))
+                    }
+                    edtPN.setText(data.phoneNumber)
+                    edtPN.isEnabled = false
+                    edtStreet.setText(data.address?.street)
+                    edtStreet.isEnabled = false
+                    tvDistrict.text = data.address?.district
+                    tvPOC.text = data.address?.provinceOrCity
+                    edtIN.setText(data.identityCardNumber)
+                    edtIN.isEnabled = false
+                    GlideHelper.loadImage(
+                        data.avatar ?: "",
+                        ivAvatar,
+                        R.drawable.ic_person
+                    )
                 }
-                edtPN.setText(data.phoneNumber)
-                edtStreet.setText(data.address?.street)
-                tvDistrict.text = data.address?.district
-                tvPOC.text = data.address?.provinceOrCity
-                edtIN.setText(data.identityCardNumber)
-                GlideHelper.loadImage(
-                    data.avatar ?: "",
-                    ivAvatar,
-                    R.drawable.ic_person
-                )
+                btnSave.gone()
+            }
+        } else if (authPreference.role == Role.CUSTOMER.name) {
+            bottomBehavior = BottomSheetBehavior.from(binding.bottomSheet)
+            bottomBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+            bottomBehavior.addBottomSheetCallback(object :
+                BottomSheetBehavior.BottomSheetCallback() {
+                override fun onStateChanged(bottomSheet: View, newState: Int) {
+                }
+
+                override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                }
+            })
+
+            binding.apply {
+                rvDistrictAndPOC.adapter = districtAndPOCAdapter
+
+                SingletonObject.customer?.let { data ->
+                    edtName.setText(data.name)
+                    data.dOB?.let {
+                        edtDOB.setText(SimpleDateFormat("dd/MM/yyyy").format(it))
+                    }
+                    edtPN.setText(data.phoneNumber)
+                    edtStreet.setText(data.address?.street)
+                    tvDistrict.text = data.address?.district
+                    tvPOC.text = data.address?.provinceOrCity
+                    edtIN.setText(data.identityCardNumber)
+                    GlideHelper.loadImage(
+                        data.avatar ?: "",
+                        ivAvatar,
+                        R.drawable.ic_person
+                    )
+                }
             }
         }
+
     }
 
     override fun initActions() {
-
-        districtAndPOCAdapter.onItemClick = { s: String, type: DistrictAndPOCAdapter.Type ->
-            if (type == DistrictAndPOCAdapter.Type.ProvinceOrCity) {
-                binding.tvPOC.text = s
-            } else if (type == DistrictAndPOCAdapter.Type.District) {
-                binding.tvDistrict.text = s
-            }
-            bottomBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-        }
-
-        binding.apply {
-            btnSave.setOnClickListener {
-                viewModel.updateUserInfo(
-                    viewModel.avatarFile ?: genDefaultAvatarFile(),
-                    edtName.text.toString(),
-                    edtPN.text.toString(),
-                    edtIN.text.toString(),
-                    edtDOB.text.toString(),
-                    edtStreet.text.toString(),
-                    tvDistrict.text.toString(),
-                    tvPOC.text.toString()
-                )
-            }
-
-            tvDistrict.setOnClickListener {
-                districtAndPOCAdapter.type = DistrictAndPOCAdapter.Type.District
-                if (cityList.isNotEmpty()) {
-                    when (tvPOC.text) {
-                        cityList[0] -> {
-                            districtAndPOCAdapter.submitList(
-                                context?.resources?.getStringArray(R.array.DN)?.toList()
-                                    ?: emptyList()
-                            )
-                        }
-                        cityList[1] -> {
-                            districtAndPOCAdapter.submitList(
-                                context?.resources?.getStringArray(R.array.HN)?.toList()
-                                    ?: emptyList()
-                            )
-                        }
-                        cityList[2] -> {
-                            districtAndPOCAdapter.submitList(
-                                context?.resources?.getStringArray(R.array.HCM)?.toList()
-                                    ?: emptyList()
-                            )
-                        }
-                    }
+        if (authPreference.role == Role.CUSTOMER.name) {
+            districtAndPOCAdapter.onItemClick = { s: String, type: DistrictAndPOCAdapter.Type ->
+                if (type == DistrictAndPOCAdapter.Type.ProvinceOrCity) {
+                    binding.tvPOC.text = s
+                } else if (type == DistrictAndPOCAdapter.Type.District) {
+                    binding.tvDistrict.text = s
                 }
-                bottomBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-            }
-
-            tvPOC.setOnClickListener {
-                districtAndPOCAdapter.type = DistrictAndPOCAdapter.Type.ProvinceOrCity
-                districtAndPOCAdapter.submitList(cityList)
-                bottomBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-            }
-
-            ivClose.setOnClickListener {
                 bottomBehavior.state = BottomSheetBehavior.STATE_HIDDEN
             }
 
-            ivCam.setOnClickListener {
-                pickImageFromGallery()
+            binding.apply {
+                btnSave.setOnClickListener {
+                    viewModel.updateUserInfo(
+                        viewModel.avatarFile ?: genDefaultAvatarFile(),
+                        edtName.text.toString(),
+                        edtPN.text.toString(),
+                        edtIN.text.toString(),
+                        edtDOB.text.toString(),
+                        edtStreet.text.toString(),
+                        tvDistrict.text.toString(),
+                        tvPOC.text.toString()
+                    )
+                }
+
+                tvDistrict.setOnClickListener {
+                    districtAndPOCAdapter.type = DistrictAndPOCAdapter.Type.District
+                    if (cityList.isNotEmpty()) {
+                        when (tvPOC.text) {
+                            cityList[0] -> {
+                                districtAndPOCAdapter.submitList(
+                                    context?.resources?.getStringArray(R.array.DN)?.toList()
+                                        ?: emptyList()
+                                )
+                            }
+                            cityList[1] -> {
+                                districtAndPOCAdapter.submitList(
+                                    context?.resources?.getStringArray(R.array.HN)?.toList()
+                                        ?: emptyList()
+                                )
+                            }
+                            cityList[2] -> {
+                                districtAndPOCAdapter.submitList(
+                                    context?.resources?.getStringArray(R.array.HCM)?.toList()
+                                        ?: emptyList()
+                                )
+                            }
+                        }
+                    }
+                    bottomBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+                }
+
+                tvPOC.setOnClickListener {
+                    districtAndPOCAdapter.type = DistrictAndPOCAdapter.Type.ProvinceOrCity
+                    districtAndPOCAdapter.submitList(cityList)
+                    bottomBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+                }
+
+                ivClose.setOnClickListener {
+                    bottomBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+                }
+
+                ivCam.setOnClickListener {
+                    pickImageFromGallery()
+                }
             }
         }
+
     }
 
     override fun initObservers() {
@@ -172,19 +217,20 @@ class UpdateCustomerInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             if (result.resultCode == Activity.RESULT_OK) {
                 val uri = result.data?.data
-                uri?.let {
-                    binding.ivAvatar.setImageURI(uri)
-                    getRealPathFromURI(uri)?.let {
-                        // File
-                        viewModel.avatarFile = File(it)
+                lifecycleScope.launch {
+                    uri?.let {
+                        getRealPathFromURI(uri)?.let {
+                            // File
+                            viewModel.avatarFile = Compressor.compress(requireContext(), File(it))
+                        }
                     }
                 }
             }
         }
 
     private fun pickImageFromGallery() {
-//        val pickIntent = Intent(MediaStore.ACTION_PICK_IMAGES)
-//        pickImageFromGalleryForResult.launch(pickIntent)
+        val pickIntent = Intent(MediaStore.ACTION_PICK_IMAGES)
+        pickImageFromGalleryForResult.launch(pickIntent)
     }
 
     @SuppressLint("Recycle")

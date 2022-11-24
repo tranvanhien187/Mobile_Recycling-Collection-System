@@ -1,7 +1,6 @@
 package datn.cnpm.rcsystem.data.repository
 
 import datn.cnpm.rcsystem.data.entitiy.*
-import datn.cnpm.rcsystem.data.entitiy.agent.AgentInfoResponse
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftDetailResponse
 import datn.cnpm.rcsystem.data.entitiy.gift.GiftResponse
 import datn.cnpm.rcsystem.data.entitiy.history.GarbageHistoryDetailResponse
@@ -33,7 +32,6 @@ interface CRGSRepository {
 
 
     suspend fun getStaffInfo(): StaffInfoResponse
-    suspend fun getAgentInfo(): AgentInfoResponse
     suspend fun getListGarbageHistory(): List<BaseItemHistory>
     suspend fun getListGiftHistory(): List<BaseItemHistory>
     suspend fun getGiftHistoryDetail(historyId: String): GiftHistoryDetailResponse

@@ -165,4 +165,7 @@
     <string name="no_gift_available_label">No gift available</string>
     <string name="can">Can</string>
     <string name="plastic">Plastic</string>
+    <string name="set_your_new_password_and_remember_for_next_log_in">Set your new password and remember for next log in</string>
+    <string name="gift_category_label">Gift Category</string>
+    <string name="personal_reset_password">Reset Passwrod</string>
 </resources>
