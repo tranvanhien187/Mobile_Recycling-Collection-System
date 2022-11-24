@@ -24,9 +24,9 @@ import datn.cnpm.rcsystem.common.extension.gone
 import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.data.entitiy.Role
 import datn.cnpm.rcsystem.databinding.FragmentUpdateAccountInfoBinding
+import kotlinx.coroutines.launch
 import datn.cnpm.rcsystem.local.sharepreferences.AuthPreference
 import id.zelory.compressor.Compressor
-import kotlinx.coroutines.launch
 import java.io.File
 import java.text.SimpleDateFormat
 import javax.inject.Inject
