@@ -7,9 +7,9 @@
     </string-array>
 
     <string-array name="City">
-        <item>Thành phố Đà Nẵng</item>
-        <item>Thành phố Hà Nội</item>
-        <item>Thành phố Hồ Chí Minh</item>
+        <item>Đà Nẵng</item>
+        <item>Hà Nội</item>
+        <item>Hồ Chí Minh</item>
     </string-array>
     <string-array name="DN">
         <item>Quận Hải Châu</item>
