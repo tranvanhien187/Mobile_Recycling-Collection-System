@@ -81,4 +81,10 @@
         android:name="datn.cnpm.rcsystem.feature.updateaccountifo.UpdateCustomerInfoFragment"
         android:label="UpdateAccountInfoFragment"
         tools:layout="@layout/fragment_update_account_info" />
+
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="datn.cnpm.rcsystem.feature.changepassword.ChangePasswordFragment"
+        android:label="ChangePasswordFragment"
+        tools:layout="@layout/fragment_change_password" />
 </navigation>

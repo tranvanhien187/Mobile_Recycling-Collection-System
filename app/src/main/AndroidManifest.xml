@@ -29,9 +29,8 @@
         </activity>
         <activity
             android:name=".feature.home.customer.HomeCustomerActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
 
         <activity
             android:name=".feature.home.agent.HomeAgentActivity"
