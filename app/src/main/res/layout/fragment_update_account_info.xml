@@ -358,59 +358,5 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent" />
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:visibility="gone">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/bottomSheet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_white_corner_top_16"
-            app:behavior_hideable="true"
-            app:behavior_skipCollapsed="true"
-            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <TextView
-                android:id="@+id/tvLabel1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="@font/proximanova_bold"
-                android:text="@string/choose_your_current_city_or_province"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toTopOf="@id/rvDistrictAndPOC"
-                app:layout_constraintEnd_toStartOf="@id/ivClose"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/ivClose"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginEnd="24dp"
-                android:contentDescription="@string/empty_value"
-                android:src="@drawable/ic_close"
-                app:layout_constraintBottom_toBottomOf="@id/tvLabel1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tvLabel1" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvDistrictAndPOC"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
-                tools:listitem="@layout/item_district_and_poc" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

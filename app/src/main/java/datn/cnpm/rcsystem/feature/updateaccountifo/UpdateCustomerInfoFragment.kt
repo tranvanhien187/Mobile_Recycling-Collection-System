@@ -8,14 +8,11 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import datn.cnpm.rcsystem.R
 import datn.cnpm.rcsystem.SingletonObject
@@ -24,9 +21,9 @@ import datn.cnpm.rcsystem.common.extension.gone
 import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.data.entitiy.Role
 import datn.cnpm.rcsystem.databinding.FragmentUpdateAccountInfoBinding
-import kotlinx.coroutines.launch
 import datn.cnpm.rcsystem.local.sharepreferences.AuthPreference
 import id.zelory.compressor.Compressor
+import kotlinx.coroutines.launch
 import java.io.File
 import java.text.SimpleDateFormat
 import javax.inject.Inject
@@ -37,12 +34,16 @@ class UpdateCustomerInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentUpdateAccountInfoBinding
         get() = FragmentUpdateAccountInfoBinding::inflate
 
-    private val districtAndPOCAdapter: DistrictAndPOCAdapter by lazy { DistrictAndPOCAdapter() }
-
     private val viewModel: UpdateUserInfoViewModel by viewModels()
+    private val provinceOrCityDialog: ProvinceAndDistrictDialog by lazy {
+        ProvinceAndDistrictDialog.newInstance(DistrictAndPOCAdapter.Type.ProvinceOrCity.ordinal)
+    }
+    private val districtDialog: ProvinceAndDistrictDialog by lazy {
+        ProvinceAndDistrictDialog.newInstance(DistrictAndPOCAdapter.Type.District.ordinal,
+            binding.tvPOC.text.toString())
+    }
 
     private var cityList = emptyList<String>()
-    private lateinit var bottomBehavior: BottomSheetBehavior<ConstraintLayout>
 
     @Inject
     lateinit var authPreference: AuthPreference
@@ -53,10 +54,7 @@ class UpdateCustomerInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding
     }
 
     override fun initViews() {
-
         if (authPreference.role == Role.STAFF.name) {
-            bottomBehavior = BottomSheetBehavior.from(binding.bottomSheet)
-            bottomBehavior.state = BottomSheetBehavior.STATE_HIDDEN
             binding.apply {
                 SingletonObject.staff?.let { data ->
                     edtName.setText(data.name)
@@ -75,7 +73,7 @@ class UpdateCustomerInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding
                     edtIN.setText(data.identityCardNumber)
                     edtIN.isEnabled = false
                     GlideHelper.loadImage(
-                        data.avatar ?: "",
+                        data.avatar,
                         ivAvatar,
                         R.drawable.ic_person
                     )
@@ -83,20 +81,7 @@ class UpdateCustomerInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding
                 btnSave.gone()
             }
         } else if (authPreference.role == Role.CUSTOMER.name) {
-            bottomBehavior = BottomSheetBehavior.from(binding.bottomSheet)
-            bottomBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-            bottomBehavior.addBottomSheetCallback(object :
-                BottomSheetBehavior.BottomSheetCallback() {
-                override fun onStateChanged(bottomSheet: View, newState: Int) {
-                }
-
-                override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                }
-            })
-
             binding.apply {
-                rvDistrictAndPOC.adapter = districtAndPOCAdapter
-
                 SingletonObject.customer?.let { data ->
                     edtName.setText(data.name)
                     data.dOB?.let {
@@ -115,18 +100,21 @@ class UpdateCustomerInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding
                 }
             }
         }
-
     }
 
     override fun initActions() {
         if (authPreference.role == Role.CUSTOMER.name) {
-            districtAndPOCAdapter.onItemClick = { s: String, type: DistrictAndPOCAdapter.Type ->
-                if (type == DistrictAndPOCAdapter.Type.ProvinceOrCity) {
-                    binding.tvPOC.text = s
-                } else if (type == DistrictAndPOCAdapter.Type.District) {
-                    binding.tvDistrict.text = s
+            provinceOrCityDialog.onItemClicked = { data, _ ->
+                binding.tvPOC.run {
+                    if (text != data) {
+                        reselectDistrict(data)
+                    }
                 }
-                bottomBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+                binding.tvPOC.text = data
+            }
+
+            districtDialog.onItemClicked = { data, _ ->
+                binding.tvDistrict.text = data
             }
 
             binding.apply {
@@ -144,40 +132,14 @@ class UpdateCustomerInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding
                 }
 
                 tvDistrict.setOnClickListener {
-                    districtAndPOCAdapter.type = DistrictAndPOCAdapter.Type.District
-                    if (cityList.isNotEmpty()) {
-                        when (tvPOC.text) {
-                            cityList[0] -> {
-                                districtAndPOCAdapter.submitList(
-                                    context?.resources?.getStringArray(R.array.DN)?.toList()
-                                        ?: emptyList()
-                                )
-                            }
-                            cityList[1] -> {
-                                districtAndPOCAdapter.submitList(
-                                    context?.resources?.getStringArray(R.array.HN)?.toList()
-                                        ?: emptyList()
-                                )
-                            }
-                            cityList[2] -> {
-                                districtAndPOCAdapter.submitList(
-                                    context?.resources?.getStringArray(R.array.HCM)?.toList()
-                                        ?: emptyList()
-                                )
-                            }
-                        }
-                    }
-                    bottomBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+                    districtDialog.show(childFragmentManager,
+                        ProvinceAndDistrictDialog::class.simpleName)
+
                 }
 
                 tvPOC.setOnClickListener {
-                    districtAndPOCAdapter.type = DistrictAndPOCAdapter.Type.ProvinceOrCity
-                    districtAndPOCAdapter.submitList(cityList)
-                    bottomBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-                }
-
-                ivClose.setOnClickListener {
-                    bottomBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+                    provinceOrCityDialog.show(childFragmentManager,
+                        ProvinceAndDistrictDialog::class.simpleName)
                 }
 
                 ivCam.setOnClickListener {
@@ -210,7 +172,6 @@ class UpdateCustomerInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding
                 }
             }
         )
-
     }
 
     private val pickImageFromGalleryForResult =
@@ -248,6 +209,21 @@ class UpdateCustomerInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding
     private fun genDefaultAvatarFile(): File {
         val path = Uri.parse("android.resource://datn.cnpm.rcsystem/" + R.drawable.ic_person)
         return File(getRealPathFromURI(path)!!)
+    }
+
+    private fun reselectDistrict(city: String) {
+        binding.tvDistrict.text = when (city) {
+            cityList[0] -> {
+                    context?.resources?.getStringArray(R.array.DN)?.toList()?.first()
+            }
+            cityList[1] -> {
+                context?.resources?.getStringArray(R.array.HN)?.toList()?.first()
+            }
+            cityList[2] -> {
+                context?.resources?.getStringArray(R.array.HCM)?.toList()?.first()
+            }
+            else -> ""
+        }
     }
 
     companion object {
