@@ -1,6 +1,8 @@
 package datn.cnpm.rcsystem.feature.gift.detail
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -44,6 +46,13 @@ class GiftDetailFragment : BaseFragment<FragmentGiftDetailBinding>() {
                 R.id.createFormGiftFragment,
                 bundleOf(Pair(CreateFormGiftFragment.GIFT_KEY, viewModel.currentState.gift))
             )
+        }
+
+        binding.btnCallNow.setOnClickListener {
+            val dialIntent = Intent(Intent.ACTION_DIAL).apply {
+                data = Uri.parse("tel:" + viewModel.currentState.gift?.agentPhone)
+            }
+            startActivity(dialIntent)
         }
     }
 

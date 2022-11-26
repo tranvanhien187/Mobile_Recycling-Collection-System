@@ -1,7 +1,10 @@
 package datn.cnpm.rcsystem.feature.tradingplace.detail
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.SyncStateContract
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
@@ -15,6 +18,7 @@ import datn.cnpm.rcsystem.common.extension.visible
 import datn.cnpm.rcsystem.common.utils.glide.GlideHelper
 import datn.cnpm.rcsystem.databinding.FragmentPlaceDetailBinding
 import datn.cnpm.rcsystem.feature.gift.detail.GiftDetailFragment
+
 
 /**
  * [TradingPlaceDetailFragment]
@@ -55,6 +59,13 @@ class TradingPlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
         adapter.onItemClick = {
             findNavController().navigate(R.id.giftDetailFragment,
                 bundleOf(GiftDetailFragment.GIFT_ID_KEY to it.id))
+        }
+
+        binding.btnCallNow.setOnClickListener {
+            val dialIntent = Intent(Intent.ACTION_DIAL).apply {
+                data = Uri.parse("tel:" + viewModel.currentState.tplace?.agentPhoneNumber)
+            }
+            startActivity(dialIntent)
         }
     }
 
