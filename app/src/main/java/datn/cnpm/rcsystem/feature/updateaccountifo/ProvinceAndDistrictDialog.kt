@@ -3,9 +3,7 @@ package datn.cnpm.rcsystem.feature.updateaccountifo
 import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup.LayoutParams
-import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -21,6 +19,7 @@ class ProvinceAndDistrictDialog : BottomSheetDialogFragment() {
     var onItemClicked: (data: String, type: DistrictAndPOCAdapter.Type) -> Unit = { _, _ -> }
     private var _binding: DialogProvinceAndDistrictBinding? = null
     private val binding get() = _binding!!
+    var onShowDialog: () -> Unit = {}
 
 
     override fun onDestroyView() {
@@ -36,6 +35,7 @@ class ProvinceAndDistrictDialog : BottomSheetDialogFragment() {
             (it as? BottomSheetDialog)?.setContentView(binding.root)
             initDialog()
             initActions()
+            onShowDialog()
         }
         return dialog
     }
@@ -55,7 +55,7 @@ class ProvinceAndDistrictDialog : BottomSheetDialogFragment() {
         adapter.submitList(cityList)
     }
 
-    private fun showDistrict(city: String) {
+    fun showDistrict(city: String) {
         adapter.type = DistrictAndPOCAdapter.Type.District
         when (city) {
             cityList[0] -> {
@@ -80,9 +80,7 @@ class ProvinceAndDistrictDialog : BottomSheetDialogFragment() {
         isCancelable = true
         binding.rvDistrictAndPOC.adapter = adapter
         arguments?.run {
-            if (getInt(KEY_TYPE, 0) == DistrictAndPOCAdapter.Type.District.ordinal) {
-                showDistrict(getString(KEY_DATA).orEmpty())
-            } else {
+            if (getInt(KEY_TYPE, 0) == DistrictAndPOCAdapter.Type.ProvinceOrCity.ordinal) {
                 showCity()
             }
         }
@@ -90,11 +88,8 @@ class ProvinceAndDistrictDialog : BottomSheetDialogFragment() {
 
     companion object {
         private const val KEY_TYPE = "key_type"
-        private const val KEY_DATA = "key_data"
-        fun newInstance(type: Int, data: String? = null) = ProvinceAndDistrictDialog().apply {
-            arguments = bundleOf(
-                KEY_TYPE to type, KEY_DATA to data
-            )
+        fun newInstance(type: Int) = ProvinceAndDistrictDialog().apply {
+            arguments = bundleOf(KEY_TYPE to type)
         }
     }
 }

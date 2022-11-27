@@ -39,8 +39,7 @@ class UpdateCustomerInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding
         ProvinceAndDistrictDialog.newInstance(DistrictAndPOCAdapter.Type.ProvinceOrCity.ordinal)
     }
     private val districtDialog: ProvinceAndDistrictDialog by lazy {
-        ProvinceAndDistrictDialog.newInstance(DistrictAndPOCAdapter.Type.District.ordinal,
-            binding.tvPOC.text.toString())
+        ProvinceAndDistrictDialog.newInstance(DistrictAndPOCAdapter.Type.District.ordinal)
     }
 
     private var cityList = emptyList<String>()
@@ -117,6 +116,10 @@ class UpdateCustomerInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding
                 binding.tvDistrict.text = data
             }
 
+            districtDialog.onShowDialog = {
+                districtDialog.showDistrict(binding.tvPOC.text.toString())
+            }
+
             binding.apply {
                 btnSave.setOnClickListener {
                     viewModel.updateUserInfo(
@@ -134,7 +137,6 @@ class UpdateCustomerInfoFragment : BaseFragment<FragmentUpdateAccountInfoBinding
                 tvDistrict.setOnClickListener {
                     districtDialog.show(childFragmentManager,
                         ProvinceAndDistrictDialog::class.simpleName)
-
                 }
 
                 tvPOC.setOnClickListener {
